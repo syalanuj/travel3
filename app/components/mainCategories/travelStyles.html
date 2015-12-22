@@ -1,0 +1,18 @@
+        <div class="container">
+            <h1 class="page-title">Travel Styles</h1>
+        </div>
+
+        <div class="container">
+            <div id="popup-gallery">                
+                <div class="row row-col-gap">
+                    <div ng-repeat="travelStyle in travelStyles">
+                    <div class="col-md-4">
+                        <a class="hover-img popup-gallery-image" ng-href="/availabletours/travelstyle/{{travelStyle.travel_style_id}}" data-effect="mfp-zoom-out">
+                            <img ng-src="{{travelStyle.images[0].image_url}}" alt="Image Alternative text" title="{{travelStyle.travel_style}}" /><i class="fa fa-plus round box-icon-small hover-icon i round"></i>
+                            {{travelStyle.travel_style}}
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>

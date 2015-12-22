@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="campture">
+    <head>
+        <!--Map API Dependencies-->  
+        
+        <!--Parse Dependencies-->        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+        <!--<script type="text/javascript" src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>-->
+
+        <!--Template Dependencies-->
+        
+        <!-- GOOGLE FONTS -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
+        <!-- /GOOGLE FONTS -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" href="css/icomoon.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/mystyles.css">
+        <link rel="stylesheet" href="css/dropzone.css">
+        <!--Post Form-->
+        <link rel="stylesheet" href="css/timeline/timestyle.css">
+        <link rel="stylesheet" href="css/timeline/style.css">
+        <!--colorbox-->
+        <link rel="stylesheet" type="text/css" href="css/colorbox.css" media="screen" />
+        <!--Meta-->
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta name="keywords" content="Template, html, premium, themeforest" />
+        <meta name="description" content="Traveler - Premium template for travel companies">
+        <meta name="author" content="Tsoy">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        <!--Dropzone dependencies-->
+        <script src="js/dropzone/dropzone.js"></script>
+        <!--Map API Dependencies-->
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script src='js/lodash.js'></script>
+        <!-- Angular Dependencies -->
+        <!-- JS-->
+        <script src="js/angular.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-cookies.js"></script>
+        <script src="js/ui-bootstrap-tpls-0.14.3.js"></script>
+        <!--Timeline Dependencies-->
+        <!--Map API Dependencies-->
+        <script src='js/angular-simple-logger.js'></script>
+        <script src='js/angular-google-maps.min.js'></script>
+        <script src="js/ngAutocomplete/ngAutocomplete.js"></script>
+        <!--Drop zone directive-->
+        <script src="js/dropzone/dropzone-directive.js"></script>
+        <!--Angular Routing-->
+        <base href="/">
+        <!--Main-->
+        <script src="app.js"></script>
+        <!--Services-->
+        <script  src="app/services/tourService.js"></script>
+        <script  src="app/services/userService.js"></script>
+        <script  src="app/services/accountService.js"></script>
+        <script  src="app/services/tripService.js"></script>  
+        <script src="app/services/parse-angular/FacebookAngularPatch.js"></script>
+        <script src="app/services/parse-angular/ParseServices.js"></script>      
+        
+        <!--Directives-->
+        <script src="app/components/account/profile/profileWrapDirective.js"></script>
+        <script src="app/components/commentsDirective/dynamicFbCommentBox.js"></script>
+        <script src="app/components/colorbox/modalDialogDirective.js"></script>
+
+        <!--Controller-->
+        <script  src="app/components/headerCtrl.js"></script>
+        <script  src="app/components/landing/landingCtrl.js"></script>
+        <script  src="app/components/tourDetails/tourDetailsCtrl.js"></script>
+        <script  src="app/components/mainCategories/mainCategoriesCtrl.js"></script>
+        <script  src="app/components/availableTours/availableToursCtrl.js"></script>
+        <script  src="app/components/account/accountCtrl.js"></script>
+        <script  src="app/components/account/timeline/timelineCtrl.js"></script>
+        <script  src="app/components/account/postTrip/postTripCtrl.js"></script>
+        <script  src="app/components/account/profile/profileCtrl.js"></script>
+        <script  src="app/components/account/editTrip/editTripCtrl.js"></script>
+        <script  src="app/components/filteredFeed/filteredFeed.js"></script>
+
+        <!--Main Route-->
+        <script src="app.route.js"></script>
+        <script src="configMap.js"></script>
+        <script type="text/javascript">
+      (function(doc, script) {
+        var js,
+            fjs = doc.getElementsByTagName(script)[0],
+            add = function(url, id) {
+                if (doc.getElementById(id)) {return;}
+                js = doc.createElement(script);
+                js.src = url;
+                id && (js.id = id);
+                fjs.parentNode.insertBefore(js, fjs);
+            };
+        // Facebook SDK
+        add('//connect.facebook.net/en_US/all.js', 'facebook-jssdk');
+        // Twitter SDK
+        add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+      }(document, 'script'));
+    </script>        
+        <title>Campture</title>
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <div ng-controller="HeaderCtrl">
+            <header class="header">
+                <div class="container">
+			        <div class="row top-bar no-margin" style="padding:0;">				
+					    <a href ="#/" class="col-md-2 no-padding site-name">
+						    <img class="" src="/img/icons/logo.png" alt="logo">
+					    </a>
+					    <div class="col-md-5">
+						    <div class="navbar-header">
+							    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								    <span class="sr-only">Toggle navigation</span>
+								    <span class="icon-bar"></span>
+								    <span class="icon-bar"></span>
+								    <span class="icon-bar"></span>
+							    </button>
+						    </div>
+						    <div class="navbar-collapse collapse">
+							    <ul class="nav navbar-nav navbar-left">
+								    <li><a class="active" href="#">Explore</a></li>
+								    <li><a href="#">Tags</a></li>
+								    <li><a href="#">Profiles</a></li>
+                                    <li><a href="http://www.campture.com/blog/">Blog</a></li>
+							    </ul>
+						    </div>
+					    </div>
+					
+					<div  class="col-md-2 myfeed">
+						<a ng-show="userObj" ng-href="#/account/profile/{{userObj.objectId}}"><img src="img/icons/myfeed.png" alt="My Feed" style="width: 86%;"></a>
+					</div>
+                    <div ng-show="userObj" class="col-md-2 profile-new">
+                            <span class="profile-name-new">{{userObj.facebook_profile.name}}</span>
+						    <img class="profile-picture-new img-circle" ng-src="{{userObj.facebook_profile.picture.data.url}}" width="40" height="40" style="width: initial;">
+					    <div ng-show="userObj == undefined" class="col-md-3 profile">
+                            <a   ng-click ="loginWithFacebook()" class="button facebook"><span class="fa fa-facebook-square medium"></span> Sign in via Facebook</a>                        						
+					    </div>
+				    </div>            		    
+		        </div>
+                </div>
+            </header>
+            <div class="container">            
+            <div class="nav-dropdowns" style="display: block;">
+                    <div class="nav-dropdown-tags">
+                        <div class="row no-gutter">
+                            <div ng-repeat="headerTag in topTags" >
+                                <div class="col-xs-6 col-sm-4 col-xl-3 category-wrap">
+                                    <div class="object tag">
+                                        <div class="object-header image full" ng-style="{'background-image':'url({{headerTag.image_url}})'}">
+                                            <a href="/" class="permacover"></a>
+                                            <div class="object-header-content">
+			                                    <h3><i class="hash">#</i> <span>{{headerTag.tag}}</span></h3>
+					                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+    <main>     
+    <div ng-view></div>
+    </main>
+
+    <footer id="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 footer-nav-worp-td">
+					<div class="col-sm-3 footer-nav-worp-td">
+						<h2>CAMPTURE</h2>
+					</div>
+				</div>
+					
+				<div class="col-sm-6 footer-nav-worp-menu">
+					<ul class="">
+						<li><a href="#">ABOUT US</a></li>
+						<li><a href="#">PIRVACY</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">CONTACT US</a></li>
+					</ul>
+				</div>
+					
+				<div class="col-sm-3 footer-nav-worp-social">
+					<ul class="">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-share-alt"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row" style="text-align:center;color:#fff;">
+				<small>© 2015 All rights reserved. CAMPTURE</small>
+			</div>
+		</div>
+	</footer>
+        <script src="js/modernizr.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/slimmenu.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/bootstrap-timepicker.js"></script>
+        <script src="js/nicescroll.js"></script>
+        <script src="js/dropit.js"></script>
+        <script src="js/ionrangeslider.js"></script>
+        <script src="js/icheck.js"></script>
+        <script src="js/fotorama.js"></script>        
+        <script src="js/typeahead.js"></script>
+        <script src="js/card-payment.js"></script>
+        <script src="js/magnific.js"></script>
+        <script src="js/owl-carousel.js"></script>
+        <script src="js/fitvids.js"></script>
+        <script src="js/tweet.js"></script>
+        <script src="js/countdown.js"></script>
+        <script src="js/gridrotator.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>

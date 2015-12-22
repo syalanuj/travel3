@@ -1,0 +1,18 @@
+        <div class="container">
+            <h1 class="page-title">States</h1>
+        </div>
+
+        <div class="container">
+            <div id="popup-gallery">                
+                <div class="row row-col-gap">
+                    <div ng-repeat="state in topStates">
+                    <div class="col-md-4">
+                        <a class="hover-img popup-gallery-image" ng-href="/availabletours/state/{{state.state_id}}" data-effect="mfp-zoom-out">
+                            <img ng-src="{{state.images[0].image_url}}" alt="Image Alternative text" title="{{state.name}}" /><i class="fa fa-plus round box-icon-small hover-icon i round"></i>
+                            {{state.name}}
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>

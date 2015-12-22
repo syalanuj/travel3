@@ -1,0 +1,121 @@
+<div class="profile-header-background">			
+			<div class="container">
+                <div class="row no-margin">					
+					<div class="col-md-4 my-trip">						
+					</div>
+                    <div class="col-md-4 profile-overview">
+                        <div class="row no-margin">
+                            <div class="col-md-3"></div>
+						    <div class="col-md-3">
+							    <img class="profile-picture img-circle" ng-src="{{userObj.facebook_profile.picture.data.url}}" alt="Profile Picture" width="50" height="50">
+						    </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="col-md-3"></div>
+						    <div class="col-md-5">
+							    {{userObj.facebook_profile.name}}
+						    </div>
+                            <div class="col-md-3"></div>
+                        </div>    						
+					</div>
+					<div class="col-md-4 locaion">						
+					</div>
+				</div>
+			</div>
+	</div>
+<div class="timeline-toolbar container">
+    <div class="row" style="border-bottom:solid 1px #EEECEC;">    
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-3 mid-nav-worp-menu">
+            <ul class="tab-menu">
+	            <li ng-click="updateprofileTabPos(0)" ng-class="{ 'current': profileTabPos == 0}">
+		            <a href="">Trips</a>
+	            </li>
+	            <li ng-click="updateprofileTabPos(1)" ng-class="{ 'current': profileTabPos == 1}">
+		            <a href="">Places<span></span></a>
+	            </li>
+	            <li ng-click="updateprofileTabPos(2)" ng-class="{ 'current': profileTabPos == 2}">
+		            <a href="">Photos<span></span></a>
+	            </li>
+	        </ul>
+        </div>
+        <div class="col-sm-3" style="float: right;margin-top: 10px;">
+            <a ng-show="isMyProfile"href="#/account/postTrip" class="button primary"><img src="/img/icons/map.svg" alt=""> Add Trip</a>        
+        </div>
+    </div>
+</div>
+<div ng-show="myTrips == undefined" class="content-wrap">
+    <div class="site-content container">
+         <div class="col-sm-4">
+        </div>
+        <div class="col-sm-3" style="width: 310px;height: 397px;">
+        <img  ng-src="/img/backgrounds/published_trips_nil.png" class="" style="display: block;">
+        </div>
+    </div>
+</div>
+<div ng-show="myTrips" class="content-wrap">
+    <div class="site-content container">
+        <div ng-show="profileTabPos == 0" class="trips-grid row">
+            <div class="column span-4" ng-repeat="trip in myTrips">
+                <div class="trip-preview">	
+	                <div class="trip-image image element-image loaded">
+		                <a ng-href="#/account/timeline/{{trip.id}}">
+                            <img ng-show="trip.main_image" ng-src="{{trip.main_image.image_url}}" class="fullwidth" style="display: block;">
+		                    <img ng-show="trip.main_image === undefined" ng-src="{{trip.visited_places[0].images[0].image_url}}" class="fullwidth" style="display: block;">
+                        </a>
+		
+		                <div class="trip-caption">
+			                <div class="trip-location">
+				                <span class="fa fa-map-marker"></span>
+				                {{trip.visited_places[0].location}}
+			                </div>
+		                </div>
+	                </div>
+	            <div class="trip-footer">
+		            <h3 class="trip-title title"><a ng-href="#/account/timeline/{{trip.id}}">{{trip.title}}</a></h3>
+		            <div class="trip-details clearfix">
+			            <div class="trip-detail left">
+				            <a href=""><span class="fa fa-user"></span> {{trip.username}}</a>
+			            </div>
+		            </div>
+	            </div>	
+            </div>
+            </div>
+        </div>
+    </div>
+        <div ng-show="profileTabPos == 1" class="">
+            <div class="">
+                <ui-gmap-google-map center='map.center' zoom='map.zoom' options="options">
+                    <ui-gmap-markers models="allMarkers" coords="'self'" icon="'icon'"  options="marker.options" click="onClick()" events="marker.events">
+                    </ui-gmap-markers>
+                 </ui-gmap-google-map>
+            </div>
+        </div>
+    <div class="site-content container">        
+        <div ng-show="profileTabPos == 2" class="photos-grid row">
+        <div ng-repeat="trip in myTrips">
+            <div class="photos-header column span-12">
+		        <h2 class="photos-title title"><a href="/trip/376/brazil/">{{trip.title}}</a></h2>
+		        <div class="photos-details clearfix">
+			        <div class="photos-detail"><span class="fa fa-calendar"></span> {{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</div>
+			        <div class="photos-detail">
+				        <span class="fa fa-map-marker"></span>
+				        <a href="">{{trip.visited_places[0].location}}</a> 
+                    </div>
+		        </div>
+	        </div>
+                <div class="column span-4" ng-repeat="place in trip.visited_places">
+                    <div  ng-repeat="placeImage in place.images">
+                        <div class="photo-preview image element-image loaded">
+	                        <a ng-href="{{placeImage.image_url}}" class="element-colorbox cboxElement" data-id="photos" data-title="">
+		                        <img ng-src="{{placeImage.image_url}}" class="fullwidth" alt="" style="display: block;">
+		                    </a>
+                        </div>
+	                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

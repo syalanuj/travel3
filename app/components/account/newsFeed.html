@@ -1,0 +1,48 @@
+<div class="toolbar-wrap">
+	<div class="site-toolbar container">
+		<form action="/trips/">
+			<div class="row">
+				<div class="toolbar-options column span-4">	
+				</div>
+				<div class="column span-4">
+                    <div class="toolbar-search">						
+						<input type="text" name="search" value="" class="element-autocomplete ui-autocomplete-input" data-source="/ajax/tags/" placeholder="Search" autocomplete="off">
+						<a href="#" class="element-submit"><span class="fa fa-search"></span></a>	
+					</div>
+                </div>
+				<div class="column span-4">	</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="content-wrap">
+<div class="site-content container">
+    <div id="pages" class="trips-grid row">
+        <div class="column span-4" ng-repeat="trip in allTrips">
+            <div class="trip-preview">	
+	            <div class="trip-image image element-image loaded">
+		            <a ng-href="#/account/timeline/{{trip.id}}">
+                        <img ng-show="trip.main_image" ng-src="{{trip.main_image.image_url}}" class="fullwidth" style="display: block;">
+		                <img ng-show="trip.main_image === undefined" ng-src="{{trip.visited_places[0].images[0].image_url}}" class="fullwidth" style="display: block;">
+                    </a>
+		
+		            <div class="trip-caption">
+			            <div class="trip-location">
+				            <span class="fa fa-map-marker"></span>
+				            {{trip.visited_places[0].location}}
+			            </div>
+		            </div>
+	            </div>
+	        <div class="trip-footer">
+		        <h3 class="trip-title title"><a ng-href="#/account/timeline/{{trip.id}}">{{trip.title}}</a></h3>
+		        <div class="trip-details clearfix">
+			        <div class="trip-detail left">
+				        <a ng-href="#/account/profile/{{trip.user.id}}"><span class="fa fa-user"></span> {{trip.username}}</a>
+			        </div>
+		        </div>
+	        </div>	
+        </div>
+        </div>
+    </div>
+</div>
+</div>

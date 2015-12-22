@@ -1,0 +1,63 @@
+<div class="intro-wrap">
+	<div class="site-intro container">
+		<h1 style="color: white;">Share your travel experience</h1>
+		<p>Easily keep, publish and share travel itineraries, places and photos, join our travel community to discover travel ideas and get inspired.</p>
+		<a ng-show="userObj == undefined" ng-href="/#/account/signIn" class="button primary large"><img src="/img/icons/map.svg" alt=""> Publish Trip</a>
+        <a ng-show="userObj" ng-href="#/account/postTrip" class="button primary large"><img src="/img/icons/map.svg" alt=""> Publish Trip</a>
+	</div>
+</div>
+<div class="toolbar-wrap">
+	<div class="site-toolbar container">
+		<form action="/trips/">
+			<div class="row">
+				<div class="toolbar-options column span-4">
+				</div>
+				<div class="column span-4">
+					<div class="toolbar-search">						
+						<input type="text" ng-model="query[queryBy]" name="search" value="" class="element-autocomplete ui-autocomplete-input"  placeholder="Search" >
+						<a href="#" class="element-submit"><span class="fa fa-search"></span></a>	
+					</div>
+                </div>
+				<div class="column span-4"></div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="content-wrap">
+<div class="site-content container">
+    <div id="pages" class="trips-grid row">
+        <div class="column span-4" ng-repeat="trip in allTrips | filter:query" >
+            <div class="trip-preview">	
+	            <div class="trip-image image element-image loaded">
+		            <a ng-href="#/account/timeline/{{trip.id}}">
+                        <img ng-src="{{trip.cropped_image_url}}" class="fullwidth" style="display: block;">
+                    </a>
+                    <div class="trip-caption-top">
+                        <span class="fa fa-map-marker"></span>
+				        {{trip.visited_places[0].location}}
+                    </div>
+		
+		            <div class="trip-caption-new">
+			            <div class="trip-location" style="font-size: 1.85em;">
+				            {{trip.title}}
+                            <span class="fa fa-heart right"></span>
+                            <span class="right">{{trip.total_likes}}</span>
+			            </div>
+                        
+		            </div>
+	            </div>
+	        <div class="trip-footer">
+		        <div class="trip-details-new clearfix">
+			        <div class="trip-detail left" >
+				        <a ng-href="/account/profile/{{trip.user.id}}"><span class="fa fa-user"></span> {{trip.username}}</a>
+			        </div>
+                    <div class="trip-detail right" >
+				        {{trip.visited_places[0].date | date:"dd/MM/yyyy"}}
+			        </div>
+		        </div>
+	        </div>	
+        </div>
+        </div>
+    </div>
+</div>
+</div>

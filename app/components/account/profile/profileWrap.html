@@ -1,0 +1,53 @@
+<div class="profile-wrap">
+	<div class="site-profile container ">
+		<div class="row">
+			<div class="column span-4 mobile-span-6-768 mobile-span-12-380">
+                <div class="profile-preview ">
+	                <div class="profile-image">
+		                <div class="photo-preview image element-image loaded">
+			                <a href="">
+				                <img ng-src="{{myProfile.picture.data.url}}" class="fullwidth" style="display: block;">
+                            </a>
+		                </div>
+	                </div>
+	                <div class="profile-content">
+		                <h3 class="profile-name title">
+			                {{myProfile.name}}
+		                </h3>
+	                </div>
+                </div>
+			</div>
+			<div class="column span-4 mobile-hidden-768">
+				<nav class="profile-menu ">
+					<ul class="tab-menu">
+						<li ng-click="updateprofileTabPos(0)" ng-class="{ 'current': profileTabPos == 0}">
+							<a href="">Trips</a>
+						</li>
+						<li ng-click="updateprofileTabPos(1)" ng-class="{ 'current': profileTabPos == 1}">
+							<a href="">Places<span></span></a>
+						</li>
+						<li ng-click="updateprofileTabPos(2)" ng-class="{ 'current': profileTabPos == 2}">
+							<a href="">Photos<span></span></a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="column span-12 hidden mobile-visible-768 mobile-hidden-480">
+				<nav class="profile-menu ">
+					<ul>
+						<li class="">
+							<a ng-click="updateprofileTabPos(0)">Trips</a>
+						</li>
+						<li class="">
+							<a ng-click="updateprofileTabPos(1)">Places<span></span></a>
+						</li>
+						<li class="">
+							<a ng-click="updateprofileTabPos(2)">Photos<span></span></a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			
+		</div>
+	</div>
+</div>

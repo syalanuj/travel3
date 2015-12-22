@@ -1,0 +1,204 @@
+    <div class="top-area show-onload">
+            <!--<div class="owl-carousel owl-slider owl-carousel-area" id="owl-carousel-slider">-->
+            <div class="bg-holder full text-center text-white">
+                    <div class="bg-mask"></div>
+                    <!--<div class="bg-parallax">-->
+                    <img class="bg-parallax" ng-src="./img/sample/banner.jpg"/>                    
+                    <div class="bg-front full-center">
+                        <div class="owl-cap">
+                            <h1 class="owl-cap-title fittext">Roopkund</h1>
+                            <div class="owl-cap-price"><small>Uttrakhand</small>                                
+                            </div><a class="btn btn-white btn-ghost" href="#"><i class="fa fa-angle-right"></i> Explore</a>
+                        </div>
+                    </div>
+                <!--</div>-->
+            <!--</div>-->
+            </div>
+        </div>
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a>
+                </li>                
+                <li><a href="#">{{tour.country.name}}</a>
+                </li>
+                <li><a href="#">{{tour.state.name}}</a>
+                </li>
+                <li><a href="#">{{tour.place.name}}</a>
+                </li>
+                <li class="active">{{tour.name}}</li>
+            </ul>
+            
+            <div class="booking-item-details">
+                <header class="booking-item-header">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h2 class="lh1em">{{tour.name}}</h2>
+                            <p class="lh1em text-small"><i class="fa fa-map-marker"></i> {{tour.place.name}}</p>
+                        </div>
+                    </div>
+                </header>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="tabbable booking-details-tabbable">
+                            <ul class="nav nav-tabs">
+                                <li ng-class="{ active: isUpperTabSet(1) }">
+          	                        <a href ng-click="setUpperTab(1)" data-toggle="tab"><i class="fa fa-map-marker"></i>On the Map</a>
+       	                        </li>
+                                <li ng-class="{ active: isUpperTabSet(2) }">
+          	                        <a href ng-click="setUpperTab(2)" data-toggle="tab"><i class="fa fa-camera"></i>Photos</a>
+       	                        </li>                                
+                            </ul>
+                            Weather API
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" ng-show= "isUpperTabSet(1)" >
+                                    <ui-gmap-google-map center='map.center' zoom='map.zoom' options="options">
+                                            <ui-gmap-marker coords="marker.coords" idkey="marker.id"  options="marker.options" click="onClick()" events="marker.events">
+                                                <ui-gmap-window options="windowOptions" closeClick="closeClick()">
+                                                    <div>{{tour.name}}</div>
+                                                </ui-gmap-window>
+                                            </ui-gmap-marker>
+                                    </ui-gmap-google-map>
+                                    <ui-gmap-search-box template="searchbox.template" events="searchbox.events"></ui-gmap-search-box>
+                                    <!--<div id="map" style="width:100%; height:500px;"></div>-->
+                                </div>
+                                <div class="tab-pane fade in active" ng-show= "isUpperTabSet(2)" >
+                                    <div class="fotorama" data-allowfullscreen="true" data-nav="thumbs">
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="Upper Lake in New York Central Park" />
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="new york at an angle" />
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="Pictures at the museum" />
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="Plunklock live in Cologne" />
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="AMaze" />
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="Old No7" />
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="The Big Showoff-Take 2" />
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="4 Strokes of Fun" />
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="Me with the Uke" />
+                                        <img src="img/800x600.png" alt="Image Alternative text" title="Trebbiano Ristorante - japenese breakfast" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="booking-item-meta">
+                            <h3>Select Tour Dates</h3>
+                            <div ng-repeat="tourOccurrence in tourOccurrences">Start Date: {{tourOccurrence.start_date | date:'MM/dd/yyyy'}} End Date:{{tourOccurrence.end_date | date:'MM/dd/yyyy'}}</div>
+                        </div>
+                        <div class="gap gap-small">
+                            <h3>Booking Form</h3>
+                            <form name="bookingForm" ng-submit="submitBooking()" role="form">
+                                <div class="form-group" ng-class="{ 'has-error': loginForm.name.$dirty && loginForm.name.$error.required }">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control" ng-model="bookingUser.name" required />
+                                    <span ng-show="loginForm.name.$dirty && loginForm.name.$error.required" class="help-block">Name is required</span>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': loginForm.email.$dirty && loginForm.email.$error.required }">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" ng-model="bookingUser.email" required />
+                                    <span ng-show="loginForm.email.$dirty && loginForm.email.$error.required" class="help-block">Email is required</span>
+                                    <span ng-show="loginForm.email.$dirty && loginForm.email.$error.email" class="help-block">Incorrect Email</span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': loginForm.phone.$error.number}">
+                                <label for="inputPhone">Phone :</label>
+                                    <div class="">
+                                        <input type="number" class="form-control" ng-minlength="10" ng-maxlength="10"  id="phone" name="phone" placeholder="Phone" ng-model="bookingUser.phone" ng-required="true">
+                                        <span class="help-block" ng-show="loginForm.phone.$error.required || loginForm.phone.$error.number">Valid phone number is required</span>
+                                        <span class="help-block" ng-show="((loginForm.phone.$error.minlength || loginForm.phone.$error.maxlength) && loginForm.phone.$dirty) ">phone number should be 10 digits</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="">
+                                    <label for="numberoftravellers">Number of Travellers</label>
+                                    <input type="number" name="numberoftravellers" id="numberoftravellers" class="form-control" ng-model="bookingUser.numberoftravellers"  />
+                                    <!--<span ng-show="loginForm.name.$dirty && loginForm.name.$error.required" class="help-block">Name is required</span>-->
+                                </div>
+                                <div class="form-group" ng-class="">
+                                    <label for="queries">Queries</label>
+                                    <textarea name="queries" id="queries" class="form-control" ng-model="bookingUser.queries"></textarea>                                                                        
+                                </div>
+                                 <input class="btn btn-primary btn-lg" type="submit" value="Book"  />                                                                
+                            </form>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="gap"></div>
+            <div class="col-md-4">
+                <h3 class="mb20">Specifics</h3>
+                <div><h5>Grade</h5><p>{{tour.grade.grade_name}}</p></div>
+                <div><h5>Altitude</h5><p>{{tour.altitude}}</p></div>
+                <div><h5>No. Of Days</h5><p>{{tour.number_of_days}}</p></div>
+                <h3 class="mb20">Logistics (Google API)</h3>
+                Hospital
+                Bus Depot
+                Railway Station
+                Airport
+            </div>
+            <div class="col-md-4">
+                <h3 class="mb20">What's it really like</h3>
+                <p>{{tour.introduction}}</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="mb20">Tour highlights</h3>
+                <p>
+                   <div ng-repeat="highlight in tour.highlights">
+                   <i class="fa fa-dot-circle-o" style="margin-right: 10px;"></i>{{highlight}}
+                   </div>
+                </p>
+            </div>
+            <div class="gap gap-large"></div>
+            <div class="search-tabs search-tabs-bg search-tabs-to-top">
+                <div class="tabbable">
+                  <ul class="nav nav-tabs">
+       	            <li ng-class="{ active: isSet(1) }">
+          	            <a href ng-click="setTab(1)" data-toggle="tab"><i class="fa fa-building-o"></i> <span >Itenary</span></a>
+       	            </li>
+       	            <li ng-class="{ active: isSet(2) }">
+          	            <a href ng-click="setTab(2)" data-toggle="tab"><i class="fa fa-plane"></i> <span >Gear</span></a>
+       	            </li>
+       	            <li ng-class="{ active: isSet(3) }">
+          	            <a href ng-click="setTab(3)" data-toggle="tab"><i class="fa fa-home"></i> <span >Other Details</span></a>
+       	            </li>
+                    <li ng-class="{ active: isSet(4) }">
+          	            <a href ng-click="setTab(4)" data-toggle="tab"><i class="fa fa-home"></i> <span >Transport</span></a>
+       	            </li>
+     	          </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" ng-show="isSet(1)" >                            
+                            <div ng-repeat="details in tour.itenary">
+                            <h5>
+                                <b>
+                                    <i class="fa fa-dot-circle-o" style="margin-right: 10px;"></i>
+                                    Day {{details.day}} - {{details.heading}}
+                                </b>
+                            </h5>
+                            <p>{{details.description}}</p>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in active" ng-show="isSet(2)">
+                            <div ng-repeat="gear in tour.gears">
+                            <h5>
+                                {{gear.gear_name}}
+                            </h5>                            
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in active" ng-show="isSet(3)">
+                            <div ng-repeat="detailPoint in tour.other_details">
+                            <h5>
+                                {{detailPoint}}
+                            </h5>                            
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in active" ng-show="isSet(4)">
+                            <div ng-repeat="details in tour.transport">
+                            <h5>
+                                {{details.mode}}
+                            </h5>              
+                                {{details.details}}
+                                {{details.route_to_take}}              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRpJLhktqH2XbHlB4WLvZ169ECwqOG-BE&callback=initMap"></script>-->
+</div>
