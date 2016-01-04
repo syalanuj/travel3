@@ -14,6 +14,7 @@
         $scope.isMyProfile = false;
         $scope.pageUrl = $location.$$absUrl;
         $scope.likeId;
+        $scope.isLikeDisabled = false;
         if ($scope.currentUserObj) {
             $scope.myProfile = $scope.currentUserObj.get("facebook_profile");
         }
@@ -113,6 +114,7 @@
             tripService.isTripLikedByUser(likeObj, function (data) {
                 if (data) {
                     $scope.likeId = data;
+                    $scope.isLikeDisabled = false;
                     $scope.$apply();
                 }
             })
@@ -139,6 +141,7 @@
                 if (data) {
                     var x = data;
                     $scope.likeId = undefined;
+                    $scope.isLikeDisabled = false
                     $scope.$apply();
                 }
                 else {
@@ -146,7 +149,7 @@
                 }
             });
         };
-        $scope.tripLikeUnlike = function () {
+        $scope.tripLikeUnlike = function () {            
             if ($scope.likeId) {
                 $scope.unlikeTrip();
             }
@@ -154,7 +157,6 @@
                 $scope.likeTrip();
             }
         }
-
         $scope.modalShown = false;
         $scope.toggleModal = function (imageUrl) {
             $scope.modalShown = !$scope.modalShown;

@@ -2,8 +2,8 @@
     'use strict';
 
     var app = angular.module('campture');
-    app.controller('ProfileCtrl', ['$scope', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams','$timeout', controller]);
-    function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams,$timeout) {
+    app.controller('ProfileCtrl', ['$scope', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout', controller]);
+    function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout) {
         //====== Scope Variables==========
         //================================      
         $scope.myTrips;
@@ -17,10 +17,12 @@
         $scope.isMyProfile = false;
         //MAP
         $scope.map = { center: { latitude: 39.775230, longitude: 11.696153 }, zoom: 3 };
+        $scope.profileTabPos = 0;
+        $scope.profileImages = new Array();
         accountService.getUserById($routeParams.userId, function (data) {
             if (data) {
                 $scope.userObj = data;
-                if($scope.myUserObj){
+                if ($scope.myUserObj) {
                     if ($scope.userObj.id == $scope.myUserObj.id) {
                         $scope.isMyProfile = true;
                     }
@@ -32,14 +34,19 @@
                 $scope.$apply(function () {
                     var markerId = 0;
                     $scope.myTrips = data;
-                        angular.forEach($scope.myTrips, function (trip, key) {
-                            angular.forEach(trip.visited_places, function (place, key) {
-                                $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
-                                markerId++;
-                            });
+                    angular.forEach($scope.myTrips, function (trip, key) {
+                        var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
+                        trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
+                        angular.forEach(trip.visited_places, function (place, key) {
+                            $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
+                            markerId++;
                         });
+                    });
                 });
             }
         });
+        $scope.updateprofileTabPos = function (pos) {
+            $scope.profileTabPos = pos;
+        }
     };
 })();

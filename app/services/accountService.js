@@ -13,7 +13,9 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         getAllTrips: getAllTrips,
         getMyProfile: getMyProfile,
         updateUserFacebookProfile: updateUserFacebookProfile,
-        getUserById: getUserById
+        getUserById: getUserById,
+        getTripByTags: getTripByTags,
+        getAllUserProfiles: getAllUserProfiles 
     };
 
     function getTripById(tripId, callback) {
@@ -161,7 +163,43 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     }
-
+    function getTripByTags(tag,callback) {
+        var allTrips = new Array();
+        var query = new Parse.Query(trips);
+        query.include("user_pointer");
+        query.equalTo("tags", tag);
+        query.find({
+            success: function (parseObject) {
+                for (var i = 0; i < parseObject.length; i++) {
+                    allTrips[i] = getTripFromParse(parseObject[i]);
+                }
+                callback(allTrips);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    };
+    function getAllUserProfiles(callback){
+        var query = new Parse.Query(user);
+        query.find({
+            success: function (parseObject) {
+                var allUsers = new Array();
+                for (var i = 0; i < parseObject.length; i++) {
+                    var userObj = {
+                        id: parseObject[i].id,
+                        authData: parseObject[i].get("authData"),
+                        facebook_profile: parseObject[i].get("facebook_profile")
+                    };
+                    allUsers.push(userObj);
+                }
+                callback(allUsers);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    }
 
     //Internal
     function getTripFromParse(parseObject) {

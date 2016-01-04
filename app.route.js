@@ -53,9 +53,13 @@
              controller: 'EditTripCtrl',
             templateUrl: 'app/components/account/editTrip/editTrip.html'
         })
-        .when('feed/:tag?',{
+        .when('/feed/:tag?',{
             controller: 'FilteredFeedCtrl',
-            templateUrl:'app/components/filteredFeed/filteredFeed.html'
+            templateUrl:'app/components/feed/filteredFeed.html'
+        })
+        .when('/allProfiles/',{
+            controller: 'AllProfilesCtrl',
+            templateUrl:'app/components/allProfiles/allProfiles.html'
         });
     });
 

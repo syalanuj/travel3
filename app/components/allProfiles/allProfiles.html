@@ -1,0 +1,32 @@
+<div class="content-wrap" id="content">
+    <div class="site-content container">
+        <div id="pages" class="profiles-grid row">	
+            <div class="column span-4" ng-repeat="userProfile in allProfiles track by $index">
+                <div class="profile-preview ">
+                    <div class="profile-image">
+                        <div class="photo-preview image element-image loaded">
+                            <a ng-href="#/account/profile/{{userProfile.id}}">
+	                            <img ng-src="{{userProfile.facebook_profile.picture.data.url}}" class="fullwidth" alt="shooenok" style="display: block;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="profile-content">
+                        <h3 class="profile-name title">
+                            <a ng-href="#/account/profile/{{userProfile.id}}">{{userProfile.facebook_profile.name}}</a>
+                        </h3>
+                        <div class="profile-location">
+                            <span class="fa fa-map-marker"></span> 
+                                Warsaw, 
+                                Poland
+                        </div>
+                        <div class="profile-badges clearfix">			
+                            <div class="badge badge-trips color-10" title="Published more than 10 trips"></div>			
+                            <div class="badge badge-followers color-10" title="Has more than 10 followers"></div>			
+                            <div class="badge badge-days color-30" title="Joined more than a month ago"></div>			
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

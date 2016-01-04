@@ -1,10 +1,10 @@
-<modal-dialog image-url="modalImageUrl" show='modalShown' width='750px' height='60%'>                            
+<modal-dialog image-url="modalImageUrl" show='modalShown' width='850px' height='60%'>                            
 </modal-dialog>
 <div class="title-wrap">
     <div class="container">
         <div class="title-background">
-        <img ng-show="trip.main_image" ng-src="{{trip.main_image.image_url}}" class="fullwidth" alt="" style="display: block;">
-        <img ng-show="trip.main_image === undefined" ng-src="{{trip.visited_places[0].images[0].image_url}}" class="fullwidth" style="display: block;">
+        <img ng-show="trip.main_image" ng-src="{{getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_500,w_500/')}}" class="fullwidth" alt="" style="display: block;">
+        <img ng-show="trip.main_image === undefined" ng-src="{{getCroppedTripImageUrl(trip.visited_places[0].images[0].image_url,'upload/c_fill,h_500,w_500/')}}" class="fullwidth" style="display: block;">
     </div>
     <div class="row no-margin">        
             <a ng-href="#/account/profile/{{userObj.id}}">
@@ -57,7 +57,7 @@
                 <a ng-show="isMyProfile" class="button secondary element-mobile" ng-href="/#/account/editTrip/{{trip.id}}">
                     Edit
                  </a>
-                <a ng-click="tripLikeUnlike()" href="" class="button switch primary element-ajax" >
+                <a ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled" href="" class="button switch primary element-ajax" ng-class="{likeDisabled: isLikeDisabled}">
                     <div ng-show="likeId == undefined">
                         <span class="fa fa-heart">
                         </span>
@@ -75,12 +75,12 @@
                         <small id="favorites_number">{{trip.total_likes}}</small>
                     </div>
                 </a>
-                <ul class="mid-nav-worp-social notification">
+                <!--<ul class="mid-nav-worp-social notification">
                     <li>
                         <a class="share" href="#"><i class="fa fa-share-alt"></i></a>
                     </li>
-                    <!--<li><a class="g_talk" href="#"><i class="fa fa-comment"></i> <span class="badge b-blue"><div class="fb-comments-count" data-href="/post URL">0</div></span></a></li>-->
-                </ul>
+                    <li><a class="g_talk" href="#"><i class="fa fa-comment"></i> <span class="badge b-blue"><div class="fb-comments-count" data-href="/post URL">0</div></span></a></li>
+                </ul>-->
             </div>
             <div class="column span-12 mobile-visible-768">
 				<nav class="toolbar-menu">
@@ -128,8 +128,8 @@
 				<div class="day-photos clearfix columns-1" ng-repeat="image in place.images track by $index">					
                     <div class="day-photo">
 							<div class="photo-preview image element-image loaded">											
-								<a href="" ng-click='toggleModal(image.image_url)' class="element-colorbox cboxElement" data-id="photos" data-url="photo-418">								
-								    <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_crop,h_400,w_500/')}}" class="fullwidth" alt="" style="display: block;">			
+								<a href="" ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/'))" class="element-colorbox cboxElement" data-id="photos" data-url="photo-418">								
+								    <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_400,w_500/')}}" class="fullwidth" alt="" style="display: block;">			
 								</a>
 							</div>
 						</div>		

@@ -11,19 +11,19 @@
         //$rootScope.topStates;
         //$rootScope.activities;
         $scope.topTags = [
-        { tag: 'water', image_url: '/img/tags/water.png' }, 
-        { tag: 'trekking', image_url: '/img/tags/trekking.png' }, 
-        { tag: 'air', image_url: '/img/tags/air.png'}, 
-        { tag: 'air', image_url: '/img/tags/water.png'}, 
-        { tag: 'air', image_url: '/img/tags/trekking.png'}, 
-        { tag: 'air', image_url: '/img/tags/air.png'}, 
-        { tag: 'air', image_url: '/img/tags/water.png'}, 
-        { tag: 'air', image_url: '/img/tags/trekking.png'}, 
+        { tag: 'water', image_url: '/img/tags/water.png' },
+        { tag: 'trekking', image_url: '/img/tags/trekking.png' },
+        { tag: 'mountain', image_url: '/img/tags/air.png' },
+        { tag: 'camping', image_url: '/img/tags/water.png' },
+        { tag: 'beach', image_url: '/img/tags/trekking.png' },
+        { tag: 'face', image_url: '/img/tags/air.png' },
+        { tag: 'air', image_url: '/img/tags/water.png' },
+        { tag: 'air', image_url: '/img/tags/trekking.png' },
         { tag: 'air', image_url: '/img/tags/air.png'}];
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
-
+        $scope.showTags = false;
         $rootScope.loginWithFacebook = function () {
-            if(!$rootScope.fbInit) return;
+            if (!$rootScope.fbInit) return;
             if (!$rootScope.fbInit) return;
 
             Parse.FacebookUtils.logIn(null, {
@@ -44,7 +44,7 @@
                             });
                         });
                     });
-                        
+
 
                     $location.path("/");
                 },
@@ -63,7 +63,7 @@
         $rootScope.getCroppedTripImageUrl = function (url, transString) {
             try {
                 if (!transString) {
-                    transString = 'upload/c_crop,h_440,w_440/';
+                    transString = 'upload/c_fill,h_440,w_440/';
                 }
                 var arr = url.split('upload/');
                 var croppedUrl = arr[0] + transString + arr[1];

@@ -121,7 +121,8 @@ ul,ol {
 
 @media (max-width: 767px) { 
   	.myfeed,.profile{
-  		display: none;
+        margin-top: 0.1em;
+        float: left;
   	}
   	.header {
   		height: auto !important;
@@ -137,6 +138,11 @@ ul,ol {
   	.mid-nav-worp-td {
   		text-align: left;
   	}
+}
+
+.button.facebook{
+    margin-top: 0.9em;
+    cursor: pointer;
 }
 
 @media (max-width: 992px)  { 
@@ -553,22 +559,52 @@ a.my-feed-nav {
     width: 50%;
 }
 
+@media (max-width: 1100px) {
+    .navbar-collapse .navbar-nav>li>a {
+        font-size: 14px;
+        margin-right: 11px;
+    }
+    .navbar-collapse {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
 @media (max-width: 1000px)  {
 
-    .navbar-collapse .navbar-nav > li > a {
-        font-size: 15px;
+    /*.navbar-collapse .navbar-nav > li > a {*/
+        /*font-size: 15px;*/
+    /*}*/
+
+    ul.nav.navbar-nav {
+        margin-left: 0px;
+    }
+
+    .col-md-3.profile {
+        width: 40%;
+        float: right;
+        margin-top: -3%;
     }
 
     .col-md-2.my-feed-nav {
         width: 20%;
         float: left;
         margin-top: 0px;
+        z-index: 2;
     }
 }
 
 @media (max-width: 1200px) {
     .col-md-2.my-feed-nav {
         margin-top: 1%;
+    }
+
+    .day-header h2.title {
+        font-size: 28px;
+    }
+
+    .day-header .day-date {
+        font-size: 0.9em;
     }
 }
 
@@ -580,12 +616,42 @@ a.my-feed-nav {
     .navbar-toggle {
         margin-right: 20%;
     }
+
+    .day-header h2.title {
+        font-size: 20px;
+    }
+
+    .day-header .day-date {
+        font-size: 0.7em;
+    }
 }
 
 @media (max-width: 480px) {
     .col-md-2.my-feed-nav {
         width: 60%;
     }
+
+    .col-md-3.profile {
+        width: 100%;
+        float: right;
+        margin-top: 1%;
+    }
+
+    .navbar-col {
+        width: 50%;
+    }
+}
+
+.row.no-margin {
+    text-align: center;
+}
+
+.profile-name-col {
+    margin-left: -8%;
+}
+
+.day-header {
+    background: #ffffff;
 }
 
 /*.navbar-collapse.in .my-feed-nav {*/
