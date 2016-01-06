@@ -1,3 +1,5 @@
+<modal-dialog image-url="modalImageUrl" show='modalShown' width='850px' height='60%'>                            
+</modal-dialog>
 <div class="profile-header-background">			
 			<div class="container">
                 <div class="row no-margin">					
@@ -96,7 +98,7 @@
         <div ng-show="profileTabPos == 2" class="photos-grid row">
         <div ng-repeat="trip in myTrips">
             <div class="photos-header column span-12">
-		        <h2 class="photos-title title"><a href="/trip/376/brazil/">{{trip.title}}</a></h2>
+		        <h2 class="photos-title title"><a href="">{{trip.title}}</a></h2>
 		        <div class="photos-details clearfix">
 			        <div class="photos-detail"><span class="fa fa-calendar"></span> {{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</div>
 			        <div class="photos-detail">
@@ -108,7 +110,7 @@
                 <div class="column span-4" ng-repeat="place in trip.visited_places">
                     <div  ng-repeat="placeImage in place.images">
                         <div class="photo-preview image element-image loaded">
-	                        <a ng-href="{{placeImage.image_url}}" class="element-colorbox cboxElement" data-id="photos" data-title="">
+	                        <a ng-href="" ng-click="toggleModal(placeImage.image_url)" class="element-colorbox cboxElement" data-id="photos" data-title="">
 		                        <img ng-src="{{placeImage.image_url}}" class="fullwidth" alt="" style="display: block;">
 		                    </a>
                         </div>

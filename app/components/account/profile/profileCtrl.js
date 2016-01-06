@@ -48,5 +48,10 @@
         $scope.updateprofileTabPos = function (pos) {
             $scope.profileTabPos = pos;
         }
+        $scope.modalShown = false;
+        $scope.toggleModal = function (imageUrl) {
+            $scope.modalShown = !$scope.modalShown;
+            $scope.modalImageUrl = imageUrl;
+        };
     };
 })();

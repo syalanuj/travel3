@@ -6,7 +6,7 @@
                     <div class="profile-image">
                         <div class="photo-preview image element-image loaded">
                             <a ng-href="#/account/profile/{{userProfile.id}}">
-	                            <img ng-src="{{userProfile.facebook_profile.picture.data.url}}" class="fullwidth" alt="shooenok" style="display: block;">
+	                            <img ng-src="{{userProfile.facebook_profile.picture.data.url}}" class="fullwidth" alt="profile_pic" style="display: block;">
                             </a>
                         </div>
                     </div>
@@ -14,11 +14,6 @@
                         <h3 class="profile-name title">
                             <a ng-href="#/account/profile/{{userProfile.id}}">{{userProfile.facebook_profile.name}}</a>
                         </h3>
-                        <div class="profile-location">
-                            <span class="fa fa-map-marker"></span> 
-                                Warsaw, 
-                                Poland
-                        </div>
                         <div class="profile-badges clearfix">			
                             <div class="badge badge-trips color-10" title="Published more than 10 trips"></div>			
                             <div class="badge badge-followers color-10" title="Has more than 10 followers"></div>			

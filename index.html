@@ -107,7 +107,7 @@
 						    <div class="navbar-collapse collapse">
 							    <ul class="nav navbar-nav navbar-left">
 								    <li><a class="active" href="#/feed/">Explore</a></li>
-								    <li><a href="" ng-click="showTags = !showTags">Tags</a></li>
+								    <li><a href="" ng-click="showTags = !showTags;$event.stopPropagation();">Tags</a></li>
 								    <li><a href="#/allProfiles/">Profiles</a></li>
                                     <li><a target="_blank" href="http://www.campture.com/blog/">Blog</a></li>
 							    </ul>
@@ -128,7 +128,7 @@
                 </div>
             </header>
             <div class="container">
-            <div class="nav-dropdowns" style="display: block;" ng-show="showTags">
+            <div class="nav-dropdowns" style="display: block;" ng-show="showTags" outside-click="showTags = false">
                     <div class="nav-dropdown-tags">
                         <div class="row no-gutter">
                             <div ng-repeat="headerTag in topTags" >
@@ -161,20 +161,18 @@
 					</div>
 				</div>
 
-				<div class="col-sm-6 footer-nav-worp-menu">
-					<ul class="">
-						<li><a href="#">ABOUT US</a></li>
-						<li><a href="#">PIRVACY</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">CONTACT US</a></li>
-					</ul>
+				<div class="col-sm-4 footer-nav-worp-menu">
+					<aside class="footer-text-wrap"><div class="block-title"><span>ABOUT US</span></div>Campture is your one stop source where you can access a wealth of information on outdoor activities.<div class="footer-email-wrap">Contact us: <a href="mailto:info@campture.com">info@campture.com</a></div></aside>
 				</div>
 
-				<div class="col-sm-3 footer-nav-worp-social">
+				<div class="col-sm-5 footer-nav-worp-social">
 					<ul class="">
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-share-alt"></i></a></li>
+						<li><a href="https://www.facebook.com/CamptureApp/"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="https://www.google.com/+CamptureApp"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="https://twitter.com/Campture"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://instagram.com/camptureapp/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.pinterest.com/campture/"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="#"><i class="fa fa-share-alt"></i></a></li>
 					</ul>
 				</div>
 			</div>

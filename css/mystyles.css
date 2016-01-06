@@ -124,7 +124,7 @@
     width: 600px;
     height: 400px;
     margin-left: 45px;
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     border: 1px solid rgba(0, 0, 0, 0.15);
