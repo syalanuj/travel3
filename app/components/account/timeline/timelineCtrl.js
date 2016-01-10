@@ -15,6 +15,7 @@
         $scope.pageUrl = $location.$$absUrl;
         $scope.likeId;
         $scope.isLikeDisabled = false;
+        var bounds = new google.maps.LatLngBounds();
         if ($scope.currentUserObj) {
             $scope.myProfile = $scope.currentUserObj.get("facebook_profile");
         }
@@ -33,6 +34,8 @@
                 var markerId = 0;
                 angular.forEach($scope.trip.visited_places, function (place, key) {
                     $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
+                    var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
+                    bounds.extend(latlng);
                     markerId++;
                 });
                 $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15 };

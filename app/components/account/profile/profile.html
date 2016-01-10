@@ -110,8 +110,8 @@
                 <div class="column span-4" ng-repeat="place in trip.visited_places">
                     <div  ng-repeat="placeImage in place.images">
                         <div class="photo-preview image element-image loaded">
-	                        <a ng-href="" ng-click="toggleModal(placeImage.image_url)" class="element-colorbox cboxElement" data-id="photos" data-title="">
-		                        <img ng-src="{{placeImage.image_url}}" class="fullwidth" alt="" style="display: block;">
+	                        <a ng-href="" ng-click="toggleModal(getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_562,w_850/'))" class="element-colorbox cboxElement" data-id="photos" data-title="">
+		                        <img ng-src="{{getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_400,w_500/')}}" class="fullwidth" alt="" style="display: block;">
 		                    </a>
                         </div>
 	                </div>
