@@ -26,10 +26,10 @@
             Parse.FacebookUtils.logIn(null, {
                 success: function (user) {
                     if (!user.existed()) {
-                        $scope.userObj = Parse.User.current();
+                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
                         $scope.$apply();
                     } else {
-                        $scope.userObj = Parse.User.current();
+                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
                         $scope.$apply();
                     }
                     accountService.getMyProfile().then(function (response) {
