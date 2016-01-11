@@ -15,7 +15,9 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         updateUserFacebookProfile: updateUserFacebookProfile,
         getUserById: getUserById,
         getTripByTags: getTripByTags,
-        getAllUserProfiles: getAllUserProfiles 
+        getAllUserProfiles: getAllUserProfiles,
+        updateUserGallery: updateUserGallery,
+        getUserGallery: getUserGallery 
     };
 
     function getTripById(tripId, callback) {
@@ -163,7 +165,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     }
-    function getTripByTags(tag,callback) {
+    function getTripByTags(tag, callback) {
         var allTrips = new Array();
         var query = new Parse.Query(trips);
         query.include("user_pointer");
@@ -180,7 +182,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     };
-    function getAllUserProfiles(callback){
+    function getAllUserProfiles(callback) {
         var query = new Parse.Query(user);
         query.find({
             success: function (parseObject) {
@@ -200,6 +202,31 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     }
+
+    function updateUserGallery(userId, imageObj, callback) {
+        user.id = userId;
+        user.add("gallery", imageObj);
+        user.save(null, {
+            success: function (parseObject) {
+                callback(parseObject.id);
+            },
+            error: function (gameScore, error) {
+                alert('Failed to create new object, with error code: ' + error.message);
+            }
+        });
+    }
+    function getUserGallery(userId,callback){
+       var query = new Parse.Query(user);
+       query.get(userId, {
+            success: function (parseObject) {
+                var gallery = parseObject.get("gallery");
+                callback(gallery);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    }   
 
     //Internal
     function getTripFromParse(parseObject) {
