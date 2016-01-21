@@ -16,21 +16,22 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
         <!-- /GOOGLE FONTS -->
         <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/font-awesome.css">
+        <!--<link rel="stylesheet" href="css/font-awesome.css">-->
         <link rel="stylesheet" href="css/icomoon.css">
-        <link rel="stylesheet" href="css/styles.css">
+        <!--<link rel="stylesheet" href="css/styles.css">-->
         <link rel="stylesheet" href="css/mystyles.css">
         <link rel="stylesheet" href="css/dropzone.css">
+        <link rel="stylesheet" href="css/new-design/styles.css">
         <!--Post Form-->
         <link rel="stylesheet" href="css/timeline/timestyle.css">
-        <link rel="stylesheet" href="css/timeline/style.css">
+        <!--<link rel="stylesheet" href="css/timeline/style.css">-->
         <!--colorbox-->
         <link rel="stylesheet" type="text/css" href="css/colorbox.css" media="screen" />
         <!--Meta-->
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-        <meta name="keywords" content="Template, html, premium, themeforest" />
-        <meta name="description" content="Traveler - Premium template for travel companies">
-        <meta name="author" content="Tsoy">
+        <meta name="keywords" content="Campture, adventure, camping" />
+        <meta name="description" content="Campture">
+        <meta name="author" content="anuj">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
         <!--Dropzone dependencies-->
@@ -148,6 +149,40 @@
 				</div>
 			</div>
 		</div>
+        <div ng-controller="HeaderCtrl">
+            <nav class="navbar navbar-default no-margin no-background navbar-fixed-top">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#/"><img src="css/images/logo.png" alt="logo"></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-fonts">
+                    <li><a href="#/feed/" class="navbar-fonts navbar-link">EXPLORE</a></li>
+                    <li><a href="" class="navbar-fonts" ng-click="showTags = !showTags;$event.stopPropagation();">TAGS</a></li>
+                    <li><a href="#/allProfiles/" class="navbar-fonts">PROFILES</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                  <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control navbar-form" placeholder="Search">
+              </div>
+                  </form>
+                    <li><a ng-show="userObj" ng-href="#/account/profile/{{userObj.objectId}}" class="my_feed navbar-link" style="color:rgb(226, 50, 22)!important">MY FEED</a></li>
+                    <li><a ng-show="userObj" href="#"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" alt="profile-picture"></a></li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+        </div>
     <main class="top-margin">
     <div ng-view></div>
     </main>

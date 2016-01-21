@@ -1,0 +1,179 @@
+@charset "UTF-8";
+/* CSS Document */
+body
+{
+	background-color:#edeef0!important;
+}
+.verticalLine {
+    border-left: thick solid #ff0000;
+}
+.no-background{
+	background-color:#FFFFFF !important;
+}
+.no-margin {
+	margin:0px !important;
+}
+
+.jumbotron {
+    position: relative;
+    background: #000 url() center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+	
+}
+.navbar-fonts{
+	font-color: rgb(17, 23, 28) !important;
+	font-family: Lato, sans-serif;
+	font-size: 16px;
+	margin-top:3px !important;
+}
+.my_feed {
+          font-size: 16px;
+          font-family: "Lato";
+          color: rgb(226, 50, 22)!important;
+          text-transform: uppercase;
+          line-height: 2.375;
+          position: absolute;
+          top: 5px;
+          z-index: 113;
+        }
+.jumbotron-index
+{
+	background-image:url(../Images/AdobeStock_86359352_WM.png);
+	color:#CECECE;
+	height:500px;
+	margin-bottom:0px!important;
+	padding-top:100px!important;
+}
+.jumbotron-landingpage
+{
+	background-image:url(../Images/Hero%20image.png);
+	color:#CECECE;
+	height:500px;
+	margin-bottom:0px!important;
+	padding-top:0px!important;
+}
+
+	
+	.navbar-default  li  a {
+   color:#000000!important;
+	}
+	
+	.round {
+  border-radius: 24px!important;
+}
+
+
+
+.btn {
+	font-size: 16px!important;
+	font-family:"lato", sans-serif!important;
+    padding: 14px 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none!important;
+}
+
+.btn-primary {
+    background-color: rgb(241, 94, 60)!important;
+    color: rgb(255, 255, 255);
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #A31D1F!important;
+}
+.btn-primary:active, .btn-primary.active {
+    background: rgb(241, 94, 60)!important;
+    box-shadow: none!important;
+}
+.jumbotron h3 {
+	color:#FFE7E8;
+    font-family: "Vollkorn Italic";
+	font-size:38px;
+	font-style:italic;
+    
+}
+.jumbotron p
+{
+	color:#FFFFFF;
+}
+.trip_date{
+	float:right;
+}
+.avatar{
+	height:28px;
+	width:28px;
+}
+.trip_name{
+font-size: 14px;
+font-family: "Lato";
+color: rgb(74, 76, 78);
+text-transform: uppercase;
+}
+.trip_date{
+font-size: 14px;
+font-family: "Lato";
+color: rgb(74, 76, 78);
+}
+.user_name_thumbnail{
+font-size: 16px;
+font-family: "Lato";
+color: rgb(109, 112, 119);
+line-height: 2;
+margin-left:4px;
+}
+.stats_thumbnail {
+font-size: 14px;
+font-family: "Lato";
+color: rgb(109, 112, 119);
+line-height: 2.3;
+}
+.Like_icon_thumbnail {
+padding-top:8px;
+padding-right:4px;
+padding-left:4px;
+font-size: 11px;
+color: rgb(109, 112, 119);
+}
+.Explore {
+font-size: 30px!important;
+font-family: "ABeeZee";
+color: rgb(95, 96, 98);
+margin-top:5px!important;
+margin-left:10px!important;
+}
+#sidebar-wrapper{
+	z-index:1;
+	position:fixed;
+	height:100%;
+    width:250px;
+	border-right: 2px thin #4F4C4C;
+}
+	.jumbotron-locationpage
+{
+	background-image:url(../Images/san%20fran.jpg);
+	color:#CECECE;
+	height:500px;
+	margin-bottom:0px!important;
+	}
+.breadcrumb-locationpage > li + li:before {
+    color: #ccc;
+    content: "> "!important;
+    padding: 0 5px;
+	background:none;
+}
+.thumbnail{
+	position:relative!important;
+}
+.thumbnailcontent-landingpage{
+	font-size:28px;
+	font-family:"lato";
+	background: none;
+    opacity: 1;
+	text-align:center;
+	top:-200px;
+	color:rgb(255, 255, 255);
+}
