@@ -504,7 +504,13 @@ div.toolbar-wrap.tags-bar {
     color: #444;
     min-height: 4.5em;
     margin-bottom: 1em;
+    margin-top: 3%;
     text-align: center;
+}
+
+.cover-message {
+    padding-top: 11%;
+    padding-bottom: 11%;
 }
 
 div.cover-message {
@@ -654,6 +660,15 @@ a.my-feed-nav {
     background: #ffffff;
 }
 
+.upload-image-container {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.cover-message.dz-message {
+    margin-top: 7%;
+    cursor: pointer;
+}
 /*.navbar-collapse.in .my-feed-nav {*/
     /*width: 60%;*/
 /*}*/
