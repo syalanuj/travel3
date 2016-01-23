@@ -27,11 +27,13 @@
         $scope.imageUploadDone = false;
         $scope.isPublishedClicked = false;
         //Date functions
-        $scope.status = {
+        $scope.status = new Array();
+        $scope.status.push({
             opened: false
-        };
-        $scope.open = function ($event) {
-            $scope.status.opened = true;
+        });
+
+        $scope.open = function ($event, placeindex) {
+            $scope.status[placeindex].opened = true;
         };
         $scope.today = function () {
             $scope.dt = new Date();
@@ -48,6 +50,9 @@
         $scope.addPlace = function () {
             $scope.newplaces.push($scope.newplaces.length);
             $scope.places[$scope.newplaces.length - 1] = { images: new Array() };
+            $scope.status.push({
+                opened: false
+            });
         };
         $scope.removePlace = function () {
             $scope.newplaces.pop();
