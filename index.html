@@ -2,8 +2,12 @@
 
 <html lang="en" ng-app="campture">
     <head>
-        <!--Map API Dependencies-->
-
+        <!--FONT Dependencies-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Vollkorn:400italic" rel="stylesheet" type="text/css">
         <!--Parse Dependencies-->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
@@ -12,18 +16,18 @@
         <!--Template Dependencies-->
 
         <!-- GOOGLE FONTS -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
+        <!--<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>-->
         <!-- /GOOGLE FONTS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <!--<link rel="stylesheet" href="css/font-awesome.css">-->
-        <link rel="stylesheet" href="css/icomoon.css">
+        <!--<link rel="stylesheet" href="css/icomoon.css">-->
         <!--<link rel="stylesheet" href="css/styles.css">-->
-        <link rel="stylesheet" href="css/mystyles.css">
+        <!--<link rel="stylesheet" href="css/mystyles.css">-->
         <link rel="stylesheet" href="css/dropzone.css">
         <link rel="stylesheet" href="css/new-design/styles.css">
         <!--Post Form-->
-        <link rel="stylesheet" href="css/timeline/timestyle.css">
+        <!--<link rel="stylesheet" href="css/timeline/timestyle.css">-->
         <!--<link rel="stylesheet" href="css/timeline/style.css">-->
         <!--colorbox-->
         <link rel="stylesheet" type="text/css" href="css/colorbox.css" media="screen" />
@@ -89,66 +93,7 @@
     </head>
     <body>
         <div id="fb-root"></div>
-        <div ng-controller="HeaderCtrl">
-            <header class="header">
-                <div class="container">
-			        <div class="row top-bar no-margin" style="padding:0;">
-					    <a href ="#/" class="col-md-2 no-padding site-name">
-						    <img class="" src="/img/icons/logo.png" alt="logo">
-					    </a>
-					    <div class="col-md-6 navbar-col">
-						    <div class="navbar-header">
-							    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								    <span class="sr-only">Toggle navigation</span>
-								    <span class="icon-bar"></span>
-								    <span class="icon-bar"></span>
-								    <span class="icon-bar"></span>
-							    </button>
-						    </div>
-						    <div class="navbar-collapse collapse">
-							    <ul class="nav navbar-nav navbar-left">
-								    <li><a class="active" href="#/feed/">Explore</a></li>
-								    <li><a href="" ng-click="showTags = !showTags;$event.stopPropagation();">Tags</a></li>
-								    <li><a href="#/allProfiles/">Profiles</a></li>
-                                    <li><a target="_blank" href="http://www.campture.com/blog/">Blog</a></li>
-							    </ul>
-						    </div>
-					    </div>
-
-					<div  class="col-md-2 my-feed-nav">
-						<a ng-show="userObj" ng-href="#/account/profile/{{userObj.objectId}}"><img src="img/icons/myfeed.png" alt="My Feed" style="width: 86%;"></a>
-					</div>
-                    <div ng-show="userObj" class="col-md-2 profile-new">
-                            <span class="profile-name-new">{{userObj.facebook_profile.name}}</span>
-						    <img class="profile-picture-new img-circle" ng-src="{{userObj.facebook_profile.picture.data.url}}" width="40" height="40" style="width: initial;">
-				    </div>
-                     <div ng-show="userObj == undefined" class="col-md-3 profile">
-                         <a   ng-click ="loginWithFacebook()" class="button facebook"><span class="fa fa-facebook-square medium"></span>&nbsp; Sign In</a>
-                     </div>
-		        </div>
-                </div>
-            </header>
-            <div class="container">
-            <div class="nav-dropdowns" style="display: block;" ng-show="showTags" outside-click="showTags = false">
-                    <div class="nav-dropdown-tags">
-                        <div class="row no-gutter">
-                            <div ng-repeat="headerTag in topTags" >
-                                <div class="col-xs-6 col-sm-4 col-xl-3 category-wrap">
-                                    <div class="object tag">
-                                        <div class="object-header image full" ng-style="{'background-image':'url({{headerTag.image_url}})'}">
-                                            <a ng-href="#/feed/{{headerTag.tag}}" class="permacover"></a>
-                                            <div class="object-header-content">
-			                                    <h3><i class="hash">#</i> <span>{{headerTag.tag}}</span></h3>
-					                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-			</div>
-		</div>
+        
         <div ng-controller="HeaderCtrl">
             <nav class="navbar navbar-default no-margin no-background navbar-fixed-top">
               <div class="container-fluid">
@@ -177,7 +122,7 @@
               </div>
                   </form>
                     <li><a ng-show="userObj" ng-href="#/account/profile/{{userObj.objectId}}" class="my_feed navbar-link" style="color:rgb(226, 50, 22)!important">MY FEED</a></li>
-                    <li><a ng-show="userObj" href="#"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" alt="profile-picture"></a></li>
+                    <li><a ng-show="userObj" href="#"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" alt="profile-picture" class="img-circle" style="height: 35px"></a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
@@ -187,35 +132,19 @@
     <div ng-view></div>
     </main>
 
-    <footer id="main-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3 footer-nav-worp-td">
-					<div class="col-sm-3 footer-nav-worp-td">
-						<h2>CAMPTURE</h2>
-					</div>
-				</div>
-
-				<div class="col-sm-4 footer-nav-worp-menu">
-					<aside class="footer-text-wrap"><div class="block-title"><span>ABOUT US</span></div>Campture is your one stop source where you can access a wealth of information on outdoor activities.<div class="footer-email-wrap">Contact us: <a href="mailto:info@campture.com">info@campture.com</a></div></aside>
-				</div>
-
-				<div class="col-sm-5 footer-nav-worp-social">
-					<ul class="">
-						<li><a href="https://www.facebook.com/CamptureApp/"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="https://www.google.com/+CamptureApp"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="https://twitter.com/Campture"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="https://instagram.com/camptureapp/"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="https://www.pinterest.com/campture/"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-share-alt"></i></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="row" style="text-align:center;color:#fff;">
-				<small>© 2015 All rights reserved. CAMPTURE</small>
-			</div>
-		</div>
-	</footer>
+        <!--<div class="nav navbar-inverse " style="margin-top: ">
+          <div class="container-fluid"><span class="navbar-text">CAMPTURE <em class="fa fa-copyright"></em> 2015</span>
+            <div class=" navbar-text"> Discover Locations <em class="fa fa-dot-circle-o"></em>Explore Locations<em class="fa fa-dot-circle-o">Book Trips</em></div>
+            <div class="pull-right">
+                <a href="https://www.facebook.com/CamptureApp/" class="navbar-text"><i class="fa fa-facebook-square"></i></a>
+                <a href="https://twitter.com/Campture" class="navbar-text"><i class="fa fa-twitter-square"></i></a>
+                <a href="https://www.google.com/+CamptureApp" class="navbar-text"><i class="fa fa-google-plus-square"></i></a>
+                <a href="https://instagram.com/camptureapp/" class="navbar-text"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/campture/" class="navbar-text"><i class="fa fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>-->
+    
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
