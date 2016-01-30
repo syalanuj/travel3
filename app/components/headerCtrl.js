@@ -58,7 +58,7 @@
         };
 
         $rootScope.getCroppedTripImageUrl = function (url, transString) {
-            try {
+            try {               
                 if (!transString) {
                     transString = 'upload/c_fill,h_440,w_440/';
                 }

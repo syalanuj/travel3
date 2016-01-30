@@ -2,103 +2,125 @@
 Dropzone.autoDiscover = false;
 </script>
 <!--<div profile-wrap files="userObj"></div>-->
-<div class="profile-header-background">
-    <div class="container">
-        <div class="row no-margin">
-            <div class="col-md-4 my-trip">
-            </div>
-            <div class="col-md-4 profile-overview">
-                <div class="row no-margin">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3">
-                        <img class="profile-picture img-circle" ng-src="{{userObj.facebook_profile.picture.data.url}}" alt="Profile Picture" width="50" height="50">
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row no-margin">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-5">
-                        {{userObj.facebook_profile.name}}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-            </div>
-            <div class="col-md-4 locaion">
-            </div>
-        </div>
-    </div>
-</div>
-<!--<div class="content-wrap" id="content">-->
-<div class="col-md-10 post-trip-wrap">
+
+<div class="container">
     <form name="postTripForm" ng-submit="postTrip()" role="form">
-    <!--<h3 style="text-align: center;margin-top: 1em;margin-bottom: 1em">New Trip</h3>-->
-        <h3 class="editor-title" ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">
-            <input ng-model="newTrip.title" maxlength="100" name="title" placeholder="Title" type="text" required>
-            <span ng-show="postTripForm.title.$dirty && postTripForm.title.$error.required" class="help-block">Title is required.</span>
-        </h3>
-        <div class="content">
-            <div class="portfolio-item group first">
-                <div class="trip-intro" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
-                    <textarea ng-model="newTrip.introduction" cols="40"  maxlength="3000" name="introduction" placeholder="Intro..." rows="3" required></textarea>
-                    <textarea ng-model="tags" cols="40"  maxlength="3000" name="tags" placeholder="Tags..." rows="2"></textarea>
-                    <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span>
-                </div>
-
-                <div class="portfolio-image element-file {{newTrip.main_image ? 'hidden': ''}}" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
-                    <div class="cover-message dz-message">
-                        <a class="uploader needsclick dz-clickable">UPLOAD COVER IMAGE</a>
-                        <!--<span>COVER IMAGE</span>-->
-                    </div>
-                </div>
-                <div class="{{newTrip.main_image ? 'portfolio-image': 'hidden'}}">
-                    <img ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url, 'upload/c_fill,h_230,w_260/')}}">
-                </div>
-            </div>
-            <div class="portfolio-item group" ng-repeat="placeindex in newplaces track by $index">
-                <!--<div style="float:right">-->
-                    <!--<button ng-hide="$index == 0 " ng-click="deleteItem(item, $event)" type="button" class="btn" style="color: #000">Delete</button>-->
-                <!--</div>-->
-                <ng-form name="placeForm" class="place-form-wrap">
-                <div class="portfolio-info">
-                    <div class="date" ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }">
-                            <input name="date" type="text" class="element-datepicker hasDatepicker loaded" placeholder="Date"
-                                   ng-click="open($event, placeindex)" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy"
-                                   ng-model="places[placeindex].date" is-open="status[placeindex].opened" min-date="minDate" max-date="maxDate"
-                                   datepicker-options="dateOptions" ng-required="true" close-text="Close" required/>
-                            <span ng-show="placeForm.date.$dirty && placeForm.date.$error.required" class="help-block">Required.</span>
-                        </div>
-                    <div class="description">
-                        <textarea cols="40" maxlength="3000" name="form-0-content" placeholder="Note..." rows="2" ng-model="places[placeindex].note"></textarea>
-                    </div>
-                    <div class="meta">
-                        <div ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
-                            <input type="text" name="location"  class="element-addresspicker element-text ui-autocomplete-input loaded" placeholder="Location" ng-autocomplete ng-model="places[placeindex].location"
-                                   options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>
-                            <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-image">
-                    <div ng-show="places[placeindex].images.length == 0" class="row upload-image-container">
-                        <div ng-click="setUploadPlaceIndex(placeindex)">
-                            <div  class="dropzone needsclick dz-clickable" dropzone="dropzoneConfig">
-                                <div class="dz-message needsclick">Drag & drop images or click to upload images</div>
+    <div class="panel panel-default bottommargin">
+      <div class="panel-heading" style="background-color:#fff">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="">Name Your Adventure</a>
+        </h4>
+      </div>    
+      <div class="panel-collapse bottommargin">
+            <div>            
+                <div class="row">
+                    <div class="col-md-12">
+			            <div class="panel panel-default bordernone">
+                            <div class="text-center" style="padding-top:10px;">
+                                <span class="input input--isao no-margin"  ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">					                                                    
+				                    <input id="location" class="input__field input__field--isao" ng-model="newTrip.title" maxlength="100" name="title" placeholder="Title" type="text" required>                                    
+					                <label class="input__label input__label--isao" for="input-38" data-content="Title">
+						                <span class="input__label-content input__label-content--isao" >Title</span>
+					                </label>                                    
+                                </span>
+                                <span ng-show="postTripForm.title.$dirty && postTripForm.title.$error.required" class="help-block">Title is required.</span>			                        
                             </div>
+				            <div class="panel-body bordernone no-margin" style="padding-top:0px; padding-bottom:0px;">				
+					            <!-- /input-group image-preview [TO HERE]--> 					
+					            <br />					
+					            <!-- Drop Zone -->
+					            <!--<div ng-show="!mainImageUploaded" class="main-image-drop-zone upload-drop-zone" dropzone="mainImageDropzoneConfig">Upload your cover photo </div>
+					            <div ng-show="mainImageUploaded" class="upload-drop-zone">
+                                    <img ng-show="mainImageUploaded" ng-src="{{newTrip.main_image.image_url}}" alt="main image">
+                                </div>-->
+                                <div ng-show="!mainImageUploaded" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
+                                    <div class="cover-message dz-message">
+                                    <a class="uploader needsclick dz-clickable">UPLOAD</a>
+                                    <span>COVER IMAGE</span>
+                                    </div>
+                                </div >
+                                <div ng-show="mainImageUploaded">
+                                    <img ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image">
+                                </div>
+                                <br />					
+					            <!-- Upload Finished -->					
+				            </div>
+			            </div>
+		            </div>
+                    <div  class="col-md-12">
+                        <div>
+    			                    <div class="text-center">
+                                    <span class="input input--minoru" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
+					                    <textarea class="span12" ng-model="newTrip.introduction" rows="3"  name="introduction" placeholder="Add Description..."  required></textarea>                                        
+					                    <label class="input__label input__label--yoko" for="introduction">
+						                    <span class="input__label-content input__label-content--yoko">Description</span>
+					                    </label>
+                                        <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span>
+				                    </span>  
+                                    </div>
+                                    <div class="text-center bottommargin">
+                                    <div style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
+                                    <span><strong>Tags :</strong>&nbsp;&nbsp;</span></span>            
+                                    <span class="tag"><span>Clean&nbsp;&nbsp;</span><a class="tagsinput-remove-link"></a></span>
+                                    <span class="tag"><span>Fresh&nbsp;&nbsp;</span><a class="tagsinput-remove-link"></a></span>
+                                    <span class="tag"><span>Modern&nbsp;&nbsp;</span><a class="tagsinput-remove-link"></a></span>
+                                    <span class="tag"><span>Unique&nbsp;&nbsp;</span><a class="tagsinput-remove-link"></a></span>
+                                    <div class="tagsinput-add-container" id="tags1453977243690_addTag"> </div></div>	
+                                    </div>	
+                	
+                                </div>
                         </div>
-                    </div>
-
-                    <!--<div ng-repeat="image in places[placeindex].images">-->
-                        <img ng-src="{{getCroppedTripImageUrl(places[placeindex].images[0].image_url, 'upload/c_fill,h_230,w_260/')}}">
-                    <!--</div>-->
+    	        </div>            
+            </div>
+	    </div>
+        <uib-accordion close-others="collapseStatus">
+        <uib-accordion-group is-open="true" heading="{{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}" ng-repeat="placeindex in newplaces track by $index">
+                <div style="float:right">
+                    <button ng-hide="$index == 0 " ng-click="deleteItem(item, $event)" type="button" class="btn" style="color: #000">Delete</button>
                 </div>
-                </ng-form>
+            <ng-form name="placeForm">
+                 <div  class="col-md-7">
+                    <div>
+                        <span class="input input--isao" ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }">    
+					        <input type="text" name="location"  class="input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded" placeholder="Location" ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
+					        <label class="input__label input__label--isao" for="input-38" data-content="Date">                    
+						        <span class="input__label-content input__label-content--isao">Date</span>
+					        </label>
+                            <span ng-show="placeForm.date.$dirty && placeForm.date.$error.required" class="help-block">Required.</span>
+				        </span>
+				        <span class="input input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
+					        <input type="text" name="location"  class="input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded" placeholder="Location" ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
+					        <label class="input__label input__label--isao" for="input-38" data-content="Location">
+						        <span class="input__label-content input__label-content--isao">Location</span>
+					        </label>
+                            <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
+				        </span>
+                <span class="input input--minoru">
+                    <textarea class="span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note"></textarea>
+					<label class="input__label input__label--yoko" for="Description">
+						<span class="input__label-content input__label-content--yoko">Description</span>
+					</label>
+				</span>                
+                		
+                	
             </div>
-            </div>
-            <div class="buttons_wrap">
-                <button ng-click="addPlace();" class="button element-ajax" ><span class="fa fa-plus"></span> Add Place</button>
-                <button type="submit" class="button primary element-submit" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><span class="mobile-visible-320">Publish</span></button>
-            </div>
-            <span ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
-        </form>
-    </div>
+    </div>  
+                <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-5">
+                    <div  class="dropzone needsclick dz-clickable" dropzone="dropzoneConfig">
+                        <div class="dz-message needsclick">Drag and drop files here or click to upload</div>
+                   </div>
+                </div>
+               <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
+                   <input type=hidden name=imageUploads ng-model="$scope.places[placeindex].images">
+                   <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span>
+               </div>
+        </ng-form>             
+        </uib-accordion-group>
+    </uib-accordion>
+</div>
+
+ <button ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
+ <button type="submit" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><span class="mobile-visible-320">Publish</span></button>
+ <span ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>      
+</form>
 </div>

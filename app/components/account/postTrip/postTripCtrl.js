@@ -26,14 +26,13 @@
         $scope.queuecomplete = 0;
         $scope.imageUploadDone = false;
         $scope.isPublishedClicked = false;
+        $scope.mainImageUploaded = false;
         //Date functions
-        $scope.status = new Array();
-        $scope.status.push({
+        $scope.status = {
             opened: false
-        });
-
-        $scope.open = function ($event, placeindex) {
-            $scope.status[placeindex].opened = true;
+        };
+        $scope.open = function ($event) {
+            $scope.status.opened = true;
         };
         $scope.today = function () {
             $scope.dt = new Date();
@@ -50,9 +49,6 @@
         $scope.addPlace = function () {
             $scope.newplaces.push($scope.newplaces.length);
             $scope.places[$scope.newplaces.length - 1] = { images: new Array() };
-            $scope.status.push({
-                opened: false
-            });
         };
         $scope.removePlace = function () {
             $scope.newplaces.pop();
@@ -127,12 +123,16 @@
             },
             'eventHandlers': {
                 'sending': function (file, xhr, formData) {
+                    $scope.mainImageUploaded = true;
+                    $scope.$apply();
                     formData.append('api_key', '374998139757779');
                     formData.append('timestamp', Date.now() / 1000 | 0);
                     formData.append('upload_preset', 'campture');
                 },
                 'success': function (file, response) {
                     $scope.newTrip.main_image = { image_url: response.url };
+                    $scope.mainImageUploaded = true;
+                    $scope.$apply();
                 }
             }
         };

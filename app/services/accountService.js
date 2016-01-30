@@ -17,7 +17,8 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         getTripByTags: getTripByTags,
         getAllUserProfiles: getAllUserProfiles,
         updateUserGallery: updateUserGallery,
-        getUserGallery: getUserGallery 
+        getUserGallery: getUserGallery,
+        getRelatedTrips: getRelatedTrips
     };
 
     function getTripById(tripId, callback) {
@@ -215,9 +216,9 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     }
-    function getUserGallery(userId,callback){
-       var query = new Parse.Query(user);
-       query.get(userId, {
+    function getUserGallery(userId, callback) {
+        var query = new Parse.Query(user);
+        query.get(userId, {
             success: function (parseObject) {
                 var gallery = parseObject.get("gallery");
                 callback(gallery);
@@ -226,7 +227,27 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
                 // The object was not retrieved successfully.
             }
         });
-    }   
+    }
+    function getRelatedTrips(tags, callback) {
+        var allTrips = new Array();
+        var query = new Parse.Query(trips);
+        query.include("user_pointer");
+        if (tags && tags.length > 0) {
+            query.containedIn("tags", tags);
+        }
+        query.limit(5)
+        query.find({
+            success: function (parseObject) {
+                for (var i = 0; i < parseObject.length; i++) {
+                    allTrips[i] = getTripFromParse(parseObject[i]);
+                }
+                callback(allTrips);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    };
 
     //Internal
     function getTripFromParse(parseObject) {
