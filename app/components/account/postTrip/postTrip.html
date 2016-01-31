@@ -5,20 +5,21 @@ Dropzone.autoDiscover = false;
 
 <div class="container">
     <form name="postTripForm" ng-submit="postTrip()" role="form">
-    <div class="panel panel-default bottommargin">
+    <div class="bottommargin">   
+        <div class="panel panel-default">
       <div class="panel-heading" style="background-color:#fff">
         <h4 class="panel-title">
           <a data-toggle="collapse" href="">Name Your Adventure</a>
         </h4>
-      </div>    
-      <div class="panel-collapse bottommargin">
+      </div>         
+      <div class="panel-collapse">
             <div>            
                 <div class="row">
                     <div class="col-md-12">
 			            <div class="panel panel-default bordernone">
                             <div class="text-center" style="padding-top:10px;">
                                 <span class="input input--isao no-margin"  ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">					                                                    
-				                    <input id="location" class="input__field input__field--isao" ng-model="newTrip.title" maxlength="100" name="title" placeholder="Title" type="text" required>                                    
+				                    <input id="location" class="input__field input__field--isao" ng-model="newTrip.title" maxlength="100" name="title" type="text" required>                                    
 					                <label class="input__label input__label--isao" for="input-38" data-content="Title">
 						                <span class="input__label-content input__label-content--isao" >Title</span>
 					                </label>                                    
@@ -73,6 +74,7 @@ Dropzone.autoDiscover = false;
     	        </div>            
             </div>
 	    </div>
+        </div>
         <uib-accordion close-others="collapseStatus">
         <uib-accordion-group is-open="true" heading="{{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}" ng-repeat="placeindex in newplaces track by $index">
                 <div style="float:right">
@@ -81,15 +83,19 @@ Dropzone.autoDiscover = false;
             <ng-form name="placeForm">
                  <div  class="col-md-7">
                     <div>
+                        <div ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }">
+                            <input name="date" type="text" class="element-datepicker hasDatepicker loaded" placeholder="Date" ng-click="open($event)" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" required/>
+				            <span ng-show="placeForm.date.$dirty && placeForm.date.$error.required" class="help-block">Required.</span>
+                        </div>
                         <span class="input input--isao" ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }">    
-					        <input type="text" name="location"  class="input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded" placeholder="Location" ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
-					        <label class="input__label input__label--isao" for="input-38" data-content="Date">                    
-						        <span class="input__label-content input__label-content--isao">Date</span>
-					        </label>
+		                    <input name="date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" required type="text" class="input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
+		                    <label class="input__label input__label--isao" for="input-38" data-content="Date">
+			                    <span class="input__label-content input__label-content--isao">Date</span>
+		                    </label>
                             <span ng-show="placeForm.date.$dirty && placeForm.date.$error.required" class="help-block">Required.</span>
-				        </span>
+	                    </span>                        
 				        <span class="input input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
-					        <input type="text" name="location"  class="input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded" placeholder="Location" ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
+					        <input type="text" name="location"  class="input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded"  ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
 					        <label class="input__label input__label--isao" for="input-38" data-content="Location">
 						        <span class="input__label-content input__label-content--isao">Location</span>
 					        </label>
