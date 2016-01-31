@@ -83,10 +83,6 @@ Dropzone.autoDiscover = false;
             <ng-form name="placeForm">
                  <div  class="col-md-7">
                     <div>
-                        <div ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }">
-                            <input name="date" type="text" class="element-datepicker hasDatepicker loaded" placeholder="Date" ng-click="open($event)" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" required/>
-				            <span ng-show="placeForm.date.$dirty && placeForm.date.$error.required" class="help-block">Required.</span>
-                        </div>
                         <span class="input input--isao" ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }">    
 		                    <input name="date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" required type="text" class="input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
 		                    <label class="input__label input__label--isao" for="input-38" data-content="Date">
@@ -106,7 +102,7 @@ Dropzone.autoDiscover = false;
 					<label class="input__label input__label--yoko" for="Description">
 						<span class="input__label-content input__label-content--yoko">Description</span>
 					</label>
-				</span>                
+				</span>               
                 		
                 	
             </div>
