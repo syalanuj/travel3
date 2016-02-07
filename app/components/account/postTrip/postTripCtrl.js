@@ -6,7 +6,9 @@
     function controller($scope, $cookies, $rootScope, $location, accountService) {
         //====== Scope Variables==========
         //================================
-
+        $(document).ready(function () {
+            $('.remove-location-placeholder').removeAttr('placeholder');
+        });
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
         $scope.userObj.id = $scope.userObj.objectId;
         $scope.details = function (details) {
@@ -18,6 +20,7 @@
         }
         $scope.details;
         $scope.newTrip = new Object();
+        $scope.newTrip.tags = new Array();
         $scope.userId = "IT41eYwjem";
         $scope.places = new Array();
         //$scope.place = new Object();
@@ -27,6 +30,9 @@
         $scope.imageUploadDone = false;
         $scope.isPublishedClicked = false;
         $scope.mainImageUploaded = false;
+        $scope.rawTags;
+        $scope.isAddTag = false;
+        $scope.isTripUploading = false;
         //Date functions
         $scope.status = {
             opened: false
@@ -57,6 +63,7 @@
         $scope.postTrip = function () {
             $scope.isPublishedClicked = true;
             if ($scope.imageUploadDone) {
+                $scope.isTripUploading = true;
                 $scope.newTrip.visited_places = $scope.places;
                 $scope.newTrip.user = {
                     id: $scope.userObj.objectId,
@@ -76,6 +83,7 @@
                             $scope.newplaces = [1];
                             $scope.newTrip = undefined;
                             $scope.places = undefined;
+                            $scope.isTripUploading = false;
                             $location.path('/account/timeline/' + data);
                         }
                     });
@@ -103,6 +111,7 @@
                     $scope.places[file.placeIndex].images.push({ image_url: response.url });
                 },
                 'removedfile': function (file, response) {
+                    $scope.places[file.placeIndex].images.splice(file.imageIndex, 1);
                 },
                 'queuecomplete': function (file, response) {
                     $scope.queuecomplete++;
@@ -123,14 +132,16 @@
             },
             'eventHandlers': {
                 'sending': function (file, xhr, formData) {
-                    $scope.mainImageUploaded = true;
+                    $scope.mainImageUploading = true;
                     $scope.$apply();
                     formData.append('api_key', '374998139757779');
                     formData.append('timestamp', Date.now() / 1000 | 0);
                     formData.append('upload_preset', 'campture');
+
                 },
                 'success': function (file, response) {
                     $scope.newTrip.main_image = { image_url: response.url };
+                    $scope.mainImageUploading = false;
                     $scope.mainImageUploaded = true;
                     $scope.$apply();
                 }
@@ -157,5 +168,21 @@
             $scope.newplaces.splice(idx, 1);
             $scope.places.splice(idx, 1)
         };
+        $scope.formatTags = function () {
+            if ($scope.rawTags) {
+                var tags = $scope.rawTags.split(',');
+                angular.forEach(tags, function (value, key) {
+                    $scope.newTrip.tags.push(value.trim());
+                });
+                $scope.rawTags = undefined;
+            }
+        }
+        $scope.removeTag = function (tagIndex) {
+            $scope.newTrip.tags.splice(tagIndex, 1);
+        }
+        $scope.deleteItem = function (index) {
+            $scope.places.splice(index, 1);
+            $scope.newplaces.splice(index, 1);
+        }
     };
 })();

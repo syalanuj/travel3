@@ -21,7 +21,13 @@
             $scope.myProfile = $scope.currentUserObj.get("facebook_profile");
         }
         $scope.timelineImages = new Array();
-
+        $scope.fotoramaOptions = {
+            width: '100%',
+            height: 400,
+            loop: true,
+            keyboard: true
+        }
+        $scope.fotoramaImages = new Array();
         accountService.getTripById($routeParams.tripId, function (data) {
             $scope.$apply(function () {
                 $scope.userObj = data.user
@@ -32,22 +38,22 @@
                     }
                 }
                 $scope.trip = data;
-                accountService.getRelatedTrips($scope.trip.tags,function (data) {
-                if (data) {
-                    $scope.$apply(function () {
-                        $scope.relatedTrips = data;
-                        angular.forEach($scope.relatedTrips, function (trip) {
-                            try {
-                                var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
-                                trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
-                            } catch (e) {
-                                console.log(e);
-                            }
+                accountService.getRelatedTrips($scope.trip.tags, function (data) {
+                    if (data) {
+                        $scope.$apply(function () {
+                            $scope.relatedTrips = data;
+                            angular.forEach($scope.relatedTrips, function (trip) {
+                                try {
+                                    var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
+                                    trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
+                                } catch (e) {
+                                    console.log(e);
+                                }
 
+                            });
                         });
-                    });
-                }
-            });
+                    }
+                });
                 var markerId = 0;
                 angular.forEach($scope.trip.visited_places, function (place, key) {
                     $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
@@ -79,6 +85,7 @@
                     ];
                 angular.forEach($scope.trip.visited_places, function (place, key) {
                     angular.forEach(place.images, function (image, key) {
+                        $scope.fotoramaImages.push({ img: image.image_url });
                         $scope.timelineImages.push(image);
                     });
                 });
@@ -185,6 +192,6 @@
         $scope.toggleModal = function (imageUrl) {
             $scope.modalShown = !$scope.modalShown;
             $scope.modalImageUrl = imageUrl;
-        };       
+        };
     };
 })();

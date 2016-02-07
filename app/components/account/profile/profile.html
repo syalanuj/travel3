@@ -1,98 +1,57 @@
 <modal-dialog image-url="modalImageUrl" show='modalShown' width='850px' height='60%'>                            
 </modal-dialog>
-<div class="profilepage-wrap">
-    <div class="header no-margin">
-        <div class="row">
-            <div class="col-md-4 col-sm-12">
-                <div>
-                    <img class="profilepic img-rounded"  ng-src="{{userObj.facebook_profile.picture.data.url}}" alt="profilepicture">
-                </div>
-            </div>
-        <div class="col-md-8 col-sm-12">
-            <p>{{userObj.facebook_profile.name}}</p>
-        </div>
-        </div>
-        <div class="headertwo">
-            <div class="row">
-                <div class= "col-md-2 col-md-offset-4">
-                    <a href="" data-toggle="tab" class="active" ng-click="updateprofileTabPos(0)"><i class="fa fa-map-o"> Trips</i></a>
-                </div>
-                <div class= "col-md-2">
-                    <a href="" data-toggle="tab" ng-click="updateprofileTabPos(1)"><i class="fa fa-map-marker"> Places</i></a>
-                </div>
-                <div class= "col-md-2">
-                    <a href="" data-toggle="tab" ng-click="updateprofileTabPos(2)"><i class="fa fa-picture-o"> Photos</i></a>
-                </div>
-                <div class= "col-md-2" id="shareanewexperience">
-                <a ng-show="isMyProfile"href="#/account/postTrip">Share a new experience</a>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="tab-content">
-                <div class="tab-pane fade in active" id="trips" ng-show="profileTabPos == 0">
-                    <div class="col-sm-6 col-md-4" ng-repeat="trip in myTrips | filter:query">
-                        <div class="thumbnail">
-                          <a ng-href="#/account/timeline/{{trip.id}}">
-                              <img ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
-                          </a>
-                          <div class="caption">
-                            <a ng-href="#/account/timeline/{{trip.id}}">
-                                <span class="pull-left trip_name">{{trip.title}}</span>
-                            </a>
-                            <span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>
-                            <br>
-                            <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
-                            <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
-                            <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
-                            <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
+<div class="profile_page_header text-center">
+  <div class="profilepicture text-center">
+  <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle img-responsive">
+  <span class="user_name">{{userObj.facebook_profile.name}}</span>
+  </div>
+  <div class="trips_places_photos">
+  <a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp active" style="margin-left:0px;"><i class="fa fa-map-o"></i><p>trips</p></button></a>
+  <a data-toggle="pill" href="" ng-click="updateprofileTabPos(1)"><button type="button" class="btn tpp"><i class="fa fa-map-marker"></i><p>places</p></button></a>
+  <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>
+   </div>
+  </div>
+  <div class="tab-content container profilecontent">
+  <div id="trips" class="tab-pane fade in active" ng-show="profileTabPos == 0">
+      <h3>Trips</h3>
+      <div class="col-sm-6 col-md-4" ng-repeat="trip in myTrips | filter:query">
+        <div class="thumbnail">
+            <a ng-href="#/account/timeline/{{trip.id}}">
+                <img ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
+            </a>
+            <div class="caption">
+            <a ng-href="#/account/timeline/{{trip.id}}">
+                <span class="pull-left trip_name">{{trip.title}}</span>
+            </a>
+            <span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>
+            <br>
+            <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+            <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+            <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
+            <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
         
-                            <!--<span class="pull-right stats_thumbnail">19</span>-->
-                            <span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>        
-                           </div>
-                        </div>
-                    </div>
-                </div>
-                <div ng-show="profileTabPos == 1" class="">
-            <div class="">
+            <!--<span class="pull-right stats_thumbnail">19</span>-->
+            <span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>        
+            </div>
+        </div>
+      </div>
+    </div>
+    <div id="places" class="tab-pane fade in" ng-show="profileTabPos == 1">
+      <h3>Places</h3>
+       <div class="">
+           <p>asdasdax</p>
                 <ui-gmap-google-map center='map.center' zoom='map.zoom' options="options">
                     <ui-gmap-markers models="allMarkers" coords="'self'" icon="'icon'"  options="marker.options" click="onClick()" events="marker.events">
                     </ui-gmap-markers>
                  </ui-gmap-google-map>
             </div>
-        </div>
-                
-                <div class="tab-pane fade" id="photos" ng-show="profileTabPos == 2">
-                    <div class="grid " data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 160 }'>
-                      <div class="grid-item"></div>
-                      <div class="grid-item grid-item--width2 grid-item--height2"></div>
-                      <div class="grid-item grid-item--height3"></div>
-                      <div class="grid-item grid-item--height2"></div>
-                      <div class="grid-item grid-item--width3"></div>
-                      <div class="grid-item"></div>
-                      <div class="grid-item"></div>
-                      <div class="grid-item grid-item--height2"></div>
-                      <div class="grid-item grid-item--width2 grid-item--height3"></div>
-                      <div class="grid-item"></div>
-                      <div class="grid-item grid-item--height2"></div>
-                      <div class="grid-item"></div>
-                      <div class="grid-item grid-item--width2 grid-item--height2"></div>
-                      <div class="grid-item grid-item--width2"></div>
-                      <div class="grid-item"></div>
-                      <div class="grid-item grid-item--height2"></div>
-                      <div class="grid-item"></div>
-                      <div class="grid-item"></div>
-                      <div class="grid-item grid-item--height3"></div>
-                      <div class="grid-item grid-item--height2"></div>
-                      <div class="grid-item"></div>
-                      <div class="grid-item"></div>
-                      <div class="grid-item grid-item--height2"></div>
-                      </div> 
-                </div>
-            </div>
-        </div>
     </div>
-</div>
+    <div id="photos" class="tab-pane fade in" ng-show="profileTabPos == 2">
+      <h3>Photos</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+
 
 
 

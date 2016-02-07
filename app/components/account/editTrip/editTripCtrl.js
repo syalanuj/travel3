@@ -9,7 +9,8 @@
         $routeParams.tripId;
         $scope.userObj = Parse.User.current();
         $routeParams.tripId;
-
+        $scope.mainImageUploaded = false;
+        $scope.mainImageUploading = false;
         accountService.getTripById($routeParams.tripId, function (data) {
             $scope.$apply(function () {
                 $scope.newTrip = data;
@@ -86,12 +87,16 @@
             },
             'eventHandlers': {
                 'sending': function (file, xhr, formData) {
+                    $scope.mainImageUploading = true;
                     formData.append('api_key', '374998139757779');
                     formData.append('timestamp', Date.now() / 1000 | 0);
                     formData.append('upload_preset', 'campture');
                 },
                 'success': function (file, response) {
                     $scope.newTrip.main_image = { image_url: response.url };
+                    $scope.mainImageUploading = false;
+                     $scope.mainImageUploaded = true;
+                     
                 }
             }
         };
