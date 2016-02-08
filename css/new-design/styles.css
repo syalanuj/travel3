@@ -1178,14 +1178,6 @@ textarea {
 .likecommentshare {
 	margin-top:15px;
 }
-.thatsall{
-	  font-size: 32px;
-	  font-family:thatsallfolks;
-	  color: rgb(211, 81, 54);
-	  position: absolute;
-	  padding-top:10px;
-	  margin:10px;
-	   }
 .stay-connected{
 font-size: 22px;
 font-family: "Lato";
@@ -1323,15 +1315,8 @@ color: #f8c9b6 !important;
 .likecommentshare {
 	margin-top:15px;
 }
-.thatsall{
-	  font-size: 32px;
-	  font-family:thatsallfolks;
-	  color: rgb(211, 81, 54);
-	  position: absolute;
-	  padding-top:10px;
-	  margin:10px;
-	   }
-	   .stay-connected{
+
+.stay-connected{
 font-size: 22px;
 font-family: "Lato";
 font-weight:300;
@@ -1339,7 +1324,7 @@ margin:10px;
 color: rgb(17, 23, 28);
 }
 .stay-connected span{
-	border-bottom: solid 2px;
+border-bottom: solid 2px;
 border-bottom-color:rgb(234, 137, 113);
 
 }
@@ -1365,17 +1350,11 @@ border-bottom-color:rgb(234, 137, 113);
           border-radius: 50%;
           border: 2px solid #f7f7f7;
           background: #d35136;
-          left: -33px;
-          top: 3px; }
+          left: 9px;
+          z-index: 1;
+          
+}
 		  
-		  .content .portfolio-item:before {
-      content: "";
-      position: absolute;
-      width: 3px;
-      background: #eaeaea;
-      top: 7px;
-      left: 17px;
-      bottom: 0px; }
 
 
 /**/

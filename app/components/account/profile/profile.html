@@ -11,8 +11,8 @@
   <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>
    </div>
   </div>
-  <div class="tab-content container profilecontent">
-  <div id="trips" class="tab-pane fade in active" ng-show="profileTabPos == 0">
+  <div class="container profilecontent">
+  <div id="trips" class="" ng-show="profileTabPos == 0">
       <h3>Trips</h3>
       <div class="col-sm-6 col-md-4" ng-repeat="trip in myTrips | filter:query">
         <div class="thumbnail">
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div id="places" class="tab-pane fade in" ng-show="profileTabPos == 1">
+    <div id="places" class="" ng-show="profileTabPos == 1">
       <h3>Places</h3>
        <div class="">
            <p>asdasdax</p>
@@ -46,9 +46,13 @@
                  </ui-gmap-google-map>
             </div>
     </div>
-    <div id="photos" class="tab-pane fade in" ng-show="profileTabPos == 2">
+    <div id="photos" class="" ng-show="profileTabPos == 2">
       <h3>Photos</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="image in allTripImages track by $index">
+            <a ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
+                <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
+            </a>
+        </div>
     </div>
   </div>
 

@@ -11,11 +11,14 @@
         $routeParams.tripId;
         $scope.mainImageUploaded = false;
         $scope.mainImageUploading = false;
+        $scope.queuecomplete = 0;
+        $scope.imageUploadDone = true;
         accountService.getTripById($routeParams.tripId, function (data) {
             $scope.$apply(function () {
                 $scope.newTrip = data;
                 $scope.places = $scope.newTrip.visited_places;
                 $scope.initPlaces = $scope.places;
+                $scope.queuecomplete = $scope.newTrip.length;
             });
             $scope.newplaces = new Array();
             for (var i = 0; i < $scope.places.length; i++) {
@@ -69,11 +72,20 @@
                     file.placeIndex = $scope.currentPlaceIndex;
                     file.imageIndex = $scope.currentImageIndex;
                     $scope.currentImageIndex++;
+                    $scope.imageUploadDone = false;
                 },
                 'success': function (file, response) {
                     $scope.places[file.placeIndex].images.push({ image_url: response.url });
                 },
                 'removedfile': function (file, response) {
+                    $scope.places[file.placeIndex].images.splice(file.imageIndex, 1);
+                },
+                'queuecomplete': function (file, response) {
+                    $scope.queuecomplete++;
+                    if ($scope.newplaces.length == $scope.queuecomplete) {
+                        $scope.imageUploadDone = true;
+                        $scope.$apply();
+                    }
                 }
             }
         };
@@ -95,8 +107,8 @@
                 'success': function (file, response) {
                     $scope.newTrip.main_image = { image_url: response.url };
                     $scope.mainImageUploading = false;
-                     $scope.mainImageUploaded = true;
-                     
+                    $scope.mainImageUploaded = true;
+
                 }
             }
         };
@@ -131,7 +143,6 @@
                         $scope.newTrip = undefined;
                         $scope.isPostSuccessful = true;
                         $location.path('/account/timeline/' + $routeParams.tripId);
-
                     }
                 });
             });

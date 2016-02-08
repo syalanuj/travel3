@@ -76,7 +76,7 @@ Dropzone.autoDiscover = false;
             </div>
 	    </div>
         </div>
-        <uib-accordion close-others="collapseStatus">
+        <uib-accordion close-others="true">
         <uib-accordion-group is-open="true" heading="{{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}" ng-repeat="placeindex in newplaces track by $index">
                 <div style="float:right">
                     <button ng-hide="$index == 0 " ng-click="deleteItem($index)" type="button" class="btn" style="color: #000">Delete</button>

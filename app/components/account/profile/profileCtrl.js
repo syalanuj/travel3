@@ -18,7 +18,7 @@
         //MAP
         $scope.map = { center: { latitude: 39.775230, longitude: 11.696153 }, zoom: 3 };
         $scope.profileTabPos = 0;
-        $scope.profileImages = new Array();
+        $scope.allTripImages = new Array();
         var bounds = new google.maps.LatLngBounds();
         accountService.getUserById($routeParams.userId, function (data) {
             if (data) {
@@ -37,20 +37,23 @@
                     $scope.myTrips = data;
                     angular.forEach($scope.myTrips, function (trip, key) {
                         var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
-                        trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);                        
+                        trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
                         angular.forEach(trip.visited_places, function (place, key) {
                             $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
                             var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
                             bounds.extend(latlng);
+                            angular.forEach(place.images, function (image, key) { 
+                                $scope.allTripImages.push(image);
+                            });
                             markerId++;
                         });
                     });
                 });
             }
         });
-        $scope.$on('mapInitialized', function(event, map) {
-          map.setCenter(bounds.getCenter());
-          map.fitBounds(bounds);
+        $scope.$on('mapInitialized', function (event, map) {
+            map.setCenter(bounds.getCenter());
+            map.fitBounds(bounds);
         });
         $scope.updateprofileTabPos = function (pos) {
             $scope.profileTabPos = pos;
