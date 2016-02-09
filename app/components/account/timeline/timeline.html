@@ -28,7 +28,7 @@
                 <div class="row likecommentshare">
                     <div class="col-md-3 col-xs-4 col-sm-4 col-md-offset-2 col-lg-offset-3 text-center">
                         <a href="" ng-class="{likeDisabled: isLikeDisabled}" ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled">
-                            <i class="fa fa-heart" ng-show="likeId == undefined"></i>
+                            <i class="fa fa-heart-o" ng-show="likeId == undefined"><sup>{{trip.total_likes}}</sup></i>
                             <i class="fa fa-heart" ng-show="likeId" style="color:#f56c36;"><sup>{{trip.total_likes}}</sup></i>
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="portfolio-item group" ng-repeat="place in trip.visited_places track by $index">
                     <div class="portfolio-info">
-                        <div class="date"><strong>{{place.location}}</strong>,{{place.date | date:"dd/MM/yyyy" }}</div>
+                       <div class="date"><strong>{{place.location}}</strong> <br>{{place.date | date:"dd MMMM yyyy" }}</div>
                         <div class="description">
                             {{place.note}}
                         </div>                        
@@ -105,6 +105,11 @@
         </div>
         <div id="photos" ng-show="tripTabIndex == 2" class="col-md-9">
             <div class="content">
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a ng-click="toggleModal(getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
+                    <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
+                </a>
+                </div>
                 <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="placeImage in timelineImages track by $index">
                 <a ng-click="toggleModal(getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
                     <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">

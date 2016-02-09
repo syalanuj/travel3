@@ -4,7 +4,7 @@ Dropzone.autoDiscover = false;
 <!--<div profile-wrap files="userObj"></div>-->
 
 <div class="container frame-padding-bottom">
-    <form name="postTripForm" ng-submit="postTrip()" role="form">
+    <form name="postTripForm" ng-submit="" role="form">
     <div class="bottommargin form-top-margin">   
         <div class="panel panel-default">
       <div class="panel-heading" style="background-color:#fff">
@@ -63,13 +63,12 @@ Dropzone.autoDiscover = false;
 				                    </span>  
                                     </div>
                                     <div class="text-center bottommargin">
-                                    <div style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
+                                    <div ng-click="focusTagsInput()" style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
                                     <span><strong>Tags :</strong>&nbsp;&nbsp;</span></span>            
                                     <span class="tag" class="" ng-repeat="tag in newTrip.tags track by $index"><span>{{tag}}&nbsp;&nbsp;</span><a class="" style="color:#ffffff" ng-click="removeTag($index)">X</a></span>
                                     <span ng-cick="{{isAddTag= !isAddTag}}"><i class="fa fa-plus" ></i></span>
-                                    <input type="text" ng-model="rawTags" ng-blur="formatTags()" focus-me="{{isAddTag}}"></div>	
-                                    </div>	
-                	
+                                    <input id="tagInput" type="text" ng-model="rawTags" ng-blur="formatTags()"></div>	
+                                    </div>
                                 </div>
                         </div>
     	        </div>            
@@ -77,8 +76,13 @@ Dropzone.autoDiscover = false;
 	    </div>
         </div>
         <uib-accordion close-others="collapseStatus">
-        <uib-accordion-group is-open="true" heading="{{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}" ng-repeat="placeindex in newplaces track by $index">
-                <div style="float:right">
+        <uib-accordion-group is-open="true" ng-repeat="placeindex in newplaces track by $index">
+            <uib-accordion-heading>
+                <div>
+                    {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}
+                </div>
+            </uib-accordion-heading>    
+            <div style="float:right">
                     <button ng-hide="$index == 0 " ng-click="deleteItem($index)" type="button" class="btn" style="color: #000">Delete</button>
                 </div>
             <ng-form name="placeForm">
@@ -119,8 +123,8 @@ Dropzone.autoDiscover = false;
     </uib-accordion>
 </div>
 <div class="row">
- <button ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
- <button type="submit" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><span class="mobile-visible-320">Publish</span></button>
+ <button type="button" ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
+ <button type="button" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
  <span ng-show="isTripUploading" class="text-center">
     <img src="css/images/ripple.gif">
  </span>

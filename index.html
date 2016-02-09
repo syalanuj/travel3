@@ -133,14 +133,13 @@
           <li><a href="http://www.campture.com/blog/" target="_blank" class="navbar-fonts">BLOG</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-        <!--<form class="navbar-form navbar-left no-margin" role="search">
+        <form class="navbar-form navbar-left no-margin" role="search">
     <div id="wrap">
     <form action="" autocomplete="on">
     <input id="search" name="search" type="text" placeholder="What're we looking for ?">
-    <input id="search_submit" value="Search" type="submit" style="padding:none!important;">
     </form>
   </div>
-  </form>-->
+  </form>
           <li><a ng-if="userObj == undefined" href="" class="loginwithfacebook" ng-click="loginWithFacebook()"><i class="fa fa-facebook">&nbsp; </i>Login with facebook</a></li>
   		  <li><a ng-if="userObj" href="#/account/postTrip/" class="add_trip"><i class="fa fa-plus">Add Trip</i></a></li>	
           <li><a href=""ng-if="userObj" ng-click="logout()" class="power_switch navbar-link" style="color: color: rgb(106, 106, 106)!important;"><i class="fa fa-power-off"></i></a></li>

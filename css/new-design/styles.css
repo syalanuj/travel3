@@ -26,10 +26,10 @@ body
 #wrap {
   display: inline-block;
   position: relative;
-  height: 60px;
   float: right;
   padding: 0;
   position: relative;
+  margin-top:10px;
 }
 
 .search-box {
@@ -1071,6 +1071,9 @@ textarea {
     line-height: 24px;
     padding: 5px 11px;
     text-indent: 0px;
+    color: #aaa;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .bottommargin{
 	margin-bottom:40px!important;
@@ -1136,9 +1139,8 @@ textarea {
 	color:#ffffff!important;
 	font-family:lato;
 	font-weight:800;
-	text-transform:uppercase;
 	letter-spacing: .06em;
-	margin-top:16px;
+	margin-top:10px;
     padding:7px!important;
 }
 .add_trip:hover{
@@ -1147,14 +1149,14 @@ textarea {
 }
 .power_switch{
 	font-size:18px;
-	margin-top:10px;
+	margin-top:5px;
 	margin-left:10px;
 }
 .profile_topleft{
 	width:42px;
 	padding-top:0px!important;
 	padding-bottom:0px!important;
-	margin-top:15px;
+	margin-top:5px;
 	box-shadow:0px 0px 29.75px 5.25px rgba(226,88, 51,0.2);
 }
 .paddingnone{
@@ -1174,6 +1176,7 @@ textarea {
     color: rgb(255, 255, 255)!important;
     font-family:lato;
     letter-spacing:0.04em;
+    font-size:16px;
 }
 .likecommentshare {
 	margin-top:15px;
@@ -1368,3 +1371,8 @@ border-bottom-color:rgb(234, 137, 113);
 
 }
 /*fixing stay connected*/
+#search{
+	background-image:url(../Images/magnifying-glass1.png);
+	background-position:center right;
+	background-repeat:no-repeat;
+}

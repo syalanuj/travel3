@@ -70,13 +70,13 @@
                     name: $scope.userObj.facebook_profile.name
                 }
                 $scope.newTrip.posted_on = new Date();
-                $scope.newTrip.tags = new Array();
-                if ($scope.tags) {
-                    var tags = $scope.tags.split(',');
-                    angular.forEach(tags, function (value, key) {
-                        $scope.newTrip.tags.push(value.trim());
-                    });
-                }
+                //$scope.newTrip.tags = new Array();
+                //if ($scope.tags) {
+                //    var tags = $scope.tags.split(',');
+                //    angular.forEach(tags, function (value, key) {
+                //        $scope.newTrip.tags.push(value.trim());
+                //    });
+                //}
                 accountService.postTrip($scope.newTrip, function (data) {
                     $scope.$apply(function () {
                         if (data) {
@@ -183,6 +183,10 @@
         $scope.deleteItem = function (index) {
             $scope.places.splice(index, 1);
             $scope.newplaces.splice(index, 1);
+        }
+
+        $scope.focusTagsInput = function (){
+            $('#tagInput').focus();
         }
     };
 })();
