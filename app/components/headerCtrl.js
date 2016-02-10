@@ -11,12 +11,10 @@
         //$rootScope.topStates;
         //$rootScope.activities;
         $scope.topTags = [
-        { tag: 'water', image_url: '/img/tags/water.png' },
-        { tag: 'trekking', image_url: '/img/tags/trekking.png' },
-        { tag: 'mountain', image_url: '/img/tags/air.png' },
-        { tag: 'camping', image_url: '/img/tags/water.png' },
-        { tag: 'beach', image_url: '/img/tags/trekking.png' },
-        { tag: 'air', image_url: '/img/tags/water.png' }];
+        { tag: 'rafting', image_url: '/img/tags/rafting.png' },
+        { tag: 'skiing', image_url: '/img/tags/skiing.png' },
+        { tag: 'trekking', image_url: '/img/tags/trekking2.png' },
+        { tag: 'hiking', image_url: '/img/tags/hiking.png' }];
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
         $scope.showTags = false;
         $rootScope.loginWithFacebook = function () {

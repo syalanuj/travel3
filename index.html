@@ -14,8 +14,8 @@
         
         <!--Fotorama gallery-->
         <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
-
+        <!--<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>--> <!-- 16 KB -->
+        <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js">-->
         <!--<script type="text/javascript" src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>-->        
         <!--Template Dependencies-->
 
@@ -129,7 +129,16 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-fonts">
           <li><a href="#/feed/" class="navbar-fonts navbar-link">EXPLORE</a></li>
-          <li><a href="" ng-click="showTags = !showTags;$event.stopPropagation();" class="navbar-fonts">TAGS</a></li>
+          <li class="dropdown">
+              <a class="dropdown-toggle navbar-fonts" data-toggle="dropdown" style="padding:15px!important;">TAGS<span class="caret"></span></a>
+              <ul class="dropdown-menu tags tag-window-width">
+      		    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 paddingnone" ng-repeat="headerTag in topTags">
+                    <a ng-href="#/feed/{{headerTag.tag}}" class="thumbnail no-margin">
+      		            <img ng-src="{{headerTag.image_url}}">
+      		        </a>
+                </div>            
+             </ul>  
+          </li>
           <li><a href="http://www.campture.com/blog/" target="_blank" class="navbar-fonts">BLOG</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

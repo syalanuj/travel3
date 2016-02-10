@@ -8,15 +8,15 @@
 <div class="timeline-thirdheader text-center">
     <div class="container">
         <div class="row">
-            <!--<div class="col-md-3">
+            <div class="col-md-3">
                 <a ng-show="isMyProfile"  ng-href="/#/account/editTrip/{{trip.id}}" class="btn btn-primary btn-lg round" style="text-transform:none!important;">Edit your trip</a>                
-            </div>-->
+            </div>
             <div class="col-md-6 col-md-offset-3 Itinerary text-center col-xs-12 col-sm-12">
                 <div class="row">
                     <div class="col-md-4 col-xs-4 col-sm-4">
-                        <a href="" ng-click="updateTripTabPos(0)"><i class="fa fa-map-o">&nbsp; </i><span><p style="margin-bottom:0px!important;">Itinerary</p></span></a>
+                        <a href="" ng-click="updateTripTabPos(0)"><i class="fa fa-map-o">&nbsp; </i><p style="margin-bottom:0px!important;">Itinerary</p></a>
                     </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4">
+                    <div class="col-md-4 col-xs-4 col-sm-4" ng-click="updateTripTabPos(1)">
                         <a href="" ng-click="updateTripTabPos(1)"><i class="fa fa-map-marker"> &nbsp;</i><p style="margin-bottom:0px!important;">Places</p></a>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-3">
@@ -70,12 +70,12 @@
                     <uib-carousel interval="myInterval" no-wrap="false">
                       <uib-slide class="select-pointer" ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/'))" ng-repeat="image in place.images track by $index" active="slide.active" index="$index">
                         <img  ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_500,w_960/')}}" style="margin:auto;">
-                        <!--<div class="carousel-caption">
+                        <div class="carousel-caption">
                           <h4>Slide {{slide.id}}</h4>
                           <p>{{slide.text}}</p>
-                        </div>-->
+                        </div>
                       </uib-slide>
-                    </uib-carousel>                  
+                    </uib-carousel>                                         
                     </div>
                 </div>
                 <div class="text-center col-xs-12 timelineend">

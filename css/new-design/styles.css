@@ -1376,3 +1376,6 @@ border-bottom-color:rgb(234, 137, 113);
 	background-position:center right;
 	background-repeat:no-repeat;
 }
+.tag-window-width{
+    width: 300px;
+}

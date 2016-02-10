@@ -85,7 +85,7 @@
                     ];
                 angular.forEach($scope.trip.visited_places, function (place, key) {
                     angular.forEach(place.images, function (image, key) {
-                        $scope.fotoramaImages.push({ img: image.image_url });
+                        $scope.fotoramaImages.push({ img: image.image_url,thumb: image.image_url });
                         $scope.timelineImages.push(image);
                     });
                 });
