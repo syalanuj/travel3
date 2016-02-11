@@ -1,16 +1,19 @@
 <modal-dialog image-url="modalImageUrl" show='modalShown' width='850px' height='60%'>                            
 </modal-dialog>
-
-<div class="text-center">
-    <span class="timeline-tripname">{{trip.title}}</span>
-</div   
-
+<div class="text-center trip-titlebar" ng-style="{'background-image':'url(' +getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_400,w_960/')+ ')'}"></div>
+<div class="timeline-tripname text-center">
+    <span>{{trip.title}}</span>
+</div>   
+<div class="trip-intro text-center"><img src="../css/images/Comma left.png" alt="comma1">
+    <p>{{trip.introduction}}</p>
+    <img src="../css/images/Comma right.png" alt="comma2">
+    <div class="by-user">
+    <img ng-src="{{userObj.facebook_profile.picture.data.url}}" alt="profile">
+    <p>{{userObj.facebook_profile.name}}</p></div>
+</div>
 <div class="timeline-thirdheader text-center">
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <a ng-show="isMyProfile"  ng-href="/#/account/editTrip/{{trip.id}}" class="btn btn-primary btn-lg round" style="text-transform:none!important;">Edit your trip</a>                
-            </div>
+        <div class="row">            
             <div class="col-md-6 col-md-offset-3 Itinerary text-center col-xs-12 col-sm-12">
                 <div class="row">
                     <div class="col-md-4 col-xs-4 col-sm-4">
@@ -34,6 +37,7 @@
                     </div>
                     <div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href=""><i class="fa fa-comments"><sup>12</sup></i></a></div>
                     <div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href=""><i class="fa fa-share-alt"><sup></sup></i></a></div>
+                    <div class="fb-share-button" data-href="{{pageUrl}}" data-layout="icon"></div>
                 </div>
             </div>
         </div>
@@ -43,7 +47,7 @@
     <div class="row">
         <div id="itenary" ng-show="tripTabIndex == 0" class="col-md-9 col-sm-12 col-xs-12" >
             <div class="content">
-                <div class="portfolio-item no-line group first">   
+                <!--<div class="portfolio-item no-line group first">   
                     <div class="trip-intro"><img src="../css/images/Comma left.png" alt="comma1">
                         <p>{{trip.introduction}}</p>
                         <img src="../css/images/Comma right.png" style="float:right;" alt="comma2">
@@ -57,7 +61,7 @@
                     <div class="portfolio-image">
                         <img ng-show="trip.main_image" ng-src="{{getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_400,w_960/')}}" class="fullwidth" alt="" style="display: block;">
                     </div>
-                </div>
+                </div>-->
                 <div class="portfolio-item group" ng-repeat="place in trip.visited_places track by $index">
                     <div class="portfolio-info">
                        <div class="date"><strong>{{place.location}}</strong> <br>{{place.date | date:"dd MMMM yyyy" }}</div>
@@ -70,12 +74,22 @@
                     <uib-carousel interval="myInterval" no-wrap="false">
                       <uib-slide class="select-pointer" ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/'))" ng-repeat="image in place.images track by $index" active="slide.active" index="$index">
                         <img  ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_500,w_960/')}}" style="margin:auto;">
-                        <div class="carousel-caption">
+                        <!--<div class="carousel-caption">
                           <h4>Slide {{slide.id}}</h4>
                           <p>{{slide.text}}</p>
-                        </div>
+                        </div>-->
                       </uib-slide>
-                    </uib-carousel>                                         
+                    </uib-carousel>
+                      <!--<div class="container image-gallery-slider">
+                        <img ng-repeat="image in place.images track by $index" class="image-gallery-slide" ng-swipe-right="showPrev(place.images)" ng-swipe-left="showNext(place.images)" ng-show="isActive($index)" ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_500,w_960/')}}" />
+                        <a class="image-gallery-arrow prev" href="" ng-click="showPrev(place.images)"> Prev </a>
+                        <a class="image-gallery-arrow next" href="" ng-click="showNext(place.images)"> Next </a>
+                        <ul class="image-gallery-nav">
+                            <li ng-repeat="image in place.images track by $index" ng-class="{'active':isActive($index)}">
+                                <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_120,w_120/')}}" alt="{{}}" title="{{}}" ng-click="showPhoto($index);" />
+                            </li>
+                        </ul>
+                    </div>-->                                                                   
                     </div>
                 </div>
                 <div class="text-center col-xs-12 timelineend">
@@ -159,3 +173,20 @@
 </div>
 </div>
 <!--//-->
+<!-- slider container -->
+    <!--<div class="container image-gallery-slider">
+        <img ng-repeat="photo in photos" class="image-gallery-slide" ng-swipe-right="showPrev()" ng-swipe-left="showNext()" ng-show="isActive($index)" ng-src="{{photo.src}}" />
+        <a class="image-gallery-arrow prev" href="#" ng-click="showPrev()"></a>
+        <a class="image-gallery-arrow next" href="#" ng-click="showNext()"></a>
+        <ul class="image-gallery-nav">
+            <li ng-repeat="photo in photos" ng-class="{'active':isActive($index)}">
+                <img src="{{photo.src}}" alt="{{photo.desc}}" title="{{photo.desc}}" ng-click="showPhoto($index);" />
+            </li>
+        </ul>
+    </div>-->
+ <!--<flex-slider slide="image in prod.imagePaths track by $index" animation="slide" control-nav="thumbnails">
+                <li data-thumb="{{image.thumbnail}}">
+                    <img ng-src="{{image.custom}}">
+                </li>
+            </flex-slider>-->
+<!--<div ap-fotorama="options" ng-model="items">-->

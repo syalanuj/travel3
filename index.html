@@ -11,9 +11,9 @@
         <!--Parse Dependencies-->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
-        
+        <link href="/css/new-design/latofonts.css" rel="stylesheet" type="text/css">
         <!--Fotorama gallery-->
-        <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+        <!--<link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">--> <!-- 3 KB -->
         <!--<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>--> <!-- 16 KB -->
         <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js">-->
         <!--<script type="text/javascript" src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>-->        
@@ -24,6 +24,10 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>-->
         <!-- /GOOGLE FONTS -->
         <link rel="stylesheet" href="css/bootstrap.css">
+
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/flexslider/2.2.2/flexslider.css">
+    <script src="//cdn.jsdelivr.net/flexslider/2.2.2/jquery.flexslider-min.js"></script>
+    <script src="//cdn.jsdelivr.net/flexslider/2.2.2/jquery.flexslider.js"></script>
         <!--<link rel="stylesheet" href="css/font-awesome.css">-->
         <!--<link rel="stylesheet" href="css/icomoon.css">-->
         <!--<link rel="stylesheet" href="css/styles.css">-->
@@ -64,6 +68,12 @@
         <script src="js/angular-cookies.js"></script>
         <script src="js/ui-bootstrap-tpls-0.14.3.js"></script>
         <script src="js/angular-animate.js"></script>
+
+        <!--Flex Slider-->
+        <!--<script src="js/angular-flexslider.js"></script>-->
+        <!--New Dependencies-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-touch.min.js"></script>
+        
         <!--Timeline Dependencies-->
         <!--Map API Dependencies-->
         <script src='js/angular-simple-logger.js'></script>
@@ -74,7 +84,9 @@
         <!--Angular Routing-->
         <base href="/">
         <!--foto Rama-->
-        <script src="js/fotorama/fotorama.js"></script>
+        <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+        <script src="js/fotorama.js"></script>
+        <script src="js/fotorama/ap.fotorama.js"></script>
         <!--Main-->
         <script src="app.js"></script>
         <!--Services-->
@@ -122,9 +134,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#/"><img src="css/images/logo.png" alt="logo"></a>
-      </div>
-  
+        <a class="navbar-brand" href="#/"><img src="css/images/logo.png" alt="logo"></a>        
+        <form class="navbar-form navbar-left no-margin pc-no-display paddingnone" role="search">
+           <div class="wrap searchbar-input">
+            <form action="" autocomplete="on">
+            <input id="searchId" class="campture-search" name="search1" type="text" placeholder="Search...">    
+            </form>
+           </div>
+         </form>
+      </div>  
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-fonts">
@@ -142,10 +160,11 @@
           <li><a href="http://www.campture.com/blog/" target="_blank" class="navbar-fonts">BLOG</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-        <form class="navbar-form navbar-left no-margin" role="search">
-    <div id="wrap">
+        <form class="navbar-form navbar-left no-margin mobile-no-display" role="search">
+    <div class="wrap searchbar-input">
     <form action="" autocomplete="on">
-    <input id="search" name="search" type="text" placeholder="What're we looking for ?">
+    <input ng-model="searchText" class="campture-search" name="search2" type="text" placeholder="What're we looking for ?">
+    <button type="submit" style="display: none" ng-click="searchFilteredFeed(searchText)"></button>
     </form>
   </div>
   </form>
