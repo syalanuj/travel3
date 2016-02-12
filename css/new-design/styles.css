@@ -1530,6 +1530,54 @@ border-bottom-color:rgb(234, 137, 113);
 .trip-background-wrap{
     background-image:url(../images/trip-background.jpg);
 }
+
+.on-top{
+z-index:1!important;
+}
+
+.portfolio-info .description{
+    text-align: justify;
+}
+.tags .thumbnail:hover{
+background-color:#f56c36!important;
+}
+
+.timeline-tags{
+height:auto;
+background-color:f7f7f7;
+margin-top:20px;
+}
+.timeline-tags #tags{
+font:lato;
+color: rgb(255, 255, 255);
+font-size:14px;
+background-color:black;
+border-color: rgb(178, 178, 179);
+letter-spacing:.08em;
+border-radius:2px;
+margin-right:5px;
+margin-left:5px;
+padding-left:10px;
+padding-right:10px;
+
+}
+.timeline-tags span{
+font:lato;
+font-size:14px;
+color: rgb(17, 23, 28);
+background-color:rgb(255, 255, 255);
+border-color: rgb(178, 178, 179);
+padding-left:10px;
+padding-right:10px;
+letter-spacing:.08em;
+border-radius:2px;
+margin-right:5px;
+margin-left:5px;
+margin-top:5px;
+border-color: rgb(178, 178, 179);
+display:inline-block;
+} 
+/*trip title-bar*/
 .trip-titlebar{
    background-position:center center;
 background-repeat:no-repeat;
@@ -1552,7 +1600,7 @@ width:100%;
 .trip-intro {
 position: absolute;
    width: 100%;
-   top: 19%;
+   top: 18%;
 font-size:17px;
 }
 .trip-intro p{
@@ -1572,19 +1620,19 @@ color:#f56c36;
 
 @media (min-width: 768px) and (max-width: 940px){
 .timeline-tripname {
-   font-size: 40px;
-   font-family: "Lato";
-   color: #FFF;
-   text-transform: uppercase;
-   position: absolute;
-   top: 13%;
-   width: 100%;
+font-size: 40px;
+font-family: "Lato";
+color: #FFF;
+text-transform: uppercase;
+position: absolute;
+top: 225px;
+width: 100%;
 }
 .trip-intro {
-   position: absolute;
-   width: 100%;
-   top: 19%;
-   font-size: 16px;
+position: absolute;
+width: 100%;
+top: 340px;
+font-size: 18px;
 }
 }
 @media (min-width: 515px) and (max-width: 768px){
@@ -1606,18 +1654,19 @@ color:#f56c36;
 }
 @media (min-width: 0px) and (max-width: 515px){
 .timeline-tripname {
-   font-size: 26px;
-   font-family: "Lato";
-   color: #FFF;
-   text-transform: uppercase;
-   position: absolute;
-   top: 6%;
-   width: 100%;
+font-size: 26px;
+font-family: "Lato";
+color: #FFF;
+text-transform: uppercase;
+position: absolute;
+top: 166px;
+width: 100%;
 }
+
 .trip-intro {
    position: absolute;
    width: 100%;
-   top: 13%;
+   top:245px;
    font-size: 12px;
 }
 .by-user {
@@ -1629,3 +1678,4 @@ color:#f56c36;
    color: #F56C36;
 }
 }
+/*share button css*/

@@ -8,7 +8,7 @@
         <a ng-show="userObj" ng-href="#/account/postTrip" class="btn btn-primary btn-lg round"><img src="/img/icons/map.svg" alt=""> Lets Go!</a>	
     </div>
 </div>
-<nav class="navbar navbar-default" style="background-color:#FFFFFF">
+<!--<nav class="navbar navbar-default" style="background-color:#FFFFFF">
   <div class="container-fluid" style="background-color:#FFFFFF">
   <div class="row">
     <div class="navbar-header col-md-5">
@@ -28,10 +28,10 @@
       </div>
   </div>
   </div>
-</nav>
+</nav>-->
 <div class="trip-background-wrap">
 <div class="container">
-<div class="row">
+<div class="row" style="margin-top: 50px">
     <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
         <div class="thumbnail">
           <a ng-href="#/account/timeline/{{trip.id}}">
@@ -49,7 +49,7 @@
             <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
         
             <!--<span class="pull-right stats_thumbnail">19</span>-->
-            <span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>        
+            <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->        
            </div>
         </div>
   </div>

@@ -9,10 +9,15 @@
         $routeParams.tripId;
         $scope.userObj = Parse.User.current();
         $routeParams.tripId;
-        $scope.mainImageUploaded = false;
+        $scope.mainImageUploaded = true;
         $scope.mainImageUploading = false;
         $scope.queuecomplete = 0;
         $scope.imageUploadDone = true;
+        $scope.isPublishedClicked = false;
+        $scope.rawTags;
+        $scope.isAddTag = false;
+        $scope.isTripUploading = false;
+
         accountService.getTripById($routeParams.tripId, function (data) {
             $scope.$apply(function () {
                 $scope.newTrip = data;
@@ -131,11 +136,11 @@
 
         $scope.updateTrip = function () {
             $scope.newTrip.visited_places = $scope.places;
-            $scope.newTrip.tags = new Array();
-            var tags = $scope.tags.split(',');
-            angular.forEach(tags, function (value, key) {
-                $scope.newTrip.tags.push(value.trim());
-            });
+            //$scope.newTrip.tags = new Array();
+            //var tags = $scope.tags.split(',');
+            //angular.forEach(tags, function (value, key) {
+            //    $scope.newTrip.tags.push(value.trim());
+            //});
             accountService.updateTrip($scope.newTrip, function (data) {
                 $scope.$apply(function () {
                     if (data) {
@@ -147,5 +152,26 @@
                 });
             });
         };
+
+        $scope.formatTags = function () {
+            if ($scope.rawTags) {
+                var tags = $scope.rawTags.split(',');
+                angular.forEach(tags, function (value, key) {
+                    $scope.newTrip.tags.push(value.trim());
+                });
+                $scope.rawTags = undefined;
+            }
+        }
+        $scope.removeTag = function (tagIndex) {
+            $scope.newTrip.tags.splice(tagIndex, 1);
+        }
+        $scope.deleteItem = function (index) {
+            $scope.places.splice(index, 1);
+            $scope.newplaces.splice(index, 1);
+        }
+
+        $scope.focusTagsInput = function (){
+            $('#tagInput').focus();
+        }
     };
 })();

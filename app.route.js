@@ -53,7 +53,7 @@
              controller: 'EditTripCtrl',
             templateUrl: 'app/components/account/editTrip/editTrip.html'
         })
-        .when('/feed/:tag?',{
+        .when('/feed/:tag?/:searchText?',{
             controller: 'FilteredFeedCtrl',
             templateUrl:'app/components/feed/filteredFeed.html'
         })

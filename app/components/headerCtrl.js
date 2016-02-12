@@ -17,6 +17,9 @@
         { tag: 'hiking', image_url: '/img/tags/hiking.png' }];
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
         $scope.showTags = false;
+        $rootScope.query = {};
+        $rootScope.queryBy = '$';
+
         $rootScope.loginWithFacebook = function () {
             if (!$rootScope.fbInit) return;
             if (!$rootScope.fbInit) return;
@@ -51,7 +54,7 @@
 
         $rootScope.logout = function () {
             Parse.User.logOut();
-            $scope.userObj = Parse.User.current();
+            $scope.userObj = undefined;//Parse.User.current();
             $location.path("/");
         };
 
@@ -67,6 +70,11 @@
             }
             return croppedUrl;
         };
+        
+        $scope.searchTrips = function(){
+            $location.path("/feed//"+$scope.query[$scope.queryBy]);
+        }
+
 
         //Main app
         //tourService.getTravelStyles(function (data) {

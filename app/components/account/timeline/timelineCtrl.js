@@ -16,6 +16,7 @@
         $scope.likeId;
         $scope.isLikeDisabled = false;
         $scope.myInterval = 2000;
+        $scope.timelineImages = new Array();
         var bounds = new google.maps.LatLngBounds();
         if ($scope.currentUserObj) {
             $scope.myProfile = $scope.currentUserObj.get("facebook_profile");
@@ -77,8 +78,7 @@
                     ];
                 angular.forEach($scope.trip.visited_places, function (place, key) {
                     angular.forEach(place.images, function (image, key) {
-                        //image.src = image.image_url;
-                        //image.desc = "";
+                        $scope.timelineImages.push(image);
                     });
                 });
             });
@@ -186,8 +186,8 @@
             $scope.modalImageUrl = imageUrl;
         };
 
-        $scope.prod = {imagePaths: []};
-	$scope.prod.imagePaths = [
+        $scope.prod = { imagePaths: [] };
+        $scope.prod.imagePaths = [
       	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg' },
       	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg' },
       	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg' },
@@ -199,11 +199,11 @@
       	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg' },
       	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg' },
       	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'}
+      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg' }
       ];
-      $scope.items = [{img: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', thumb: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', full: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'}];
-   //     //--------Photo Slider--------//
-   //     // Set of Photos			
+        $scope.items = [{ img: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', thumb: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', full: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'}];
+        //     //--------Photo Slider--------//
+        //     // Set of Photos			
         $scope.photos = [
 				{ src: 'http://farm9.staticflickr.com/8042/7918423710_e6dd168d7c_b.jpg', desc: 'Image 01' },
 				{ src: 'http://farm9.staticflickr.com/8449/7918424278_4835c85e7a_b.jpg', desc: 'Image 02' },
@@ -231,8 +231,14 @@
             $scope._Index = index;
         };
 
-        $scope.searchFilteredFeed = function (searchText){
+        $scope.searchFilteredFeed = function (searchText) {
             $location.path('/feed?');
+        }
+
+        $scope.scrollToCommentSection = function () {
+            $('html, body').animate({
+                scrollTop: $("#comments").offset().top - 100
+            }, 500);
         }
 
     };

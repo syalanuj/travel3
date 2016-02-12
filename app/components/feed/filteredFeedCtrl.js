@@ -12,8 +12,8 @@
         $scope.newTrip;
         $scope.userObj = Parse.User.current();
         $scope.isPostSuccessful = false;
-        $scope.query = {};
-        $scope.queryBy = '$';
+        //$scope.query = {};
+        //$scope.queryBy = '$';
         if ($routeParams.tag) {
             accountService.getTripByTags($routeParams.tag,function (data) {
                 if (data) {

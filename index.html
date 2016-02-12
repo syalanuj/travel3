@@ -123,7 +123,7 @@
     <body>
         <div id="fb-root"></div>
         
-    <nav ng-controller="HeaderCtrl" class="navbar navbar-default no-margin no-background">
+    <nav ng-controller="HeaderCtrl" class="navbar navbar-default no-margin no-background on-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       
@@ -137,8 +137,9 @@
         <a class="navbar-brand" href="#/"><img src="css/images/logo.png" alt="logo"></a>        
         <form class="navbar-form navbar-left no-margin pc-no-display paddingnone" role="search">
            <div class="wrap searchbar-input">
-            <form action="" autocomplete="on">
-            <input id="searchId" class="campture-search" name="search1" type="text" placeholder="Search...">    
+            <form action="" ng-submit="searchTrips()" autocomplete="on">
+            <input id="searchId"  ng-model="query[queryBy]" class="campture-search" name="search1" type="text" placeholder="Search...">    
+            <button type="submit" ng-click="searchTrips()" ng-hide="true"></button>
             </form>
            </div>
          </form>
@@ -162,16 +163,16 @@
         <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form navbar-left no-margin mobile-no-display" role="search">
     <div class="wrap searchbar-input">
-    <form action="" autocomplete="on">
-    <input ng-model="searchText" class="campture-search" name="search2" type="text" placeholder="What're we looking for ?">
-    <button type="submit" style="display: none" ng-click="searchFilteredFeed(searchText)"></button>
+    <form  ng-submit="searchTrips()" autocomplete="on">
+    <input ng-model="query[queryBy]" class="campture-search" name="search2" type="text" placeholder="What're we looking for ?">
+        <button type="submit" ng-click="searchTrips()" ng-hide="true"></button>
     </form>
   </div>
   </form>
           <li><a ng-if="userObj == undefined" href="" class="loginwithfacebook" ng-click="loginWithFacebook()"><i class="fa fa-facebook">&nbsp; </i>Login with facebook</a></li>
   		  <li><a ng-if="userObj" href="#/account/postTrip/" class="add_trip"><i class="fa fa-plus">Add Trip</i></a></li>	
           <li><a href=""ng-if="userObj" ng-click="logout()" class="power_switch navbar-link" style="color: color: rgb(106, 106, 106)!important;"><i class="fa fa-power-off"></i></a></li>
-          <li><a href="" ng-href="#/account/profile/{{userObj.objectId}}" class="paddingnone"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle profile_topleft"></a></li>
+          <li><a ng-if="userObj" href="" ng-href="#/account/profile/{{userObj.objectId}}" class="paddingnone"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle profile_topleft"></a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
