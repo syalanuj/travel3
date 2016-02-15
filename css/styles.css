@@ -29,6 +29,11 @@ body
     font-size: 16px;
     margin-top:3px !important;
 }
+/*navbar hover border*/
+.navbar-fonts:hover{
+	border-top:solid 2px #f56c36;
+	top:50%;
+}
 .my_feed {
     font-size: 16px;
     font-family: "Lato";
