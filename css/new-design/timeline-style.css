@@ -30,7 +30,7 @@
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box; 
-  overflow-x:hidden; 
+  
   }
 
 html, body, .wrap {
