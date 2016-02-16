@@ -23,13 +23,13 @@
     <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
         <div class="thumbnail">
           <a ng-href="#/account/timeline/{{trip.id}}">
-              <img ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
+              <img class="xpro2" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
           </a>
           <div class="caption">
             <a ng-href="#/account/timeline/{{trip.id}}">
                 <span class="pull-left trip_name">{{trip.title}}</span>
             </a>
-            <span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>
+            <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
             <br>
             <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
             <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
