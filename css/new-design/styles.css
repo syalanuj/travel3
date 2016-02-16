@@ -105,6 +105,7 @@ input[type="submit"]:hover {
 .navbar-fonts:hover{
 	border-top:solid 2px #f56c36;
 	top:50%;
+	margin-top:1px !important;
 }
 .my_feed {
           font-size: 16px;
@@ -1622,6 +1623,10 @@ font-weight:400;
 font-style:italic;
 color:#f56c36;
   }
+ .by-user p {
+    color: white;
+    font-style: normal;
+}
 
 
 
