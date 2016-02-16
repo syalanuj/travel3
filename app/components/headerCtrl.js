@@ -26,24 +26,22 @@
 
             Parse.FacebookUtils.logIn(null, {
                 success: function (user) {
-                    if (!user.existed()) {
-                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
-                        $scope.$apply();
-                    } else {
-                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
-                        $scope.$apply();
-                    }
-                    accountService.getMyProfile().then(function (response) {
-                        accountService.updateUserFacebookProfile(response, $scope.userObj.id, function (data) {
-                            $scope.$apply(function () {
-                                if (data) {
-                                    var x = data;
-                                }
+                    if (!user.existed()) {                        
+                        accountService.getMyProfile().then(function (response) {
+                            accountService.updateUserFacebookProfile(response, user.id, function (data) {
+                                $scope.$apply(function () {
+                                    if (data) {
+                                        var x = data;
+                                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
+                                    }
+                                });
                             });
-                        });
-                    });
-
-
+                        });                    
+                    } 
+                    else {
+                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
+                        $scope.$apply();
+                    }  
                     $location.path("/");
                 },
                 error: function (user, error) {

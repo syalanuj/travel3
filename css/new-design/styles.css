@@ -104,12 +104,15 @@ input[type="submit"]:hover {
 	font-size: 16px;
 	margin-top:3px !important;
 }
+<<<<<<< HEAD
 
 .navbar-fonts:hover{
 	border-top:solid 2px #f56c36;
 	top:50%;
 	margin-top:1px !important;
 }
+=======
+>>>>>>> origin/revert-2-Styling-changes
 .my_feed {
           font-size: 16px;
           font-family: "Lato";
@@ -1605,13 +1608,13 @@ font-family: "Lato";
 color: white;
 text-transform: uppercase;
 position:absolute;
-top:260px;
+top:11%;
 width:100%;
 }
 .trip-intro {
 position: absolute;
    width: 100%;
-  top: 321px;
+   top: 18%;
 font-size:17px;
 }
 .trip-intro p{
@@ -1633,7 +1636,7 @@ color:#f56c36;
 
 
 
-@media (min-width: 769px) and (max-width: 940px){
+@media (min-width: 768px) and (max-width: 940px){
 .timeline-tripname {
 font-size: 40px;
 font-family: "Lato";
@@ -1650,70 +1653,42 @@ top: 340px;
 font-size: 18px;
 }
 }
-@media (min-width: 361px) and (max-width: 768px){
+@media (min-width: 515px) and (max-width: 768px){
 .timeline-tripname {
    font-size: 45px;
    font-family: "Lato";
    color: #FFF;
    text-transform: uppercase;
    position: absolute;
-   top: 450px;
+   top: 7%;
    width: 100%;
 }
 .trip-intro {
    position: absolute;
    width: 100%;
-   top: 575px;
+   top: 14%;
    font-size: 15px;
 }
 }
-@media (min-width: 321px) and (max-width: 360px){
+@media (min-width: 0px) and (max-width: 515px){
 .timeline-tripname {
 font-size: 26px;
 font-family: "Lato";
 color: #FFF;
 text-transform: uppercase;
 position: absolute;
-top: 275px;
+top: 166px;
 width: 100%;
 }
 
 .trip-intro {
    position: absolute;
-   top:350px;
+   width: 100%;
+   top:245px;
    font-size: 12px;
-   padding-left: 5px;
-   padding-right: 5px;
 }
 .by-user {
-   padding-top: 15px;
-   font-size: 16px;
-   font-family: lato;
-   font-weight: 400;
-   font-style: italic;
-   color: #F56C36;
-}
-}
-@media (min-width: 0px) and (max-width: 320px){
-.timeline-tripname {
-font-size: 26px;
-font-family: "Lato";
-color: #FFF;
-text-transform: uppercase;
-position: absolute;
-top: 175px;
-width: 100%;
-}
-
-.trip-intro {
-   position: absolute;
-   top:226px;
-   font-size: 12px;
-   padding-left: 5px;
-   padding-right: 5px;
-}
-.by-user {
-   padding-top: 15px;
+   padding-top: 15%;
    font-size: 16px;
    font-family: lato;
    font-weight: 400;
