@@ -56,7 +56,7 @@ Dropzone.autoDiscover = false;
                         <div>
     			            <div class="text-center">
                                     <span class="input-alter input--minoru" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
-					                    <textarea class="text-area-border-color span12" ng-model="newTrip.introduction" rows="3"  name="introduction" placeholder=" Add a quick summary of your experience."  required></textarea>                                        
+					                    <textarea maxlength="144" class="text-area-border-color span12" ng-model="newTrip.introduction" rows="3"  name="introduction" placeholder=" Add a quick summary of your experience."  required></textarea>                                        
 					                    <label class="text-area-border-color text-area-border-color input__label input__label--yoko" for="introduction">
 						                    <span class="input__label-content input__label-content--yoko">Description</span>
 					                    </label>
