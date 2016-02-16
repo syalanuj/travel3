@@ -1,5 +1,8 @@
 charset "UTF-8";
 /* CSS Document */
+html{
+	overflow-x:hidden; 
+}
 body
 {
 	background-color:#edeef0!important;
