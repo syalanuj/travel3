@@ -684,7 +684,7 @@ table tr td:last-child {
 	top: 0;
 	width: 100%;
 	height: 7px;
-	background: #f8c9b6;
+	background: #bfc0c6;
 	-webkit-transform: scale3d(1, 0.4, 1);
 	transform: scale3d(1, 0.4, 1);
 	-webkit-transform-origin: 50% 100%;
@@ -713,7 +713,7 @@ table tr td:last-child {
 }
 
 .input__field--isao:focus + .input__label--isao::before {
-	background-color: rgb(226, 88, 51);
+	background-color: #f0fbff;
 	-webkit-transform: scale3d(1, 1, 1);
 	transform: scale3d(1, 1, 1);
 }
@@ -903,8 +903,8 @@ table tr td:last-child {
 	border: none;
 	border-radius: 0;
 	color: #aaa;
-	font-weight: bold;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: italic;
+	font-family: "lato", Helvetica, Arial, sans-serif;
 	-webkit-appearance: none; /* for box shadows to show on iOS */
 }
 /*tags*/
@@ -1026,7 +1026,7 @@ table tr td:last-child {
   color: #90111a !important;
 }
 .tagsinput-primary {
-  border-color: #e25833;
+  border-color: #e6e6e6;
 }
 .tagsinput-primary .tag {
   background-color: #e25833;
@@ -1054,8 +1054,8 @@ textarea {
     padding: 5px 11px;
     text-indent: 0px;
     color: #aaa;
-    font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: italic;
+    font-family: "lato", Helvetica, Arial, sans-serif;
 }
 .bottommargin{
 	margin-bottom:40px!important;
@@ -1198,11 +1198,11 @@ border-bottom-color:rgb(234, 137, 113);
      pointer-events: none;
 }
 .placeholder-color::-webkit-input-placeholder {
-color: #f8c9b6 !important;
+color: #e6e6e6 !important;
 }
 
 .text-area-border-color{
-    border-color: #f8c9b6;
+    border-color: #e6e6e6;
 }
 
 .text-area-border-color:focus{
