@@ -29,9 +29,13 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
+<<<<<<< HEAD
   box-sizing: border-box; 
   
   }
+=======
+  box-sizing: border-box; }
+>>>>>>> Styling-changes
 
 html, body, .wrap {
   min-height: 100%; }
