@@ -1,4 +1,4 @@
-<modal-dialog image-url="modalImageUrl" show='modalShown' width='850px' height='60%'>                            
+<modal-dialog image-url="modalImageUrl" show='modalShown' ><!--width='850px' height='60%'-->                            
 </modal-dialog>
 <div style="overflow-x: hidden">
 <div class="text-center trip-titlebar" ng-style="{'background-image':'url(' +getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_400,w_960/')+ ')'}"></div>
@@ -68,7 +68,7 @@
                 <div class="row likecommentshare">
                     <div class="col-md-3 col-xs-4 col-sm-4 col-md-offset-2 col-lg-offset-3 text-center">
                         <a href="" ng-class="{likeDisabled: isLikeDisabled}" ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled">
-                            <i ng-class="'fa fa-heart trip-liked-color': likeId != undefined, 'fa fa-heart-o': likeId == undefined" class="fa fa-heart-o"><sup>{{trip.total_likes}}</sup></i>
+                            <i ng-class="{'fa fa-heart trip-liked-color': likeId != undefined, 'fa fa-heart-o': likeId == undefined}"><sup>{{trip.total_likes}}</sup></i>
                             <!--<i class="fa fa-heart" ng-show="likeId" style="color:#f56c36;"><sup>{{trip.total_likes}}</sup></i>-->
                         </a>
                     </div>
@@ -119,8 +119,8 @@
                     </div>
                     <div class="portfolio-image">
                     <uib-carousel interval="" no-wrap="false">
-                      <uib-slide class="select-pointer" ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/'))" ng-repeat="image in place.images track by $index" active="slide.active" index="$index">
-                        <img  ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_500,w_960/')}}" style="margin:auto;">
+                      <uib-slide class="select-pointer" ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.8,w_0.8/'))" ng-repeat="image in place.images track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')-->
+                        <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_500,w_960/')}}" style="margin:auto;">
                       </uib-slide>
                     </uib-carousel>
                       <!--<div class="container image-gallery-slider">
