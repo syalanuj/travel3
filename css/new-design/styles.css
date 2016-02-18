@@ -528,7 +528,7 @@ height: 38px;
 z-index: 110;
 }
 .timeline-thirdheader{
-	background-color: rgb(251, 251, 251);
+	background-color: rgb(255, 255, 255);
 	margin:0px;
 }
 .timeline-thirdheader btn{
@@ -1735,3 +1735,30 @@ width: 100%;
     background: -webkit-radial-gradient(circle, #e6e7e0 40%, rgba(43, 42, 161, 0.6) 110%);
     background: radial-gradient(circle, #e6e7e0 40%, rgba(43, 42, 161, 0.6) 110%);
     mix-blend-mode: color-burn; }
+
+    /*timeline buttons css active*/
+ .Itinerary-places-photos-button-active{
+	background-color: rgb(245, 108, 54);
+	height: 70px;
+	font-size: 16px;
+	color: rgb(255, 255, 255);
+	padding:25px;
+	text-transform:uppercase;
+}
+.Itinerary-places-photos-button-active a{
+	color: rgb(255, 255, 255);
+}
+
+/*timeline buttons css inactive*/
+.Itinerary-places-photos-button{
+	background-color: rgb(255, 255, 255);
+	height: 70px;
+	font-size: 16px;
+	color: rgb(255, 255, 255);
+	padding:25px;
+	text-transform:uppercase;
+}
+.Itinerary-places-photos-button a{
+	color: #6a6a6a;
+}
+
