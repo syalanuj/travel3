@@ -72,22 +72,12 @@
                             <!--<i class="fa fa-heart" ng-show="likeId" style="color:#f56c36;"><sup>{{trip.total_likes}}</sup></i>-->
                         </a>
                     </div>
-                    <div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href="" ng-click="scrollToCommentSection()"><i class="fa fa-comments"><sup><span class="fb-comments-count" data-href="{{pageUrl}}"></span></sup></i></a></div>
-                    <div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href=""><i class="fa fa-share-alt"><sup></sup></i></a></div>
-                    <!--<div id="content">
-                        <input type="checkbox" class="checkbox" id="share" checked>
-                        <label for="share" class="label entypo-export"></label>
-                        <div class="social">
-                            <ul>
-                                <li class="entypo-twitter"></li>
-                                <li class="entypo-facebook"></li>
-                                <li class="entypo-gplus"></li>
-                            </ul>
-                        </div>
-                    </div>-->
+                    <!--<div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href="" ng-click="scrollToCommentSection()"><i class="fa fa-comments"><sup><span class="fb-comments-count" data-href="{{pageUrl}}"></span></sup></i></a></div>
+                    <div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href=""><i class="fa fa-share-alt"><sup></sup></i></a></div>-->
+                    
                     <!--<div class="fb-share-button" data-href="{{pageUrl}}" data-layout="icon"></div>-->
-                    <div class="timeline-like-button">
-                        <em class="fa fa-heart">&nbsp; </em><span>like &nbsp; </span><span class="likes-quantity">15</span>
+                    <div style="cursor: pointer" ng-class="{likeDisabled: isLikeDisabled}" class="timeline-like-button" ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled">
+                        <em ng-class="{'fa fa-heart': likeId != undefined, 'fa fa-heart-o': likeId == undefined}" class="fa fa-heart">&nbsp; </em><span>like &nbsp; </span><span class="likes-quantity">{{trip.total_likes}}</span>
                     </div>
                 </div>
             </div>
