@@ -1769,18 +1769,19 @@ width: 100%;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius:50px;
   color: rgb(255, 90, 90);
-  width: 100px;
+  width: 140px;
   font-weight:400;
-  height:30px;
-  margin-top:20px;
+  font-size: 18px;
+  height:36px;
+  margin-top:17px;
  
   }
   .likes-quantity{
-	  border-left:1px solid;
+	  border-left:2px solid;
 	  display:inline-block;
-	  height:28px;
-	  padding-left:5px;
-	  line-height: 25px;
+	  height:34px;
+	  padding-left:14px;
+	  line-height: 34px;
  }
 
 
