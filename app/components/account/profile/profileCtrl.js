@@ -6,7 +6,7 @@
     function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout) {
         //====== Scope Variables==========
         //================================      
-        $scope.myTrips;
+        $scope.myTrips = new Object();
         $scope.newTrip;
         $scope.userObj;
         $scope.isPostSuccessful = false;
@@ -42,13 +42,16 @@
                             $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
                             var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
                             bounds.extend(latlng);
-                            angular.forEach(place.images, function (image, key) { 
+                            angular.forEach(place.images, function (image, key) {
                                 $scope.allTripImages.push(image);
                             });
                             markerId++;
                         });
                     });
                 });
+            }
+            else {
+                $scope.myTrips = undefined;
             }
         });
         $scope.$on('mapInitialized', function (event, map) {
