@@ -1787,6 +1787,28 @@ width: 100%;
 .Itinerary-places-photos-button a{
 	color: #6a6a6a;
 }
+/*timeline like button*/
+.timeline-like-button{
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(254, 124, 124);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius:50px;
+  color: rgb(255, 90, 90);
+  width: 100px;
+  font-weight:400;
+  height:30px;
+  margin-top:20px;
+ 
+  }
+  .likes-quantity{
+	  border-left:1px solid;
+	  display:inline-block;
+	  height:28px;
+	  padding-left:5px;
+	  line-height: 25px;
+ }
+
 
 glyphicon.glyphicon-chevron-right{
     
