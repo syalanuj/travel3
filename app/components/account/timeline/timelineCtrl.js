@@ -172,9 +172,11 @@
         };
         $scope.tripLikeUnlike = function () {
             if ($scope.likeId) {
+                $scope.likeId = undefined;
                 $scope.unlikeTrip();
             }
             else {
+                $scope.likeId = new Object();
                 $scope.likeTrip();
             }
         }
@@ -182,6 +184,7 @@
         //----Modal-----//
         $scope.modalShown = false;
         $scope.toggleModal = function (imageUrl) {
+            $scope.modalImageUrl = undefined;
             $scope.modalShown = !$scope.modalShown;
             $scope.modalImageUrl = imageUrl;
         };

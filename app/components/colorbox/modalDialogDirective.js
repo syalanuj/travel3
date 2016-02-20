@@ -24,6 +24,7 @@
                     scope.dialogStyle.height = attrs.height;
                 scope.hideModal = function () {
                     scope.show = false;
+                    scope.imageUrl = undefined;
                 };
             },
             templateUrl: 'app/components/colorbox/modalDialog.html' // See below
