@@ -1,5 +1,10 @@
 charset "UTF-8";
 /* CSS Document */
+/*gliphicon font*/
+@font-face:{
+    font-family: 'gli'
+}
+
 html{
 	overflow-x:hidden; 
 }
@@ -525,7 +530,7 @@ height: 38px;
 z-index: 110;
 }
 .timeline-thirdheader{
-	background-color: rgb(251, 251, 251);
+	background-color: rgb(255, 255, 255);
 	margin:0px;
 }
 .timeline-thirdheader btn{
@@ -1585,6 +1590,7 @@ border-radius:2px;
 margin-right:5px;
 margin-left:5px;
 margin-top:5px;
+margin-bottom: 15px;
 border-color: rgb(178, 178, 179);
 display:inline-block;
 } 
@@ -1600,8 +1606,10 @@ max-width:100%;
    filter: brightness(.5);
 }
 .timeline-tripname{
-font-size: 50px;
+font-size: 40px;
 font-family: "Lato";
+font-weight: bold;
+letter-spacing: 0.04em;
 color: white;
 text-transform: uppercase;
 position:absolute;
@@ -1609,26 +1617,34 @@ top:11%;
 width:100%;
 }
 .trip-intro {
-position: absolute;
-   width: 100%;
-   top: 18%;
-font-size:17px;
+	position: absolute;
+    width: 100%;
+    top: 18%;
+	font-size: 18px;
+	font-family: "Lato";
+	letter-spacing:0.04em;
 }
 .trip-intro p{
-max-width: 500px;
-   margin: auto;
+	max-width: 500px;
+    margin: auto;
 }
 .by-user{
- padding-top:30px;
-font-size: 16px;
-font-family:lato;
-font-weight:400;
-font-style:italic;
-color:#f56c36;
-  }
- .by-user p {
-    color: white;
-    font-style: normal;
+	  padding-top:30px;
+	 font-size: 16px;
+	 font-family:lato;
+	 font-weight:400;
+	 font-style:italic;
+	 color:#f56c36;
+	   }
+.by-user img{
+	box-shadow: 0px 0px 20px 0px rgba(245, 108, 54, 0.5);
+	height:41px;
+	width: 41px;
+}
+.by-user p{
+  letter-spacing:0.02em;
+  color: rgb(255, 255, 255);
+  font-style: italic;
 }
 
 
@@ -1745,4 +1761,33 @@ width: 100%;
         background-position:top;
         background-size:auto;
     }
+}
+    /*timeline buttons css active*/
+ .Itinerary-places-photos-button-active{
+	background-color: rgb(245, 108, 54) !important;
+	height: 70px !important;
+	font-size: 16px !important;
+	color: rgb(255, 255, 255) !important;
+	padding:25px !important;
+	text-transform:uppercase !important;
+}
+.Itinerary-places-photos-button-active a{
+	color: rgb(255, 255, 255) !important;
+}
+
+/*timeline buttons css inactive*/
+.Itinerary-places-photos-button{
+	background-color: rgb(255, 255, 255);
+	height: 70px;
+	font-size: 16px;
+	color: rgb(255, 255, 255);
+	padding:25px;
+	text-transform:uppercase;
+}
+.Itinerary-places-photos-button a{
+	color: #6a6a6a;
+}
+
+glyphicon.glyphicon-chevron-right{
+    
 }
