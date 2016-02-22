@@ -3,6 +3,7 @@
     var app = angular.module('campture', ['ui.bootstrap', 'ngRoute', 'ngCookies', 'uiGmapgoogle-maps', 'ngAutocomplete', 'dropzone','ngAnimate','ngTouch','ap.fotorama']);
     app.run(['$cookies', '$rootScope', '$window', '$location',
         function ($cookies, $rootScope, $window, $location) {
+            $rootScope.isPageHeaderLoaded = false;
             Parse.initialize("hqRCJWWJJhduQBOceJYMnKUh8rt5prJ2WyUfDkmp", "M7ZPrFMJoEopzBvOGCmynUbN5qwedkTeY32hFmpy");
             $rootScope.fbInit = false;
             $window.fbAsyncInit = function () {

@@ -10,6 +10,7 @@
         //$rootScope.travelStyles;
         //$rootScope.topStates;
         //$rootScope.activities;
+        
         $scope.topTags = [
         { tag: 'rafting', image_url: '/img/tags/rafting.png' },
         { tag: 'skiing', image_url: '/img/tags/skiing.png' },
@@ -19,7 +20,8 @@
         $scope.showTags = false;
         $rootScope.query = {};
         $rootScope.queryBy = '$';
-
+        $rootScope.isPageHeaderLoaded = true;
+        $(".header-elements").css("display", "k");
         $rootScope.loginWithFacebook = function () {
             if (!$rootScope.fbInit) return;
             if (!$rootScope.fbInit) return;
@@ -49,7 +51,7 @@
                 }
             });
         };
-        $scope.loginToPost = function(){
+        $scope.loginToPost = function () {
             if (!$rootScope.fbInit) return;
             if (!$rootScope.fbInit) return;
 
@@ -70,13 +72,13 @@
                     else {
                         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
                         $scope.$apply();
-                    }                    
+                    }
                     $location.path("/account/postTrip/");
                 },
                 error: function (user, error) {
                     console.log("Cancelled");
                 }
-            });            
+            });
         }
 
         $rootScope.logout = function () {

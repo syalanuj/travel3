@@ -12,13 +12,15 @@
         $scope.newTrip;
         $scope.userObj = Parse.User.current();
         $scope.isPostSuccessful = false;
+        $scope.isPageLoaded = false;
         //$scope.query = {};
         //$scope.queryBy = '$';
         if ($routeParams.tag) {
-            accountService.getTripByTags($routeParams.tag,function (data) {
-                if (data) {
-                    $scope.$apply(function () {
+            accountService.getTripByTags($routeParams.tag, function (data) {
+                $scope.$apply(function () {
+                    if (data) {                    
                         $scope.allTrips = data;
+                        $scope.isPageLoaded = true;                        
                         angular.forEach($scope.allTrips, function (trip) {
                             try {
                                 var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
@@ -26,17 +28,18 @@
                             } catch (e) {
                                 console.log(e);
                             }
-
-                        });
-                    });
-                }
+                        });                    
+                    }
+                    $scope.isPageLoaded = true;
+                });
             });
         }
         else {
             accountService.getAllTrips(function (data) {
-                if (data) {
-                    $scope.$apply(function () {
+                $scope.$apply(function () {
+                    if (data) {                    
                         $scope.allTrips = data;
+                        $scope.isPageLoaded = true;
                         angular.forEach($scope.allTrips, function (trip) {
                             try {
                                 var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
@@ -46,8 +49,9 @@
                             }
 
                         });
-                    });
-                }
+                        $scope.isPageLoaded = true;
+                    }
+                 });
             });
         }
     };

@@ -5,8 +5,9 @@
     app.controller('ProfileCtrl', ['$scope', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout', controller]);
     function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout) {
         //====== Scope Variables==========
-        //================================      
-        $scope.myTrips = new Object();
+        //================================  
+        $scope.isPageLoading = false;
+        $scope.myTrips;
         $scope.newTrip;
         $scope.userObj;
         $scope.isPostSuccessful = false;
@@ -28,13 +29,15 @@
                         $scope.isMyProfile = true;
                     }
                 }
+                $scope.$apply();
             }
         });
         accountService.getMyTrips($routeParams.userId, function (data) {
-            if (data.length > 0) {
-                $scope.$apply(function () {
+            $scope.$apply(function () {
+            if (data.length > 0) {                
                     var markerId = 0;
                     $scope.myTrips = data;
+                    $scope.isPageLoading = true;
                     angular.forEach($scope.myTrips, function (trip, key) {
                         var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
                         trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
@@ -47,12 +50,10 @@
                             });
                             markerId++;
                         });
-                    });
-                });
+                    });       
             }
-            else {
-                $scope.myTrips = undefined;
-            }
+            $scope.isPageLoading = true;
+            });
         });
         $scope.$on('mapInitialized', function (event, map) {
             map.setCenter(bounds.getCenter());

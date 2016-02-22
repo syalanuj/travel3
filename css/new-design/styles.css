@@ -1813,3 +1813,7 @@ width: 100%;
 glyphicon.glyphicon-chevron-right{
     
 }
+
+.header-elements{
+    display: none;
+}

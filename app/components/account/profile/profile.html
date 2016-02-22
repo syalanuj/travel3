@@ -11,7 +11,7 @@
   <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>
    </div>
   </div>
-  <div class="container profilecontent">
+  <div ng-show="myTrips" class="container profilecontent">
   <div id="trips" class="" ng-show="profileTabPos == 0">
       <h3>Trips</h3>
       <div class="col-sm-6 col-md-4" ng-repeat="trip in myTrips | filter:query">
@@ -35,17 +35,7 @@
             </div>
         </div>
       </div>
-  </div>
-  <div ng-show="myTrips == undefined && profileTabPos == 0" class="content-wrap">
-    <div class="site-content container">
-         <div class="col-sm-4">
-        </div>
-        <div class="col-sm-3" style="width: 310px;height: 397px;">
-        <img  ng-src="/img/backgrounds/published_trips_nil.png" class="" style="display: block;">
-        </div>
     </div>
- </div>
-    
     <div id="places" class="" ng-show="profileTabPos == 1">
       <h3>Places</h3>
        <div class="">
@@ -65,6 +55,18 @@
         </div>
     </div>
   </div>
+  <div class="container profilecontent">
+      <div ng-show="isPageLoading && myTrips == undefined" class="content-wrap">
+          <p>No Trips yet?....Lets <a href="#/account/postTrip/">Get Started</a></p>
+    <div class="site-content container">
+         <div class="col-sm-1">
+        </div>
+        <div class="col-sm-9" >
+        <img  ng-src="/img/backgrounds/no-trips.png" class="img-responsive" style="display: block;margin-left: 4%;">
+        </div>
+    </div>
+ </div>
+  </div>  
 
 
 

@@ -64,14 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-12 col-xs-12">
-                <div class="row text-center">
-                    <!--<div class="col-md-3 col-xs-4 col-sm-4 col-md-offset-2 col-lg-offset-3 text-center">
-                        <a href="" ng-class="{likeDisabled: isLikeDisabled}" ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled">
-                            <i ng-class="{'fa fa-heart trip-liked-color': likeId != undefined, 'fa fa-heart-o': likeId == undefined}"><sup>{{trip.total_likes}}</sup></i>
-                            <!--<i class="fa fa-heart" ng-show="likeId" style="color:#f56c36;"><sup>{{trip.total_likes}}</sup></i>-->
-                        </a>
-                    </div>
+            <div class="col-md-2 col-sm-12 col-xs-12">                
                     <!--<div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href="" ng-click="scrollToCommentSection()"><i class="fa fa-comments"><sup><span class="fb-comments-count" data-href="{{pageUrl}}"></span></sup></i></a></div>
                     <div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href=""><i class="fa fa-share-alt"><sup></sup></i></a></div>-->
                     
@@ -150,7 +143,7 @@
                     </ui-gmap-polyline>            
                 <ui-gmap-markers models="allMarkers" coords="'self'" icon="'icon'"  options="marker.options" click="onClick()" events="marker.events">
                 </ui-gmap-markers>
-            </ui-gmap-google-map>
+                </ui-gmap-google-map>
                 </div>
             </div>
         </div>
@@ -191,7 +184,7 @@
             <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
         
             <!--<span class="pull-right stats_thumbnail">19</span>-->
-            <span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>        
+            <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->        
            </div>
             </div>
             </div>
@@ -228,3 +221,11 @@
                 </li>
             </flex-slider>-->
 <!--<div ap-fotorama="options" ng-model="items">-->
+<script type="text/javascript">
+    $('.moadalImage').ready(function () {
+        console.log('loading');
+    });
+    $('.moadalImage').load(function () {
+        console.log('loaded');
+    });
+</script>
