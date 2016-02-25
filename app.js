@@ -4,7 +4,7 @@
     app.run(['$cookies', '$rootScope', '$window', '$location',
         function ($cookies, $rootScope, $window, $location) {
             $rootScope.isPageHeaderLoaded = false;
-            Parse.initialize("hqRCJWWJJhduQBOceJYMnKUh8rt5prJ2WyUfDkmp", "M7ZPrFMJoEopzBvOGCmynUbN5qwedkTeY32hFmpy");
+            Parse.initialize("", "");
             $rootScope.fbInit = false;
             $window.fbAsyncInit = function () {
                 if($rootScope.fbInit) {
