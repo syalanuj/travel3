@@ -2,6 +2,9 @@
     'use strict';
 
     var app = angular.module('campture');
+    app.filter('escape', function() {
+        return window.encodeURIComponent;
+    });
     app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', controller]);
     function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout) {
         //====== Scope Variables==========
@@ -189,51 +192,6 @@
             $scope.modalImageUrl = imageUrl;
         };
 
-        $scope.prod = { imagePaths: [] };
-        $scope.prod.imagePaths = [
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg' },
-      	{ custom: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', thumbnail: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg' }
-      ];
-        $scope.items = [{ img: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', thumb: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg', full: 'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'}];
-        //     //--------Photo Slider--------//
-        //     // Set of Photos			
-        $scope.photos = [
-				{ src: 'http://farm9.staticflickr.com/8042/7918423710_e6dd168d7c_b.jpg', desc: 'Image 01' },
-				{ src: 'http://farm9.staticflickr.com/8449/7918424278_4835c85e7a_b.jpg', desc: 'Image 02' },
-				{ src: 'http://farm9.staticflickr.com/8457/7918424412_bb641455c7_b.jpg', desc: 'Image 03' },
-				{ src: 'http://farm9.staticflickr.com/8179/7918424842_c79f7e345c_b.jpg', desc: 'Image 04' },
-				{ src: 'http://farm9.staticflickr.com/8315/7918425138_b739f0df53_b.jpg', desc: 'Image 05' },
-				{ src: 'http://farm9.staticflickr.com/8461/7918425364_fe6753aa75_b.jpg', desc: 'Image 06' }
-			];
-        // initial image index			
-        $scope._Index = 0;
-        // if a current image is the same as requested image			
-        $scope.isActive = function (index) {
-            return $scope._Index === index;
-        };
-        // show prev image			
-        $scope.showPrev = function (allImages) {
-            $scope._Index = ($scope._Index > 0) ? --$scope._Index : allImages.length - 1;
-        };
-        // show next image
-        $scope.showNext = function (allImages) {
-            $scope._Index = ($scope._Index < allImages.length - 1) ? ++$scope._Index : 0;
-        };
-        // show a certain image
-        $scope.showPhoto = function (index) {
-            $scope._Index = index;
-        };
-
         $scope.searchFilteredFeed = function (searchText) {
             $location.path('/feed?');
         }
@@ -243,6 +201,16 @@
                 scrollTop: $("#comments").offset().top - 100
             }, 500);
         }
+        $scope.shareOnFacebook = function(){
+            FB.ui({
+            method: "feed",
+            link: $scope.pageUrl,
+            caption: $scope.trip.title,
+            description: $scope.trip.introduction,
+            picture: $scope.trip.main_image.image_url
+        });
+        }
+
 
     };
 })();

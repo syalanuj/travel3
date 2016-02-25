@@ -163,6 +163,9 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             },
             error: function (object, error) {
                 // The object was not retrieved successfully.
+                if(error.code == 101){
+                    callback(undefined);
+                }
             }
         });
     }

@@ -2,8 +2,8 @@
     'use strict';
 
     var app = angular.module('campture');
-    app.controller('ProfileCtrl', ['$scope', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout', controller]);
-    function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout) {
+    app.controller('ProfileCtrl', ['$scope', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout','$location', controller]);
+    function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout,$location) {
         //====== Scope Variables==========
         //================================  
         $scope.isPageLoading = false;
@@ -31,10 +31,13 @@
                 }
                 $scope.$apply();
             }
+            else {
+                $location.path('/pageNotFound/');
+            }
         });
         accountService.getMyTrips($routeParams.userId, function (data) {
             $scope.$apply(function () {
-            if (data.length > 0) {                
+                if (data.length > 0) {
                     var markerId = 0;
                     $scope.myTrips = data;
                     $scope.isPageLoading = true;
@@ -50,9 +53,9 @@
                             });
                             markerId++;
                         });
-                    });       
-            }
-            $scope.isPageLoading = true;
+                    });
+                }
+                $scope.isPageLoading = true;
             });
         });
         $scope.$on('mapInitialized', function (event, map) {
