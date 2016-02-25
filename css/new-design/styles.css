@@ -992,10 +992,9 @@ textarea {
     border-width: 1px;
     border-color: rgb(173, 173, 173);
     border-radius: 4px;
-    background-image: -moz-linear-gradient( 90deg, rgb(64,93,154) 0%, rgb(77,104,161,) 100%);
-   background-image: -webkit-linear-gradient( 90deg, rgb(64,93,154) 0%, rgb(77,104,161) 100%);
-   background-image: -ms-linear-gradient( 90deg, rgb(64,93,154) 0%, rgba(77,104,161,.3) 100%);
-    top: 15px;
+    background-color: rgb(59, 89, 152);
+  	box-shadow: 1.045px 9.945px 24px 6px rgba(26, 66, 149, 0.2);
+  	top: 15px;
     margin-left:30px;
     padding:7px!important;
     color: rgb(255, 255, 255)!important;
