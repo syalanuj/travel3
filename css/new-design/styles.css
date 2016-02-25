@@ -529,7 +529,7 @@ z-index: 110;
 }
 .timeline-thirdheader{
 	background-color: rgb(255, 255, 255);
-	margin:0px;
+	margin-bottom: 20px;
 }
 .timeline-thirdheader btn{
 font-size: 18px;
