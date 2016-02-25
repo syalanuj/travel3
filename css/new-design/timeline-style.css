@@ -187,7 +187,7 @@ body {
 	width: 100%;
 } }
   .content .portfolio-item {
-    background: #f7f7f7; }
+    background: white; }
     .content .portfolio-item:before {
       content: "";
       position: absolute;
@@ -221,10 +221,12 @@ body {
         .content .portfolio-item .portfolio-info .meta p {
           margin: 0; }
     .content .portfolio-item .portfolio-image {
-      padding: 20px 20px 20px 20px;
+      padding: 10px;
       background: white;
-      border-left: 1px solid #dedede;
-      text-align: center; }
+      border: 1px solid #dedede;
+      text-align: center;
+      box-shadow: 0px 5px 18px 2px rgba(194, 194, 194, 0.1);
+      margin-bottom: 10px; }
       @media screen and (min-width: 760px) {
         .content .portfolio-item .portfolio-image {
           float: left;
