@@ -5,7 +5,7 @@ html{
 }
 body
 {
-	background-color:white;
+	background-color:#fff;
 }
 /*SearchbarCSS*/
 .timeline-search-box {
@@ -1017,7 +1017,7 @@ color: rgb(17, 23, 28);
 border-bottom-color:rgb(234, 137, 113);
 }
 .timelineend{
-	background-color:#f7f7f7;
+	background-color:#fff;
 	color:black;
 }
 .timelineend img{
@@ -1474,7 +1474,6 @@ width:100%;
 	 color:#f56c36;
 	   }
 .by-user img{
-	box-shadow: 0px 0px 20px 0px rgba(245, 108, 54, 0.5);
 	height:41px;
 	width: 41px;
 }
