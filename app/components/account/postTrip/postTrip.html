@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script type="text/javascript">
 Dropzone.autoDiscover = false;
 </script>
@@ -5,6 +6,20 @@ Dropzone.autoDiscover = false;
 
 <div class="container frame-padding-bottom">
     <form name="postTripForm" ng-submit="" onsubmit="retrun false;" role="form">
+        <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
+                                    <div class="cover-message dz-message">
+                                    <a class="uploader needsclick dz-clickable"> Add </a>
+                                    <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i>
+                                    </div>
+                                </div >
+                                <div ng-show="mainImageUploading" class="text-center">
+                                    <img src="css/images/ring-alt.gif">
+                                </div>
+                                <div ng-show="mainImageUploaded" class="text-center">
+                                    <img ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image">
+                                </div>                                
+                                <br />					
+					            <!-- Upload Finished -->		
     <div class="bottommargin form-top-margin">   
         <div class="panel panel-default">
       <div class="panel-heading" style="background-color:#fff">
@@ -20,34 +35,11 @@ Dropzone.autoDiscover = false;
 			            <div class="panel panel-default bordernone">
                             <div class="text-center" style="padding-top:10px;">
                                 <span class="input-alter input--isao no-margin"  ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">					                                                    
-				                    <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline input__field input__field--isao" ng-model="newTrip.title" maxlength="100" name="title" type="text" required>                                    
+				                    <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline cover-input-field" ng-model="newTrip.title" maxlength="100" name="title" type="text" required>                                    
 					                
                                 </span>
                                 <span ng-show="postTripForm.title.$dirty && postTripForm.title.$error.required" class="help-block">Title is required.</span>			                        
-                            </div>
-				            <div class="panel-body bordernone no-margin" style="padding-top:0px; padding-bottom:0px;">				
-					            <!-- /input-group image-preview [TO HERE]--> 					
-					            <br />					
-					            <!-- Drop Zone -->
-					            <!--<div ng-show="!mainImageUploaded" class="main-image-drop-zone upload-drop-zone" dropzone="mainImageDropzoneConfig">Upload your cover photo </div>
-					            <div ng-show="mainImageUploaded" class="upload-drop-zone">
-                                    <img ng-show="mainImageUploaded" ng-src="{{newTrip.main_image.image_url}}" alt="main image">
-                                </div>-->
-                                <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
-                                    <div class="cover-message dz-message">
-                                    <a class="uploader needsclick dz-clickable"> Add </a>
-                                    <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i>
-                                    </div>
-                                </div >
-                                <div ng-show="mainImageUploading" class="text-center">
-                                    <img src="css/images/ring-alt.gif">
-                                </div>
-                                <div ng-show="mainImageUploaded" class="text-center">
-                                    <img ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image">
-                                </div>                                
-                                <br />					
-					            <!-- Upload Finished -->					
-				            </div>
+                            </div>				            
 			            </div>
 		            </div>
                     <div  class="col-md-12">
