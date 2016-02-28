@@ -33,7 +33,7 @@ Dropzone.autoDiscover = false;
 					            <div ng-show="mainImageUploaded" class="upload-drop-zone">
                                     <img ng-show="mainImageUploaded" ng-src="{{newTrip.main_image.image_url}}" alt="main image">
                                 </div>-->
-                                <div ng-show="!mainImageUploaded && !mainImageUploading" class="text-area-border-color editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
+                                <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
                                     <div class="cover-message dz-message">
                                     <a class="uploader needsclick dz-clickable"> Add </a>
                                     <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i>
@@ -81,23 +81,24 @@ Dropzone.autoDiscover = false;
                 </div>
             </uib-accordion-heading>
             <ng-form name="placeForm">
-                 <div  class="col-md-7">
+                 <div  class="col-md-5">
                     <div>  
 				        <span class="input-alter input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
-					        <input type="text" name="location" placeholder="Where were these photos taken?"  class="remove-location-placeholder no-input-outline input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded"  ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
+					        <input type="text" name="location" placeholder="Where were these photos taken?"  class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded"  ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
 					        </span>
                         <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>                                                               
-                <span>
+                
                     <textarea placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note"></textarea>
-					</span>
+					
                  <span class="input-alter input--isao" >    <!--ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }"-->
 		            <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
 		            </span>                               
                  </div>
              </div>  
-                <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-5">
-                    <div  class="dropzone needsclick dz-clickable" dropzone="dropzoneConfig">
-                        <div class="dz-message needsclick">Drag and drop files here or click to upload</div>
+                <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
+                    <div  class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">
+                        <div class="dz-message needsclick dropzone-internal-border"><img src="">
+                        <h2>Drag and drop</h2></div>
                    </div>
                 </div>
                <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">

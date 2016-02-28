@@ -10,7 +10,7 @@ html{
 }
 body
 {
-	background-color:white;
+	background-color:#fff;
 }
 /*SearchbarCSS*/
 .timeline-search-box {
@@ -672,7 +672,7 @@ table tr td:last-child {
 	display: inline-block;
 	margin: 0px;
 	max-width: 500px;
-	width: calc(100% - 2em);
+	width: 100%;
 	vertical-align: top;
 }
 
@@ -740,14 +740,16 @@ table tr td:last-child {
 	float: right;
 	padding: 0.8em;
 	width: 100%;
-	border: solid 2px rgba(166, 166, 166, 0.1);
+	border-bottom: solid 2px rgba(166, 166, 166, 0.1);
 	border-radius: 0;
 	color: #aaa;
 	font-style: italic;
 	font-family: "lato", Helvetica, Arial, sans-serif;
-	box-shadow: inset 1.879px -0.684px 5px 0px rgba(198, 198, 198, 0.1);
-	margin: 10px;
+	/*box-shadow: inset 1.879px -0.684px 5px 0px rgba(198, 198, 198, 0.1);*/
 	-webkit-appearance: none; /* for box shadows to show on iOS */
+	border-top:none;
+	border-left:none;
+	border-right:none;
 }
 /*tags*/
 .tagsinput {
@@ -994,7 +996,7 @@ textarea {
     border-width: 1px;
     border-color: rgb(173, 173, 173);
     border-radius: 4px;
-    background-color: rgb(59, 89, 152);
+    background-color: rgb(59, 89, 152)!important;
   	box-shadow: 1.045px 9.945px 24px 6px rgba(26, 66, 149, 0.2);
   	top: 15px;
     margin-left:30px;
@@ -1018,13 +1020,7 @@ color: rgb(17, 23, 28);
 	border-bottom: solid 2px;
 border-bottom-color:rgb(234, 137, 113);
 }
-.timelineend{
-	background-color:#f7f7f7;
-	color:black;
-}
-.timelineend img{
-	width:90px;
-}
+
 .credits p{
 	font-size:18px;
 }
@@ -1043,15 +1039,20 @@ color: #e6e6e6 !important;
 }
 
 .text-area-border-color{
-    border-style: solid;
-    border-width: 2px;
-    border-color: rgba(166, 166, 166, .1);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(166, 166, 166, .1);
     background-color: rgb(255, 255, 255);
+	border-left:none;
+	border-top:none;
+	border-right:none;
 }
 
 .text-area-border-color:focus{
-    border:1px solid rgb(226, 88, 51)!important;
-    box-shadow: 0 0 10px rgb(226, 88, 51)!important;
+	border-left:none;
+	border-top:none;
+	border-right:none;
+    border-bottom:1px solid rgb(226, 88, 51)!important;
     outline: none !important;
 }
 
@@ -1161,7 +1162,7 @@ border-bottom-color:rgb(234, 137, 113);
 
 }
 .timelineend{
-	background-color:#f7f7f7;
+	background-color:#fff;
 	color:black;
 }
 .timelineend img{
@@ -1476,7 +1477,6 @@ width:100%;
 	 color:#f56c36;
 	   }
 .by-user img{
-	box-shadow: 0px 0px 20px 0px rgba(245, 108, 54, 0.5);
 	height:41px;
 	width: 41px;
 }
@@ -1685,4 +1685,15 @@ width: 100%;
     margin-left: auto;
     margin-right: auto;
     padding-top: 10%;
+	}
+.dropzone-internal-border{
+	margin:0px!important;
+	border:dashed;
+	border-width:2px;
+	border-color:rgba(0, 0, 0, 0.3);
+	padding-top: 70px;
+    padding-bottom: 70px;
+}
+.dropzone-external-border{
+	padding:4px!important;
 }
