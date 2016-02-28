@@ -113,6 +113,9 @@
                             if (data) {
                                 $scope.places[file.placeIndex].location = data.locationName;
                                 $scope.places[file.placeIndex].date = data.uploadDate;
+                                $scope.places[file.placeIndex].coordinates = new Object();
+                                $scope.places[file.placeIndex].coordinates.latitude = data.coordinates.lat;
+                                $scope.places[file.placeIndex].coordinates.longitude = data.coordinates.lng;
                                 $scope.$apply();
                             }
                         });
@@ -229,25 +232,25 @@
         }
 
         function getImageGeotagLocation(file, callback) {
-            try{
-            EXIF.getData(file, function () {
-                var allTags = EXIF.getAllTags(this);
-                var tagDateTime = allTags.DateTimeOriginal.replace(":", "/");
-                tagDateTime = tagDateTime.replace(":", "/");
-                var uploadDate = new Date(tagDateTime);
-                if (allTags.GPSLatitude && allTags.GPSLongitude)
-                    var latLng = {
-                        lat: getGPSDegreeToDecimal(allTags.GPSLatitude[0], allTags.GPSLatitude[1], allTags.GPSLatitude[2], allTags.GPSLatitudeRef),  //(degree, minutes, seconds, direction)
-                        lng: getGPSDegreeToDecimal(allTags.GPSLongitude[0], allTags.GPSLongitude[1], allTags.GPSLongitude[2], allTags.GPSLongitudeRef)
-                    };
-                getLocationFromLatLng(latLng, function (data) {
-                    callback({ locationName: data, uploadDate: uploadDate });
+            try {
+                EXIF.getData(file, function () {
+                    var allTags = EXIF.getAllTags(this);
+                    var tagDateTime = allTags.DateTimeOriginal.replace(":", "/");
+                    tagDateTime = tagDateTime.replace(":", "/");
+                    var uploadDate = new Date(tagDateTime);
+                    if (allTags.GPSLatitude && allTags.GPSLongitude)
+                        var latLng = {
+                            lat: getGPSDegreeToDecimal(allTags.GPSLatitude[0], allTags.GPSLatitude[1], allTags.GPSLatitude[2], allTags.GPSLatitudeRef),  //(degree, minutes, seconds, direction)
+                            lng: getGPSDegreeToDecimal(allTags.GPSLongitude[0], allTags.GPSLongitude[1], allTags.GPSLongitude[2], allTags.GPSLongitudeRef)
+                        };
+                    getLocationFromLatLng(latLng, function (data) {
+                        callback({ locationName: data, uploadDate: uploadDate, coordinates: latLng });
+                    });
                 });
-            });
+            }
+            catch (e) {
+                console.log(e);
+            }
         }
-        catch(e){
-            console.log(e);      
-        }
-      }
     };
 })();

@@ -77,15 +77,13 @@ Dropzone.autoDiscover = false;
 	    </div>
         </div>
         <uib-accordion close-others="collapseStatus">
-        <uib-accordion-group is-open="true" ng-repeat="placeindex in newplaces track by $index">
+        <uib-accordion-group is-open="false" ng-repeat="placeindex in newplaces track by $index">
             <uib-accordion-heading>
                 <div>
                     {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}
+                    <span class="pull-right"><a ng-hide="$index == 0 " ng-click="deleteItem($index)" class="fa fa-trash-o" style="color: #000;padding-top: 0px;"></a></span>
                 </div>
-            </uib-accordion-heading>    
-            <div style="float:right">
-                    <button ng-hide="$index == 0 " ng-click="deleteItem($index)" type="button" class="btn" style="color: #000">Delete</button>
-                </div>
+            </uib-accordion-heading>
             <ng-form name="placeForm">
                  <div  class="col-md-7">
                     <div>  
@@ -111,7 +109,7 @@ Dropzone.autoDiscover = false;
                  </div>
              </div>  
                  <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-5">
-                   <div  class="dropzone needsclick dz-clickable" dropzone="dropzoneConfig">                        
+                   <div class="dropzone needsclick dz-clickable" dropzone="dropzoneConfig">                        
                             <div class="dz-message needsclick"><div ng-show="initPlaces[placeindex].images == null">Drag and drop files here or click to upload</div></div>
                             <div ng-repeat="image in initPlaces[placeindex].images track by $index" class="dz-preview dz-file-preview">
                                 <div  class="dz-image">
@@ -121,10 +119,10 @@ Dropzone.autoDiscover = false;
                             </div>
                     </div>
                 </div>
-               <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
+               <!--<div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
                    <input type=hidden name=imageUploads ng-model="$scope.places[placeindex].images">
                    <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span>
-               </div>
+               </div>-->
         </ng-form>             
         </uib-accordion-group>
     </uib-accordion>
