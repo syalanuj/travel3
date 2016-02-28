@@ -77,11 +77,9 @@ Dropzone.autoDiscover = false;
             <uib-accordion-heading>
                 <div>
                     {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}
+                    <span class="pull-right"><a ng-hide="$index == 0 " ng-click="deleteItem($index)" class="fa fa-trash-o" style="color: #000;padding-top: 0px;"></a></span>
                 </div>
-            </uib-accordion-heading>    
-            <div style="float:right">
-                    <button ng-hide="$index == 0 " ng-click="deleteItem($index)" type="button" class="btn" style="color: #000">Delete</button>
-                </div>
+            </uib-accordion-heading>
             <ng-form name="placeForm">
                  <div  class="col-md-5">
                     <div>  

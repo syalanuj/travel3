@@ -10,23 +10,25 @@
         //$rootScope.travelStyles;
         //$rootScope.topStates;
         //$rootScope.activities;
+        
         $scope.topTags = [
         { tag: 'rafting', image_url: '/img/tags/rafting.png' },
         { tag: 'skiing', image_url: '/img/tags/skiing.png' },
         { tag: 'trekking', image_url: '/img/tags/trekking2.png' },
-        { tag: 'hiking', image_url: '/img/tags/hiking.png' }];
+        { tag: 'hiking', image_url: '/img/tags/hiking.png'}];
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
         $scope.showTags = false;
         $rootScope.query = {};
         $rootScope.queryBy = '$';
-
+        $rootScope.isPageHeaderLoaded = true;
+        $(".header-elements").css("display", "k");
         $rootScope.loginWithFacebook = function () {
             if (!$rootScope.fbInit) return;
             if (!$rootScope.fbInit) return;
 
             Parse.FacebookUtils.logIn(null, {
                 success: function (user) {
-                    if (!user.existed()) {                        
+                    if (!user.existed()) {
                         accountService.getMyProfile().then(function (response) {
                             accountService.updateUserFacebookProfile(response, user.id, function (data) {
                                 $scope.$apply(function () {
@@ -36,12 +38,12 @@
                                     }
                                 });
                             });
-                        });                    
-                    } 
+                        });
+                    }
                     else {
                         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
                         $scope.$apply();
-                    }  
+                    }
                     $location.path("/");
                 },
                 error: function (user, error) {
@@ -49,15 +51,44 @@
                 }
             });
         };
+        $scope.loginToPost = function () {
+            if (!$rootScope.fbInit) return;
+            if (!$rootScope.fbInit) return;
+
+            Parse.FacebookUtils.logIn(null, {
+                success: function (user) {
+                    if (!user.existed()) {
+                        accountService.getMyProfile().then(function (response) {
+                            accountService.updateUserFacebookProfile(response, user.id, function (data) {
+                                $scope.$apply(function () {
+                                    if (data) {
+                                        var x = data;
+                                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
+                                    }
+                                });
+                            });
+                        });
+                    }
+                    else {
+                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
+                        $scope.$apply();
+                    }
+                    $location.path("/account/postTrip/");
+                },
+                error: function (user, error) {
+                    console.log("Cancelled");
+                }
+            });
+        }
 
         $rootScope.logout = function () {
             Parse.User.logOut();
-            $scope.userObj = undefined;//Parse.User.current();
+            $scope.userObj = undefined; //Parse.User.current();
             $location.path("/");
         };
 
         $rootScope.getCroppedTripImageUrl = function (url, transString) {
-            try {               
+            try {
                 if (!transString) {
                     transString = 'upload/c_fill,h_440,w_440/';
                 }
@@ -68,9 +99,9 @@
             }
             return croppedUrl;
         };
-        
-        $scope.searchTrips = function(){
-            $location.path("/feed//"+$scope.query[$scope.queryBy]);
+
+        $scope.searchTrips = function () {
+            $location.path("/feed//" + $scope.query[$scope.queryBy]);
         }
 
 
@@ -91,24 +122,24 @@
         //    });
         //});
     };
-    app.directive("outsideClick", ['$document','$parse', function( $document, $parse ){
-    return {
-        link: function( $scope, $element, $attributes ){
-            var scopeExpression = $attributes.outsideClick,
-                onDocumentClick = function(event){
+    app.directive("outsideClick", ['$document', '$parse', function ($document, $parse) {
+        return {
+            link: function ($scope, $element, $attributes) {
+                var scopeExpression = $attributes.outsideClick,
+                onDocumentClick = function (event) {
                     var isChild = $element.find(event.target).length > 0;
 
-                    if(!isChild) {
+                    if (!isChild) {
                         $scope.$apply(scopeExpression);
                     }
                 };
 
-            $document.on("click", onDocumentClick);
+                $document.on("click", onDocumentClick);
 
-            $element.on('$destroy', function() {
-                $document.off("click", onDocumentClick);
-            });
+                $element.on('$destroy', function () {
+                    $document.off("click", onDocumentClick);
+                });
+            }
         }
-    }
-}]);
+    } ]);
 })();

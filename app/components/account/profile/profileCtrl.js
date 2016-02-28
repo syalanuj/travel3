@@ -2,10 +2,11 @@
     'use strict';
 
     var app = angular.module('campture');
-    app.controller('ProfileCtrl', ['$scope', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout', controller]);
-    function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout) {
+    app.controller('ProfileCtrl', ['$scope', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout','$location', controller]);
+    function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout,$location) {
         //====== Scope Variables==========
-        //================================      
+        //================================  
+        $scope.isPageLoading = false;
         $scope.myTrips;
         $scope.newTrip;
         $scope.userObj;
@@ -28,13 +29,18 @@
                         $scope.isMyProfile = true;
                     }
                 }
+                $scope.$apply();
+            }
+            else {
+                $location.path('/pageNotFound/');
             }
         });
         accountService.getMyTrips($routeParams.userId, function (data) {
-            if (data.length > 0) {
-                $scope.$apply(function () {
+            $scope.$apply(function () {
+                if (data.length > 0) {
                     var markerId = 0;
                     $scope.myTrips = data;
+                    $scope.isPageLoading = true;
                     angular.forEach($scope.myTrips, function (trip, key) {
                         var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
                         trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
@@ -42,14 +48,15 @@
                             $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
                             var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
                             bounds.extend(latlng);
-                            angular.forEach(place.images, function (image, key) { 
+                            angular.forEach(place.images, function (image, key) {
                                 $scope.allTripImages.push(image);
                             });
                             markerId++;
                         });
                     });
-                });
-            }
+                }
+                $scope.isPageLoading = true;
+            });
         });
         $scope.$on('mapInitialized', function (event, map) {
             map.setCenter(bounds.getCenter());

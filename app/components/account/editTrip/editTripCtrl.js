@@ -17,14 +17,14 @@
         $scope.rawTags;
         $scope.isAddTag = false;
         $scope.isTripUploading = false;
+        $scope.collapseStatus = true;
 
         accountService.getTripById($routeParams.tripId, function (data) {
-            $scope.$apply(function () {
-                $scope.newTrip = data;
-                $scope.places = $scope.newTrip.visited_places;
-                $scope.initPlaces = $scope.places;
-                $scope.queuecomplete = $scope.newTrip.length;
-            });
+            $scope.newTrip = data;
+            $scope.places = $scope.newTrip.visited_places;
+            $scope.initPlaces = data.visited_places;
+            $scope.queuecomplete = $scope.newTrip.length;
+
             $scope.newplaces = new Array();
             for (var i = 0; i < $scope.places.length; i++) {
                 $scope.newplaces.push(i);
@@ -81,6 +81,7 @@
                 },
                 'success': function (file, response) {
                     $scope.places[file.placeIndex].images.push({ image_url: response.url });
+                    $scope.initPlaces[file.placeIndex].images.pop();
                 },
                 'removedfile': function (file, response) {
                     $scope.places[file.placeIndex].images.splice(file.imageIndex, 1);
@@ -131,7 +132,6 @@
         };
         $scope.getPlaceIndex = function (pindex) {
             $scope.pIndex = pindex;
-
         };
 
         $scope.updateTrip = function () {
@@ -170,7 +170,7 @@
             $scope.newplaces.splice(index, 1);
         }
 
-        $scope.focusTagsInput = function (){
+        $scope.focusTagsInput = function () {
             $('#tagInput').focus();
         }
     };

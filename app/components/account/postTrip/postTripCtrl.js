@@ -10,6 +10,9 @@
             $('.remove-location-placeholder').removeAttr('placeholder');
         });
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
+        if (!$scope.userObj) {
+            $location.path("/");
+        }
         $scope.userObj.id = $scope.userObj.objectId;
         $scope.details = function (details) {
             $scope.places[$scope.pIndex].coordinates = { latitude: details.geometry.location.lat(), longitude: details.geometry.location.lng() };
@@ -105,6 +108,18 @@
                     formData.append('upload_preset', 'campture');
                     file.placeIndex = $scope.currentPlaceIndex;
                     file.imageIndex = $scope.currentImageIndex;
+                    if (file.imageIndex == 0) {
+                        getImageGeotagLocation(file, function (data) {
+                            if (data) {
+                                $scope.places[file.placeIndex].location = data.locationName;
+                                $scope.places[file.placeIndex].date = data.uploadDate;
+                                $scope.places[file.placeIndex].coordinates = new Object();
+                                $scope.places[file.placeIndex].coordinates.latitude = data.coordinates.lat;
+                                $scope.places[file.placeIndex].coordinates.longitude = data.coordinates.lng;
+                                $scope.$apply();
+                            }
+                        });
+                    }
                     $scope.currentImageIndex++;
                 },
                 'success': function (file, response) {
@@ -185,8 +200,57 @@
             $scope.newplaces.splice(index, 1);
         }
 
-        $scope.focusTagsInput = function (){
+        $scope.focusTagsInput = function () {
             $('#tagInput').focus();
+        }
+
+        //GeoTagging
+        function getGPSDegreeToDecimal(degree, minutes, seconds, direction) {
+            direction.toUpperCase();
+            var dd = degree + minutes / 60 + seconds / (60 * 60);
+            //alert(dd);
+            if (direction == "S" || direction == "W") {
+                dd = dd * -1;
+            } // Don't do anything for N or E
+            return dd;
+        }
+        function getLocationFromLatLng(latLng, callback) {
+            var latlng = new google.maps.LatLng(latLng);
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({ 'location': latlng }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        callback(results[1].formatted_address);
+                    } else {
+                        callback(undefined);
+                    }
+                } else {
+                    callback(undefined);
+                    console.log('Geocoder failed due to: ' + status);
+                }
+            });
+        }
+
+        function getImageGeotagLocation(file, callback) {
+            try {
+                EXIF.getData(file, function () {
+                    var allTags = EXIF.getAllTags(this);
+                    var tagDateTime = allTags.DateTimeOriginal.replace(":", "/");
+                    tagDateTime = tagDateTime.replace(":", "/");
+                    var uploadDate = new Date(tagDateTime);
+                    if (allTags.GPSLatitude && allTags.GPSLongitude)
+                        var latLng = {
+                            lat: getGPSDegreeToDecimal(allTags.GPSLatitude[0], allTags.GPSLatitude[1], allTags.GPSLatitude[2], allTags.GPSLatitudeRef),  //(degree, minutes, seconds, direction)
+                            lng: getGPSDegreeToDecimal(allTags.GPSLongitude[0], allTags.GPSLongitude[1], allTags.GPSLongitude[2], allTags.GPSLongitudeRef)
+                        };
+                    getLocationFromLatLng(latLng, function (data) {
+                        callback({ locationName: data, uploadDate: uploadDate, coordinates: latLng });
+                    });
+                });
+            }
+            catch (e) {
+                console.log(e);
+            }
         }
     };
 })();

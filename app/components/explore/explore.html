@@ -1,27 +1,9 @@
-<!--<nav class="navbar navbar-default" style="background-color:#FFFFFF">
-  <div class="container-fluid" style="background-color:#FFFFFF">
-  <div class="row">
-    <div class="navbar-header col-md-5">
-      <div class="navbar-brand">
-        <img alt="Brand" src="img/icons/rocket-icon.png"></div>
-        <div class="navbar-brand Explore">Explore</div>
-      </div>
-      <div class="col-md-3">
-        <form class="navbar-form no-margin" role="search">
-            <div id="wrap">
-              <form action=""  autocomplete="on">
-              <input id="search" ng-model="query[queryBy]" name="search" type="text" placeholder="What're we looking for ?" class="timeline-search-box">              
-              </form>
-            </div>
-        </form>
-      </div>
-  </div>
-  </div>
-</nav>-->
-
+<div class="explore-banner text-center">
+    <img src="../css/images/explore.png" class="img-responsive">
+</div>
 <div class="container">
 <div class="row" style="margin-top: 50px">
-    <div class="col-sm-6 col-md-3" ng-repeat="trip in filteredTrips = ( allTrips | filter:query)">
+    <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips">
         <div class="thumbnail">
           <a ng-href="#/account/timeline/{{trip.id}}">
               <img class="xpro2" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
@@ -42,8 +24,6 @@
            </div>
         </div>
   </div>
-    <div ng-show="isPageLoaded">
-        <p ng-hide="filteredTrips.length" style="color: black">No Matching Results</p>
-    </div>
+    
 </div>
 </div>
