@@ -84,23 +84,27 @@ Dropzone.autoDiscover = false;
                 </div>
             <ng-form name="placeForm">
                  <div  class="col-md-5">
-                    <div>  
-				        <span class="input-alter input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
+                    <div> 
+                    <span class="input-alter input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
 					        <input type="text" name="location" placeholder="Where were these photos taken?"  class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded"  ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
 					        </span>
-                        <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>                                                               
-                
+                        <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
+                        
                     <textarea placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note"></textarea>
+				    <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
+		                                                                              
+                
+                    
 					
-                 <span class="input-alter input--isao" >    <!--ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }"-->
-		            <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
-		            </span>                               
+                                            
                  </div>
              </div>  
                 <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
                     <div  class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">
-                        <div class="dz-message needsclick dropzone-internal-border"><img src="">
-                        <h2>Drag and drop</h2></div>
+                        <div class="dz-message needsclick dropzone-internal-border"><img src="../../../../css/images/2016-02-26.png">
+                        <h2>DRAG AND DROP</h2>
+                        <h4>Your Photos or Browse</h4>
+                        </div>
                    </div>
                 </div>
                <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
