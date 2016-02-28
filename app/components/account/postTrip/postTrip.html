@@ -20,7 +20,8 @@ Dropzone.autoDiscover = false;
 			            <div class="panel panel-default bordernone">
                             <div class="text-center" style="padding-top:10px;">
                                 <span class="input-alter input--isao no-margin"  ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">					                                                    
-				                    <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline input__field input__field--isao" ng-model="newTrip.title" maxlength="100" name="title" type="text" required>                                    
+		
+        <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline input__field input__field--isao" ng-model="newTrip.title" maxlength="100" name="title" type="text" required>                                    
 					                
                                 </span>
                                 <span ng-show="postTripForm.title.$dirty && postTripForm.title.$error.required" class="help-block">Title is required.</span>			                        
