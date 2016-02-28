@@ -65,7 +65,8 @@
 
         $scope.postTrip = function () {
             $scope.isPublishedClicked = true;
-            if ($scope.imageUploadDone) {
+
+            if (!$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
                 $scope.isTripUploading = true;
                 $scope.newTrip.visited_places = $scope.places;
                 $scope.newTrip.user = {
@@ -73,24 +74,19 @@
                     name: $scope.userObj.facebook_profile.name
                 }
                 $scope.newTrip.posted_on = new Date();
-                //$scope.newTrip.tags = new Array();
-                //if ($scope.tags) {
-                //    var tags = $scope.tags.split(',');
-                //    angular.forEach(tags, function (value, key) {
-                //        $scope.newTrip.tags.push(value.trim());
-                //    });
-                //}
-                accountService.postTrip($scope.newTrip, function (data) {
-                    $scope.$apply(function () {
-                        if (data) {
-                            $scope.newplaces = [1];
-                            $scope.newTrip = undefined;
-                            $scope.places = undefined;
-                            $scope.isTripUploading = false;
-                            $location.path('/account/timeline/' + data);
-                        }
+                if (validateImageCount($scope.newTrip)) {
+                    accountService.postTrip($scope.newTrip, function (data) {
+                        $scope.$apply(function () {
+                            if (data) {
+                                $scope.newplaces = [1];
+                                $scope.newTrip = undefined;
+                                $scope.places = undefined;
+                                $scope.isTripUploading = false;
+                                $location.path('/account/timeline/' + data);
+                            }
+                        });
                     });
-                });
+                }
             }
         };
         $scope.dropzoneConfig = {
@@ -127,6 +123,9 @@
                 },
                 'removedfile': function (file, response) {
                     $scope.places[file.placeIndex].images.splice(file.imageIndex, 1);
+                    if ($scope.places[file.placeIndex].images.length < 1) {
+                        $scope.imageUploadDone = false;
+                    }
                 },
                 'queuecomplete': function (file, response) {
                     $scope.queuecomplete++;
@@ -251,6 +250,19 @@
             catch (e) {
                 console.log(e);
             }
+        }
+
+        function validateImageCount(trip) {
+            angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                if (place.images.length < 1) {
+                    return false;
+                }
+            });
+            //for (place in trip.visited_places) {
+            //    if (place.images.length < 1)
+            //    { return false; }
+            //}
+            //return true;
         }
     };
 })();

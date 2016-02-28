@@ -1674,18 +1674,12 @@ width: 100%;
 .full-height{
 	height: 100vh;
 }
-.explore-banner{
-    background-image: url(../images/landscape-mountains-nature-rocks.jpg);
-    height: 60vh;
-    background-position: center;
-    background-repeat: no-repeat no-repeat;     
-    background-size: cover;
-    
+.explore-banner{    
+    padding: 30px;
 }
 .explore-banner img{
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10%;
 	}
 .dropzone-internal-border{
 	margin:0px!important;

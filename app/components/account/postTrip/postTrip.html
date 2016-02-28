@@ -4,7 +4,7 @@ Dropzone.autoDiscover = false;
 <!--<div profile-wrap files="userObj"></div>-->
 
 <div class="container frame-padding-bottom">
-    <form name="postTripForm" ng-submit="" role="form">
+    <form name="postTripForm" ng-submit="" onsubmit="retrun false;" role="form">
     <div class="bottommargin form-top-margin">   
         <div class="panel panel-default">
       <div class="panel-heading" style="background-color:#fff">
@@ -54,7 +54,7 @@ Dropzone.autoDiscover = false;
                         <div>
     			            <div class="text-center">
                                     <span class="input-alter input--minoru" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
-					                    <textarea maxlength="144" class="text-area-border-color span12" ng-model="newTrip.introduction" rows="3"  name="introduction" placeholder=" Add a quick summary of your experience."  required></textarea>                                        
+					                    <textarea maxlength="144" class="text-area-border-color span12" ng-model="newTrip.introduction" rows="3"  name="introduction" placeholder=" Add a quick summary of your experience." ></textarea>                                        
 					                    
                                         <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span>
 				                    </span>  
@@ -88,13 +88,9 @@ Dropzone.autoDiscover = false;
 					        </span>
                         <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
                         
-                    <textarea placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note"></textarea>
-				    <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
-		                                                                              
-                
-                    
-					
-                                            
+                    <textarea placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" required></textarea>
+				    <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
+		                                 
                  </div>
              </div>  
                 <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
@@ -115,11 +111,11 @@ Dropzone.autoDiscover = false;
 </div>
 <div class="row">
  <button type="button" ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
- <button type="button" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
+ <button type="submit" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
  <span ng-show="isTripUploading" class="text-center">
     <img src="css/images/ripple.gif">
  </span>
 </div>
- <span ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>      
+ <span style="color: #000" ng-show="(!imageUploadDone || !mainImageUploaded) && isPublishedClicked">At least one image should be uploaded for each location</span>      
 </form>
 </div>

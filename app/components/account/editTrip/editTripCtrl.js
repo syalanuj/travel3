@@ -18,12 +18,13 @@
         $scope.isAddTag = false;
         $scope.isTripUploading = false;
         $scope.collapseStatus = true;
+        $scope.initPlaces = new Object();
 
         accountService.getTripById($routeParams.tripId, function (data) {
             $scope.newTrip = data;
             $scope.places = $scope.newTrip.visited_places;
             $scope.initPlaces = data.visited_places;
-            $scope.queuecomplete = $scope.newTrip.length;
+            $scope.queuecomplete = $scope.initPlaces.length;
 
             $scope.newplaces = new Array();
             for (var i = 0; i < $scope.places.length; i++) {
@@ -81,14 +82,17 @@
                 },
                 'success': function (file, response) {
                     $scope.places[file.placeIndex].images.push({ image_url: response.url });
-                    $scope.initPlaces[file.placeIndex].images.pop();
+                    //$scope.initPlaces[file.placeIndex].images.pop();
                 },
                 'removedfile': function (file, response) {
                     $scope.places[file.placeIndex].images.splice(file.imageIndex, 1);
+                    if ($scope.places[file.placeIndex].images.length < 1) {
+                        $scope.imageUploadDone = false;
+                    }
                 },
                 'queuecomplete': function (file, response) {
                     $scope.queuecomplete++;
-                    if ($scope.newplaces.length == $scope.queuecomplete) {
+                    if ($scope.newplaces.length <= $scope.queuecomplete) {
                         $scope.imageUploadDone = true;
                         $scope.$apply();
                     }
@@ -135,22 +139,20 @@
         };
 
         $scope.updateTrip = function () {
-            $scope.newTrip.visited_places = $scope.places;
-            //$scope.newTrip.tags = new Array();
-            //var tags = $scope.tags.split(',');
-            //angular.forEach(tags, function (value, key) {
-            //    $scope.newTrip.tags.push(value.trim());
-            //});
-            accountService.updateTrip($scope.newTrip, function (data) {
-                $scope.$apply(function () {
-                    if (data) {
-                        $scope.newplaces = [1];
-                        $scope.newTrip = undefined;
-                        $scope.isPostSuccessful = true;
-                        $location.path('/account/timeline/' + $routeParams.tripId);
-                    }
+            $scope.isPublishedClicked = true;
+            if ($scope.imageUploadDone && !$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
+                $scope.newTrip.visited_places = $scope.places;
+                accountService.updateTrip($scope.newTrip, function (data) {
+                    $scope.$apply(function () {
+                        if (data) {
+                            $scope.newplaces = [1];
+                            $scope.newTrip = undefined;
+                            $scope.isPostSuccessful = true;
+                            $location.path('/account/timeline/' + $routeParams.tripId);
+                        }
+                    });
                 });
-            });
+            }
         };
 
         $scope.formatTags = function () {
