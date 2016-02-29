@@ -70,7 +70,6 @@
                 }
             },
             'eventHandlers': {
-
                 'sending': function (file, xhr, formData) {
                     formData.append('api_key', '374998139757779');
                     formData.append('timestamp', Date.now() / 1000 | 0);
@@ -96,6 +95,9 @@
                         $scope.imageUploadDone = true;
                         $scope.$apply();
                     }
+                    if ($scope.places[file.placeIndex].images.length < 1) {
+                        $scope.imageUploadDone = false;
+                    }
                 }
             }
         };
@@ -118,7 +120,6 @@
                     $scope.newTrip.main_image = { image_url: response.url };
                     $scope.mainImageUploading = false;
                     $scope.mainImageUploaded = true;
-
                 }
             }
         };
@@ -174,6 +175,9 @@
 
         $scope.focusTagsInput = function () {
             $('#tagInput').focus();
+        }
+        $scope.deleteImage = function(placindex,imageindex) {
+            $scope.places[placindex].images.splice(imageindex, 1);
         }
     };
 })();
