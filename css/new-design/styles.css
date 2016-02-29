@@ -910,17 +910,13 @@ textarea {
     /*display: table-cell;*/
     width: 100%;
     background: #ffffff;
-<<<<<<< HEAD
     border-radius: 0px;
-=======
->>>>>>> master
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     border-top: 1px solid #dfdfdf;
 	border-right: 1px solid #dfdfdf;
-<<<<<<< HEAD
 	border-bottom: none;
 	border-left: 1px solid #dfdfdf;
     padding: 4px;
@@ -928,14 +924,12 @@ textarea {
     color: #444;
     min-height: 8.5em;
     margin-top: 3%;
-=======
 	border-left: 1px solid #dfdfdf;
 	border-bottom:none;
     padding: .4em 9px;
     outline: 0;
     color: #444;
     min-height: 8.5em;
->>>>>>> master
     text-align: center;
     cursor: pointer;
 	margin-top:20px;
@@ -1667,7 +1661,6 @@ width: 100%;
  }
 
 /*share button timeline*/
-<<<<<<< HEAD
 .share-button-timeline{
   border-style: solid;
   border-width: 2px;
@@ -1693,7 +1686,7 @@ width: 100%;
   	transition: opacity .5s ease-in-out;
 	-moz-transition: opacity .5s ease-in-out;
 	opacity:0;
-=======
+}
 .share-button-timeline {
     border-style: solid;
     border-width: 2px;
@@ -1709,7 +1702,6 @@ width: 100%;
 
 .header-elements{
     display: none;
->>>>>>> master
 }
 .share-button-timeline span{
 	line-height: 26px;
@@ -1787,7 +1779,7 @@ width: 100%;
 	font-size:20px;
 }
 .input__field::-webkit-input-placeholder{
-<<<<<<< HEAD
+
 	font-style:italic;
 }
 .text-area-border-color::-webkit-input-placeholder{
@@ -1801,7 +1793,7 @@ width: 100%;
 	border-width:2px;
 	border-color:rgba(0, 0, 0, 0.3);
 	padding:5px;
-=======
+
  	font-style:italic;
  }
  .text-area-border-color::-webkit-input-placeholder{
@@ -1815,5 +1807,5 @@ width: 100%;
  	border-width:2px;
  	border-color:rgba(0, 0, 0, 0.3);
  	padding:5px;
->>>>>>> master
+
 }
