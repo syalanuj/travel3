@@ -1,5 +1,10 @@
 charset "UTF-8";
 /* CSS Document */
+/*gliphicon font*/
+@font-face:{
+    font-family: 'gli'
+}
+
 html{
 	overflow-x:hidden; 
 }
@@ -104,15 +109,12 @@ input[type="submit"]:hover {
 	font-size: 16px;
 	margin-top:3px !important;
 }
-<<<<<<< HEAD
 
 .navbar-fonts:hover{
 	border-top:solid 2px #f56c36;
 	top:50%;
 	margin-top:1px !important;
 }
-=======
->>>>>>> origin/revert-2-Styling-changes
 .my_feed {
           font-size: 16px;
           font-family: "Lato";
@@ -1581,17 +1583,41 @@ width: 100%;
     background: radial-gradient(circle, #e6e7e0 40%, rgba(43, 42, 161, 0.6) 110%);
     mix-blend-mode: color-burn; }
 
+.trip-liked-color{
+    color:#f56c36;
+}
+.facebook-login-prompt{
+    height:561px;
+    width:531px;
+    background-image:url(../images/fb-login-popup.png);
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+}
+.facebook-login-prompt .modal-body{
+    top:252px;
+}
+@media (max-width: 530px){
+    .facebook-login-prompt{
+        width:100%;
+        height:80vh;
+        background-image:url(../images/trip-background.jpg);
+        background-repeat:repeat;
+        background-position:top;
+        background-size:auto;
+    }
+}
     /*timeline buttons css active*/
  .Itinerary-places-photos-button-active{
-	background-color: rgb(245, 108, 54);
-	height: 70px;
-	font-size: 16px;
-	color: rgb(255, 255, 255);
-	padding:25px;
-	text-transform:uppercase;
+	background-color: rgb(245, 108, 54) !important;
+	height: 70px !important;
+	font-size: 16px !important;
+	color: rgb(255, 255, 255) !important;
+	padding:25px !important;
+	text-transform:uppercase !important;
 }
 .Itinerary-places-photos-button-active a{
-	color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255) !important;
 }
 
 /*timeline buttons css inactive*/
@@ -1630,6 +1656,7 @@ width: 100%;
  }
 
 /*share button timeline*/
+<<<<<<< HEAD
 .share-button-timeline{
   border-style: solid;
   border-width: 2px;
@@ -1655,6 +1682,23 @@ width: 100%;
   	transition: opacity .5s ease-in-out;
 	-moz-transition: opacity .5s ease-in-out;
 	opacity:0;
+=======
+.share-button-timeline {
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(126, 179, 239);
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    color: rgb(126, 179, 239);
+    width: 100px;
+    font-weight: 400;
+    height: 34px;
+    margin-top: 20px;
+}
+
+.header-elements{
+    display: none;
+>>>>>>> master
 }
 .share-button-timeline span{
 	line-height: 26px;
@@ -1673,6 +1717,13 @@ width: 100%;
 .full-height{
 	height: 100vh;
 }
+.explore-banner{    
+    padding: 30px;
+}
+.explore-banner img{
+    margin-left: auto;
+    margin-right: auto;
+	}
 .dropzone-internal-border{
 	margin:0px!important;
 	border:dashed;

@@ -22,10 +22,10 @@
         <!--Template Dependencies-->
 
         <!-- GOOGLE FONTS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
         <!--<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>-->
         <!-- /GOOGLE FONTS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
 
         <link rel="stylesheet" href="//cdn.jsdelivr.net/flexslider/2.2.2/flexslider.css">
     <script src="//cdn.jsdelivr.net/flexslider/2.2.2/jquery.flexslider-min.js"></script>
@@ -53,8 +53,13 @@
         <!--Meta-->
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta name="keywords" content="Campture, adventure, camping" />
-        <meta name="description" content="Campture">
-        <meta name="author" content="anuj">
+        <!--<meta name="title" content="Campture title">
+        <meta name="description" content="This is campture description">
+        <meta name="image" content="http://res.cloudinary.com/dzseog4g3/image/upload/c_fill,h_400,w_960/v1449320744/dumeromf14sv5p3wj9o1.jpg">-->
+        <meta property="og:title" content="Campture" />
+        <meta property="og:description" content="This is campture description" />
+        <meta property="og:image" content="http://res.cloudinary.com/dzseog4g3/image/upload/c_fill,h_400,w_960/v1449320744/dumeromf14sv5p3wj9o1.jpg" />
+        <meta name="author" content="anujs">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />        
         
@@ -117,6 +122,7 @@
         <script  src="app/components/account/editTrip/editTripCtrl.js"></script>
         <script  src="app/components/feed/filteredFeedCtrl.js"></script>
         <script  src="app/components/allProfiles/allProfileCtrl.js"></script>
+        <script  src="app/components/explore/exploreCtrl.js"></script>
         <!--Main Route-->
         <script src="app.route.js"></script>
         <script src="configMap.js"></script>
@@ -124,8 +130,8 @@
     </head>
     <body>
         <div id="fb-root"></div>
-        
-    <nav ng-controller="HeaderCtrl" class="navbar navbar-default no-margin no-background on-top">
+        <div ng-controller="HeaderCtrl">
+    <nav  class="navbar navbar-default no-margin no-background on-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       
@@ -149,10 +155,10 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="#/feed/" class="navbar-fonts navbar-link">EXPLORE</a></li>
+          <li><a href="#/explore/" class="navbar-fonts navbar-link">EXPLORE</a></li>
           <li class="dropdown">
               <a class="dropdown-toggle navbar-fonts" data-toggle="dropdown" style="padding:15px!important;">TAGS<span class="caret"></span></a>
-              <ul class="dropdown-menu tags tag-window-width">
+              <ul  class="dropdown-menu tags tag-window-width" role="menu">
       		    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 paddingnone" ng-repeat="headerTag in topTags">
                     <a ng-href="#/feed/{{headerTag.tag}}" class="thumbnail no-margin">
       		            <img ng-src="{{headerTag.image_url}}">
@@ -171,14 +177,25 @@
     </form>
   </div>
   </form>
-          <li><a ng-if="userObj == undefined" href="" class="loginwithfacebook" ng-click="loginWithFacebook()"><i class="fa fa-facebook">&nbsp; </i>Login with facebook</a></li>
-  		  <li><a ng-if="userObj" href="#/account/postTrip/" class="add_trip"><i class="fa fa-plus">Add Trip</i></a></li>	
-          <li><a href=""ng-if="userObj" ng-click="logout()" class="power_switch navbar-link" style="color: color: rgb(106, 106, 106)!important;"><i class="fa fa-power-off"></i></a></li>
-          <li><a ng-if="userObj" href="" ng-href="#/account/profile/{{userObj.objectId}}" class="paddingnone"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle profile_topleft"></a></li>
+          <li><a ng-show="isPageHeaderLoaded && userObj == undefined" href="" class="header-elements loginwithfacebook" ng-click="loginWithFacebook()"><i class="fa fa-facebook-square">&nbsp; </i>Login with facebook</a></li>
+  		  <li><a ng-if="isPageHeaderLoaded && userObj" href="#/account/postTrip/" class="header-elements add_trip"><i class="fa fa-plus">Add Trip</i></a></li>	
+          <li><a href=""ng-if="isPageHeaderLoaded && userObj" ng-click="logout()" class="header-elements power_switch navbar-link" style="color: color: rgb(106, 106, 106)!important;"><i class="fa fa-power-off"></i></a></li>
+          <li><a ng-if="isPageHeaderLoaded && userObj" href="" ng-href="#/account/profile/{{userObj.objectId}}" class="header-elements paddingnone"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle profile_topleft"></a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+   <div id="facebook-login-modal" class="modal fade" role="dialog" style="display: none;">
+  <div class="modal-dialog">
+  <!-- Modal content-->
+      <div class="modal-content facebook-login-prompt">      
+          <div class="modal-body text-center">
+            <button class="loginwithfacebook no-margin" ng-click="loginToPost()" data-target="#facebook-login-modal" data-dismiss="modal"><i class="fa fa-facebook-official">&nbsp; </i>Login with facebook</button>
+          </div>      
+        </div>
+    </div>
+</div> 
+</div>
     <main class="top-margin">
     <div ng-view></div>
     </main>
@@ -195,12 +212,13 @@
             </div>
           </div>
         </div>-->
-        <script src="../js/new/imagesloaded.pkgd.min.js"></script>
-                <script src="../js/new/masonry.pkgd.min.js"></script>
-        <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>
+        <script src="../js/new/imagesloaded.pkgd.min.js"></script>
+        <script src="../js/new/masonry.pkgd.min.js"></script>
+        <script src="js/jquery.js"></script>    
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/bootstrap-timepicker.js"></script>
         <script src="js/tweet.js"></script>
+        <script src="js/exif/exif.js"></script>
     </body>
 </html>

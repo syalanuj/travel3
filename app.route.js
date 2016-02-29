@@ -60,7 +60,16 @@
         .when('/allProfiles/',{
             controller: 'AllProfilesCtrl',
             templateUrl:'app/components/allProfiles/allProfiles.html'
-        });
+        })
+        .when('/explore/',{
+            controller: 'ExploreCtrl',
+            templateUrl:'app/components/explore/explore.html'
+        })
+        .when('/pageNotFound/',{
+            controller: 'ErrorPageCtrl',
+            templateUrl:'app/components/error/errorPage.html'
+        })
+        .otherwise({redirectTo : '/pageNotFound/'});
     });
 
 })();

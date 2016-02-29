@@ -56,7 +56,7 @@ Dropzone.autoDiscover = false;
                         <div>
     			            <div class="text-center">
                                     <span class="input-alter input--minoru" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
-					                    <textarea class="text-area-border-color span12" ng-model="newTrip.introduction" rows="3"  name="introduction" placeholder=" Add a quick summary of your experience."  required></textarea>                                        
+					                    <textarea class="text-area-border-color span12" ng-model="newTrip.introduction" rows="3"  name="introduction" placeholder=" Add a quick summary of your experience." ></textarea>                                        
 					                    <label class="text-area-border-color text-area-border-color input__label input__label--yoko" for="introduction">
 						                    <span class="input__label-content input__label-content--yoko">Description</span>
 					                    </label>
@@ -77,15 +77,13 @@ Dropzone.autoDiscover = false;
 	    </div>
         </div>
         <uib-accordion close-others="collapseStatus">
-        <uib-accordion-group is-open="true" ng-repeat="placeindex in newplaces track by $index">
+        <uib-accordion-group is-open="false" ng-repeat="placeindex in newplaces track by $index">
             <uib-accordion-heading>
                 <div>
                     {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}
+                    <span class="pull-right"><a ng-hide="$index == 0 " ng-click="deleteItem($index)" class="fa fa-trash-o" style="color: #000;padding-top: 0px;"></a></span>
                 </div>
-            </uib-accordion-heading>    
-            <div style="float:right">
-                    <button ng-hide="$index == 0 " ng-click="deleteItem($index)" type="button" class="btn" style="color: #000">Delete</button>
-                </div>
+            </uib-accordion-heading>
             <ng-form name="placeForm">
                  <div  class="col-md-7">
                     <div>  
@@ -97,13 +95,13 @@ Dropzone.autoDiscover = false;
 				        </span>
                         <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>                                                               
                 <span class="input-alter input--minoru">
-                    <textarea placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note"></textarea>
+                    <textarea placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" required></textarea>
 					<label class="input__label input__label--yoko" for="Description">
 						<span class="input__label-content input__label-content--yoko">Description</span>
 					</label>
 				</span>
                  <span class="input-alter input--isao" >    <!--ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }"-->
-		            <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
+		            <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
 		            <label class="input__label input__label--isao" for="input-38" data-content="Date">
 			            <span class="input__label-content input__label-content--isao">Date</span>
 		            </label>                            
@@ -111,7 +109,7 @@ Dropzone.autoDiscover = false;
                  </div>
              </div>  
                  <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-5">
-                   <div  class="dropzone needsclick dz-clickable" dropzone="dropzoneConfig">                        
+                   <div class="dropzone needsclick dz-clickable" dropzone="dropzoneConfig">                        
                             <div class="dz-message needsclick"><div ng-show="initPlaces[placeindex].images == null">Drag and drop files here or click to upload</div></div>
                             <div ng-repeat="image in initPlaces[placeindex].images track by $index" class="dz-preview dz-file-preview">
                                 <div  class="dz-image">
@@ -121,21 +119,21 @@ Dropzone.autoDiscover = false;
                             </div>
                     </div>
                 </div>
-               <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
+               <!--<div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
                    <input type=hidden name=imageUploads ng-model="$scope.places[placeindex].images">
                    <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span>
-               </div>
+               </div>-->
         </ng-form>             
         </uib-accordion-group>
     </uib-accordion>
 </div>
 <div class="row">
  <button type="button" ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
- <button type="button" ng-click="updateTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
+ <button type="submit" ng-click="updateTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
  <span ng-show="isTripUploading" class="text-center">
     <img src="css/images/ripple.gif">
  </span>
 </div>
- <span ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>      
+ <span style="color: #000" ng-show="(!imageUploadDone || mainImageUploaded) && isPublishedClicked">At least one image should be uploaded for each location</span>      
 </form>
 </div>
