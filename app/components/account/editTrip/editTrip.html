@@ -21,9 +21,7 @@ Dropzone.autoDiscover = false;
                             <div class="text-center" style="padding-top:10px;">
                                 <span class="input-alter input--isao no-margin"  ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">					                                                    
 				                    <input id="location" placeholder="Lets add a title to your Trip" class="placeholder-color text-center no-input-outline input__field input__field--isao" ng-model="newTrip.title" maxlength="100" name="title" type="text" required>                                    
-					                <label class="input__label input__label--isao" for="input-38" data-content="">
-						                <span class="input__label-content input__label-content--isao" ></span>
-					                </label>                                    
+					                                                    
                                 </span>
                                 <span ng-show="postTripForm.title.$dirty && postTripForm.title.$error.required" class="help-block">Title is required.</span>			                        
                             </div>
@@ -57,10 +55,7 @@ Dropzone.autoDiscover = false;
     			            <div class="text-center">
                                     <span class="input-alter input--minoru" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
 					                    <textarea class="text-area-border-color span12" ng-model="newTrip.introduction" rows="3"  name="introduction" placeholder=" Add a quick summary of your experience." ></textarea>                                        
-					                    <label class="text-area-border-color text-area-border-color input__label input__label--yoko" for="introduction">
-						                    <span class="input__label-content input__label-content--yoko">Description</span>
-					                    </label>
-                                        <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span>
+					                    <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span>
 				                    </span>  
                                     </div>
                                     <div class="text-center bottommargin">
@@ -85,32 +80,32 @@ Dropzone.autoDiscover = false;
                 </div>
             </uib-accordion-heading>
             <ng-form name="placeForm">
-                 <div  class="col-md-7">
+                 <div  class="col-md-5">
                     <div>  
 				        <span class="input-alter input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
-					        <input type="text" name="location" placeholder="Where were these photos taken?"  class="remove-location-placeholder no-input-outline input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded"  ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
-					        <label class="input__label input__label--isao" for="input-38" data-content="Location">
-						        <span class="input__label-content input__label-content--isao">Location</span>
-					        </label>                            
-				        </span>
+                        <div class="input-add-ons">
+					        <input type="text" name="location" placeholder="Where were these photos taken?"  class="remove-location-placeholder no-input-outline input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded text-area-border-color"  ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/> 
+                            <span class="input-symbol"><i class="fa fa-map-marker"></i></span>
+                            </div>                           
+					        </span>
                         <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>                                                               
                 <span class="input-alter input--minoru">
+                <div class="input-add-ons">
                     <textarea placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" required></textarea>
-					<label class="input__label input__label--yoko" for="Description">
-						<span class="input__label-content input__label-content--yoko">Description</span>
-					</label>
-				</span>
+                    <span class="input-symbol"><i class="fa fa-pencil"></i></span>
+                    </div>
+					</span>
                  <span class="input-alter input--isao" >    <!--ng-class="{ 'has-error': placeForm.date.$dirty && placeForm.date.$error.required }"-->
-		            <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
-		            <label class="input__label input__label--isao" for="input-38" data-content="Date">
-			            <span class="input__label-content input__label-content--isao">Date</span>
-		            </label>                            
+                 <div class="input-add-ons">
+		            <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" type="text" class="text-area-border-color no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
+                    <span class="input-symbol"><i class="fa fa-calendar"></i></span>
+		         </div>                               
 	             </span>                               
                  </div>
              </div>  
-                 <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-5">
-                   <div class="dropzone needsclick dz-clickable" dropzone="dropzoneConfig">                        
-                            <div class="dz-message needsclick"><div ng-show="initPlaces[placeindex].images == null">Drag and drop files here or click to upload</div></div>
+                 <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
+                   <div class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">                        
+                            <div class="dz-message needsclick dropzone-internal-border"><div ng-show="initPlaces[placeindex].images == null">Drag and drop files here or click to upload</div></div>
                             <div ng-repeat="image in initPlaces[placeindex].images track by $index" class="dz-preview dz-file-preview">
                                 <div  class="dz-image">
                                     <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_120,w_120/')}}">
