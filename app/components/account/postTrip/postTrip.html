@@ -2,42 +2,18 @@
 Dropzone.autoDiscover = false;
 </script>
 <!--<div profile-wrap files="userObj"></div>-->
-
-<<<<<<< HEAD
 <div class="container frame-padding-bottom">
-<<<<<<< HEAD
-<<<<<<< HEAD
   <form name="postTripForm" ng-submit="" role="form">
     <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
       <div class="cover-message dz-message"> 
       <img src="../../../../css/images/cover_photo_placeholder.png"><br>
       <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i> </div>
-=======
-  <form name="postTripForm" ng-submit="" role="form">
-    <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
-      <div class="cover-message dz-message"> <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i> </div>
->>>>>>> master
-=======
-<div class="container">
-  <form name="postTripForm" ng-submit="" role="form">
-    <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
-      <div class="cover-message dz-message"> <img src="../../../../css/images/cover_photo_placeholder.png"><br>
- +      <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i> </div> </div>
->>>>>>> master
     </div >
     <div ng-show="mainImageUploading" class="text-center"> <img src="css/images/ring-alt.gif"> </div>
     <div ng-show="mainImageUploaded" class="text-center"> <img ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image"> </div>
     <!-- Upload Finished -->
     
-<<<<<<< HEAD
-<<<<<<< HEAD
     <div class="bottommargin">
-=======
-    <div class="bottommargin form-top-margin">
->>>>>>> master
-=======
-    <div class="bottommargin container">
->>>>>>> master
       <div class="panel panel-default">
         <div class="panel-heading" style="background-color:#fff">
           <h4 class="panel-title"> <span ng-show="newTrip.title">{{newTrip.title}}</span> <span ng-show="!newTrip.title"><i class="fa fa-globe">&nbsp; &nbsp; </i>Name Your Adventure</span> </h4>
@@ -71,67 +47,6 @@ Dropzone.autoDiscover = false;
                   </div>
                 </div>
               </div>
-<<<<<<< HEAD
-=======
-    <form name="postTripForm" ng-submit="" onsubmit="retrun false;" role="form">
-        <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
-                                    <div class="cover-message dz-message">
-                                    <a class="uploader needsclick dz-clickable"> Add </a>
-                                    <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i>
-                                    </div>
-                                </div >
-                                <div ng-show="mainImageUploading" class="text-center">
-                                    <img src="css/images/ring-alt.gif">
-                                </div>
-                                <div ng-show="mainImageUploaded" class="text-center">
-                                    <img ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image">
-                                </div>                                
-                                <br />					
-					            <!-- Upload Finished -->		
-    <div class="bottommargin form-top-margin">   
-        <div class="panel panel-default">
-      <div class="panel-heading" style="background-color:#fff">
-        <h4 class="panel-title">
-          <span ng-show="newTrip.title">{{newTrip.title}}</span>
-          <span ng-show="!newTrip.title"><i class="fa fa-globe">&nbsp; &nbsp; </i>Name Your Adventure</span>
-        </h4>
-      </div>         
-      <div class="panel-collapse">
-            <div>            
-                <div class="row">
-                    <div class="col-md-12">
-			            <div class="panel panel-default bordernone">
-                            <div class="text-center" style="padding-top:10px;">
-                                <span class="input-alter input--isao no-margin"  ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">					                                                    
-				                    <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline cover-input-field" ng-model="newTrip.title" maxlength="100" name="title" type="text" required>                                    
-					                
-                                </span>
-                                <span ng-show="postTripForm.title.$dirty && postTripForm.title.$error.required" class="help-block">Title is required.</span>			                        
-                            </div>				            
-			            </div>
-		            </div>
-                    <div  class="col-md-12">
-                        <div>
-    			            <div class="text-center">
-                                    <span class="input-alter input--minoru" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
-					                    <textarea maxlength="144" class="text-area-border-color span12" ng-model="newTrip.introduction" rows="3"  name="introduction" placeholder=" Add a quick summary of your experience." ></textarea>                                        
-					                    
-                                        <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span>
-				                    </span>  
-                                    </div>
-                                    <div class="text-center bottommargin">
-                                    <div ng-click="focusTagsInput()" style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
-                                    <span><strong>Tags :</strong>&nbsp;&nbsp;</span></span>            
-                                    <span class="tag" class="" ng-repeat="tag in newTrip.tags track by $index"><span>{{tag}}&nbsp;&nbsp;</span><a class="" style="color:#ffffff" ng-click="removeTag($index)">X</a></span>
-                                    <span ng-cick="{{isAddTag= !isAddTag}}"><i class="fa fa-plus" ></i></span>
-                                    <input id="tagInput" type="text" ng-model="rawTags" ng-blur="formatTags()" placeholder="Help others to find your trip"></div>	
-                                    </div>
-                                </div>
-                        </div>
-    	        </div>            
->>>>>>> master
-=======
->>>>>>> master
             </div>
           </div>
         </div>
@@ -139,9 +54,9 @@ Dropzone.autoDiscover = false;
       <uib-accordion close-others="collapseStatus">
         <uib-accordion-group is-open="true" ng-repeat="placeindex in newplaces track by $index">
           <uib-accordion-heading>
-            <div> {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}} 
+            <div> {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}
                 <span class="pull-right"><a ng-hide="$index == 0 " ng-click="deleteItem($index)" class="fa fa-trash-o" style="color: #000;padding-top: 0px;"></a></span>
-            </div>
+                 </div>
           </uib-accordion-heading>
           <ng-form name="placeForm">
             <div  class="col-md-5">
