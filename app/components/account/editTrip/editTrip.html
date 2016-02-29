@@ -110,7 +110,7 @@ Dropzone.autoDiscover = false;
                                 <div  class="dz-image">
                                     <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_120,w_120/')}}">
                                 </div>
-                                <a class="dz-remove" href="javascript:undefined;" data-dz-remove="">Remove file</a>
+                                <a class="dz-remove" href="" ng-click="deleteImage(placeindex,$index)" data-dz-remove="">Remove file</a>
                             </div>
                     </div>
                 </div>
@@ -132,3 +132,8 @@ Dropzone.autoDiscover = false;
  <span style="color: #000" ng-show="(!imageUploadDone || mainImageUploaded) && isPublishedClicked">At least one image should be uploaded for each location</span>      
 </form>
 </div>
+<style type="text/css">
+    .dz-preview.dz-processing.dz-image-preview.dz-success.dz-complete{
+        display: none;
+    }
+</style>
