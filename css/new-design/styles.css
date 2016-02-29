@@ -36,7 +36,6 @@ body
  position: relative;
  float: right;
  padding: 0;
- position: relative;
  margin-top:10px;
 }
 
@@ -924,7 +923,10 @@ textarea {
     color: #444;
     min-height: 8.5em;
     margin-top: 3%;
+<<<<<<< HEAD
 	border-left: 1px solid #dfdfdf;
+=======
+>>>>>>> master
 	border-bottom:none;
     padding: .4em 9px;
     outline: 0;
