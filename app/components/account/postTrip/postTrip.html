@@ -5,17 +5,27 @@ Dropzone.autoDiscover = false;
 
 <div class="container frame-padding-bottom">
 <<<<<<< HEAD
+<<<<<<< HEAD
   <form name="postTripForm" ng-submit="" role="form">
     <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
       <div class="cover-message dz-message"> 
       <img src="../../../../css/images/cover_photo_placeholder.png"><br>
       <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i> </div>
+=======
+  <form name="postTripForm" ng-submit="" role="form">
+    <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
+      <div class="cover-message dz-message"> <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i> </div>
+>>>>>>> master
     </div >
     <div ng-show="mainImageUploading" class="text-center"> <img src="css/images/ring-alt.gif"> </div>
     <div ng-show="mainImageUploaded" class="text-center"> <img ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image"> </div>
     <!-- Upload Finished -->
     
+<<<<<<< HEAD
     <div class="bottommargin">
+=======
+    <div class="bottommargin form-top-margin">
+>>>>>>> master
       <div class="panel panel-default">
         <div class="panel-heading" style="background-color:#fff">
           <h4 class="panel-title"> <span ng-show="newTrip.title">{{newTrip.title}}</span> <span ng-show="!newTrip.title"><i class="fa fa-globe">&nbsp; &nbsp; </i>Name Your Adventure</span> </h4>
@@ -49,6 +59,7 @@ Dropzone.autoDiscover = false;
                   </div>
                 </div>
               </div>
+<<<<<<< HEAD
 =======
     <form name="postTripForm" ng-submit="" onsubmit="retrun false;" role="form">
         <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
@@ -107,53 +118,57 @@ Dropzone.autoDiscover = false;
                         </div>
     	        </div>            
 >>>>>>> master
+=======
+>>>>>>> master
             </div>
-	    </div>
+          </div>
         </div>
-        <uib-accordion close-others="collapseStatus">
+      </div>
+      <uib-accordion close-others="collapseStatus">
         <uib-accordion-group is-open="true" ng-repeat="placeindex in newplaces track by $index">
-            <uib-accordion-heading>
-                <div>
-                    {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}
-                    <span class="pull-right"><a ng-hide="$index == 0 " ng-click="deleteItem($index)" class="fa fa-trash-o" style="color: #000;padding-top: 0px;"></a></span>
+          <uib-accordion-heading>
+            <div> {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}} 
+                <span class="pull-right"><a ng-hide="$index == 0 " ng-click="deleteItem($index)" class="fa fa-trash-o" style="color: #000;padding-top: 0px;"></a></span>
+            </div>
+          </uib-accordion-heading>
+          <ng-form name="placeForm">
+            <div  class="col-md-5">
+              <div> <span class="input-alter input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
+              <div class="input-add-ons">
+                <input type="text" name="location" placeholder="Where were these photos taken?"  class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded"  ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>
+                <span class="input-symbol"><i class="fa fa-map-marker"></i></span>
                 </div>
-            </uib-accordion-heading>
-            <ng-form name="placeForm">
-                 <div  class="col-md-5">
-                    <div> 
-                    <span class="input-alter input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
-					        <input type="text" name="location" placeholder="Where were these photos taken?"  class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded"  ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>                            
-					        </span>
-                        <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
-                        
-                    <textarea placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" required></textarea>
-				    <input name="date" placeholder="Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
-		                                 
-                 </div>
-             </div>  
-                <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
-                    <div  class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">
-                        <div class="dz-message needsclick dropzone-internal-border"><img src="../../../../css/images/2016-02-26.png">
-                        <h2>DRAG AND DROP</h2>
-                        <h4>Your Photos or Browse</h4>
-                        </div>
-                   </div>
+                </span> <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
+                 <div class="input-add-ons">
+                <textarea placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note">
+                </textarea>
+                <span class="input-symbol"><i class="fa fa-pencil"></i></span>
                 </div>
-               <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
-                   <input type=hidden name=imageUploads ng-model="$scope.places[placeindex].images">
-                   <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span>
-               </div>
-        </ng-form>             
+                 <div class="input-add-ons">
+                <input name="date" placeholder=" Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline input__field input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
+                <span class="input-symbol"><i class="fa fa-calendar"></i></span>
+                </div>
+              </div>
+            </div>
+            <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
+              <div  class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">
+                <div class="dz-message needsclick dropzone-internal-border"><img src="../../../../css/images/2016-02-26.png">
+                  <h2>DRAG AND DROP</h2>
+                  <h4>Your Photos or Browse</h4>
+                </div>
+              </div>
+            </div>
+            <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
+              <input type=hidden name=imageUploads ng-model="$scope.places[placeindex].images">
+              <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span> </div>
+          </ng-form>
         </uib-accordion-group>
-    </uib-accordion>
-</div>
-<div class="row">
- <button type="button" ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
- <button type="submit" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
- <span ng-show="isTripUploading" class="text-center">
-    <img src="css/images/ripple.gif">
- </span>
-</div>
- <span style="color: #000" ng-show="(!imageUploadDone || !mainImageUploaded) && isPublishedClicked">At least one image should be uploaded for each location</span>      
-</form>
+      </uib-accordion>
+    </div>
+    <div class="row">
+      <button type="button" ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
+      <button type="button" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
+      <span ng-show="isTripUploading" class="text-center"> <img src="css/images/ripple.gif"> </span> </div>
+    <span ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
+  </form>
 </div>
