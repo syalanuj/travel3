@@ -66,7 +66,7 @@
         $scope.postTrip = function () {
             $scope.isPublishedClicked = true;
 
-            if (!$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
+            if ($scope.imageUploadDone && !$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
                 $scope.isTripUploading = true;
                 $scope.newTrip.visited_places = $scope.places;
                 $scope.newTrip.user = {
@@ -74,7 +74,8 @@
                     name: $scope.userObj.facebook_profile.name
                 }
                 $scope.newTrip.posted_on = new Date();
-                if (validateImageCount($scope.newTrip)) {
+                if (true) { 
+                //validateImageCount($scope.newTrip)
                     accountService.postTrip($scope.newTrip, function (data) {
                         $scope.$apply(function () {
                             if (data) {
