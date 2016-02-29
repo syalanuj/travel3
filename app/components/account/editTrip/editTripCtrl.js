@@ -140,20 +140,18 @@
 
         $scope.updateTrip = function () {
             $scope.isPublishedClicked = true;
-            if (!$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
+            if ($scope.imageUploadDone && !$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
                 $scope.newTrip.visited_places = $scope.places;
-                if (validateImageCount($scope.newTrip)) {                    
-                    accountService.updateTrip($scope.newTrip, function (data) {
-                        $scope.$apply(function () {
-                            if (data) {
-                                $scope.newplaces = [1];
-                                $scope.newTrip = undefined;
-                                $scope.isPostSuccessful = true;
-                                $location.path('/account/timeline/' + $routeParams.tripId);
-                            }
-                        });
+                accountService.updateTrip($scope.newTrip, function (data) {
+                    $scope.$apply(function () {
+                        if (data) {
+                            $scope.newplaces = [1];
+                            $scope.newTrip = undefined;
+                            $scope.isPostSuccessful = true;
+                            $location.path('/account/timeline/' + $routeParams.tripId);
+                        }
                     });
-                }
+                });
             }
         };
 
@@ -176,16 +174,6 @@
 
         $scope.focusTagsInput = function () {
             $('#tagInput').focus();
-        }
-        function validateImageCount(trip) {
-            for (var index = 0; index < trip.visited_places.length; index++) {
-                if (trip.visited_places[index].images.length < 1) {
-                    $scope.imageUploadDone = false;
-                    return false;
-                }
-            }
-            $scope.imageUploadDone = true;
-            return true;
         }
     };
 })();

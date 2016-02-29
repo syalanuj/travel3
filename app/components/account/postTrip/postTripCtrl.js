@@ -66,15 +66,16 @@
         $scope.postTrip = function () {
             $scope.isPublishedClicked = true;
 
-            if (!$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
+            if ($scope.imageUploadDone && !$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
+                $scope.isTripUploading = true;
                 $scope.newTrip.visited_places = $scope.places;
                 $scope.newTrip.user = {
                     id: $scope.userObj.objectId,
                     name: $scope.userObj.facebook_profile.name
                 }
                 $scope.newTrip.posted_on = new Date();
-                if (validateImageCount($scope.newTrip)) {
-                    $scope.isTripUploading = true;
+                if (true) {
+                    //validateImageCount($scope.newTrip)
                     accountService.postTrip($scope.newTrip, function (data) {
                         $scope.$apply(function () {
                             if (data) {
@@ -253,14 +254,17 @@
         }
 
         function validateImageCount(trip) {
-            for (var index = 0; index < trip.visited_places.length; index++) {
-                if (trip.visited_places[index].images.length < 1) {
-                    $scope.imageUploadDone = false;
+            angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                if (place.images.length < 1) {
                     return false;
                 }
-            }
-            $scope.imageUploadDone = true;
+            });
             return true;
+            //for (place in trip.visited_places) {
+            //    if (place.images.length < 1)
+            //    { return false; }
+            //}
+            //return true;
         }
     };
 })();
