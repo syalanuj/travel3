@@ -3,16 +3,17 @@ Dropzone.autoDiscover = false;
 </script>
 <!--<div profile-wrap files="userObj"></div>-->
 
-<div class="container frame-padding-bottom">
+<div class="container">
   <form name="postTripForm" ng-submit="" role="form">
     <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
-      <div class="cover-message dz-message"> <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i> </div>
+      <div class="cover-message dz-message"> <img src="../../../../css/images/cover_photo_placeholder.png"><br>
+ +      <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i> </div> </div>
     </div >
     <div ng-show="mainImageUploading" class="text-center"> <img src="css/images/ring-alt.gif"> </div>
     <div ng-show="mainImageUploaded" class="text-center"> <img ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image"> </div>
     <!-- Upload Finished -->
     
-    <div class="bottommargin form-top-margin">
+    <div class="bottommargin container">
       <div class="panel panel-default">
         <div class="panel-heading" style="background-color:#fff">
           <h4 class="panel-title"> <span ng-show="newTrip.title">{{newTrip.title}}</span> <span ng-show="!newTrip.title"><i class="fa fa-globe">&nbsp; &nbsp; </i>Name Your Adventure</span> </h4>
