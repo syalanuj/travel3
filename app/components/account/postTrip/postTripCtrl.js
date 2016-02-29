@@ -74,8 +74,8 @@
                     name: $scope.userObj.facebook_profile.name
                 }
                 $scope.newTrip.posted_on = new Date();
-                if (true) { 
-                //validateImageCount($scope.newTrip)
+                if (true) {
+                    //validateImageCount($scope.newTrip)
                     accountService.postTrip($scope.newTrip, function (data) {
                         $scope.$apply(function () {
                             if (data) {
@@ -259,6 +259,7 @@
                     return false;
                 }
             });
+            return true;
             //for (place in trip.visited_places) {
             //    if (place.images.length < 1)
             //    { return false; }
