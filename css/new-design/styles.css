@@ -738,7 +738,7 @@ table tr td:last-child {
 	float: right;
 	padding: 2px;
 	width: 100%;
-	border-bottom: solid 7px rgba(166, 166, 166, 0.1);
+	border-bottom: solid 6px rgba(166, 166, 166, 0.1);
 	border-radius: 0;
 	color: black;
 	font-family: "lato", Helvetica, Arial, sans-serif;
@@ -749,6 +749,8 @@ table tr td:last-child {
 	border-right:none;
 	margin-bottom:15px;
 	margin-top:15px;
+	padding-left: 25px;
+	padding-right: 25px;
 }
 /*tags*/
 .tagsinput {
@@ -994,7 +996,6 @@ textarea {
     border-color: rgb(173, 173, 173);
     border-radius: 4px;
     background-color: rgb(59, 89, 152)!important;
-  	box-shadow: 1.045px 9.945px 24px 6px rgba(26, 66, 149, 0.2);
   	top: 15px;
     margin-left:30px;
     padding:7px!important;
@@ -1045,6 +1046,8 @@ color: #e6e6e6 !important;
 	border-right:none;
 	margin-bottom:15px;
 	margin-top:15px;
+	padding-left: 25px;
+	padding-right:25px;
 }
 
 .text-area-border-color:focus{
@@ -1650,8 +1653,8 @@ width: 100%;
 	border:dashed;
 	border-width:2px;
 	border-color:rgba(0, 0, 0, 0.3);
-	padding-top: 41px;
-    padding-bottom: 41px;
+	padding-top: 31px;
+    padding-bottom: 31px;
 }
 .dropzone-external-border{
 	padding:4px!important;
@@ -1662,7 +1665,7 @@ width: 100%;
     float: right;
     padding: 2px;
     width: 100%;
-    border-bottom: solid 7px rgba(166, 166, 166, 0.1);
+    border-bottom: solid 6px rgba(166, 166, 166, 0.1);
     border-radius: 0;
     color: black;
     font-family: "lato", Helvetica, Arial, sans-serif;
@@ -1680,4 +1683,19 @@ width: 100%;
     border-right: none;
     border-bottom: 6px solid #c6f2ff!important;
     outline: none !important;
+}
+.no-shadow{
+	box-shadow:none!important;
+	-webkit-box-shadow:none!important;
+}
+.input-add-ons{
+	position:relative;
+}
+.input-symbol{
+	display: block;
+    float: left;
+    position: absolute;
+    top: 10px;
+	color:black;
+	font-size:20px;
 }
