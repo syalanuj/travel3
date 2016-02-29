@@ -909,16 +909,18 @@ textarea {
 .editor-cover-image {
     /*display: table-cell;*/
     width: 100%;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
     background: #ffffff;
+<<<<<<< HEAD
     border-radius: 0px;
+=======
+>>>>>>> master
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     border-top: 1px solid #dfdfdf;
 	border-right: 1px solid #dfdfdf;
+<<<<<<< HEAD
 	border-bottom: none;
 	border-left: 1px solid #dfdfdf;
     padding: 4px;
@@ -926,8 +928,17 @@ textarea {
     color: #444;
     min-height: 8.5em;
     margin-top: 3%;
+=======
+	border-left: 1px solid #dfdfdf;
+	border-bottom:none;
+    padding: .4em 9px;
+    outline: 0;
+    color: #444;
+    min-height: 8.5em;
+>>>>>>> master
     text-align: center;
     cursor: pointer;
+	margin-top:20px;
 }
 .editor-cover-image .dz-details,.editor-cover-image .dz-success-mark,.editor-cover-image .dz-error-mark,.editor-cover-image .dz-error-message,.editor-cover-image .dz-progress {
     display: none;
@@ -1776,6 +1787,7 @@ width: 100%;
 	font-size:20px;
 }
 .input__field::-webkit-input-placeholder{
+<<<<<<< HEAD
 	font-style:italic;
 }
 .text-area-border-color::-webkit-input-placeholder{
@@ -1789,4 +1801,19 @@ width: 100%;
 	border-width:2px;
 	border-color:rgba(0, 0, 0, 0.3);
 	padding:5px;
+=======
+ 	font-style:italic;
+ }
+ .text-area-border-color::-webkit-input-placeholder{
+ 	font-style:italic;
+ }
+ .cover-input-field::-webkit-input-placeholder{
+ 	font-style:italic;
+ }
+.cover-message{
+	border:dashed;
+ 	border-width:2px;
+ 	border-color:rgba(0, 0, 0, 0.3);
+ 	padding:5px;
+>>>>>>> master
 }

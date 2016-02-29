@@ -3,6 +3,7 @@ Dropzone.autoDiscover = false;
 </script>
 <!--<div profile-wrap files="userObj"></div>-->
 
+<<<<<<< HEAD
 <div class="container frame-padding-bottom">
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -16,15 +17,26 @@ Dropzone.autoDiscover = false;
     <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
       <div class="cover-message dz-message"> <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i> </div>
 >>>>>>> master
+=======
+<div class="container">
+  <form name="postTripForm" ng-submit="" role="form">
+    <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
+      <div class="cover-message dz-message"> <img src="../../../../css/images/cover_photo_placeholder.png"><br>
+ +      <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i> </div> </div>
+>>>>>>> master
     </div >
     <div ng-show="mainImageUploading" class="text-center"> <img src="css/images/ring-alt.gif"> </div>
     <div ng-show="mainImageUploaded" class="text-center"> <img ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image"> </div>
     <!-- Upload Finished -->
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="bottommargin">
 =======
     <div class="bottommargin form-top-margin">
+>>>>>>> master
+=======
+    <div class="bottommargin container">
 >>>>>>> master
       <div class="panel panel-default">
         <div class="panel-heading" style="background-color:#fff">
