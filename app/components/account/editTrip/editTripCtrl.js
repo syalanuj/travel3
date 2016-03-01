@@ -19,6 +19,7 @@
         $scope.isTripUploading = false;
         $scope.collapseStatus = true;
         $scope.initPlaces = new Object();
+        $scope.allCoordinatesUploaded = false ;
 
         accountService.getTripById($routeParams.tripId, function (data) {
             $scope.newTrip = data;
@@ -141,18 +142,20 @@
 
         $scope.updateTrip = function () {
             $scope.isPublishedClicked = true;
-            if ($scope.imageUploadDone && !$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
+            if (!$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
                 $scope.newTrip.visited_places = $scope.places;
-                accountService.updateTrip($scope.newTrip, function (data) {
-                    $scope.$apply(function () {
-                        if (data) {
-                            $scope.newplaces = [1];
-                            $scope.newTrip = undefined;
-                            $scope.isPostSuccessful = true;
-                            $location.path('/account/timeline/' + $routeParams.tripId);
-                        }
+                if (validateImageCount($scope.newTrip)) {//&& validatePlaceCoordinates($scope.newTrip)
+                    accountService.updateTrip($scope.newTrip, function (data) {
+                        $scope.$apply(function () {
+                            if (data) {
+                                $scope.newplaces = [1];
+                                $scope.newTrip = undefined;
+                                $scope.isPostSuccessful = true;
+                                $location.path('/account/timeline/' + $routeParams.tripId);
+                            }
+                        });
                     });
-                });
+                }
             }
         };
 
@@ -176,8 +179,31 @@
         $scope.focusTagsInput = function () {
             $('#tagInput').focus();
         }
-        $scope.deleteImage = function(placindex,imageindex) {
+        $scope.deleteImage = function (placindex, imageindex) {
             $scope.places[placindex].images.splice(imageindex, 1);
+        }
+        $scope.isEmptyArray = function (objectArray) {
+            if (objectArray) { }
+        }
+        function validateImageCount(trip) {
+            for (var index = 0; index < trip.visited_places.length; index++) {
+                if (trip.visited_places[index].images.length < 1) {
+                    $scope.imageUploadDone = false;
+                    return false;
+                }
+            }
+            $scope.imageUploadDone = true;
+            return true;
+        }
+        function validatePlaceCoordinates(trip) {
+            for (var index = 0; index < trip.visited_places.length; index++) {
+                if (trip.visited_places[index].coordinates) {
+                    $scope.allCoordinatesUploaded = false;
+                    return false;
+                }
+            }
+            $scope.allCoordinatesUploaded = true;
+            return true;
         }
     };
 })();

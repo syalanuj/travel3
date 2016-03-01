@@ -63,9 +63,14 @@
 <div class="share-button-timeline">
 <span>Share</span> 
 <!--<i class="fa fa-google-plus"></i>!-->
-<i class="fa fa-facebook"></i>
-<i class="fa fa-twitter"></i>
-<i class="fa fa-pinterest"></i>
+<a ng-click="shareOnFacebook()" class="highlight-cursor">
+    <i class="fa fa-facebook"></i>
+</a>
+<a ng-href="https://twitter.com/intent/tweet?text={{trip.title | escape}}%20%7C%20{{pageUrl | escape}}" onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;"
+        class="popup"><i class="fa fa-twitter"></i></a>
+<a ng-href="http://pinterest.com/pin/create/button/?url={{pageUrl | escape}}&amp;media={{trip.main_image.image_url}}&amp;description={{trip.title | escape}}%20{{pageUrl | escape}}" onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;">
+    <i class="fa fa-pinterest"></i>
+</a>
 </div>
 </div>                       
             <div class="col-md-6 Itinerary text-center col-xs-12 col-sm-12">

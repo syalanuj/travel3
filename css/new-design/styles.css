@@ -1811,3 +1811,6 @@ width: 100%;
  	padding:5px;
 
 }
+.highlight-cursor{
+    cursor: pointer;
+}
