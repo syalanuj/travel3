@@ -43,7 +43,7 @@ Dropzone.autoDiscover = false;
                                     <img src="css/images/ring-alt.gif">
                                 </div>
                                 <div ng-show="mainImageUploaded" class="text-center">
-                                    <img ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image">
+                                    <img class="img-responsive" ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image">
                                 </div>                                
                                 <br />					
 					            <!-- Upload Finished -->					
@@ -105,7 +105,11 @@ Dropzone.autoDiscover = false;
              </div>  
                  <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
                    <div class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">                        
-                            <div class="dz-message needsclick dropzone-internal-border"><div ng-show="initPlaces[placeindex].images == null">Drag and drop files here or click to upload</div></div>
+                            <div ng-show="initPlaces[placeindex].images == null || initPlaces[placeindex].images.length < 1" class="dz-message needsclick dropzone-internal-border">
+                                <img src="../../../../css/images/2016-02-26.png">
+                                <h2>DRAG AND DROP</h2>
+                                <h4>Your Photos or Browse</h4>
+                            </div>
                             <div ng-repeat="image in initPlaces[placeindex].images track by $index" class="dz-preview dz-file-preview">
                                 <div  class="dz-image">
                                     <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_120,w_120/')}}">
@@ -114,10 +118,6 @@ Dropzone.autoDiscover = false;
                             </div>
                     </div>
                 </div>
-               <!--<div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
-                   <input type=hidden name=imageUploads ng-model="$scope.places[placeindex].images">
-                   <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span>
-               </div>-->
         </ng-form>             
         </uib-accordion-group>
     </uib-accordion>
@@ -129,7 +129,8 @@ Dropzone.autoDiscover = false;
     <img src="css/images/ripple.gif">
  </span>
 </div>
- <span style="color: #000" ng-show="(!imageUploadDone || mainImageUploaded) && isPublishedClicked">At least one image should be uploaded for each location</span>      
+ <span style="color: #000" ng-show="(!imageUploadDone || mainImageUploaded) && isPublishedClicked">At least one image should be uploaded for each location</span>
+ <!--<span style="color: #000" ng-show="allCoordinatesUploaded">Select location from drop down</span>-->            
 </form>
 </div>
 <style type="text/css">

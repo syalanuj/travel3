@@ -66,16 +66,15 @@
         $scope.postTrip = function () {
             $scope.isPublishedClicked = true;
 
-            if ($scope.imageUploadDone && !$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
-                $scope.isTripUploading = true;
+            if (!$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
                 $scope.newTrip.visited_places = $scope.places;
                 $scope.newTrip.user = {
                     id: $scope.userObj.objectId,
                     name: $scope.userObj.facebook_profile.name
                 }
                 $scope.newTrip.posted_on = new Date();
-                if (true) {
-                    //validateImageCount($scope.newTrip)
+                if (validateImageCount($scope.newTrip)) {
+                    $scope.isTripUploading = true;
                     accountService.postTrip($scope.newTrip, function (data) {
                         $scope.$apply(function () {
                             if (data) {
@@ -111,8 +110,10 @@
                                 $scope.places[file.placeIndex].location = data.locationName;
                                 $scope.places[file.placeIndex].date = data.uploadDate;
                                 $scope.places[file.placeIndex].coordinates = new Object();
-                                $scope.places[file.placeIndex].coordinates.latitude = data.coordinates.lat;
-                                $scope.places[file.placeIndex].coordinates.longitude = data.coordinates.lng;
+                                if (data.coordinates) {
+                                    $scope.places[file.placeIndex].coordinates.latitude = data.coordinates.lat;
+                                    $scope.places[file.placeIndex].coordinates.longitude = data.coordinates.lng;
+                                }
                                 $scope.$apply();
                             }
                         });
@@ -235,9 +236,11 @@
             try {
                 EXIF.getData(file, function () {
                     var allTags = EXIF.getAllTags(this);
-                    var tagDateTime = allTags.DateTimeOriginal.replace(":", "/");
-                    tagDateTime = tagDateTime.replace(":", "/");
-                    var uploadDate = new Date(tagDateTime);
+                    if (allTags.DateTimeOriginal) {
+                        var tagDateTime = allTags.DateTimeOriginal.replace(":", "/");
+                        tagDateTime = tagDateTime.replace(":", "/");
+                        var uploadDate = new Date(tagDateTime);
+                    }
                     if (allTags.GPSLatitude && allTags.GPSLongitude)
                         var latLng = {
                             lat: getGPSDegreeToDecimal(allTags.GPSLatitude[0], allTags.GPSLatitude[1], allTags.GPSLatitude[2], allTags.GPSLatitudeRef),  //(degree, minutes, seconds, direction)
@@ -254,17 +257,14 @@
         }
 
         function validateImageCount(trip) {
-            angular.forEach($scope.newTrip.visited_places, function (place, key) {
-                if (place.images.length < 1) {
+            for (var index = 0; index < trip.visited_places.length; index++) {
+                if (trip.visited_places[index].images.length < 1) {
+                    $scope.imageUploadDone = false;
                     return false;
                 }
-            });
+            }
+            $scope.imageUploadDone = true;
             return true;
-            //for (place in trip.visited_places) {
-            //    if (place.images.length < 1)
-            //    { return false; }
-            //}
-            //return true;
         }
     };
 })();
