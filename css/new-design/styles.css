@@ -1046,6 +1046,7 @@ color: #e6e6e6 !important;
 	margin-top:15px;
 	padding-left: 25px;
 	padding-right:25px;
+	width:100%;
 }
 
 .text-area-border-color:focus{
@@ -1797,3 +1798,8 @@ width: 100%;
  	padding:5px;
 
 }
+.text-area-border-color:required {
+  box-shadow: none;
+  
+}
+
