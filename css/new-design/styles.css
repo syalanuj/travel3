@@ -599,11 +599,12 @@ color:rgb(209, 75, 47)!important;
     /* margin-bottom: 20px; */
     line-height: 1.42857143;
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 4px;
     -webkit-transition: border .2s ease-in-out;
     -o-transition: border .2s ease-in-out;
     transition: border .2s ease-in-out;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 /*CSS for the upload form*/
@@ -1819,6 +1820,8 @@ footer ul{
 	list-style:none;
 	padding-top:15px;
 	padding-bottom:15px;
+	padding-right:40px;
+	
 }
 footer ul li{
 	display:inline;
@@ -1918,8 +1921,15 @@ footer ul li{
  }
 
 }
-
-.title-overflow-hidden{
+    
+.title-overflow-hidden {
     overflow: hidden;
     height: 20px;
+}
+.panel-default {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	border:none!important;
+}
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border-top:none;
 }
