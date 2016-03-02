@@ -99,9 +99,9 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container timeline-container">
     <div class="row">
-        <div ng-show="tripTabIndex == 0" class="col-md-9 col-sm-12 col-xs-12" >
+        <div ng-show="tripTabIndex == 0" class="col-md-10 col-sm-12 col-xs-12" >
             <div class="content">
                 <!--<div class="portfolio-item no-line group first">   
                     <div class="trip-intro"><img src="../css/images/Comma left.png" alt="comma1">
@@ -120,7 +120,7 @@
                 </div>-->
                 <div class="portfolio-item group" ng-repeat="place in trip.visited_places track by $index">
                     <div class="portfolio-info">
-                       <div class="date"><strong>{{place.location}}</strong> <br>{{place.date | date:"dd MMMM yyyy" }}</div>
+                       <div class="date pulse"><strong>{{place.location}}</strong> <br>{{place.date | date:"dd MMMM yyyy" }}</div>
                         <div class="description">
                             {{place.note}}
                         </div>                        
@@ -183,7 +183,7 @@
             </div>
             </div>
         </div>        
-        <div class="col-md-3 col-sm-12 col-xs-12">
+        <div class="col-md-2 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="stay-connected col-lg offset 4 col-md-offset-2 col-xs-12 col-sm-offset-5">
                     <span>Stay Connected</span>
@@ -198,12 +198,12 @@
             <a ng-href="#/account/timeline/{{trip.id}}">
                 <span class="pull-left trip_name">{{trip.title}}</span>
             </a>
-            <span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>
+            <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>!-->
             <br>
             <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
             <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
-            <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
-            <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
+            <!--<span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>!-->
+            <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"><sup>{{trip.total_likes}}</sup></em></span>
         
             <!--<span class="pull-right stats_thumbnail">19</span>-->
             <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->        
