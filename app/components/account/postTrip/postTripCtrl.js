@@ -107,10 +107,12 @@
                     if (file.imageIndex == 0) {
                         getImageGeotagLocation(file, function (data) {
                             if (data) {
+                                if(data.locationName)
                                 $scope.places[file.placeIndex].location = data.locationName;
+                                if(data.uploadDate)
                                 $scope.places[file.placeIndex].date = data.uploadDate;
-                                $scope.places[file.placeIndex].coordinates = new Object();
                                 if (data.coordinates) {
+                                    $scope.places[file.placeIndex].coordinates = new Object();                                
                                     $scope.places[file.placeIndex].coordinates.latitude = data.coordinates.lat;
                                     $scope.places[file.placeIndex].coordinates.longitude = data.coordinates.lng;
                                 }
@@ -198,7 +200,7 @@
         }
         $scope.deleteItem = function (index) {
             $scope.places.splice(index, 1);
-            $scope.newplaces.splice(index, 1);
+            $scope.newplaces.pop();
         }
 
         $scope.focusTagsInput = function () {
