@@ -1798,13 +1798,12 @@ width: 100%;
  	padding:5px;
 
 }
-<<<<<<< HEAD
+
 .text-area-border-color:required {
   box-shadow: none;
   
 }
 
-=======
 .highlight-cursor{
     cursor: pointer;
 }
@@ -1919,4 +1918,8 @@ footer ul li{
  }
 
 }
->>>>>>> master
+
+.title-overflow-hidden{
+    overflow: hidden;
+    height: 20px;
+}
