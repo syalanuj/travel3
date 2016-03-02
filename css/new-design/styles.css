@@ -1,9 +1,6 @@
 charset "UTF-8";
 /* CSS Document */
 /*gliphicon font*/
-@font-face:{
-    font-family: 'gli'
-}
 
 html{
 	overflow-x:hidden; 
@@ -922,16 +919,6 @@ textarea {
     outline: 0;
     color: #444;
     min-height: 8.5em;
-    margin-top: 3%;
-<<<<<<< HEAD
-	border-left: 1px solid #dfdfdf;
-=======
->>>>>>> master
-	border-bottom:none;
-    padding: .4em 9px;
-    outline: 0;
-    color: #444;
-    min-height: 8.5em;
     text-align: center;
     cursor: pointer;
 	margin-top:20px;
@@ -1059,6 +1046,7 @@ color: #e6e6e6 !important;
 	margin-top:15px;
 	padding-left: 25px;
 	padding-right:25px;
+	width:100%;
 }
 
 .text-area-border-color:focus{
@@ -1444,7 +1432,6 @@ margin-right:5px;
 margin-left:5px;
 margin-top:5px;
 margin-bottom: 15px;
-border-color: rgb(178, 178, 179);
 display:inline-block;
 } 
 /*trip title-bar*/
@@ -1706,7 +1693,7 @@ width: 100%;
     display: none;
 }
 .share-button-timeline span{
-	line-height: 26px;
+	line-height: 30px;
 	font-size: 14px;
 }
 .share-button-timeline:hover{
@@ -1766,8 +1753,8 @@ width: 100%;
     outline: none !important;
 }
 .no-shadow{
-	box-shadow:none!important;
 	-webkit-box-shadow:none!important;
+	box-shadow:none!important;
 }
 .input-add-ons{
 	position:relative;
@@ -1811,6 +1798,13 @@ width: 100%;
  	padding:5px;
 
 }
+<<<<<<< HEAD
+.text-area-border-color:required {
+  box-shadow: none;
+  
+}
+
+=======
 .highlight-cursor{
     cursor: pointer;
 }
@@ -1925,3 +1919,4 @@ footer ul li{
  }
 
 }
+>>>>>>> master
