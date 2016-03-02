@@ -594,6 +594,7 @@ color:rgb(209, 75, 47)!important;
     margin-bottom: 30px;
 }
 .thumbnail {
+	padding:0px;
     display: block;
     /* padding: 4px; */
     /* margin-bottom: 20px; */
@@ -1605,10 +1606,9 @@ width: 100%;
     /*timeline buttons css active*/
  .Itinerary-places-photos-button-active{
 	background-color: rgb(245, 108, 54) !important;
-	height: 70px !important;
 	font-size: 16px !important;
 	color: rgb(255, 255, 255) !important;
-	padding:25px !important;
+	padding:15px !important;
 	text-transform:uppercase !important;
 }
 .Itinerary-places-photos-button-active a{
@@ -1618,10 +1618,9 @@ width: 100%;
 /*timeline buttons css inactive*/
 .Itinerary-places-photos-button{
 	background-color: rgb(255, 255, 255);
-	height: 70px;
 	font-size: 16px;
 	color: rgb(255, 255, 255);
-	padding:25px;
+	padding:15px;
 	text-transform:uppercase;
 }
 .Itinerary-places-photos-button a{
@@ -1639,7 +1638,7 @@ width: 100%;
   font-weight:400;
   font-size: 14px;
   height:30px;
-  margin-top:20px;
+  margin-top:11px;
  
   }
   .likes-quantity{
@@ -1661,7 +1660,7 @@ width: 100%;
   width: 100px;
   font-weight:400;
   height:30px;
-  margin-top:20px;
+  margin-top:9px
   -webkit-transition: width .5s;
   transition: width .5s;
   -moz-transition:width .5s;
@@ -1687,7 +1686,7 @@ width: 100%;
     width: 100px;
     font-weight: 400;
     height: 34px;
-    margin-top: 20px;
+    margin-top: 9px;
 }
 
 .header-elements{
@@ -1928,4 +1927,12 @@ footer ul li{
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
     border-top:none;
+}
+
+.thumbnail .caption {
+	overflow:auto;
+}
+@media (min-width: 1200px){
+.timeline-container {
+    width: 1410px;
 }
