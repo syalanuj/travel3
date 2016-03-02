@@ -19,7 +19,7 @@
         $scope.isTripUploading = false;
         $scope.collapseStatus = true;
         $scope.initPlaces = new Object();
-        $scope.allCoordinatesUploaded = false ;
+        $scope.allCoordinatesUploaded = false;
 
         accountService.getTripById($routeParams.tripId, function (data) {
             $scope.newTrip = data;
@@ -96,9 +96,9 @@
                         $scope.imageUploadDone = true;
                         $scope.$apply();
                     }
-                    if ($scope.places[file.placeIndex].images.length < 1) {
-                        $scope.imageUploadDone = false;
-                    }
+                    //if ($scope.places[file.placeIndex].images.length < 1) {
+                    //    $scope.imageUploadDone = false;
+                    //}
                 }
             }
         };
@@ -173,7 +173,7 @@
         }
         $scope.deleteItem = function (index) {
             $scope.places.splice(index, 1);
-            $scope.newplaces.splice(index, 1);
+            $scope.newplaces.pop();
         }
 
         $scope.focusTagsInput = function () {

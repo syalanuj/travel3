@@ -65,6 +65,16 @@
             controller: 'ExploreCtrl',
             templateUrl:'app/components/explore/explore.html'
         })
+        .when('/guidelines/',{
+            templateUrl:'app/components/guidelines/guidelines.html'
+        })
+        .when('/privacyPolicy/',{
+            templateUrl:'app/components/privacyPolicy/privacyPolicy.html'
+        })
+        .when('/termsOfUse/',{
+            controller: 'ExploreCtrl',
+            templateUrl:'app/components/termsOfUse/termsOfUse.html'
+        })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',
             templateUrl:'app/components/error/errorPage.html'
