@@ -9,6 +9,9 @@ body
 {
 	background-color:#fff;
 }
+body a{
+	color:none;
+}
 /*SearchbarCSS*/
 .timeline-search-box {
   height: 24px;
@@ -1639,6 +1642,7 @@ width: 100%;
   font-size: 14px;
   height:30px;
   margin-top:9px;
+  line-height: 26px;
  
   }
   .likes-quantity{
@@ -1646,7 +1650,7 @@ width: 100%;
 	  display:inline-block;
 	  height:28px;
 	  padding-left:5px;
-	  line-height: 25px;
+	  line-height: 26px;
  }
 
 /*share button timeline*/
@@ -1813,6 +1817,9 @@ footer{
 	padding-top:20px;
 	padding-bottom:40px;
 	background:#252525;
+	color:white!important;
+}
+footer a{
 	color:white;
 }
 footer ul{
@@ -1940,3 +1947,23 @@ footer ul li{
 .timeline-container {
     width: 1410px;
 }*/
+
+.panel-open{
+	box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15)!important;
+    margin: 16px 0!important;
+}
+.panel-group .panel + .panel{
+	margin-top: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    margin: 0 65px;
+    transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.panel-group .panel{
+	margin-top: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    margin: 0 65px;
+    transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.dancing-script{
+	font-family: 'Dancing Script', cursive!important;
+}
