@@ -186,7 +186,7 @@ input[type="submit"]:hover {
 	width:28px;
 }
 .trip_name{
-font-size: 14px;
+font-size: 12px;
 font-family: "Lato";
 color: rgb(74, 76, 78);
 text-transform: uppercase;
@@ -197,7 +197,7 @@ font-family: "Lato";
 color: rgb(74, 76, 78);
 }
 .user_name_thumbnail{
-font-size: 16px;
+font-size: 12px;
 font-family: "Lato";
 color: rgb(109, 112, 119);
 line-height: 2;
@@ -1638,7 +1638,7 @@ width: 100%;
   font-weight:400;
   font-size: 14px;
   height:30px;
-  margin-top:11px;
+  margin-top:9px;
  
   }
   .likes-quantity{
@@ -1660,7 +1660,7 @@ width: 100%;
   width: 100px;
   font-weight:400;
   height:30px;
-  margin-top:9px
+  margin-top:11px;
   -webkit-transition: width .5s;
   transition: width .5s;
   -moz-transition:width .5s;
@@ -1685,7 +1685,7 @@ width: 100%;
     color: rgb(126, 179, 239);
     width: 100px;
     font-weight: 400;
-    height: 34px;
+    height: 30px;
     margin-top: 9px;
 }
 
@@ -1693,7 +1693,7 @@ width: 100%;
     display: none;
 }
 .share-button-timeline span{
-	line-height: 30px;
+	line-height: 26px;
 	font-size: 14px;
 }
 .share-button-timeline:hover{
@@ -1936,7 +1936,7 @@ footer ul li{
 .thumbnail .caption {
 	overflow:auto;
 }
-@media (min-width: 1200px){
+/*@media (min-width: 1200px){
 .timeline-container {
     width: 1410px;
-}
+}*/
