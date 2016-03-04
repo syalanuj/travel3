@@ -1033,6 +1033,9 @@ border-bottom-color:rgb(234, 137, 113);
     color: #f56c36;
     letter-spacing: 1px;
 }
+.credits a:hover{
+	text-decoration:none;
+}
 .credits{
 	margin-top:50px;
 }
@@ -1879,9 +1882,15 @@ footer{
 	padding-bottom:40px;
 	background:#252525;
 	color:white!important;
+	font-weight: 100;
+    letter-spacing: 1px
 }
 footer a{
 	color:white;
+}
+footer a:hover{
+	color:white;
+	text-decoration:none;
 }
 footer ul{
 	list-style:none;
@@ -2045,4 +2054,26 @@ footer ul li{
 .ig-lofi {
   filter: contrast(1.4) brightness(0.9) sepia(0.05);
   -webkit-filter: contrast(1.4) brightness(0.9) sepia(0.05);
+}
+.margin-auto{
+	margin-left:auto;
+	margin-right:auto;
+}
+.rrssb-buttons{
+	margin-top:36px;
+}
+.rrssb-buttons li{
+	display:inline-block;
+	float:none;
+}
+@media (min-width: 768px){
+	.media-buttons-margin{
+	margin-left: 33.333333333%;
+	}
+}
+@media (max-width: 767px){
+	.media-buttons-margin{
+		margin-left:auto;
+		margin-right:auto;
+	}
 }
