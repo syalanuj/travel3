@@ -7,6 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Vollkorn:400italic" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
         <!--Social Share-->
         <link rel="stylesheet" href="css/new-design/socialShare.css">
         <!--Parse Dependencies-->
@@ -154,7 +155,7 @@
                             <li><a href="#/explore/" class="navbar-fonts navbar-link">EXPLORE</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle navbar-fonts" data-toggle="dropdown" style="padding:15px!important;">TAGS<span class="caret"></span></a>
-                                <ul class="dropdown-menu tags tag-window-width" role="menu">
+                                <ul class="dropdown-menu tags tag-window-width paddingnone" role="menu">
                                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 paddingnone" ng-repeat="headerTag in topTags">
                                         <a ng-href="#/feed/{{headerTag.tag}}" class="thumbnail no-margin">
                                             <img ng-src="{{headerTag.image_url}}">
@@ -174,7 +175,7 @@
                                 </div>
                             </form>
                             <li><a ng-show="isPageHeaderLoaded && userObj == undefined" href="" class="header-elements loginwithfacebook" ng-click="loginWithFacebook()"><i class="fa fa-facebook-square">&nbsp; </i>Login with facebook</a></li>
-                            <li><a ng-if="isPageHeaderLoaded && userObj" href="#/account/postTrip/" class="header-elements add_trip"><i class="fa fa-plus">Add Trip</i></a></li>
+                            <li><a ng-if="isPageHeaderLoaded && userObj" href="#/account/postTrip/" class="header-elements add_trip"><i class="fa fa-plus" style="color:#FFFFFF;">&nbsp; Add Trip</i></a></li>
                             <li><a href="" ng-if="isPageHeaderLoaded && userObj" ng-click="logout()" class="header-elements power_switch navbar-link" style="color: color: rgb(106, 106, 106)!important;"><i class="fa fa-power-off"></i></a></li>
                             <li><a ng-if="isPageHeaderLoaded && userObj" href="" ng-href="#/account/profile/{{userObj.objectId}}" class="header-elements paddingnone"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle profile_topleft"></a></li>
                         </ul>
