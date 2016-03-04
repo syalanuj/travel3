@@ -1705,7 +1705,7 @@ width: 100%;
   font-weight:400;
   font-size: 14px;
   height:30px;
-  margin-top:9px;
+  margin-top:11px;
   line-height: 26px;
  
   }
@@ -1754,7 +1754,7 @@ width: 100%;
     width: 100px;
     font-weight: 400;
     height: 30px;
-    margin-top: 9px;
+    margin-top: 11px;
 }
 
 .header-elements{
@@ -2068,7 +2068,7 @@ footer ul li{
 }
 @media (min-width: 768px){
 	.media-buttons-margin{
-	margin-left: 33.333333333%;
+	margin-left: 23.333333%;
 	}
 }
 @media (max-width: 767px){
@@ -2076,4 +2076,7 @@ footer ul li{
 		margin-left:auto;
 		margin-right:auto;
 	}
+}
+.fb_iframe_widget iframe{
+	position:relative;
 }
