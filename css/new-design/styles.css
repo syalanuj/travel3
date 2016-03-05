@@ -742,7 +742,7 @@ table tr td:last-child {
 }
 
 /**/
-.input__field {
+/*.input__field {
 	position: relative;
 	display: block;
 	float: right;
@@ -753,8 +753,8 @@ table tr td:last-child {
 	color: black;
 	font-family: "lato", Helvetica, Arial, sans-serif;
 	/*box-shadow: inset 1.879px -0.684px 5px 0px rgba(198, 198, 198, 0.1);*/
-	-webkit-appearance: none; /* for box shadows to show on iOS */
-	border-top:none;
+	/*-webkit-appearance: none; /* for box shadows to show on iOS */
+	/*border-top:none;
 	border-left:none;
 	border-right:none;
 	margin-bottom:15px;
@@ -899,7 +899,7 @@ table tr td:last-child {
     height: 124px;
 }
 textarea[class*="span"] {
-    width: 100% !important;
+    width: 100%;
     box-sizing: border-box;
 }
 textarea {
@@ -1030,7 +1030,7 @@ border-bottom-color:rgb(234, 137, 113);
 .credits p{
 	font-size: 24px;
     padding-top: 10px;
-    color: #f56c36;
+    color: #252525;
     letter-spacing: 1px;
 }
 .credits a:hover{
@@ -1046,30 +1046,27 @@ border-bottom-color:rgb(234, 137, 113);
     cursor: not-allowed;
      pointer-events: none;
 }
-.placeholder-color::-webkit-input-placeholder {
-color: #e6e6e6 !important;
-}
 
 .text-area-border-color{
     border-bottom-style: solid;
-    border-bottom-width: 6px;
-    border-bottom-color: rgba(166, 166, 166, .1);
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(177, 175, 175);
     background-color: rgb(255, 255, 255);
 	border-left:none;
 	border-top:none;
 	border-right:none;
 	margin-bottom:15px;
 	margin-top:15px;
-	padding-left: 25px;
+	margin-left: 25px;
 	padding-right:25px;
-	width:100%;
+	width:90%!important;
 }
 
 .text-area-border-color:focus{
 	border-left:none;
 	border-top:none;
 	border-right:none;
-    border-bottom:6px solid #ffa18d!important;
+    border-bottom:2px solid #ffa18d!important;
     outline: none !important;
 }
 
@@ -1786,39 +1783,47 @@ width: 100%;
 	}
 .dropzone-internal-border{
 	margin:0px!important;
-	border:dashed;
+	/*border:dashed;
 	border-width:2px;
-	border-color:rgba(0, 0, 0, 0.3);
+	border-color:rgba(0, 0, 0, 0.3);*/
 	padding-top: 31px;
     padding-bottom: 31px;
 }
+.dropzone-internal-border h2, h4{
+	font-weight:200;
+}
 .dropzone-external-border{
 	padding:4px!important;
+	border: 1px solid rgba(222, 90, 12, 0.3);
 }
+
 .cover-input-field{
-	    position: relative;
-    display: block;
-    float: right;
+	position: relative;
     padding: 2px;
-    width: 100%;
-    border-bottom: solid 6px rgba(166, 166, 166, 0.1);
+    width: 90%;
+    border-bottom: solid 2px rgb(177, 175, 175);
     border-radius: 0;
     color: black;
     font-family: "lato", Helvetica, Arial, sans-serif;
     /* box-shadow: inset 1.879px -0.684px 5px 0px rgba(198, 198, 198, 0.1); */
     -webkit-appearance: none;
+	font-weight:200;
     border-top: none;
     border-left: none;
     border-right: none;
     margin-bottom: 15px;
     margin-top: 15px;
+	margin-left:25px;
 }
 .cover-input-field:focus{
 	border-left: none;
     border-top: none;
     border-right: none;
-    border-bottom: 6px solid #c6f2ff!important;
+    border-bottom: 2px solid #c6f2ff!important;
     outline: none !important;
+}
+.cover-input-field:focus + .input-symbol{
+	color:#f56c36;
 }
 .no-shadow{
 	-webkit-box-shadow:none!important;
@@ -1832,32 +1837,40 @@ width: 100%;
     float: left;
     position: absolute;
     top: 10px;
-	color:black;
+	color:#FFBEB0;
 	font-size:20px;
+}
+.text-area-border-color:focus + .input-symbol{
+	color:#f56c36;
 }
 .input__field::-webkit-input-placeholder{
 
 	font-style:italic;
+	color:rgb(177, 175, 175);
 }
 .text-area-border-color::-webkit-input-placeholder{
 	font-style:italic;
+	font-weight:200;
+	color:rgb(177, 175, 175);
 }
 .cover-input-field::-webkit-input-placeholder{
 	font-style:italic;
+	font-weight:200;
+	color:rgb(177, 175, 175);
 }
 .cover-message{
 	border:dashed;
 	border-width:2px;
 	border-color:rgba(0, 0, 0, 0.3);
 	padding:5px;
-
- 	font-style:italic;
+	font-style:italic;
  }
  .text-area-border-color::-webkit-input-placeholder{
  	font-style:italic;
  }
  .cover-input-field::-webkit-input-placeholder{
  	font-style:italic;
+	font-weight:200;
  }
 .cover-message{
 	border:dashed;
