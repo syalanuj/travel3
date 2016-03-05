@@ -103,7 +103,7 @@ Dropzone.autoDiscover = false;
 	             </span>                               
                  </div>
              </div>  
-                 <div ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
+                 <div ng-mouseover="setUploadPlaceIndexForHover(placeindex)" ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
                    <div class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">                        
                             <div ng-show="initPlaces[placeindex].images == null || initPlaces[placeindex].images.length < 1" class="dz-message needsclick dropzone-internal-border">
                                 <img src="../../../../css/images/2016-02-26.png">
