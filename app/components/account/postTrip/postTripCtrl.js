@@ -36,6 +36,8 @@
         $scope.rawTags;
         $scope.isAddTag = false;
         $scope.isTripUploading = false;
+        $scope.currentPlaceIndex = 0;
+        $scope.currentImageIndex = 0;
         //Date functions
         $scope.status = {
             opened: false
@@ -65,7 +67,10 @@
 
         $scope.postTrip = function () {
             $scope.isPublishedClicked = true;
-
+            if ($scope.postTripForm.$invalid) {
+                $scope.collapseStatus = true;
+                $scope.$apply();
+            }
             if (!$scope.postTripForm.$invalid && $scope.mainImageUploaded) {
                 $scope.newTrip.visited_places = $scope.places;
                 $scope.newTrip.user = {
@@ -107,12 +112,12 @@
                     if (file.imageIndex == 0) {
                         getImageGeotagLocation(file, function (data) {
                             if (data) {
-                                if(data.locationName)
-                                $scope.places[file.placeIndex].location = data.locationName;
-                                if(data.uploadDate)
-                                $scope.places[file.placeIndex].date = data.uploadDate;
+                                if (data.locationName)
+                                    $scope.places[file.placeIndex].location = data.locationName;
+                                if (data.uploadDate)
+                                    $scope.places[file.placeIndex].date = data.uploadDate;
                                 if (data.coordinates) {
-                                    $scope.places[file.placeIndex].coordinates = new Object();                                
+                                    $scope.places[file.placeIndex].coordinates = new Object();
                                     $scope.places[file.placeIndex].coordinates.latitude = data.coordinates.lat;
                                     $scope.places[file.placeIndex].coordinates.longitude = data.coordinates.lng;
                                 }
@@ -137,6 +142,9 @@
                         $scope.imageUploadDone = true;
                         $scope.$apply();
                     }
+                },
+                'drop': function (file, response) {
+
                 }
             }
         };
@@ -168,6 +176,12 @@
         $scope.setUploadPlaceIndex = function (pIndex) {
             $scope.currentPlaceIndex = pIndex;
             $scope.currentImageIndex = 0;
+        };
+        $scope.setUploadPlaceIndexForHover = function (pIndex) {
+            if($scope.currentPlaceIndex != pIndex){
+                $scope.currentImageIndex = 0;
+            }
+            $scope.currentPlaceIndex = pIndex;            
         };
         $scope.closeAlert = function (index) {
             $scope.alerts.splice(index, 1);
