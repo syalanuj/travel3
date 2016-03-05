@@ -7,29 +7,20 @@
     </div>
 </div>
 
-<!--<nav class="navbar navbar-default" style="background-color:#FFFFFF">
-  <div class="container-fluid" style="background-color:#FFFFFF">
-  <div class="row">
-    <div class="navbar-header col-md-5">
-      <div class="navbar-brand">
-        <img alt="Brand" src="img/icons/rocket-icon.png"></div>
-        <div class="navbar-brand Explore">Explore</div>
-      </div>
-      <div class="col-md-3">
-        <form class="navbar-form no-margin" role="search">
-            <div id="wrap">
-              <form action="" autocomplete="on">
-              <input id="search" ng-model="query[queryBy]" name="search" type="text" placeholder="What're we looking for ?" class="timeline-search-box">
-              
-              </form>
-            </div>
-        </form>
-      </div>
-  </div>
-  </div>
-</nav>-->
 <div class="trip-background-wrap">
 <div class="container">
+<div class="row" style="margin-top: 50px;">
+<div id="loader">
+  <div>
+    <div class="stick"></div>
+    <div class="stick"></div>
+    <div class="stick"></div>
+    <div class="stick"></div>
+    <div class="stick"></div>
+    <div class="stick"></div>
+  </div>      
+</div>
+</div>
 <div class="row" style="margin-top: 50px">
     <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
         <div class="thumbnail">
