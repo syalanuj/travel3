@@ -999,18 +999,18 @@ textarea {
 	padding:0px!important;
 }
 .loginwithfacebook{
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(173, 173, 173);
     border-radius: 4px;
     background-color: rgb(59, 89, 152)!important;
-  	top: 15px;
+	margin-top:10px;
     margin-left:30px;
     padding:7px!important;
     color: rgb(255, 255, 255)!important;
     font-family:lato;
     letter-spacing:0.04em;
     font-size:16px;
+}
+.loginwithfacebook i{
+	color:white!important;
 }
 .likecommentshare {
 	margin-top:15px;
@@ -1705,7 +1705,7 @@ width: 100%;
   font-weight:400;
   font-size: 14px;
   height:30px;
-  margin-top:9px;
+  margin-top:11px;
   line-height: 26px;
  
   }
@@ -1754,7 +1754,7 @@ width: 100%;
     width: 100px;
     font-weight: 400;
     height: 30px;
-    margin-top: 9px;
+    margin-top: 11px;
 }
 
 .header-elements{
@@ -1900,7 +1900,7 @@ footer ul{
 	
 }
 footer ul li{
-	display:inline;
+	display:inline-block;
 	padding-left:20px;
 	padding-right:20px;
 	padding-top:15px;
@@ -2068,7 +2068,7 @@ footer ul li{
 }
 @media (min-width: 768px){
 	.media-buttons-margin{
-	margin-left: 33.333333333%;
+	margin-left: 23.333333%;
 	}
 }
 @media (max-width: 767px){
@@ -2078,6 +2078,9 @@ footer ul li{
 	}
 }
 
+.fb_iframe_widget iframe{
+	position:relative;
+}
 /*Loader Css*/
 $text_color: black;
 $stick_color: black; //Changes the colour of all sticks
@@ -2085,26 +2088,23 @@ $stick_length: 30px; //Changes length of all sticks
 $stick_distance: -8px; //Changes distance between sticks (will need editing after 30px)
 
 
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,700);
 
 
-
-#loader {
- 
-  width:$stick_length*6;
+.loader{
+  width:152px;
   padding-top:180px;
   margin:auto;
   vertical-align: middle;
-  
-}
+  height:auto;
+  }
 
 .stick {
   
- width: $stick_length;
+ width: 30px;
  height:3px;
- background:$stick_color;
+ background:black;
  display:inline-block;
- margin-left:$stick_distance;
+ margin-left:-8px;
   
 }
 
@@ -2202,3 +2202,4 @@ $stick_distance: -8px; //Changes distance between sticks (will need editing afte
   100%{opacity:1}
 }}
 /*Loader Css end*/
+>>>>>>> master
