@@ -2077,12 +2077,10 @@ footer ul li{
 		margin-right:auto;
 	}
 }
-<<<<<<< HEAD
+
 .fb_iframe_widget iframe{
 	position:relative;
 }
-=======
-
 /*Loader Css*/
 $text_color: black;
 $stick_color: black; //Changes the colour of all sticks
@@ -2090,26 +2088,23 @@ $stick_length: 30px; //Changes length of all sticks
 $stick_distance: -8px; //Changes distance between sticks (will need editing after 30px)
 
 
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,700);
 
 
-
-#loader {
- 
-  width:$stick_length*6;
+.loader{
+  width:152px;
   padding-top:180px;
   margin:auto;
   vertical-align: middle;
-  
-}
+  height:auto;
+  }
 
 .stick {
   
- width: $stick_length;
+ width: 30px;
  height:3px;
- background:$stick_color;
+ background:black;
  display:inline-block;
- margin-left:$stick_distance;
+ margin-left:-8px;
   
 }
 
