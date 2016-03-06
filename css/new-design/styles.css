@@ -2214,5 +2214,9 @@ $stick_distance: -8px; //Changes distance between sticks (will need editing afte
    50%{opacity:0.5}
   100%{opacity:1}
 }}
+
+.site-loader-center{
+    width: 152px;
+    margin: auto;
+}
 /*Loader Css end*/
->>>>>>> master
