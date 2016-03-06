@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="campture">
     <head>
+        <base href="/">
+        <!--CSS-->
         <!--FONT Dependencies-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet" type="text/css">
@@ -8,122 +10,29 @@
         <link href="http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Vollkorn:400italic" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
-        <!--Social Share-->
+        <link href="/css/new-design/latofonts.css" rel="stylesheet" type="text/css">
+        <!--third party-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/colorbox.css" media="screen" />
+        <link rel="stylesheet" href="css/dropzone.css">
+        <!--in house-->
+        <link rel="stylesheet" href="css/new-design/styles.css">
+        <link rel="stylesheet" href="css/new-design/timeline-style.css">
         <link rel="stylesheet" href="css/new-design/socialShare.css">
         <!--Parse Dependencies-->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
-        <link href="/css/new-design/latofonts.css" rel="stylesheet" type="text/css">
-        <!--Fotorama gallery-->
-        <!--<link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">--> <!-- 3 KB -->
-        <!--<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>--> <!-- 16 KB -->
-        <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js">-->
-        <!--<script type="text/javascript" src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>-->
-        <!--Template Dependencies-->
-        <!-- GOOGLE FONTS -->
-        <link href="css/bootstrap.css" rel="stylesheet">
-                    <!--<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
-                                <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>-->
-        <!-- /GOOGLE FONTS -->
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/flexslider/2.2.2/flexslider.css">
-        <script src="//cdn.jsdelivr.net/flexslider/2.2.2/jquery.flexslider-min.js"></script>
-        <script src="//cdn.jsdelivr.net/flexslider/2.2.2/jquery.flexslider.js"></script>
-        <!--<link rel="stylesheet" href="css/font-awesome.css">-->
-        <!--<link rel="stylesheet" href="css/icomoon.css">-->
-        <!--<link rel="stylesheet" href="css/styles.css">-->
-        <!--<link rel="stylesheet" href="css/mystyles.css">-->
-                    <!--<link rel="stylesheet" href="css/dropzone.css">
-                                <link rel="stylesheet" href="css/new-design/styles.css">-->
-        <!--Post Form-->
-        <!--<link rel="stylesheet" href="css/timeline/timestyle.css">-->
-        <!--<link rel="stylesheet" href="css/timeline/style.css">-->
-        <!--<link rel="stylesheet" href="css/icomoon.css">-->
-        <!--<link rel="stylesheet" href="css/styles.css">-->
-        <!--<link rel="stylesheet" href="css/style2.css">-->
-        <!--<link rel="stylesheet" href="css/mystyles.css">-->
-        <link rel="stylesheet" href="css/dropzone.css">
-        <link rel="stylesheet" href="css/new-design/timeline-style.css">
-        <link rel="stylesheet" href="css/new-design/styles.css">
-        <!--Post Form-->
-        <!--<link rel="stylesheet" href="css/timeline/timestyle.css">-->
-        <!--colorbox-->
-        <link rel="stylesheet" type="text/css" href="css/colorbox.css" media="screen" />
+        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+        
+        
         <!--Meta-->
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-        <meta name="keywords" content="Campture, adventure, camping" />
-                    <!--<meta name="title" content="Campture title">
-                                <meta name="description" content="This is campture description">
-                                <meta name="image" content="http://res.cloudinary.com/dzseog4g3/image/upload/c_fill,h_400,w_960/v1449320744/dumeromf14sv5p3wj9o1.jpg">-->
+        <meta name="keywords" content="Campture, adventure, camping" />                    
         <meta property="og:title" content="Campture" />
         <meta property="og:description" content="This is campture description" />
         <meta property="og:image" content="http://res.cloudinary.com/dzseog4g3/image/upload/c_fill,h_400,w_960/v1449320744/dumeromf14sv5p3wj9o1.jpg" />
         <meta name="author" content="anujs">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8" />
-
-        <!--Dropzone dependencies-->
-        <script src="js/dropzone/dropzone.js"></script>
-        <!--Map API Dependencies-->
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-        <script src="js/lodash.js"></script>
-        <!-- Angular Dependencies -->
-        <!-- JS-->
-        <script src="js/angular.js"></script>
-        <script src="js/angular-route.min.js"></script>
-        <script src="js/angular-cookies.js"></script>
-        <script src="js/ui-bootstrap-tpls-0.14.3.js"></script>
-        <script src="js/angular-animate.js"></script>
-
-        <!--Flex Slider-->
-        <!--<script src="js/angular-flexslider.js"></script>-->
-        <!--New Dependencies-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-touch.min.js"></script>
-
-        <!--Timeline Dependencies-->
-        <!--Map API Dependencies-->
-        <script src="js/angular-simple-logger.js"></script>
-        <script src="js/angular-google-maps.min.js"></script>
-        <script src="js/ngAutocomplete/ngAutocomplete.js"></script>
-        <!--Drop zone directive-->
-        <script src="js/dropzone/dropzone-directive.js"></script>
-        <!--Angular Routing-->
-        <base href="/">
-        <!--foto Rama-->
-        <link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
-        <script src="js/fotorama.js"></script>
-        <script src="js/fotorama/ap.fotorama.js"></script>
-        <!--Main-->
-        <script src="app.js"></script>
-        <!--Services-->
-        <script src="app/services/tourService.js"></script>
-        <script src="app/services/userService.js"></script>
-        <script src="app/services/accountService.js"></script>
-        <script src="app/services/tripService.js"></script>
-        <script src="app/services/parse-angular/FacebookAngularPatch.js"></script>
-        <script src="app/services/parse-angular/ParseServices.js"></script>
-
-        <!--Directives-->
-        <script src="app/components/account/profile/profileWrapDirective.js"></script>
-        <script src="app/components/commentsDirective/dynamicFbCommentBox.js"></script>
-        <script src="app/components/colorbox/modalDialogDirective.js"></script>
-
-        <!--Controller-->
-        <script src="app/components/headerCtrl.js"></script>
-        <script src="app/components/landing/landingCtrl.js"></script>
-        <script src="app/components/tourDetails/tourDetailsCtrl.js"></script>
-        <script src="app/components/mainCategories/mainCategoriesCtrl.js"></script>
-        <script src="app/components/availableTours/availableToursCtrl.js"></script>
-        <script src="app/components/account/accountCtrl.js"></script>
-        <script src="app/components/account/timeline/timelineCtrl.js"></script>
-        <script src="app/components/account/postTrip/postTripCtrl.js"></script>
-        <script src="app/components/account/profile/profileCtrl.js"></script>
-        <script src="app/components/account/editTrip/editTripCtrl.js"></script>
-        <script src="app/components/feed/filteredFeedCtrl.js"></script>
-        <script src="app/components/allProfiles/allProfileCtrl.js"></script>
-        <script src="app/components/explore/exploreCtrl.js"></script>
-        <!--Main Route-->
-        <script src="app.route.js"></script>
-        <script src="configMap.js"></script>
+        <meta charset="utf-8" />       
+        
         <title>Campture</title>
     </head>
     <body>
@@ -219,14 +128,72 @@
             <p>Made with <i class="fa fa-heart pulse2" style="color:#F66055; font-size:18px;">&nbsp; </i></p>
             <p style="margin: 0px!important;">Campture 2016 © All Rights Reserved</p>
         </footer>
-        <script src="js/bootstrap.js"></script>
-        <script src="../js/new/imagesloaded.pkgd.min.js"></script>
-        <script src="../js/new/masonry.pkgd.min.js"></script>
-        <script src="js/jquery.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <!--Parse-->
+        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.min.js"></script><!--http://www.parsecdn.com/js/parse-latest.min.js-->
+        <!--Dropzone dependencies-->
+        <script src="js/dropzone/dropzone.js"></script>
+        <!--Map API Dependencies-->
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script src="js/lodash.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/bootstrap-timepicker.js"></script>
         <script src="js/tweet.js"></script>
         <script src="js/exif/exif.js"></script>
+
+        <!-- Angular Dependencies -->
+        <!-- JS-->
+        <script src="js/angular.min.js"></script><!--js/angular.js-->
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-cookies.js"></script>
+        <script src="js/ui-bootstrap-tpls-0.14.3.js"></script>
+        <script src="js/angular-animate.js"></script>
+        <!--New Dependencies-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-touch.min.js"></script>
+
+        <!--Timeline Dependencies-->
+        <!--Map API Dependencies-->
+        <script src="js/angular-simple-logger.js"></script>
+        <script src="js/angular-google-maps.min.js"></script>
+        <script src="js/ngAutocomplete/ngAutocomplete.js"></script>
+        <!--Drop zone directive-->
+        <script src="js/dropzone/dropzone-directive.js"></script>
+        <!--Angular Routing-->
+        
+        <!--Main-->
+        <script src="app.js"></script>
+        <!--Services-->
+        <script src="app/services/tourService.js"></script>
+        <script src="app/services/userService.js"></script>
+        <script src="app/services/accountService.js"></script>
+        <script src="app/services/tripService.js"></script>
+        <script src="app/services/parse-angular/FacebookAngularPatch.js"></script>
+        <script src="app/services/parse-angular/ParseServices.js"></script>
+
+        <!--Directives-->
+        <script src="app/components/account/profile/profileWrapDirective.js"></script>
+        <script src="app/components/commentsDirective/dynamicFbCommentBox.js"></script>
+        <script src="app/components/colorbox/modalDialogDirective.js"></script>
+
+        <!--Controller-->
+        <script src="app/components/headerCtrl.js"></script>
+        <script src="app/components/landing/landingCtrl.js"></script>
+        <script src="app/components/tourDetails/tourDetailsCtrl.js"></script>
+        <script src="app/components/mainCategories/mainCategoriesCtrl.js"></script>
+        <script src="app/components/availableTours/availableToursCtrl.js"></script>
+        <script src="app/components/account/accountCtrl.js"></script>
+        <script src="app/components/account/timeline/timelineCtrl.js"></script>
+        <script src="app/components/account/postTrip/postTripCtrl.js"></script>
+        <script src="app/components/account/profile/profileCtrl.js"></script>
+        <script src="app/components/account/editTrip/editTripCtrl.js"></script>
+        <script src="app/components/feed/filteredFeedCtrl.js"></script>
+        <script src="app/components/allProfiles/allProfileCtrl.js"></script>
+        <script src="app/components/explore/exploreCtrl.js"></script>
+        <!--Main Route-->
+        <script src="app.route.js"></script>
+        <script src="configMap.js"></script>
+        
         <script type="text/javascript">
             $( document ).ready(function() {
             $('#headerId').css("display", "block");
