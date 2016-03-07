@@ -202,7 +202,7 @@ html, body, .wrap {
           float: left;
           width: 30%; } }
       .content .portfolio-item .portfolio-info .date {
-        font-size: 110%;
+        font-size: 17px;
         color: black;
         margin-bottom: 10px; }
       .content .portfolio-item .portfolio-info .meta {
