@@ -4,7 +4,8 @@
     app.controller('ProfileCtrl', ['$scope', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout', '$location', controller]);
     function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout, $location) {
         //====== Scope Variables==========
-        //================================  
+        //================================
+        $scope.isSiteLoaded = false;  
         $scope.isPageLoading = false;
         $scope.myTrips;
         $scope.newTrip;
@@ -59,6 +60,10 @@
                                 markerId++;
                             });
                         });
+                        $scope.isSiteLoaded = true;
+                    }
+                    else{
+                        $scope.isSiteLoaded = true;
                     }
                     $scope.isPageLoading = true;
                 });

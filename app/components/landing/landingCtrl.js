@@ -6,6 +6,7 @@
     function controller($scope, $cookies, $rootScope, accountService) {
         //====== Scope Variables==========
         //================================
+        $scope.isSiteLoaded = false;
         $scope.myTrips;
         $scope.allTrips;
         $scope.newsFeedTrips;
@@ -18,15 +19,16 @@
         accountService.getAllTrips(function (data) {
             $scope.$apply(function () {
                 $scope.allTrips = data;
-                angular.forEach($scope.allTrips, function(trip) {
-                    try{
-                        var initUrl = trip.main_image? trip.main_image.image_url: trip.visited_places[0].images[0].image_url;
+                angular.forEach($scope.allTrips, function (trip) {
+                    try {
+                        var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
                         trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
                     } catch (e) {
                         console.log(e);
                     }
 
                 });
+                $scope.isSiteLoaded = true;
             });
         });
 

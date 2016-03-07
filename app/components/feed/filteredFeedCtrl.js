@@ -6,6 +6,7 @@
     function controller($scope, $cookies, $rootScope, $routeParams, accountService) {
         //====== Scope Variables==========
         //================================
+        $scope.isSiteLoaded = false;
         $scope.myTrips;
         $scope.allTrips;
         $scope.newsFeedTrips;
@@ -28,7 +29,8 @@
                             } catch (e) {
                                 console.log(e);
                             }
-                        });                    
+                        });
+                        $scope.isSiteLoaded = true;                    
                     }
                     $scope.isPageLoaded = true;
                 });
@@ -49,6 +51,7 @@
                             }
 
                         });
+                        $scope.isSiteLoaded = true;
                         $scope.isPageLoaded = true;
                     }
                  });

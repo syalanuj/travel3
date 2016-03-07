@@ -1,100 +1,111 @@
-<modal-dialog image-url="modalImageUrl" show='modalShown' width='850px' height='60%'>                            
+<modal-dialog image-url="modalImageUrl" show="modalShown" width="850px" height="60%">
 </modal-dialog>
 <div class="profile_page_header text-center">
-  <div class="profilepicture text-center">
-  <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle img-responsive">
-  <span class="user_name">{{userObj.facebook_profile.name}}</span>
-  </div>
-  <div class="trips_places_photos">
-  <a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp" style="margin-left:0px;"><i class="fa fa-map-o"></i><p>trips</p></button></a>
-  <a data-toggle="pill" href="" ng-click="updateprofileTabPos(1)"><button type="button" class="btn tpp"><i class="fa fa-map-marker"></i><p>places</p></button></a>
-  <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>
-   </div>
-  </div>
-  <div ng-show="myTrips" class="container profilecontent">
-  <div id="trips" class="" ng-show="profileTabPos == 0">
-      <h3>Trips</h3>
-      <div class="col-sm-6 col-md-4" ng-repeat="trip in myTrips | filter:query">
-        <div class="thumbnail">
-            <a ng-href="#/account/timeline/{{trip.id}}">
-                <img class="xpro2" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
-            </a>
-            <div class="caption">
-            <a ng-href="#/account/timeline/{{trip.id}}">
-                <span class="pull-left trip_name title-overflow-hidden">{{trip.title}}</span>
-            </a>
-            <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
-            <br>
-            <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
-            <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
-            <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
-            <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
-        
-            <!--<span class="pull-right stats_thumbnail">19</span>-->
-            <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->        
+    <div class="profilepicture text-center">
+        <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle img-responsive">
+        <span class="user_name">{{userObj.facebook_profile.name}}</span>
+    </div>
+    <div class="trips_places_photos">
+        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp" style="margin-left:0px;"><i class="fa fa-map-o"></i><p>trips</p></button></a>
+        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(1)"><button type="button" class="btn tpp"><i class="fa fa-map-marker"></i><p>places</p></button></a>
+        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>
+    </div>
+</div>
+<div ng-show="!isSiteLoaded" class="container">
+    <div  class="site-loader site-loader-center" style="margin-top: 50px;">
+        <div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+        </div>
+        <p>I travel, therefore I am</p>
+    </div>
+</div>
+<div ng-show="isSiteLoaded">
+<div ng-show="myTrips" class="container profilecontent">
+    <div id="trips" class="" ng-show="profileTabPos == 0">
+        <h3>Trips</h3>
+        <div class="col-sm-6 col-md-4" ng-repeat="trip in myTrips | filter:query">
+            <div class="thumbnail">
+                <a ng-href="#/account/timeline/{{trip.id}}">
+                    <img class="xpro2" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
+                </a>
+                <div class="caption">
+                    <a ng-href="#/account/timeline/{{trip.id}}">
+                        <span class="pull-left trip_name title-overflow-hidden">{{trip.title}}</span>
+                    </a>
+                    <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
+                    <br>
+                    <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+                    <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                    <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
+                    <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
+
+                    <!--<span class="pull-right stats_thumbnail">19</span>-->
+                    <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->
+                </div>
             </div>
         </div>
-      </div>
     </div>
     <div id="places" class="" ng-show="profileTabPos == 1">
-      <h3>Places</h3>
-       <div class="">
-           <p>asdasdax</p>
-                <ui-gmap-google-map center='map.center' zoom='map.zoom' options="options">
-                    <ui-gmap-markers models="allMarkers" coords="'self'" icon="'icon'"  options="marker.options" click="onClick()" events="marker.events">
-                    </ui-gmap-markers>
-                 </ui-gmap-google-map>
-            </div>
+        <h3>Places</h3>
+        <div class="">
+            <p>asdasdax</p>
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
+                <ui-gmap-markers models="allMarkers" coords="'self'" icon="'icon'" options="marker.options" click="onClick()" events="marker.events">
+                </ui-gmap-markers>
+            </ui-gmap-google-map>
+        </div>
     </div>
     <div id="photos" class="" ng-show="profileTabPos == 2">
-      <h3>Photos</h3>
+        <h3>Photos</h3>
         <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="image in allTripImages track by $index">
             <a ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
                 <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
             </a>
         </div>
     </div>
-  </div>
-  <div class="container profilecontent">
-      <div ng-show="isPageLoading && myTrips == undefined" class="content-wrap">
-          <p>No Trips yet?....Lets <a href="#/account/postTrip/">Get Started</a></p>
-    <div class="site-content container">
-         <div class="col-sm-1">
-        </div>
-        <div class="col-sm-9" >
-        <img  ng-src="/img/backgrounds/no-trips.png" class="img-responsive" style="display: block;margin-left: 4%;">
-        </div>
-    </div>
- </div>
-  </div>  
-
-
-
-
-<!--<div ng-show="myTrips" class="content-wrap">
-    <div class="site-content container">        
-        <div ng-show="profileTabPos == 2" class="photos-grid row">
-        <div ng-repeat="trip in myTrips">
-            <div class="photos-header column span-12">
-		        <h2 class="photos-title title"><a href="">{{trip.title}}</a></h2>
-		        <div class="photos-details clearfix">
-			        <div class="photos-detail"><span class="fa fa-calendar"></span> {{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</div>
-			        <div class="photos-detail">
-				        <span class="fa fa-map-marker"></span>
-				        <a href="">{{trip.visited_places[0].location}}</a> 
-                    </div>
-		        </div>
-	        </div>
-                <div class="column span-4" ng-repeat="place in trip.visited_places">
-                    <div  ng-repeat="placeImage in place.images">
-                        <div class="photo-preview image element-image loaded">
-	                        <a ng-href="" ng-click="toggleModal(getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_562,w_850/'))" class="element-colorbox cboxElement" data-id="photos" data-title="">
-		                        <img ng-src="{{getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_400,w_500/')}}" class="fullwidth" alt="" style="display: block;">
-		                    </a>
-                        </div>
-	                </div>
-                </div>
+</div>
+<div class="container profilecontent">
+    <div ng-show="isPageLoading && myTrips == undefined" class="content-wrap">
+        <p>No Trips yet?....Lets <a href="#/account/postTrip/">Get Started</a></p>
+        <div class="site-content container">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-9">
+                <img ng-src="/img/backgrounds/no-trips.png" class="img-responsive" style="display: block;margin-left: 4%;">
             </div>
         </div>
     </div>
-</div>-->
+</div>
+</div>
+    <!--<div ng-show="myTrips" class="content-wrap">
+        <div class="site-content container">        
+            <div ng-show="profileTabPos == 2" class="photos-grid row">
+            <div ng-repeat="trip in myTrips">
+                <div class="photos-header column span-12">
+                    <h2 class="photos-title title"><a href="">{{trip.title}}</a></h2>
+                    <div class="photos-details clearfix">
+                        <div class="photos-detail"><span class="fa fa-calendar"></span> {{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</div>
+                        <div class="photos-detail">
+                            <span class="fa fa-map-marker"></span>
+                            <a href="">{{trip.visited_places[0].location}}</a> 
+                        </div>
+                    </div>
+                </div>
+                    <div class="column span-4" ng-repeat="place in trip.visited_places">
+                        <div  ng-repeat="placeImage in place.images">
+                            <div class="photo-preview image element-image loaded">
+                                <a ng-href="" ng-click="toggleModal(getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_562,w_850/'))" class="element-colorbox cboxElement" data-id="photos" data-title="">
+                                    <img ng-src="{{getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_400,w_500/')}}" class="fullwidth" alt="" style="display: block;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->

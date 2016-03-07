@@ -1,49 +1,59 @@
-<!--<nav class="navbar navbar-default" style="background-color:#FFFFFF">
-  <div class="container-fluid" style="background-color:#FFFFFF">
-  <div class="row">
-    <div class="navbar-header col-md-5">
-      <div class="navbar-brand">
-        <img alt="Brand" src="img/icons/rocket-icon.png"></div>
-        <div class="navbar-brand Explore">Explore</div>
+    <!--<nav class="navbar navbar-default" style="background-color:#FFFFFF">
+      <div class="container-fluid" style="background-color:#FFFFFF">
+      <div class="row">
+        <div class="navbar-header col-md-5">
+          <div class="navbar-brand">
+            <img alt="Brand" src="img/icons/rocket-icon.png"></div>
+            <div class="navbar-brand Explore">Explore</div>
+          </div>
+          <div class="col-md-3">
+            <form class="navbar-form no-margin" role="search">
+                <div id="wrap">
+                  <form action=""  autocomplete="on">
+                  <input id="search" ng-model="query[queryBy]" name="search" type="text" placeholder="What're we looking for ?" class="timeline-search-box">              
+                  </form>
+                </div>
+            </form>
+          </div>
       </div>
-      <div class="col-md-3">
-        <form class="navbar-form no-margin" role="search">
-            <div id="wrap">
-              <form action=""  autocomplete="on">
-              <input id="search" ng-model="query[queryBy]" name="search" type="text" placeholder="What're we looking for ?" class="timeline-search-box">              
-              </form>
-            </div>
-        </form>
       </div>
-  </div>
-  </div>
-</nav>-->
-
+    </nav>-->
 <div class="container">
-<div class="row" style="margin-top: 50px">
-    <div class="col-sm-6 col-md-3" ng-repeat="trip in filteredTrips = ( allTrips | filter:query)">
-        <div class="thumbnail">
-          <a ng-href="#/account/timeline/{{trip.id}}">
-              <img class="xpro2" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
-          </a>
-          <div class="caption">
-            <a ng-href="#/account/timeline/{{trip.id}}">
-                <span class="pull-left trip_name title-overflow-hidden">{{trip.title}}</span>
-            </a>
-            <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
-            <br>
-            <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
-            <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
-            <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
-            <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
-        
-            <!--<span class="pull-right stats_thumbnail">19</span>-->
-            <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->        
-           </div>
+    <div ng-show="!isSiteLoaded" class="site-loader site-loader-center" style="margin-top: 50px;">
+        <div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
         </div>
-  </div>
-    <div ng-show="isPageLoaded">
-        <p ng-hide="filteredTrips.length" style="color: black">No Matching Results</p>
+        <p>I travel, therefore I am</p>
     </div>
-</div>
+    <div class="row" style="margin-top: 50px">
+        <div ng-show="isSiteLoaded" class="col-sm-6 col-md-3" ng-repeat="trip in filteredTrips = ( allTrips | filter:query)">
+            <div class="thumbnail">
+                <a ng-href="#/account/timeline/{{trip.id}}">
+                    <img class="xpro2" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
+                </a>
+                <div class="caption">
+                    <a ng-href="#/account/timeline/{{trip.id}}">
+                        <span class="pull-left trip_name title-overflow-hidden">{{trip.title}}</span>
+                    </a>
+                    <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
+                    <br>
+                    <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+                    <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                    <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
+                    <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
+
+                    <!--<span class="pull-right stats_thumbnail">19</span>-->
+                    <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->
+                </div>
+            </div>
+        </div>
+        <div ng-show="isPageLoaded">
+            <p ng-hide="filteredTrips.length" style="color: black">No Matching Results</p>
+        </div>
+    </div>
 </div>

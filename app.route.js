@@ -71,6 +71,9 @@
         .when('/privacyPolicy/',{
             templateUrl:'app/components/privacyPolicy/privacyPolicy.html'
         })
+        .when('/howTo/',{
+            templateUrl:'app/components/howTo/howTo.html'
+        })
         .when('/termsOfUse/',{
             controller: 'ExploreCtrl',
             templateUrl:'app/components/termsOfUse/termsOfUse.html'
