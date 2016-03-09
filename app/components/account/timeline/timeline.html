@@ -60,16 +60,16 @@
 <div class="timeline-thirdheader text-center">
     <div class="container">
         <div class="row"> 
-        <div class="col-md-2 col-sm-2 hidden-xs col-md-offset-1">
-<div class="share-button-timeline">
+        <div class="col-md-2 hidden-sm hidden-xs col-md-offset-1">
+			<div class="share-button-timeline">
 <span>Share</span> 
 <!--<i class="fa fa-google-plus"></i>!-->
-<a ng-click="shareOnFacebook()" class="highlight-cursor">
-    <i class="fa fa-facebook"></i>
-</a>
-<a ng-href="https://twitter.com/intent/tweet?text={{trip.title | escape}}%20%7C%20{{pageUrl | escape}}" onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;"
+            <a ng-click="shareOnFacebook()" class="highlight-cursor">
+                <i class="fa fa-facebook"></i>
+            </a>
+			<a ng-href="https://twitter.com/intent/tweet?text={{trip.title | escape}}%20%7C%20{{pageUrl | escape}}" onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;"
         class="popup"><i class="fa fa-twitter"></i></a>
-<a ng-href="http://pinterest.com/pin/create/button/?url={{pageUrl | escape}}&amp;media={{trip.main_image.image_url}}&amp;description={{trip.title | escape}}%20{{pageUrl | escape}}" onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;">
+			<a ng-href="http://pinterest.com/pin/create/button/?url={{pageUrl | escape}}&amp;media={{trip.main_image.image_url}}&amp;description={{trip.title | escape}}%20{{pageUrl | escape}}" onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;">
     <i class="fa fa-pinterest"></i>
 </a>
 </div>
@@ -98,21 +98,8 @@
                 </div>
             </div>
         <div class="row">
-        <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
-        <div class="share-button-timeline margin-auto">
-<span>Share</span> 
-<!--<i class="fa fa-google-plus"></i>!-->
-<a ng-click="shareOnFacebook()" class="highlight-cursor">
-    <i class="fa fa-facebook"></i>
-</a>
-<a ng-href="https://twitter.com/intent/tweet?text={{trip.title | escape}}%20%7C%20{{pageUrl | escape}}" onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;"
-        class="popup"><i class="fa fa-twitter"></i></a>
-<a ng-href="http://pinterest.com/pin/create/button/?url={{pageUrl | escape}}&amp;media={{trip.main_image.image_url}}&amp;description={{trip.title | escape}}%20{{pageUrl | escape}}" onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;">
-    <i class="fa fa-pinterest"></i>
-</a>
-</div>
-        </div>
-        <div class="col-xs-6 hidden-sm hidden-md hidden-lg text-center">
+        
+        <div class="col-xs-12 hidden-sm hidden-md hidden-lg text-center">
         
                     <div style="cursor: pointer" ng-class="{likeDisabled: isLikeDisabled}" class="timeline-like-button margin-auto" ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled">
                         <em ng-class="{'fa fa-heart': likeId != undefined, 'fa fa-heart-o': likeId == undefined}" class="fa fa-heart">&nbsp; </em><span>like &nbsp; </span><span class="likes-quantity">{{trip.total_likes}}</span>
