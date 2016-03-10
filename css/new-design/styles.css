@@ -1,7 +1,5 @@
-charset "UTF-8";
-/* CSS Document */
-/*gliphicon font*/
 
+/* CSS Document */
 html{
 	overflow-x:hidden; 
 }
@@ -790,7 +788,7 @@ table tr td:last-child {
   vertical-align: middle;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
   -webkit-transition: 0.14s linear;
   -moz-transition: 0.14s linear;
   -o-transition: 0.14s linear;
@@ -846,7 +844,7 @@ table tr td:last-child {
   vertical-align: middle;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 .tagsinput-add {
   background-color: #d6dbdf;
@@ -857,7 +855,7 @@ table tr td:last-child {
   padding: 6px 9px;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
   -webkit-transition: 0.25s;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
@@ -973,7 +971,7 @@ textarea {
 	letter-spacing: .06em;
 	margin-top:10px;
     padding:7px!important;
-	max-width:110px;
+	max-width:130px;
 	margin-left:12px;
 	transition: .4s ease-out;
 	border-radius:4px;
@@ -1504,7 +1502,7 @@ width:100%;
 	max-width: 500px;
     margin: auto;
 	color:white;
-	font-size:1vw;
+	font-size:1.3vw;
 }
 .by-user{
 	  padding-top:30px;
@@ -1532,7 +1530,7 @@ width:100%;
     max-width: 500px;
     margin: auto;
     color: white;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
 }
 }
 @media (max-width: 980px){
@@ -1540,7 +1538,7 @@ width:100%;
 		font-size:3.8vw;
 			}	
 	.trip-intro p{
-		font-size:1.5vw;
+		font-size:1.8vw;
 	}
 }
 @media (max-width: 780px){
@@ -2123,82 +2121,88 @@ footer ul li{
 }
 
 .stick:nth-child(n) {  
-  transform:rotate(30deg);
   -ms-transform:rotate(30deg); /* IE 9 */
   -webkit-transform:rotate(30deg); /* Safari and Chrome */
-   -moz-transform:rotate(30deg);
-   -webkit-animation: fall 2s infinite;
-   -moz-animation: fall 2s infinite;
-
+  -moz-transform:rotate(30deg);
+  -webkit-animation: fall 2s infinite;
+  -moz-animation: fall 2s infinite;
+   transform:rotate(30deg);
 }
 .stick:nth-child(2n) {  
-   transform:rotate(-30deg);
   -ms-transform:rotate(-30deg); /* IE 9 */
   -webkit-transform:rotate(-30deg); /* Safari and Chrome */
   -moz-transform:rotate(-30deg);
   -webkit-animation: rise 2s infinite;
   -moz-animation: rise 2s infinite;
-
+   transform:rotate(-30deg);	
 }
 
 @-webkit-keyframes rise {
-  50% { transform:rotate(30deg);
+  50% { 
   -ms-transform:rotate(30deg); /* IE 9 */
   -webkit-transform:rotate(30deg);
-  -moz-transform:rotate(30deg); 
+  -moz-transform:rotate(30deg);
+  transform:rotate(30deg); 
     ;}
 }
 @-moz-keyframes rise {
- 50% { transform:rotate(30deg);
+ 50% { 
   -ms-transform:rotate(30deg); /* IE 9 */
   -webkit-transform:rotate(30deg);
-   -moz-transform:rotate(30deg); 
+   -moz-transform:rotate(30deg);
+   transform:rotate(30deg);
+  
 }
 }
 @-o-keyframes rise {
-  50% { transform:rotate(30deg);
+  50% { 
   -ms-transform:rotate(30deg); /* IE 9 */
   -webkit-transform:rotate(30deg);
-  -moz-transform:rotate(30deg); 
+  -moz-transform:rotate(30deg);
+  transform:rotate(30deg);
+   
 }
 }
  @keyframes rise {
-  50% { transform:rotate(30deg);
+  50% { 
   -ms-transform:rotate(30deg); /* IE 9 */
   -webkit-transform:rotate(30deg);
-  -moz-transform:rotate(30deg); 
+  -moz-transform:rotate(30deg);
+  transform:rotate(30deg);
+   
 }
 }
 
 @-webkit-keyframes fall {
-  50% { transform:rotate(-30deg);
+  50% { 
   -ms-transform:rotate(-30deg); /* IE 9 */
   -webkit-transform:rotate(-30deg);
-  -moz-transform:rotate(30deg); 
+  -moz-transform:rotate(30deg);
+  transform:rotate(-30deg); 
 }
 }
 @-moz-keyframes fall {
- 50% { transform:rotate(-30deg);
-  -ms-transform:rotate(-30deg); /* IE 9 */
+ 50% { 
+ 	-ms-transform:rotate(-30deg); /* IE 9 */
   -webkit-transform:rotate(-30deg);
-  -moz-transform:rotate(-30deg); 
- 
+  -moz-transform:rotate(-30deg);
+  transform:rotate(-30deg); 
  }
 }
 @-o-keyframes fall {
-  50% { transform:rotate(-30deg);
+  50% { 
   -ms-transform:rotate(-30deg); /* IE 9 */
   -webkit-transform:rotate(-30deg);
    -moz-transform:rotate(30deg); 
-
+	transform:rotate(-30deg);
   }
 }
 @keyframes fall {
-  50% { transform:rotate(-30deg);
+  50% { 
   -ms-transform:rotate(-30deg); /* IE 9 */
   -webkit-transform:rotate(-30deg);
   -moz-transform:rotate(30deg); 
-
+transform:rotate(-30deg);
   }
 }
 
@@ -2229,6 +2233,7 @@ footer ul li{
 
 .onboarding-wrap{
 	padding-top:20px;
+	padding-bottom:20px;
 }
 .feature-grid1 {
   margin-top: 13em;
