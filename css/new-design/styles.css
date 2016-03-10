@@ -978,6 +978,10 @@ textarea {
 	transition: .4s ease-out;
 	border-radius:4px;
 }
+.add_trip span{
+	color:white;
+	font-weight:400;
+	}
 .add_trip:hover{
 	box-shadow: 0px 0px 8px 2px rgba(196,78, 31, 0.5);
 	background-color: rgb(219, 97, 48)!important;
@@ -1012,6 +1016,9 @@ textarea {
 .loginwithfacebook i{
 	color:white!important;
 }
+.loginwithfacebook span{
+	color:white;
+	}
 .likecommentshare {
 	margin-top:15px;
 }
@@ -1405,6 +1412,7 @@ z-index:1!important;
 
 .portfolio-info .description{
     text-align: justify;
+	font-size:16px;
 }
 .tags div{
 	border:2px solid white;
@@ -1481,7 +1489,7 @@ letter-spacing: 0.04em;
 color: white;
 text-transform: uppercase;
 position:absolute;
-top:50%;
+top:43%;
 width:100%;
 }
 .trip-intro {
@@ -1994,7 +2002,7 @@ footer ul li{
 
 }
 
-@-ms-keyframes "pulse2" {
+/*@-ms-keyframes "pulse2" {
  0% {
    -ms-transform: scale(1.1);
    transform: scale(1.1);
@@ -2007,8 +2015,7 @@ footer ul li{
    -ms-transform: scale(1);
    transform: scale(1);
  }
-
-}
+}*/
     
 .title-overflow-hidden {
     overflow: hidden;
@@ -2094,18 +2101,14 @@ footer ul li{
 	position:relative;
 }
 /*Loader Css*/
-$text_color: black;
-$stick_color: black; //Changes the colour of all sticks
-$stick_length: 30px; //Changes length of all sticks
-$stick_distance: -8px; //Changes distance between sticks (will need editing after 30px)
-
 
 
 
 .site-loader{
   width:152px;
   padding-top:180px;
-  margin:auto;
+  margin-left:auto;
+  margin-right:auto;
   vertical-align: middle;
   height:auto;
   }
@@ -2159,13 +2162,14 @@ $stick_distance: -8px; //Changes distance between sticks (will need editing afte
   -webkit-transform:rotate(30deg);
   -moz-transform:rotate(30deg); 
 }
-@keyframes rise {
+}
+ @keyframes rise {
   50% { transform:rotate(30deg);
   -ms-transform:rotate(30deg); /* IE 9 */
   -webkit-transform:rotate(30deg);
   -moz-transform:rotate(30deg); 
 }
-}}
+}
 
 @-webkit-keyframes fall {
   50% { transform:rotate(-30deg);
@@ -2189,6 +2193,7 @@ $stick_distance: -8px; //Changes distance between sticks (will need editing afte
    -moz-transform:rotate(30deg); 
 
   }
+}
 @keyframes fall {
   50% { transform:rotate(-30deg);
   -ms-transform:rotate(-30deg); /* IE 9 */
@@ -2196,12 +2201,12 @@ $stick_distance: -8px; //Changes distance between sticks (will need editing afte
   -moz-transform:rotate(30deg); 
 
   }
-}}
+}
 
 @-webkit-keyframes fade {
   50%{opacity:0.5}
-  100%{opacity:1}
-  ;}
+  100% {opacity:1}
+  }
 @-moz-keyframes fade {
  50%{opacity:0.5}
   100%{opacity:1}
@@ -2209,7 +2214,7 @@ $stick_distance: -8px; //Changes distance between sticks (will need editing afte
 @-o-keyframes fade {
    50%{opacity:0.5}
   100%{opacity:1}
-  
+}
 @keyframes fade {
    50%{opacity:0.5}
   100%{opacity:1}
