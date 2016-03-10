@@ -5,12 +5,14 @@ app.factory('TripService', ['$http', function ($http) {
     var Comments = Parse.Object.extend("Comments");
     var Likes = Parse.Object.extend("Likes");
     var Tag = Parse.Object.extend("Tag");
+    var TripLikes = Parse.Object.extend("Trip_Likes");
 
     var user = new User();
     var trips = new Trips();
     var comments = new Comments();
     var likes = new Likes();
     var tag = new Tag();
+    var tripLikes = new TripLikes();
     return {
         postComment: postComment,
         getTripComments: getTripComments,
@@ -93,7 +95,7 @@ app.factory('TripService', ['$http', function ($http) {
         });
     }
 
-    function tripUnlike(likeId, tripId,total_likes, callback) {
+    function tripUnlike(likeId, tripId, total_likes, callback) {
         likes.id = likeId;
         likes.destroy({
             success: function (parseObject) {

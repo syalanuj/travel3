@@ -2,9 +2,12 @@ var app = angular.module('campture');
 app.factory('AccountService', ['$http', '$q', function ($http, $q) {
     var User = Parse.Object.extend("User");
     var Trips = Parse.Object.extend("Trips");
+    var TripLikes = Parse.Object.extend("Trip_Likes");
 
     var user = new User();
     var trips = new Trips();
+    var tripLikes = new TripLikes();
+
     return {
         getTripById: getTripById,
         postTrip: postTrip,
@@ -49,6 +52,11 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             className: "_User",
             objectId: tripDetails.user.id
         });
+
+        //var customACL = new Parse.ACL();
+        //customACL.setWriteAccess(Parse.User.current(), true);
+        //customACL.setPublicReadAccess(true);
+        //trips.setACL(customACL);
 
 
         trips.save(null, {
@@ -163,7 +171,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             },
             error: function (object, error) {
                 // The object was not retrieved successfully.
-                if(error.code == 101){
+                if (error.code == 101) {
                     callback(undefined);
                 }
             }
