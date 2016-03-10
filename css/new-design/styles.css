@@ -130,7 +130,7 @@ input[type="submit"]:hover {
 	height:500px;
 	margin-bottom:0px!important;
 	padding-top:100px!important;
-	background-image:url(../images/landing-page-hero.png);
+	background-image:url(../images/landing-page-hero.jpg);
 }
 .jumbotron-landingpage
 {
@@ -1080,7 +1080,7 @@ border-bottom-color:rgb(234, 137, 113);
 /**/
 /*profilepage*/
 .profile_page_header{
-	background-image:url(../images/Cover-image.png);
+	background-image:url(../images/Cover-image.jpg);
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:cover;
