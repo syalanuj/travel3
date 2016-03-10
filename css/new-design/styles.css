@@ -2085,7 +2085,8 @@ footer ul li{
 }
 @media (min-width: 768px){
 	.media-buttons-margin{
-	margin-left: 23.333333%;
+	margin-top:20px;	
+	margin-left: 48.333333%;
 	}
 }
 @media (max-width: 767px){
