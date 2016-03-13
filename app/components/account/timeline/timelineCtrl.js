@@ -213,7 +213,6 @@
                 picture: $scope.trip.main_image.image_url
             });
         }
-
-
+        
     };
 })();
