@@ -105,7 +105,8 @@ $("input").keypress(function(event) {
       <button type="button" ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
       <button type="submit" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
       <span ng-show="isTripUploading" class="text-center"> <img src="css/images/ripple.gif"> </span> </div>
-    <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
+      <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
+      <span style="color: #000" ng-show="!mainImageUploaded && isPublishedClicked">Upload the cover image</span>
   </form>
 </div>
 <script type="text/javascript">
