@@ -2,7 +2,7 @@
     'use strict';
 
     var app = angular.module('campture');
-    app.filter('escape', function() {
+    app.filter('escape', function () {
         return window.encodeURIComponent;
     });
     app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', controller]);
@@ -19,6 +19,7 @@
         $scope.likeId;
         $scope.isLikeDisabled = false;
         $scope.myInterval = 2000;
+        $scope.modalCaption = "";
         $scope.timelineImages = new Array();
         var bounds = new google.maps.LatLngBounds();
         if ($scope.currentUserObj) {
@@ -186,10 +187,12 @@
 
         //----Modal-----//
         $scope.modalShown = false;
-        $scope.toggleModal = function (imageUrl) {
+        $scope.toggleModal = function (imageUrl, caption) {
+            $('#modalImg').attr('src', '');
             $scope.modalImageUrl = undefined;
             $scope.modalShown = !$scope.modalShown;
             $scope.modalImageUrl = imageUrl;
+            $scope.modalCaption = caption;
         };
 
         $scope.searchFilteredFeed = function (searchText) {
@@ -201,14 +204,14 @@
                 scrollTop: $("#comments").offset().top - 100
             }, 500);
         }
-        $scope.shareOnFacebook = function(){
+        $scope.shareOnFacebook = function () {
             FB.ui({
-            method: "feed",
-            link: $scope.pageUrl,
-            caption: $scope.trip.title,
-            description: $scope.trip.introduction,
-            picture: $scope.trip.main_image.image_url
-        });
+                method: "feed",
+                link: $scope.pageUrl,
+                caption: $scope.trip.title,
+                description: $scope.trip.introduction,
+                picture: $scope.trip.main_image.image_url
+            });
         }
 
 

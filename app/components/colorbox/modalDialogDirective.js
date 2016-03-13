@@ -7,7 +7,8 @@
             restrict: 'E',
             scope: {
                 show: '=',
-                imageUrl: '='
+                imageUrl: '=',
+                caption:'='
             },
             replace: true, // Replace with the template below
             transclude: true, // we want to insert custom content inside the directive
@@ -15,6 +16,11 @@
                 scope.$watch('imageUrl', function (newValue, oldValue) {
                     if (newValue) {
                         scope.imageUrl = newValue;
+                    }
+                });
+                scope.$watch('caption', function (newValue, oldValue) {
+                    if (newValue) {
+                        scope.caption = newValue;
                     }
                 });
                 scope.dialogStyle = {};
