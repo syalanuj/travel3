@@ -13,9 +13,13 @@
             replace: true, // Replace with the template below
             transclude: true, // we want to insert custom content inside the directive
             link: function (scope, element, attrs) {
+                
                 scope.$watch('imageUrl', function (newValue, oldValue) {
                     if (newValue) {
                         scope.imageUrl = newValue;
+                        $("#modalImg").load(function(){
+                             $('.ng-modal-dialog-content').innerWidth($('#modalImg').width());
+                        });                    
                     }
                 });
                 scope.$watch('caption', function (newValue, oldValue) {

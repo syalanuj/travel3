@@ -178,10 +178,10 @@
             $scope.currentImageIndex = 0;
         };
         $scope.setUploadPlaceIndexForHover = function (pIndex) {
-            if($scope.currentPlaceIndex != pIndex){
+            if ($scope.currentPlaceIndex != pIndex) {
                 $scope.currentImageIndex = 0;
             }
-            $scope.currentPlaceIndex = pIndex;            
+            $scope.currentPlaceIndex = pIndex;
         };
         $scope.closeAlert = function (index) {
             $scope.alerts.splice(index, 1);
@@ -219,6 +219,10 @@
 
         $scope.focusTagsInput = function () {
             $('#tagInput').focus();
+        }
+        $scope.myFunct = function (keyEvent) {
+            if (keyEvent.which === 13)
+                $scope.formatTags();
         }
 
         //GeoTagging

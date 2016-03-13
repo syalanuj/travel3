@@ -42,9 +42,9 @@ Dropzone.autoDiscover = false;
                     </div>
                     <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span> </span> </div>
                   <div class="text-center bottommargin">
-                    <div ng-click="focusTagsInput()" style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary"> <span><strong>Tags :</strong>&nbsp;&nbsp;</span> <span class="tag" class="" ng-repeat="tag in newTrip.tags track by $index"><span>{{tag}}&nbsp;&nbsp;</span><a class="" style="color:#ffffff" ng-click="removeTag($index)">X</a></span> <span ng-cick="{{isAddTag= !isAddTag}}"><i class="fa fa-plus" ></i></span>
-                      <input id="tagInput" type="text" ng-model="rawTags" ng-blur="formatTags()" placeholder="Help others to find your trip">
-                    </div>
+                        <div ng-click="focusTagsInput()" style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary"> <span><strong>Tags :</strong>&nbsp;&nbsp;</span> <span class="tag" class="" ng-repeat="tag in newTrip.tags track by $index"><span>{{tag}}&nbsp;&nbsp;</span><a class="" style="color:#ffffff" ng-click="removeTag($index)">X</a></span> <span ng-cick="{{isAddTag= !isAddTag}}"><i class="fa fa-plus" ></i></span>
+                            <input ng-keypress="myFunct($event)" id="tagInput" type="text" ng-model="rawTags" ng-blur="formatTags()" placeholder="Help others to find your trip">
+                        </div>
                   </div>
                 </div>
               </div>
@@ -57,7 +57,7 @@ Dropzone.autoDiscover = false;
           <uib-accordion-heading>
             <div> {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}
                 <span class="pull-right"><a ng-hide="$index == 0 " ng-click="deleteItem($index)" class="fa fa-trash-o" style="color: #000;padding-top: 0px;"></a></span>
-                 </div>
+            </div>
           </uib-accordion-heading>
           <ng-form name="placeForm">
             <div  class="col-md-5">
@@ -89,7 +89,14 @@ Dropzone.autoDiscover = false;
             </div>
             <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
               <input type=hidden name=imageUploads ng-model="$scope.places[placeindex].images">
-              <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span> </div>
+              <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span> </div>          
+            <script type="text/javascript">
+$("input").keypress(function(event) {
+    if (event.which == 13) {
+        event.preventDefault();      
+    }
+});
+</script>
           </ng-form>
         </uib-accordion-group>
       </uib-accordion>
@@ -101,3 +108,10 @@ Dropzone.autoDiscover = false;
     <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
   </form>
 </div>
+<script type="text/javascript">
+$("input").keypress(function(event) {
+    if (event.which == 13) {
+        event.preventDefault();      
+    }
+});
+</script>

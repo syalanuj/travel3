@@ -2279,3 +2279,13 @@ transform:rotate(-30deg);
 	margin:auto;
 }
 /**/
+/*Timeline modal*/
+/*.ng-modal-dialog{
+background-color:transparent;
+}
+.ng-modal-close{
+    color:white;
+}
+.ng-modal-dialog-content{
+    color:white;
+}*/
