@@ -1061,7 +1061,6 @@ border-bottom-color:rgb(234, 137, 113);
 	border-left:none;
 	border-top:none;
 	border-right:none;
-	margin-bottom:15px;
 	margin-top:15px;
 	margin-left: 25px;
 	padding-right:25px;
@@ -2279,13 +2278,6 @@ transform:rotate(-30deg);
 	margin:auto;
 }
 /**/
-/*Timeline modal*/
-/*.ng-modal-dialog{
-background-color:transparent;
+.word-count{
+	padding-left:25px;
 }
-.ng-modal-close{
-    color:white;
-}
-.ng-modal-dialog-content{
-    color:white;
-}*/
