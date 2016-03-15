@@ -2281,3 +2281,42 @@ transform:rotate(-30deg);
 .word-count{
 	padding-left:25px;
 }
+/*profile-page-header responsive*/
+.ten-seconds{
+	padding-left:85px;
+}
+@media only screen and (max-width: 1199px){
+	.profile_page_header{
+		height:450px;
+	}
+}
+@media only screen and (max-width: 991px){
+	.profile_page_header{
+		height:480px;
+	}
+	.ten-seconds{
+		padding-left:0px;
+	}
+	.about-me .col-md-7{
+		text-align:center;
+	}
+}
+@media only screen and (max-width: 589px){
+	.profile_page_header{
+		height:520px;
+	}
+}
+@media only screen and (max-width: 589px){
+	.profile_page_header{
+		height:560px;
+	}
+}
+.content-wrap{
+	z-index:1;
+	background:url("/img/backgrounds/no-trips.png");
+	height:100vh;
+	background-position:top;
+	background-repeat:no-repeat;
+	vertical-align:central;
+	padding-top:20vh;
+}
