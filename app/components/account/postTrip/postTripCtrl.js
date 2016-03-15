@@ -2,8 +2,53 @@
     'use strict';
 
     var app = angular.module('campture');
-    app.controller('PostTripCtrl', ['$scope', '$cookies', '$rootScope', '$location', 'AccountService', controller]);
-    function controller($scope, $cookies, $rootScope, $location, accountService) {
+    app.controller('PostTripCtrl', ['$scope', '$cookies', '$rootScope', '$location', '$sessionStorage', 'AccountService', controller]);
+    app.directive('autoSave', ['$interval',
+    function($interval) {
+      return {
+        restrict: 'A',
+        require: 'form',
+        link: function($scope, $element, $attrs) {
+          var latestModel = null;
+          var autoSaveModel = $scope.$eval($attrs.autoSaveModel);
+          var hasModel = !!autoSaveModel;
+          var autoSaveFn = $scope.$eval($attrs.autoSaveFn);
+          var autoSaveMode = $attrs.autoSaveMode;
+          var autoSaveInterval = $scope.$eval($attrs.autoSaveInterval) * 1;
+          latestModel = angular.copy(autoSaveModel);
+          var intervalPromise = null;
+
+          function blurHandler() {
+            $scope.$apply(function() {
+              autoSaveFn();
+            });
+          }
+
+          if(autoSaveMode === 'interval') {
+            intervalPromise = $interval(function() {
+              autoSaveModel = $scope.$eval($attrs.autoSaveModel);
+              if(!hasModel || !angular.equals(latestModel, autoSaveModel)) {
+                latestModel = angular.copy(autoSaveModel);
+                autoSaveFn();
+              }
+            }, autoSaveInterval);
+          } else if (autoSaveMode === 'blur') {
+            $element.find('input').on('blur', blurHandler);
+          }
+
+          $element.on('$destroy', function(event) {
+            if(intervalPromise) {
+              $interval.cancel(intervalPromise);
+            }
+            if (autoSaveMode === 'blur') {
+              $element.find('input').off('blur', blurHandler);
+            }
+          });
+        }
+      }
+    }
+  ]);
+    function controller($scope, $cookies, $rootScope, $location, $sessionStorage, accountService) {
         //====== Scope Variables==========
         //================================
         $(document).ready(function () {
@@ -42,6 +87,30 @@
         $scope.status = {
             opened: false
         };
+
+        //form session save
+        $scope.form = {
+            postTripForm: {},
+            data: {}
+        };
+        $scope.saveForm = function () {
+            console.log('data:', $scope.form.data);
+        };
+        $scope.partialSave = function(){
+            
+        }
+
+        //$scope.$watch('newTrip.title', function (newValue, oldValue) {
+        //    if (newValue) {
+        //        $sessionStorage.newTripSession = newValue;
+        //    }
+        //});
+        //$scope.$watch('places', function (newValue, oldValue) {
+        //    if (newValue) {
+        //        $sessionStorage.newTripSession = newValue;
+        //    }
+        //});
+
         $scope.open = function ($event) {
             $scope.status.opened = true;
         };
