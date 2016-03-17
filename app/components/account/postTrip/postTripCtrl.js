@@ -2,53 +2,8 @@
     'use strict';
 
     var app = angular.module('campture');
-    app.controller('PostTripCtrl', ['$scope', '$cookies', '$rootScope', '$location', '$sessionStorage', 'AccountService', controller]);
-    app.directive('autoSave', ['$interval',
-    function($interval) {
-      return {
-        restrict: 'A',
-        require: 'form',
-        link: function($scope, $element, $attrs) {
-          var latestModel = null;
-          var autoSaveModel = $scope.$eval($attrs.autoSaveModel);
-          var hasModel = !!autoSaveModel;
-          var autoSaveFn = $scope.$eval($attrs.autoSaveFn);
-          var autoSaveMode = $attrs.autoSaveMode;
-          var autoSaveInterval = $scope.$eval($attrs.autoSaveInterval) * 1;
-          latestModel = angular.copy(autoSaveModel);
-          var intervalPromise = null;
-
-          function blurHandler() {
-            $scope.$apply(function() {
-              autoSaveFn();
-            });
-          }
-
-          if(autoSaveMode === 'interval') {
-            intervalPromise = $interval(function() {
-              autoSaveModel = $scope.$eval($attrs.autoSaveModel);
-              if(!hasModel || !angular.equals(latestModel, autoSaveModel)) {
-                latestModel = angular.copy(autoSaveModel);
-                autoSaveFn();
-              }
-            }, autoSaveInterval);
-          } else if (autoSaveMode === 'blur') {
-            $element.find('input').on('blur', blurHandler);
-          }
-
-          $element.on('$destroy', function(event) {
-            if(intervalPromise) {
-              $interval.cancel(intervalPromise);
-            }
-            if (autoSaveMode === 'blur') {
-              $element.find('input').off('blur', blurHandler);
-            }
-          });
-        }
-      }
-    }
-  ]);
-    function controller($scope, $cookies, $rootScope, $location, $sessionStorage, accountService) {
+    app.controller('PostTripCtrl', ['$scope', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', 'AccountService', controller]);
+    function controller($scope, $cookies, $rootScope, $location, $sessionStorage, $interval, accountService) {
         //====== Scope Variables==========
         //================================
         $(document).ready(function () {
@@ -83,6 +38,7 @@
         $scope.isTripUploading = false;
         $scope.currentPlaceIndex = 0;
         $scope.currentImageIndex = 0;
+        $scope.openStatus = true;
         //Date functions
         $scope.status = {
             opened: false
@@ -96,21 +52,27 @@
         $scope.saveForm = function () {
             console.log('data:', $scope.form.data);
         };
-        $scope.partialSave = function(){
-            
+
+        if ($sessionStorage.newTripSession) {
+            $scope.newTrip = $sessionStorage.newTripSession;
+            if ($scope.newTrip.main_image && $scope.newTrip.main_image.image_url) {
+                $scope.mainImageUploaded = true;
+            }
         }
-
-        //$scope.$watch('newTrip.title', function (newValue, oldValue) {
-        //    if (newValue) {
-        //        $sessionStorage.newTripSession = newValue;
-        //    }
-        //});
-        //$scope.$watch('places', function (newValue, oldValue) {
-        //    if (newValue) {
-        //        $sessionStorage.newTripSession = newValue;
-        //    }
-        //});
-
+        if ($sessionStorage.placesSession) {
+            if ($sessionStorage.placesSession.length > 1) {
+                $scope.openStatus = false;
+            }
+            $scope.places = $sessionStorage.placesSession;
+            $scope.newplaces = new Array();
+            for (var i = 0; i < $scope.places.length; i++) {
+                $scope.newplaces.push(i);
+            }
+        }
+        $scope.saveFormSession = function () {
+            $sessionStorage.newTripSession = $scope.newTrip;
+            $sessionStorage.placesSession = $scope.places;
+        }
         $scope.open = function ($event) {
             $scope.status.opened = true;
         };
@@ -133,7 +95,9 @@
         $scope.removePlace = function () {
             $scope.newplaces.pop();
         };
-
+        $scope.deleteImage = function (placindex, imageindex) {
+            $scope.places[placindex].images.splice(imageindex, 1);
+        }
         $scope.postTrip = function () {
             $scope.isPublishedClicked = true;
             if ($scope.postTripForm.$invalid) {
@@ -198,6 +162,8 @@
                 },
                 'success': function (file, response) {
                     $scope.places[file.placeIndex].images.push({ image_url: response.url });
+                    $scope.saveFormSession();
+                    $scope.$apply();
                 },
                 'removedfile': function (file, response) {
                     $scope.places[file.placeIndex].images.splice(file.imageIndex, 1);
@@ -238,6 +204,7 @@
                     $scope.newTrip.main_image = { image_url: response.url };
                     $scope.mainImageUploading = false;
                     $scope.mainImageUploaded = true;
+                    $scope.saveFormSession();
                     $scope.$apply();
                 }
             }
@@ -293,6 +260,8 @@
             if (keyEvent.which === 13)
                 $scope.formatTags();
         }
+
+        $interval($scope.saveFormSession, 10000);
 
         //GeoTagging
         function getGPSDegreeToDecimal(degree, minutes, seconds, direction) {

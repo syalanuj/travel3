@@ -180,13 +180,19 @@
             });
         };
         $scope.tripLikeUnlike = function () {
-            if ($scope.likeId) {
-                $scope.likeId = undefined;
-                $scope.unlikeTrip();
+            if ($scope.currentUserObj) {
+                if ($scope.likeId) {
+                    $scope.likeId = undefined;
+                    $scope.unlikeTrip();
+                }
+                else {
+                    $scope.likeId = new Object();
+                    $scope.likeTrip();
+                }
             }
-            else {
-                $scope.likeId = new Object();
-                $scope.likeTrip();
+            else{
+                $("#facebook-login-modal2").css("display", "block");
+                $scope.isLikeDisabled = false;
             }
         }
 
