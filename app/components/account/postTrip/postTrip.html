@@ -3,7 +3,7 @@
 </script>
 <!--<div profile-wrap files="userObj"></div>-->
 <div class="container frame-padding-bottom">
-    <form name="postTripForm" ng-submit="" role="form">
+    <form name="postTripForm" ng-submit="" role="form" class="col-md-8">
         <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
             <div class="cover-message dz-message">
                 <img src="../../../../css/images/cover_photo_placeholder.png"><br>
@@ -39,6 +39,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-12">
                                 <div>
                                     <div class="text-center">
@@ -51,7 +52,7 @@
                                             <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span> </span>
                                     </div>
                                     <div class="text-center bottommargin">
-                                        <div ng-click="focusTagsInput()"  style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
+                                        <div ng-click="focusTagsInput()" style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
                                             <span><strong>Tags :</strong>&nbsp;&nbsp;</span> <span class="tag" class="" ng-repeat="tag in newTrip.tags track by $index"><span>{{tag}}&nbsp;&nbsp;</span><a class="" style="color:#ffffff" ng-click="removeTag($index)">X</a></span> <span ng-cick="{{isAddTag= !isAddTag}}"><i class="fa fa-plus"></i></span>
                                             <input ng-keypress="myFunct($event)" id="tagInput" type="text" ng-model="rawTags" ng-blur="formatTags();saveFormSession();" placeholder="Help others to find your trip">
                                         </div>
@@ -71,7 +72,22 @@
                         </div>
                     </uib-accordion-heading>
                     <ng-form name="placeForm">
-                        <div class="col-md-5">
+                        <div ng-mouseover="setUploadPlaceIndexForHover(placeindex)" ng-click="setUploadPlaceIndex(placeindex)" class="col-md-12">
+                            <div class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">
+                                <div ng-show="places[placeindex].images == null || places[placeindex].images.length < 1" class="dz-message needsclick dropzone-internal-border">
+                                    <img src="../../../../css/images/2016-02-26.png">
+                                    <h2>DRAG AND DROP</h2>
+                                    <h4>Your Photos or Browse</h4>
+                                </div>
+                                <div ng-repeat="image in places[placeindex].images track by $index" class="dz-preview dz-file-preview">
+                                    <div class="dz-image">
+                                        <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_120,w_120/')}}">
+                                    </div>
+                                    <a class="dz-remove" href="" ng-click="deleteImage(placeindex,$index)" data-dz-remove="">Remove file</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
                             <span class="input-alter input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
                                 <div class="input-add-ons">
                                     <input type="text" name="location" placeholder="Where were these photos taken?" class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded" ng-autocomplete ng-model="places[placeindex].location" ng-blur="saveFormSession()" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required />
@@ -90,21 +106,7 @@
                             </div>
 
                         </div>
-                        <div ng-mouseover="setUploadPlaceIndexForHover(placeindex)" ng-click="setUploadPlaceIndex(placeindex)" class="col-md-7">
-                            <div class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">
-                                <div ng-show="places[placeindex].images == null || places[placeindex].images.length < 1" class="dz-message needsclick dropzone-internal-border">
-                                    <img src="../../../../css/images/2016-02-26.png">
-                                    <h2>DRAG AND DROP</h2>
-                                    <h4>Your Photos or Browse</h4>
-                                </div>
-                                <div ng-repeat="image in places[placeindex].images track by $index" class="dz-preview dz-file-preview">
-                                    <div class="dz-image">
-                                        <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_120,w_120/')}}">
-                                    </div>
-                                    <a class="dz-remove" href="" ng-click="deleteImage(placeindex,$index)" data-dz-remove="">Remove file</a>
-                                </div>
-                            </div>
-                        </div>
+
                         <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
                             <input type="hidden" name="imageUploads" ng-model="$scope.places[placeindex].images">
                             <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span>
@@ -128,6 +130,32 @@
         <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
         <span style="color: #000" ng-show="!mainImageUploaded && isPublishedClicked">Upload the cover image</span>
     </form>
+    <div class="col-md-4 col-sm-12 tips-for-sub hidden-sm hidden-xs">
+        <ul>
+            <h3>TIPS FOR SUBMISSIONS</h3>
+            <li><h4><strong>Be specific.</strong></h4>
+                <p>We're using your location information for driving directions, so starting trailheads, parking lots, and campgrounds are best.</p></li>
+            <li><h4><strong>Be descriptive.</strong></h4>
+                <p>Focus on what makes this a can't miss experience. The more detail you add, the easier it is for someone else to find and do your adventure!</p></li>
+            <li><h4><strong>Find hidden gems.</strong></h4>
+                <p>We're counting on your local knowledge to help us unearth the truly hidden gems. If you're open to sharing one of your favourite adventures, we'd love to see it on the site.</p></li>
+            <li><h4><strong>Featured Adventures.</strong></h4>
+                <p>Thank you for sharing one of your favourite adventures with us! Our editorial team selects which adventures are featured. If featured, you'll be notified via email and be able to search for yours on the Find Adventures page.</p></li>
+        </ul>
+    </div>
+    <div class=" col-sm-12 hidden-lg hidden-md">
+        <ul>
+            <h5>TIPS FOR SUBMISSIONS</h5>
+            <li>Be specific.
+                <p>We're using your location information for driving directions, so starting trailheads, parking lots, and campgrounds are best.</p></li>
+            <li>Be descriptive.
+                <p>Focus on what makes this a can't miss experience. The more detail you add, the easier it is for someone else to find and do your adventure!</p></li>
+            <li>Find hidden gems.
+                <p>We're counting on your local knowledge to help us unearth the truly hidden gems. If you're open to sharing one of your favourite adventures, we'd love to see it on the site.</p></li>
+            <li>Featured Adventures.
+                <p>Thank you for sharing one of your favourite adventures with us! Our editorial team selects which adventures are featured. If featured, you'll be notified via email and be able to search for yours on the Find Adventures page.</p></li>
+        </ul>
+    </div>
 </div>
 <script type="text/javascript">
     $("input").keypress(function(event) {

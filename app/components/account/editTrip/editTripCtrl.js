@@ -231,11 +231,21 @@
         function getFormSession(data){
             if ($sessionStorage.newTripSession && $sessionStorage.newTripSession.id == data.id) {
                 $scope.newTrip = $sessionStorage.newTripSession;
-                $scope.newTrip.posted_on = new Date($scope.newTrip.posted_on);
-                $scope.newTrip.createdAt = new Date($scope.newTrip.createdAt);
-                $scope.newTrip.updatedAt = new Date($scope.newTrip.updatedAt);
-                for (var i = 0; i < $scope.newTrip.visited_places.length; i++) {
-                    $scope.newTrip.visited_places[i].date = new Date($scope.newTrip.visited_places[i].date);
+                if ($scope.newTrip.posted_on) {
+                    $scope.newTrip.posted_on = new Date($scope.newTrip.posted_on);
+                }
+                if ($scope.newTrip.createdAt) {
+                    $scope.newTrip.createdAt = new Date($scope.newTrip.createdAt);
+                }
+                if ($scope.newTrip.updatedAt) {
+                    $scope.newTrip.updatedAt = new Date($scope.newTrip.updatedAt);
+                }
+                if ($scope.newTrip.visited_places) {
+                    for (var i = 0; i < $scope.newTrip.visited_places.length; i++) {
+                        if ($scope.newTrip.visited_places[i].date) {
+                            $scope.newTrip.visited_places[i].date = new Date($scope.newTrip.visited_places[i].date);
+                        }
+                    }
                 }
                 if ($scope.newTrip.main_image && $scope.newTrip.main_image.image_url) {
                     $scope.mainImageUploaded = true;
@@ -246,8 +256,12 @@
                     $scope.openStatus = false;
                 }
                 $scope.places = $sessionStorage.placesSession;
-                for (var i = 0; i < $scope.places.length; i++) {
-                    $scope.places[i].date = new Date($scope.places[i].date);
+                if ($scope.places) {
+                    for (var i = 0; i < $scope.places.length; i++) {
+                        if ($scope.places[i].date) {
+                            $scope.places[i].date = new Date($scope.places[i].date);
+                        }
+                    }
                 }
                 $scope.newplaces = new Array();
                 for (var i = 0; i < $scope.places.length; i++) {
