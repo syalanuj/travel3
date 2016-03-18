@@ -39,24 +39,9 @@ body a{
 }
 
 .search-box {
-  height: 40px;
-  font-size: 16px;
-  display: inline-block;
-  font-family: "Lato";
-  font-weight: 100;
-  border: none;
-  outline: none;
-  color: #555;
-  padding: 3px;
-  padding-right: 30px;
-  width: 0px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: none;
-  z-index: 3;
-  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
-  cursor: pointer;
+width: 300px;
+float: left;
+margin-top: 10px;
 }
 
 /*input[type="text"]:focus:hover {
@@ -126,10 +111,8 @@ input[type="submit"]:hover {
 .jumbotron-index
 {
 	color:#CECECE;
-	height:500px;
 	margin-bottom:0px!important;
-	padding-top:100px!important;
-	background-image:url(../images/landing-page-hero.jpg);
+	/*background-image:url(../images/landing-page-hero.jpg);*/
 }
 .jumbotron-landingpage
 {
@@ -678,10 +661,11 @@ table tr td:last-child {
     position: relative;
 	display: inline-block;
 	margin: 0px;
-	max-width: 500px;
 	width: 100%;
 	vertical-align: top;
+	max-width:500px;
 }
+
 
 .input__field--minoru {
 	width: 100%;
@@ -1061,7 +1045,6 @@ border-bottom-color:rgb(234, 137, 113);
 	border-left:none;
 	border-top:none;
 	border-right:none;
-	margin-bottom:15px;
 	margin-top:15px;
 	margin-left: 25px;
 	padding-right:25px;
@@ -1091,7 +1074,6 @@ border-bottom-color:rgb(234, 137, 113);
 	width:76px!important;
 	margin:auto;
 	margin-bottom:10px;
-	box-shadow: 0px 0px 22.5px 2.5px rgba(57, 55, 55, 0.3);
 }
 .user_name{
 	padding-top:25px;
@@ -1444,7 +1426,7 @@ border-bottom-color:rgb(234, 137, 113);
 }
 
 .on-top{
-z-index:1!important;
+z-index:35!important;
 }
 
 .portfolio-info .description{
@@ -1868,16 +1850,13 @@ width: 100%;
 }
 .input__field::-webkit-input-placeholder{
 
-	font-style:italic;
 	color:rgb(177, 175, 175);
 }
 .text-area-border-color::-webkit-input-placeholder{
-	font-style:italic;
 	font-weight:200;
 	color:rgb(177, 175, 175);
 }
 .cover-input-field::-webkit-input-placeholder{
-	font-style:italic;
 	font-weight:200;
 	color:rgb(177, 175, 175);
 }
@@ -1886,13 +1865,11 @@ width: 100%;
 	border-width:2px;
 	border-color:rgba(0, 0, 0, 0.3);
 	padding:5px;
-	font-style:italic;
  }
  .text-area-border-color::-webkit-input-placeholder{
- 	font-style:italic;
- }
+ 	 }
  .cover-input-field::-webkit-input-placeholder{
- 	font-style:italic;
+ 	
 	font-weight:200;
  }
 .cover-message{
@@ -2040,11 +2017,10 @@ footer ul li{
 .panel-default {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 	border:none!important;
-}
+	}
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
     border-top:none;
 }
-
 .thumbnail .caption {
 	overflow:auto;
 }
@@ -2110,7 +2086,7 @@ footer ul li{
 @media (min-width: 768px){
 	.media-buttons-margin{
 	margin-top:20px;	
-	margin-left: 48.333333%;
+	margin-left: 24.333333%;
 	}
 }
 @media (max-width: 767px){
@@ -2280,13 +2256,113 @@ transform:rotate(-30deg);
 	margin:auto;
 }
 /**/
-/*Timeline modal*/
-/*.ng-modal-dialog{
-background-color:transparent;
+.word-count{
+	padding-left:25px;
 }
-.ng-modal-close{
-    color:white;
+/*profile-page-header responsive*/
+.ten-seconds{
+	padding-left:85px;
 }
-.ng-modal-dialog-content{
-    color:white;
-}*/
+@media only screen and (max-width: 1199px){
+	.profile_page_header{
+		height:450px;
+	}
+}
+@media only screen and (max-width: 991px){
+	.profile_page_header{
+		height:480px;
+	}
+	.ten-seconds{
+		padding-left:0px;
+	}
+	.about-me .col-md-7{
+		text-align:center;
+	}
+}
+@media only screen and (max-width: 589px){
+	.profile_page_header{
+		height:520px;
+	}
+}
+@media only screen and (max-width: 589px){
+	.profile_page_header{
+		height:560px;
+	}
+}
+.content-wrap{
+	z-index:1;
+	background:url("/img/backgrounds/no-trips.png");
+	height:100vh;
+	background-position:top;
+	background-repeat:no-repeat;
+	vertical-align:central;
+	padding-top:20vh;
+}
+/*Timeline modal fix*/
+.ng-modal-dialog{
+	max-width: 100%;
+	height: auto;
+}
+.tips-for-sub{
+	position:fixed;
+	top:75px;
+	right:20px;
+	-webkit-transform: translateZ(0);
+	z-index: -1;
+	background:#f7f7f7;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	line-height:2.3em;}
+	
+	
+/*fading carousel*/
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right 
+	{
+	}}
+.get-started-btn{
+	background-color: rgb(240, 98, 71);
+  	box-shadow: inset 0px -5px 0px 0px rgba(150, 55, 37, 0.4);
+	font-family: "Lato";
+    letter-spacing: .04em;
+  	color: rgb(255, 255, 255);
+	padding:10px;
+	}
+.landing-carousel-text{
+	font-size: 3.5vw;
+  font-family: "Lato";
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: rgb(255, 255, 255);
+  padding-top:5.3vw;
+  padding-bottom:5.3vw;
+}
+@media (max-width: 360px){
+	.carousel-caption{
+		bottom:0;
+	}
+}
