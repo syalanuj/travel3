@@ -2086,7 +2086,7 @@ footer ul li{
 @media (min-width: 768px){
 	.media-buttons-margin{
 	margin-top:20px;	
-	margin-left: 48.333333%;
+	margin-left: 24.333333%;
 	}
 }
 @media (max-width: 767px){
@@ -2360,4 +2360,9 @@ transform:rotate(-30deg);
   color: rgb(255, 255, 255);
   padding-top:5.3vw;
   padding-bottom:5.3vw;
+}
+@media (max-width: 360px){
+	.carousel-caption{
+		bottom:0;
+	}
 }
