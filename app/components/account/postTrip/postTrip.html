@@ -30,7 +30,7 @@
                                     <div class="text-center" style="padding-top:10px;">
                                         <span class="input-alter input--isao no-margin" ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">
                                             <div class="input-add-ons">
-                                                <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline cover-input-field" ng-model="newTrip.title" maxlength="100" name="title" type="text" required>
+                                                <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline cover-input-field" ng-model="newTrip.title" ng-blur="saveFormSession()" maxlength="100" name="title" type="text" required>
                                                 <span class="input-symbol"><i class="fa fa-pencil"></i></span>
                                             </div>
                                         </span> <span ng-show="postTripForm.title.$dirty && postTripForm.title.$error.required" class="help-block">Title is required.</span>
@@ -44,16 +44,16 @@
                                     <div class="text-center">
                                         <span class="input-alter input--minoru" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
                                             <div class="input-add-ons">
-                                                <textarea maxlength="144" class="text-area-border-color text-center span12" ng-model="newTrip.introduction" rows="3" name="introduction" placeholder=" &nbsp; &nbsp; &nbsp; &nbsp; Add a quick summary of your experience." required></textarea>
+                                                <textarea maxlength="144" class="text-area-border-color text-center span12" ng-model="newTrip.introduction" ng-blur="saveFormSession()" rows="3" name="introduction" placeholder=" &nbsp; &nbsp; &nbsp; &nbsp; Add a quick summary of your experience." required></textarea>
                                                 <span ng-if="newTrip.introduction.length == undefined">0</span>{{newTrip.introduction.length}}/144
                                                 <span class="input-symbol"><i class="fa fa-book"></i></span>
                                             </div>
                                             <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span> </span>
                                     </div>
                                     <div class="text-center bottommargin">
-                                        <div ng-click="focusTagsInput()" style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
+                                        <div ng-click="focusTagsInput()"  style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
                                             <span><strong>Tags :</strong>&nbsp;&nbsp;</span> <span class="tag" class="" ng-repeat="tag in newTrip.tags track by $index"><span>{{tag}}&nbsp;&nbsp;</span><a class="" style="color:#ffffff" ng-click="removeTag($index)">X</a></span> <span ng-cick="{{isAddTag= !isAddTag}}"><i class="fa fa-plus"></i></span>
-                                            <input ng-keypress="myFunct($event)" id="tagInput" type="text" ng-model="rawTags" ng-blur="formatTags()" placeholder="Help others to find your trip">
+                                            <input ng-keypress="myFunct($event)" id="tagInput" type="text" ng-model="rawTags" ng-blur="formatTags();saveFormSession();" placeholder="Help others to find your trip">
                                         </div>
                                     </div>
                                 </div>
@@ -74,18 +74,18 @@
                         <div class="col-md-5">
                             <span class="input-alter input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
                                 <div class="input-add-ons">
-                                    <input type="text" name="location" placeholder="Where were these photos taken?" class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded" ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required />
+                                    <input type="text" name="location" placeholder="Where were these photos taken?" class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded" ng-autocomplete ng-model="places[placeindex].location" ng-blur="saveFormSession()" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required />
                                     <span class="input-symbol"><i class="fa fa-map-marker"></i></span>
                                 </div>
                             </span> <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
                             <div class="input-add-ons">
-                                <textarea maxlength="250" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3" name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note">
+                                <textarea maxlength="250" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3" name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" ng-blur="saveFormSession()">
                                 </textarea>
                                 <span ng-if="places[placeindex].note.length == undefined">0</span>{{places[placeindex].note.length}}/250
                                 <span class="input-symbol"><i class="fa fa-pencil"></i></span>
                             </div>
                             <div class="input-add-ons">
-                                <input name="date" placeholder=" Remember the dates?" init-date="places[placeindex - 1].date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline text-area-border-color input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
+                                <input name="date" placeholder=" Remember the dates?" init-date="places[placeindex - 1].date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" ng-blur="saveFormSession()" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline text-area-border-color input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
                                 <span class="input-symbol"><i class="fa fa-calendar"></i></span>
                             </div>
 

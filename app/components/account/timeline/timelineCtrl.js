@@ -191,7 +191,7 @@
                 }
             }
             else{
-                $("#facebook-login-modal2").css("display", "block");
+                //$("#facebook-login-modal2").css("display", "block");
                 $scope.isLikeDisabled = false;
             }
         }

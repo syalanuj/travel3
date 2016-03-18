@@ -53,25 +53,14 @@
             console.log('data:', $scope.form.data);
         };
 
-        if ($sessionStorage.newTripSession) {
-            $scope.newTrip = $sessionStorage.newTripSession;
-            if ($scope.newTrip.main_image && $scope.newTrip.main_image.image_url) {
-                $scope.mainImageUploaded = true;
-            }
-        }
-        if ($sessionStorage.placesSession) {
-            if ($sessionStorage.placesSession.length > 1) {
-                $scope.openStatus = false;
-            }
-            $scope.places = $sessionStorage.placesSession;
-            $scope.newplaces = new Array();
-            for (var i = 0; i < $scope.places.length; i++) {
-                $scope.newplaces.push(i);
-            }
-        }
+        getFormSession();
         $scope.saveFormSession = function () {
             $sessionStorage.newTripSession = $scope.newTrip;
             $sessionStorage.placesSession = $scope.places;
+        }
+        $scope.deleteFormSession = function () {
+            $sessionStorage.newTripSession = undefined;
+            $sessionStorage.placesSession = undefined;
         }
         $scope.open = function ($event) {
             $scope.status.opened = true;
@@ -119,6 +108,7 @@
                                 $scope.newplaces = [1];
                                 $scope.newTrip = undefined;
                                 $scope.places = undefined;
+                                $scope.deleteFormSession();
                                 $scope.isTripUploading = false;
                                 $location.path('/account/timeline/' + data);
                             }
@@ -205,7 +195,6 @@
                     $scope.mainImageUploading = false;
                     $scope.mainImageUploaded = true;
                     $scope.saveFormSession();
-                    $scope.$apply();
                 }
             }
         };
@@ -260,9 +249,6 @@
             if (keyEvent.which === 13)
                 $scope.formatTags();
         }
-
-        $interval($scope.saveFormSession, 10000);
-
         //GeoTagging
         function getGPSDegreeToDecimal(degree, minutes, seconds, direction) {
             direction.toUpperCase();
@@ -323,6 +309,33 @@
             }
             $scope.imageUploadDone = true;
             return true;
+        }
+        function getFormSession() {
+            if ($sessionStorage.newTripSession) {
+                $scope.newTrip = $sessionStorage.newTripSession;
+                $scope.newTrip.posted_on = new Date($scope.newTrip.posted_on);
+                $scope.newTrip.createdAt = new Date($scope.newTrip.createdAt);
+                $scope.newTrip.updatedAt = new Date($scope.newTrip.updatedAt);
+                for (var i = 0; i < $scope.newTrip.visited_places.length; i++) {
+                    $scope.newTrip.visited_places[i].date = new Date($scope.newTrip.visited_places[i].date);
+                }
+                if ($scope.newTrip.main_image && $scope.newTrip.main_image.image_url) {
+                    $scope.mainImageUploaded = true;
+                }
+            }
+            if ($sessionStorage.placesSession) {
+                if ($sessionStorage.placesSession.length > 1) {
+                    $scope.openStatus = false;
+                }
+                $scope.places = $sessionStorage.placesSession;
+                for (var i = 0; i < $scope.places.length; i++) {
+                    $scope.places[i].date = new Date($scope.places[i].date);
+                }
+                $scope.newplaces = new Array();
+                for (var i = 0; i < $scope.places.length; i++) {
+                    $scope.newplaces.push(i);
+                }
+            }
         }
     };
 })();
