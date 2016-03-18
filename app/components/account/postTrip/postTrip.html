@@ -3,7 +3,11 @@ Dropzone.autoDiscover = false;
 </script>
 <!--<div profile-wrap files="userObj"></div>-->
 <div class="container frame-padding-bottom">
+<<<<<<< HEAD
   <form name="postTripForm" ng-submit="" role="form" class="col-md-8 col-sm-12">
+=======
+  <form name="postTripForm" ng-submit="" role="form" auto-save auto-save-model="testmodel" auto-save-fn="partialSave" auto-save-mode="blur">
+>>>>>>> master
     <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
       <div class="cover-message dz-message"> 
       <img src="../../../../css/images/cover_photo_placeholder.png"><br>
@@ -83,7 +87,7 @@ Dropzone.autoDiscover = false;
                 <span class="input-symbol"><i class="fa fa-pencil"></i></span>
                 </div>
                  <div class="input-add-ons">
-                <input name="date" placeholder=" Remember the dates?" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline text-area-border-color input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
+                <input name="date" placeholder=" Remember the dates?" init-date="places[placeindex - 1].date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline text-area-border-color input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
                 <span class="input-symbol"><i class="fa fa-calendar"></i></span>
                 </div>
               
@@ -106,7 +110,8 @@ $("input").keypress(function(event) {
       <button type="button" ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
       <button type="submit" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
       <span ng-show="isTripUploading" class="text-center"> <img src="css/images/ripple.gif"> </span> </div>
-    <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
+      <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
+      <span style="color: #000" ng-show="!mainImageUploaded && isPublishedClicked">Upload the cover image</span>
   </form>
   <div class="col-md-4 col-sm-12 tips-for-sub hidden-sm">
   <ul>

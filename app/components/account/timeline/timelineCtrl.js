@@ -53,10 +53,15 @@
                 });
                 var markerId = 0;
                 angular.forEach($scope.trip.visited_places, function (place, key) {
-                    $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
-                    var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
-                    bounds.extend(latlng);
-                    markerId++;
+                    try {
+                        $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
+                        var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
+                        bounds.extend(latlng);
+                        markerId++;
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
                 });
                 $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15 };
                 $scope.polylines = [
@@ -213,6 +218,6 @@
                 picture: $scope.trip.main_image.image_url
             });
         }
-        
+
     };
 })();
