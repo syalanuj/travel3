@@ -1,0 +1,80 @@
+ISlider WxH: 1450x600
+
+Get Started Button
+
+.button_bg {
+  border-radius: 2px;
+  background-color: rgb(240, 98, 71);
+  box-shadow: inset 0px -5px 0px 0px rgba(150, 55, 37, 0.4);
+  position: absolute;
+  left: 710px;
+  top: 470px;
+  width: 180px;
+  height: 60px;
+  z-index: 131;
+}
+
+.Get_Started text {
+  font-size: 20px;
+  font-family: "Lato";
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: left;
+  position: absolute;
+  left: 744.328px;
+  top: 488px;
+  z-index: 132;
+}
+
+Slider1
+
+.Campture_those_moments_in_the_clouds {
+  font-size: 48px;
+  font-family: "Lato";
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: left;
+  position: absolute;
+  left: 333.719px;
+  top: 334.004px;
+  z-index: 134;
+}
+
+<<<< Same goes from slider1 to slider4 >>>>
+
+Slider5
+
+.Showcase_and_discover_amazing_photologues {
+  font-size: 32px;
+  font-family: "Lato";
+  font-weight: 600;
+  letter-spacing:0.04em;
+  color: rgb(36, 42, 44);
+  line-height: 1.125;
+  text-align: left;
+  position: absolute;
+  left: 213.125px;
+  top: 183.48px;
+  z-index: 11;
+}
+
+.Coming_soon_on {
+  font-size: 24px;
+  font-family: "Lato";
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgb(36, 42, 44);
+  line-height: 1.5;
+  text-align: left;
+  position: absolute;
+  left: 213.859px;
+  top: 336.402px;
+  z-index: 13;
+}
+
+
+
