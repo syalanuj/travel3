@@ -2017,12 +2017,10 @@ footer ul li{
 .panel-default {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 	border:none!important;
-	padding:15px;
-}
+	}
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
     border-top:none;
 }
-
 .thumbnail .caption {
 	overflow:auto;
 }
@@ -2307,9 +2305,15 @@ transform:rotate(-30deg);
 }
 .tips-for-sub{
 	position:fixed;
-	top:55px;
-	right:0;
-}
+	top:75px;
+	right:20px;
+	-webkit-transform: translateZ(0);
+	z-index: -1;
+	background:#f7f7f7;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	line-height:2.3em;}
+	
+	
 /*fading carousel*/
 .carousel-fade .carousel-inner .item {
   opacity: 0;

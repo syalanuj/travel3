@@ -3,11 +3,10 @@ Dropzone.autoDiscover = false;
 </script>
 <!--<div profile-wrap files="userObj"></div>-->
 <div class="container frame-padding-bottom">
-<<<<<<< HEAD
+
   <form name="postTripForm" ng-submit="" role="form" class="col-md-8 col-sm-12">
-=======
   <form name="postTripForm" ng-submit="" role="form" auto-save auto-save-model="testmodel" auto-save-fn="partialSave" auto-save-mode="blur">
->>>>>>> master
+
     <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
       <div class="cover-message dz-message"> 
       <img src="../../../../css/images/cover_photo_placeholder.png"><br>
@@ -113,16 +112,16 @@ $("input").keypress(function(event) {
       <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
       <span style="color: #000" ng-show="!mainImageUploaded && isPublishedClicked">Upload the cover image</span>
   </form>
-  <div class="col-md-4 col-sm-12 tips-for-sub hidden-sm">
+  <div class="col-md-4 col-sm-12 tips-for-sub hidden-sm hidden-xs">
   <ul>
-  <h5>TIPS FOR SUBMISSIONS</h5>
-  <li>Be specific.
+  <h3>TIPS FOR SUBMISSIONS</h3>
+  <li><h4><strong>Be specific.</strong></h4>
   <p>We're using your location information for driving directions, so starting trailheads, parking lots, and campgrounds are best.</p></li>
-  <li>Be descriptive.
+  <li><h4><strong>Be descriptive.</strong></h4>
 <p>Focus on what makes this a can't miss experience. The more detail you add, the easier it is for someone else to find and do your adventure!</p></li>
-  <li>Find hidden gems.
+  <li><h4><strong>Find hidden gems.</strong></h4>
 <p>We're counting on your local knowledge to help us unearth the truly hidden gems. If you're open to sharing one of your favourite adventures, we'd love to see it on the site.</p></li>
-  <li>Featured Adventures.
+  <li><h4><strong>Featured Adventures.</strong></h4>
 <p>Thank you for sharing one of your favourite adventures with us! Our editorial team selects which adventures are featured. If featured, you'll be notified via email and be able to search for yours on the Find Adventures page.</p></li>
   </ul>
   </div>
