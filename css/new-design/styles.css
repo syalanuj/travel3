@@ -2346,12 +2346,17 @@ transform:rotate(-30deg);
 	}}
 .get-started-btn{
 	background-color: rgb(240, 98, 71);
-  	box-shadow: inset 0px -5px 0px 0px rgba(150, 55, 37, 0.4);
+  	box-shadow: inset 0px -5px 0px 0px rgba(150,55,37,0.4);
 	font-family: "Lato";
     letter-spacing: .04em;
   	color: rgb(255, 255, 255);
 	padding:10px;
+	border:0;
 	}
+.get-started-btn:hover{
+	background-color:rgb(150,55,37);
+	color:rgb(255,255,255);
+}
 .landing-carousel-text{
 	font-size: 3.5vw;
   font-family: "Lato";
@@ -2365,4 +2370,8 @@ transform:rotate(-30deg);
 	.carousel-caption{
 		bottom:0;
 	}
+}
+.intro{
+	padding-top:25px;
+	padding-bottom:25px;
 }
