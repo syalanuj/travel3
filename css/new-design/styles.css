@@ -113,6 +113,7 @@ input[type="submit"]:hover {
 	color:#CECECE;
 	margin-bottom:0px!important;
 	/*background-image:url(../images/landing-page-hero.jpg);*/
+	background-color:#000000;
 }
 .jumbotron-landingpage
 {
@@ -2093,6 +2094,7 @@ footer ul li{
 	.media-buttons-margin{
 		margin-left:auto;
 		margin-right:auto;
+		padding-top:15px;
 	}
 }
 
@@ -2374,4 +2376,9 @@ transform:rotate(-30deg);
 .intro{
 	padding-top:25px;
 	padding-bottom:25px;
+}
+.ng-modal-close{
+	color: white;
+    top: -30px;
+    right: -25px;
 }
