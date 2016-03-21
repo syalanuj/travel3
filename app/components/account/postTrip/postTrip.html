@@ -122,9 +122,29 @@
                 </uib-accordion-group>
             </uib-accordion>
         </div>
-        <div class="row">
+        <div class="row container col-md-12">
             <button type="button" ng-click="addPlace();" class="btn btn-danger"><span class="fa fa-plus"></span> Add Another Location</button>
             <button type="submit" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
+            <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#resetTripModal"><i class="fa fa-trash fa-lg"></i> Refresh Form</button>
+            <!-- Modal -->
+<div id="resetTripModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Are you sure you want to start all over?</h4>
+      </div>
+      <!--<div class="modal-body">
+        <p></p>
+      </div>-->
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-warning" data-dismiss="modal">Yes, refresh the form.</button>
+        </div>
+    </div>
+
+  </div>
+</div>
             <span ng-show="isTripUploading" class="text-center"> <img src="css/images/ripple.gif"> </span>
         </div>
         <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
