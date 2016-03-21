@@ -12,6 +12,7 @@
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
         if (!$scope.userObj) {
             $location.path("/");
+            return;
         }
         $scope.userObj.id = $scope.userObj.objectId;
         $scope.details = function (details) {
