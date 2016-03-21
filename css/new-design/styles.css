@@ -1050,6 +1050,7 @@ border-bottom-color:rgb(234, 137, 113);
 	margin-left: 25px;
 	padding-right:25px;
 	width:90%!important;
+	font-weight:200;
 }
 
 .text-area-border-color:focus{
@@ -1813,7 +1814,7 @@ width: 100%;
     font-family: "lato", Helvetica, Arial, sans-serif;
     /* box-shadow: inset 1.879px -0.684px 5px 0px rgba(198, 198, 198, 0.1); */
     -webkit-appearance: none;
-	font-weight:200;
+	font-weight:600;
     border-top: none;
     border-left: none;
     border-right: none;

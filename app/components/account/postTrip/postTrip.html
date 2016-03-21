@@ -3,43 +3,7 @@
 </script>
 <!--<div profile-wrap files="userObj"></div>-->
 <div class="container frame-padding-bottom">
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-  <form name="postTripForm" ng-submit="" role="form" class="col-md-8 col-sm-12">
-  <form name="postTripForm" ng-submit="" role="form" auto-save auto-save-model="testmodel" auto-save-fn="partialSave" auto-save-mode="blur">
-
-    <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
-      <div class="cover-message dz-message"> 
-      <img src="../../../../css/images/cover_photo_placeholder.png"><br>
-      <a class="uploader needsclick dz-clickable"> ADD </a>A COVER PHOTO </div>
-    </div >
-    <div ng-show="mainImageUploading" class="text-center"> <img src="css/images/ring-alt.gif"> </div>
-    <div ng-show="mainImageUploaded" class="text-center"> <img style="width: 100%" ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image"> </div>
-    <!-- Upload Finished -->
-    
-    <div class="bottommargin">
-      <div class="panel panel-default">
-        <div class="panel-heading" style="background-color:#fff">
-          <h4 class="panel-title"> <span ng-show="newTrip.title">{{newTrip.title}}</span> <span ng-show="!newTrip.title"><i class="fa fa-globe">&nbsp; &nbsp; </i>Name Your Adventure</span> </h4>
-        </div>
-        <div class="panel-collapse">
-          <div>
-            <div class="row ">
-              <div class="col-md-12">
-                <div class="panel panel-default bordernone no-shadow">
-                  <div class="text-center" style="padding-top:10px;"> <span class="input-alter input--isao no-margin"  ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">
-                  <div class= "input-add-ons">
-                  <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline cover-input-field" ng-model="newTrip.title" maxlength="100" name="title" type="text" required>
-                  <span class="input-symbol"><i class="fa fa-pencil"></i></span>
-                    </div>
-                    </span> <span ng-show="postTripForm.title.$dirty && postTripForm.title.$error.required" class="help-block">Title is required.</span> </div>
-                  <div class="panel-body bordernone no-margin" style="padding-top:0px; padding-bottom:0px;"> </div>
-=======
-    <form name="postTripForm" ng-submit="" role="form">
-=======
     <form name="postTripForm" ng-submit="" role="form" class="col-md-8">
->>>>>>> master
         <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
             <div class="cover-message dz-message">
                 <img src="../../../../css/images/cover_photo_placeholder.png"><br>
@@ -57,10 +21,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color:#fff">
                     <h4 class="panel-title"> <span ng-show="newTrip.title">{{newTrip.title}}</span> <span ng-show="!newTrip.title"><i class="fa fa-globe">&nbsp; &nbsp; </i>Name Your Adventure</span> </h4>
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> master
                 </div>
                 <div class="panel-collapse">
                     <div>
@@ -162,95 +122,6 @@
                 </uib-accordion-group>
             </uib-accordion>
         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      </div>
-      <uib-accordion close-others="collapseStatus">
-        <uib-accordion-group is-open="true" ng-repeat="placeindex in newplaces track by $index">
-          <uib-accordion-heading>
-            <div> {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}
-                <span class="pull-right"><a ng-hide="$index == 0 " ng-click="deleteItem($index)" class="fa fa-trash-o" style="color: #000;padding-top: 0px;"></a></span>
-            </div>
-          </uib-accordion-heading>
-          <ng-form name="placeForm">
-          <div ng-mouseover="setUploadPlaceIndexForHover(placeindex)" ng-click="setUploadPlaceIndex(placeindex)" class="col-md-12">
-              <div  class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">
-                <div class="dz-message needsclick dropzone-internal-border"><img src="../../../../css/images/2016-02-26.png">
-                  <h2>DRAG AND DROP</h2>
-                  <h4>Your Photos or Browse</h4>
-                </div>
-              </div>
-            </div>
-
-            <div  class="col-md-12">
-               <span class=" input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
-              <div class="input-add-ons">
-                <input type="text" name="location" placeholder="Where were these photos taken?"  class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded"  ng-autocomplete ng-model="places[placeindex].location" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required/>
-                <span class="input-symbol"><i class="fa fa-map-marker"></i></span>
-                </div>
-                </span> <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
-                 <div class="input-add-ons">
-                <textarea maxlength="250" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note">
-                </textarea>
-                 <span ng-if="places[placeindex].note.length == undefined" class="word-count">0</span>{{places[placeindex].note.length}}/250
-                <span class="input-symbol"><i class="fa fa-pencil"></i></span>
-                </div>
-                 <div class="input-add-ons">
-                <input name="date" placeholder=" Remember the dates?" init-date="places[placeindex - 1].date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline text-area-border-color input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
-                <span class="input-symbol"><i class="fa fa-calendar"></i></span>
-                </div>
-              
-            </div>
-                        <div ng-class="{ 'has-error': placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required }">
-              <input type=hidden name=imageUploads ng-model="$scope.places[placeindex].images">
-              <span ng-show="placeForm.imageUploads.$dirty && placeForm.imageUploads.$error.required" class="help-block">Required.</span> </div>          
-            <script type="text/javascript">
-$("input").keypress(function(event) {
-    if (event.which == 13) {
-        event.preventDefault();      
-    }
-});
-</script>
-          </ng-form>
-        </uib-accordion-group>
-      </uib-accordion>
-    </div>
-    <div class="row container">
-      <button type="button" ng-click="addPlace();" class="btn btn-danger" ><span class="fa fa-plus"></span> Add Another Location</button>
-      <button type="submit" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
-      <span ng-show="isTripUploading" class="text-center"> <img src="css/images/ripple.gif"> </span> </div>
-      <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
-      <span style="color: #000" ng-show="!mainImageUploaded && isPublishedClicked">Upload the cover image</span>
-  </form>
-  <div class="col-md-4 col-sm-12 tips-for-sub hidden-sm hidden-xs">
-  <ul>
-  <h3>TIPS FOR SUBMISSIONS</h3>
-  <li><h4><strong>Be specific.</strong></h4>
-  <p>We're using your location information for driving directions, so starting trailheads, parking lots, and campgrounds are best.</p></li>
-  <li><h4><strong>Be descriptive.</strong></h4>
-<p>Focus on what makes this a can't miss experience. The more detail you add, the easier it is for someone else to find and do your adventure!</p></li>
-  <li><h4><strong>Find hidden gems.</strong></h4>
-<p>We're counting on your local knowledge to help us unearth the truly hidden gems. If you're open to sharing one of your favourite adventures, we'd love to see it on the site.</p></li>
-  <li><h4><strong>Featured Adventures.</strong></h4>
-<p>Thank you for sharing one of your favourite adventures with us! Our editorial team selects which adventures are featured. If featured, you'll be notified via email and be able to search for yours on the Find Adventures page.</p></li>
-  </ul>
-  </div>
-  <div class=" col-sm-12 hidden-lg hidden-md">
-  <ul>
-  <h5>TIPS FOR SUBMISSIONS</h5>
-  <li>Be specific.
-  <p>We're using your location information for driving directions, so starting trailheads, parking lots, and campgrounds are best.</p></li>
-  <li>Be descriptive.
-<p>Focus on what makes this a can't miss experience. The more detail you add, the easier it is for someone else to find and do your adventure!</p></li>
-  <li>Find hidden gems.
-<p>We're counting on your local knowledge to help us unearth the truly hidden gems. If you're open to sharing one of your favourite adventures, we'd love to see it on the site.</p></li>
-  <li>Featured Adventures.
-<p>Thank you for sharing one of your favourite adventures with us! Our editorial team selects which adventures are featured. If featured, you'll be notified via email and be able to search for yours on the Find Adventures page.</p></li>
-  </ul>
-  </div>
-=======
-=======
->>>>>>> master
         <div class="row">
             <button type="button" ng-click="addPlace();" class="btn btn-danger"><span class="fa fa-plus"></span> Add Another Location</button>
             <button type="submit" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
@@ -259,9 +130,6 @@ $("input").keypress(function(event) {
         <span style="color: #000" ng-show="!imageUploadDone && isPublishedClicked">At least one image should be uploaded for each location</span>
         <span style="color: #000" ng-show="!mainImageUploaded && isPublishedClicked">Upload the cover image</span>
     </form>
-<<<<<<< HEAD
->>>>>>> master
-=======
     <div class="col-md-4 col-sm-12 tips-for-sub hidden-sm hidden-xs">
         <ul>
             <h3>TIPS FOR SUBMISSIONS</h3>
@@ -288,7 +156,6 @@ $("input").keypress(function(event) {
                 <p>Thank you for sharing one of your favourite adventures with us! Our editorial team selects which adventures are featured. If featured, you'll be notified via email and be able to search for yours on the Find Adventures page.</p></li>
         </ul>
     </div>
->>>>>>> master
 </div>
 <script type="text/javascript">
     $("input").keypress(function(event) {
