@@ -15,6 +15,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/colorbox.css" media="screen" />
         <link rel="stylesheet" href="css/dropzone.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css">
         <!--in house-->
         <link rel="stylesheet" href="css/new-design/styles.css">
         <link rel="stylesheet" href="css/new-design/timeline-style.css">
@@ -79,7 +80,7 @@
                             <div class="input-group search-box mobile-no-display">
       <input type="text" class="form-control" placeholder="Search for...">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
+        <button class="btn btn-default" type="button" style="border-left: 0;"><i class="fa fa-search"></i></button>
       </span>
     </div><!-- /input-group -->
                             <li><a ng-show="isPageHeaderLoaded && userObj == undefined" href="" class="header-elements loginwithfacebook" ng-click="loginWithFacebook()"><i class="fa fa-facebook-square">&nbsp;</i> <span>Login with Facebook</span></a></li>
