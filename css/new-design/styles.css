@@ -2383,3 +2383,7 @@ transform:rotate(-30deg);
     top: -30px;
     right: -25px;
 }
+.must-visit span{
+	padding-top:15px;
+	padding-bottom:15px;
+}
