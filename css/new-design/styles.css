@@ -1772,17 +1772,6 @@ width: 100%;
   transition: width .5s;
   -moz-transition:width .5s;
 }
-.share-button-timeline i{
-	display:none;
-	font-size:18px;
-	line-height:26px;
-	margin-left:2px;
-	margin-right:2px;
-    -webkit-transition: opacity .5s ease-in-out;
-  	transition: opacity .5s ease-in-out;
-	-moz-transition: opacity .5s ease-in-out;
-	opacity:0;
-}
 
 /*.share-button-timeline:hover i{
 	display:inline;
@@ -2388,15 +2377,20 @@ transform:rotate(-30deg);
 	}
 }
 .intro{
-	padding-top:25px;
-	padding-bottom:25px;
+	padding-top:15px;
+	padding-bottom:15px;
 }
 .ng-modal-close{
 	color: white;
-    top: -30px;
+    top: 0px;
     right: -25px;
 }
-.must-visit span{
+.must-visit {
+	padding-top:10px;
+}
+.must-visit .text-center span{
 	padding-top:15px;
 	padding-bottom:15px;
+	font-size:28px; 
+	color:white;
 }
