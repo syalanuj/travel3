@@ -110,7 +110,7 @@ Incredible adventures created by people like you.
     </div>
 
 
-    <div class="container">
+    <div class="container text-center">
         <div ng-show="!isSiteLoaded" class="site-loader site-loader-center" style="margin-top: 50px;">
             <div>
                 <div class="stick"></div>
@@ -122,7 +122,9 @@ Incredible adventures created by people like you.
             </div>
             <p>I travel, therefore I am</p>
         </div>
-        <div ng-show="isSiteLoaded" class="row" style="margin-top: 50px">
+        <h2>Recent Photologues</h2>
+        <div ng-show="isSiteLoaded" class="row" style="margin-top: 20px">
+        
             <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
                 <div class="thumbnail">
                     <a ng-href="#/account/timeline/{{trip.id}}">
