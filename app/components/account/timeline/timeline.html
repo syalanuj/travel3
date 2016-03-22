@@ -126,8 +126,8 @@
                     </div>
                     <div class="portfolio-image">
                     <uib-carousel interval="" no-wrap="false">
-                      <uib-slide ng-init="placeImageIndex = $index" class="select-pointer" ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.5,w_0.5/'),place.note)" ng-repeat="image in place.images track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')-->
-                        <img  ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_500,w_960/')}}" style="margin:auto;">                        
+                      <uib-slide ng-init="placeImageIndex = $index" class="select-pointer" ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.9,w_0.9/'),place.note)" ng-repeat="image in place.images track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')-->
+                        <img  ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_650,w_450/')}}" style="margin:auto;">                        
                       </uib-slide>
                     </uib-carousel>
                     </div>

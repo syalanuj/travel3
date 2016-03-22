@@ -991,17 +991,29 @@ textarea {
     background-color: rgb(59, 89, 152)!important;
 	margin-top:10px;
     margin-left:30px;
-    padding:7px!important;
     color: rgb(255, 255, 255)!important;
     font-family:lato;
     letter-spacing:0.04em;
     font-size:16px;
+	padding:0!important;
 }
+
 .loginwithfacebook i{
 	color:white!important;
+	padding-top:7px!important;
+	padding-bottom:7px!important;
+	padding-left:7px!important;
+	padding-right:7px!important;
+	background-color: rgb(45, 72, 128);
+	border-bottom-left-radius:4px;
+	border-top-left-radius:4px;
 }
 .loginwithfacebook span{
 	color:white;
+	padding-top:7px!important;
+	padding-bottom:7px!important;
+	padding-right:7px!important;
+    
 	}
 .likecommentshare {
 	margin-top:15px;
@@ -1543,6 +1555,7 @@ width:100%;
   letter-spacing:0.02em;
   color: rgb(255, 255, 255);
   font-style: italic;
+  font-weight:200;
 }
 
 

@@ -60,20 +60,18 @@
                     if (!user.existed()) {
                         accountService.getMyProfile().then(function (response) {
                             accountService.updateUserFacebookProfile(response, user.id, function (data) {
-                                $scope.$apply(function () {
                                     if (data) {
                                         var x = data;
                                         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
                                     }
-                                });
                             });
                         });
                     }
                     else {
-                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
-                        $scope.$apply();
+                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));                        
                     }
-                    $location.path("/account/postTrip/");
+                    $location.path("account/postTrip/");
+                    $scope.$apply();
                 },
                 error: function (user, error) {
                     console.log("Cancelled");

@@ -1,0 +1,80 @@
+MODAL CSS
+
+Log in Heading
+
+.Log_in_to_explore_the_world_of_Campture {
+  font-size: 22px;
+  font-family: "Lato";
+  color: rgb(29, 34, 37);
+  line-height: 1.091;
+  text-align: left;
+  position: absolute;
+  left: 604.984px;
+  top: 147.118px;
+  z-index: 434;
+}
+
+
+Disclaimer
+
+.__Campture_does_NOT_post_on_your_Facebook_witho {
+  font-size: 12px;
+  font-family: "Lato";
+  color: rgb(29, 34, 37);
+  line-height: 2;
+  text-align: left;
+  position: absolute;
+  left: 614.266px;
+  top: 534.701px;
+  z-index: 436;
+}
+
+Facebook login
+
+Text and fb icon
+
+.button_bg {
+  background-color: rgb(59, 89, 152);
+  position: absolute;
+  left: 593px;
+  top: 544px;
+  width: 482px;
+  height: 68px;
+  z-index: 427;
+}
+
+
+.Sign_in_with_Facebook {
+  font-size: 20px;
+  font-family: "Lato";
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: left;
+  position: absolute;
+  left: 737.344px;
+  top: 588.8px;
+  z-index: 430;
+}
+
+ICON HOLDER
+.Icon_holder {
+  background-color: rgb(45, 72, 128);
+  position: absolute;
+  left: 525px;
+  top: 544px;
+  width: 68px;
+  height: 68px;
+  z-index: 428;
+}
+
+.fb icon {
+  font-size: 20px;
+  font-family: "FontAwesome";
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: left;
+  position: absolute;
+  left: 551.937px;
+  top: 589.541px;
+  z-index: 429;
+}

@@ -39,6 +39,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
     };
 
     function postTrip(tripDetails, callback) {
+        var trips = new Trips();
         trips.set("title", tripDetails.title);
         trips.set("introduction", tripDetails.introduction);
         trips.set("main_image", tripDetails.main_image);
@@ -70,6 +71,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
     };
 
     function updateTrip(tripDetails, callback) {
+        var trips = new Trips();
         trips.id = tripDetails.id;
         trips.set("title", tripDetails.title);
         trips.set("introduction", tripDetails.introduction);
