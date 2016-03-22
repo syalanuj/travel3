@@ -71,6 +71,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
     };
 
     function updateTrip(tripDetails, callback) {
+        var trips = new Trips();
         trips.id = tripDetails.id;
         trips.set("title", tripDetails.title);
         trips.set("introduction", tripDetails.introduction);

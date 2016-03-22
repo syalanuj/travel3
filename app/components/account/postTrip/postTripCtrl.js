@@ -60,8 +60,13 @@
             $sessionStorage.placesSession = $scope.places;
         }
         $scope.deleteFormSession = function () {
-            $sessionStorage.newTripSession = undefined;
-            $sessionStorage.placesSession = undefined;
+            $scope.newTrip = new Object();
+            $scope.newTrip.tags = new Array();
+            $scope.places = new Array();
+            $scope.newplaces = [0];
+            $scope.places[$scope.newplaces.length - 1] = { images: new Array() };
+            $sessionStorage.newTripSession = $scope.newTrip;
+            $sessionStorage.placesSession = $scope.places;
         }
         $scope.open = function ($event) {
             $scope.status.opened = true;
