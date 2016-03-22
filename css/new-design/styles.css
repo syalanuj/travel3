@@ -1888,7 +1888,9 @@ footer{
 	background:#252525;
 	color:white!important;
 	font-weight: 100;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+	z-index:2;
+	position:relative;
 }
 footer a{
 	color:white;
@@ -2300,11 +2302,17 @@ transform:rotate(-30deg);
 	position:fixed;
 	top:75px;
 	right:20px;
-	-webkit-transform: translateZ(0);
-	z-index: -1;
-	background:#f7f7f7;
+	z-index: 1;
+	background:white;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-	line-height:2.3em;}
+	overflow-y:scroll;
+	-webkit-transform: translateZ(0);
+	height:80vh;
+	}
+	
+	.tips-for-sub h4{
+		text-transform:uppercase;
+	}
 	
 	
 /*fading carousel*/
