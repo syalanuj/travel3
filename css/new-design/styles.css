@@ -98,6 +98,12 @@ input[type="submit"]:hover {
 	top:50%;
 	margin-top:-1px !important;
 }
+.navbar-fonts:active{
+	border-top:solid 2px #f56c36;
+	top:50%;
+	margin-top:-1px !important;
+}
+
 .my_feed {
           font-size: 16px;
           font-family: "Lato";
