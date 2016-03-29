@@ -63,7 +63,7 @@
         $scope.dropzoneConfig = {
             'options': { // passed into the Dropzone constructor
                 'acceptedFiles': '.jpg,.png,.jpeg,.gif',
-                'url': 'https://api.cloudinary.com/v1_1/dzseog4g3/image/upload',
+                'url': 'https://api.cloudinary.com/v1_1/dsykpguat/image/upload',//dzseog4g3
                 'uploadMultiple': false,
                 'parallelUploads': 10,
                 'addRemoveLinks': true,
@@ -73,9 +73,9 @@
             },
             'eventHandlers': {
                 'sending': function (file, xhr, formData) {
-                    formData.append('api_key', '374998139757779');
+                    formData.append('api_key', '383751488485679');//374998139757779
                     formData.append('timestamp', Date.now() / 1000 | 0);
-                    formData.append('upload_preset', 'campture');
+                    formData.append('upload_preset', 'campture2');
                     file.placeIndex = $scope.currentPlaceIndex;
                     file.imageIndex = $scope.currentImageIndex;
                     $scope.currentImageIndex++;
@@ -107,7 +107,7 @@
         $scope.mainImageDropzoneConfig = {
             'options': { // passed into the Dropzone constructor
                 'acceptedFiles': '.jpg,.png,.jpeg,.gif',
-                'url': 'https://api.cloudinary.com/v1_1/dzseog4g3/image/upload',
+                'url': 'https://api.cloudinary.com/v1_1/dsykpguat/image/upload',//dzseog4g3
                 'uploadMultiple': false,
                 'parallelUploads': 1,
                 'maxFiles': 1
@@ -115,9 +115,9 @@
             'eventHandlers': {
                 'sending': function (file, xhr, formData) {
                     $scope.mainImageUploading = true;
-                    formData.append('api_key', '374998139757779');
+                    formData.append('api_key', '383751488485679');//374998139757779
                     formData.append('timestamp', Date.now() / 1000 | 0);
-                    formData.append('upload_preset', 'campture');
+                    formData.append('upload_preset', 'campture2');
                 },
                 'success': function (file, response) {
                     $scope.newTrip.main_image = { image_url: response.url };
