@@ -98,6 +98,12 @@ input[type="submit"]:hover {
 	top:50%;
 	margin-top:-1px !important;
 }
+.navbar-fonts:active{
+	border-top:solid 2px #f56c36;
+	top:50%;
+	margin-top:-1px !important;
+}
+
 .my_feed {
           font-size: 16px;
           font-family: "Lato";
@@ -2307,7 +2313,7 @@ transform:rotate(-30deg);
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 	overflow-y:scroll;
 	-webkit-transform: translateZ(0);
-	height:80vh;
+	height:100%;
 	}
 	
 	.tips-for-sub h4{
