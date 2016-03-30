@@ -13,7 +13,7 @@
         <div class="active item">
             <img src="../../../css/images/banner1.jpg">
             <div class="carousel-caption">
-            <h4 class="landing-carousel-text"> Campture is all about exploring the unknown and offbeat experiences.
+            <h4 class="landing-carousel-text hidden-xs hidden-xs"> Campture is all about exploring the unknown and offbeat experiences.
 We are a community of people with amazing stories to tell!</h4>
                 <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-xs">Get Started</a>
                 <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
@@ -21,26 +21,19 @@ We are a community of people with amazing stories to tell!</h4>
         </div>
         <div class="item"><img src="../../../css/images/banner2.jpg">
             <div class="carousel-caption">
-            <h4 class="landing-carousel-text">Create a new story, quickly add title, photos, experiences on our beautifully designed format.</h4>
+            <h4 class="landing-carousel-text hidden-xs">Create a new story, quickly add title, photos, experiences on our beautifully designed format.</h4>
                 <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-xs">Get Started</a>
                 <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
             </div>
         </div>
         <div class="item"><img src="../../../css/images/banner3.jpg">
             <div class="carousel-caption">
-            <h4 class="landing-carousel-text">Share your stories and enspire fellow travellers or keep all your travel memories in one place.</h4>
+            <h4 class="landing-carousel-text hidden-xs">Share your stories and enspire fellow travellers or keep all your travel memories in one place.</h4>
                 <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-xs">Get Started</a>
                 <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
             </div>
         </div>
-        <!--<div class="item"><img src="../../../css/images/banner3.jpg">
-            <div class="carousel-caption">
-                <p class="landing-carousel-text">Campture your adventure.</p>
-                <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
-            </div>
-        </div>!-->
-
+        
     </div>
     <!-- Carousel nav -->
     <a class="carousel-control left" href="#carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
@@ -48,6 +41,13 @@ We are a community of people with amazing stories to tell!</h4>
 
 </div>
 <div class="trip-background-wrap">
+<div class=" text-center instructions">
+<img src="../../../css/images/Upload_images.png" >
+<i class="fa fa-angle-double-right hidden-xs"></i>
+<img src="../../../css/images/Write_caption.png">
+<i class="fa fa-angle-double-right hidden-xs"></i>
+<img src="../../../css/images/Tag_Locations.png" >
+</div>
 <div class="text-center container trip-background-wrap intro">
 <h2>
 Incredible adventures created by people like you.
@@ -117,7 +117,7 @@ Incredible adventures created by people like you.
 
 
     <div class="container text-center">
-        <h2>Recent Photologues</h2>
+        <h2>Featured Photologues</h2>
          <div ng-show="!isSiteLoaded" class="site-loader site-loader-center" style="margin-top: 50px;">
             <div>
                 <div class="stick"></div>
