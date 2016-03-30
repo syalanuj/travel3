@@ -6,7 +6,7 @@
     <form name="postTripForm" ng-submit="" role="form" class="col-md-8">
         <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
             <div class="cover-message dz-message">
-                <img src="../../../../css/images/cover_photo_placeholder.png"><br>
+                <img src="../../../../css/images/cover-background.jpg"><br>
                 <a class="uploader needsclick dz-clickable"> Add </a> <span>a photo that can showcase your trip &nbsp; &nbsp; </span><i class="fa fa-upload"></i>
             </div>
         </div>
@@ -95,9 +95,9 @@
                                 </div>
                             </span> <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
                             <div class="input-add-ons">
-                                <textarea maxlength="250" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3" name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" ng-blur="saveFormSession()">
+                                <textarea maxlength="500" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3" name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" ng-blur="saveFormSession()">
                                 </textarea>
-                                <span ng-if="places[placeindex].note.length == undefined">0</span>{{places[placeindex].note.length}}/250
+                                <span ng-if="places[placeindex].note.length == undefined">0</span>{{places[placeindex].note.length}}/500
                                 <span class="input-symbol"><i class="fa fa-pencil"></i></span>
                             </div>
                             <div class="input-add-ons">
