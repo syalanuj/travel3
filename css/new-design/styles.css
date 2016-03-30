@@ -2411,7 +2411,7 @@ transform:rotate(-30deg);
 .instructions img{
 	padding-left:5px;
 	padding-right:5px;
-	padding-top:10px;
+	padding-top:15px;
 	padding-bottom:10px;
 }
 .instructions i{
@@ -2453,4 +2453,27 @@ transform:rotate(-30deg);
 	margin-left:auto;
 	margin-right:auto;
 	font-weight:100;
+}
+.explorer-jumbotron{
+	background-image:url(../images/explorer-hero-2.jpg);
+	height:600px;
+	margin-top:20px;
+}
+.explorer-jumbotron h2{
+	font-size:36px;
+	color:#FFF9F9;
+	text-shadow: 0px 1px 7px rgba(0, 0, 0, 0.8);
+}
+.explorer-jumbotron p{
+	font-size:18px;
+	text-shadow: 0px 1px 7px rgba(0, 0, 0, 0.8);
+}
+.more-pl-btn{
+	background-color:rgb(245, 95, 13);
+	color:#FFFFFF;
+}
+.angellist img{
+padding-left:10px;
+padding-right:10px;
+padding-bottom:20px;
 }
