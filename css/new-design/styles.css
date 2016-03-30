@@ -1858,26 +1858,12 @@ width: 100%;
 	font-weight:200;
 	color:rgb(177, 175, 175);
 }
-.cover-message{
-	border:dashed;
-	border-width:2px;
-	border-color:rgba(0, 0, 0, 0.3);
-	padding:5px;
- }
  .text-area-border-color::-webkit-input-placeholder{
  	 }
  .cover-input-field::-webkit-input-placeholder{
  	
 	font-weight:200;
  }
-.cover-message{
-	border:dashed;
- 	border-width:2px;
- 	border-color:rgba(0, 0, 0, 0.3);
- 	padding:5px;
-
-}
-
 .text-area-border-color:required {
   box-shadow: none;
   
@@ -2352,26 +2338,33 @@ transform:rotate(-30deg);
 	{
 	}}
 .get-started-btn{
-	background-color: rgb(240, 98, 71);
-  	box-shadow: inset 0px -5px 0px 0px rgba(150,55,37,0.4);
-	font-family: "Lato";
-    letter-spacing: .04em;
-  	color: rgb(255, 255, 255);
-	padding:10px;
-	border:0;
+  border:0px;
+  font-size: 22px;
+  font-family: "Lato";
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  background-color: rgb(245, 95, 13);
+  border-radius:30px;
+  width: 9.3em;
+  height: 65px;
+  padding-top:17px;
+  margin-top:5px;
+  margin-bottom:5px;
 	}
 .get-started-btn:hover{
+	box-shadow: 0px 0px 30px 0px rgba(236, 19, 19, 0.6);
 	background-color:rgb(150,55,37);
 	color:rgb(255,255,255);
 }
 .landing-carousel-text{
-	font-size: 3.5vw;
+	font-size: 2.5vw;
   font-family: "Lato";
   font-weight: 400;
   letter-spacing: .04em;
   color: rgb(255, 255, 255);
-  padding-top:5.3vw;
-  padding-bottom:5.3vw;
+  
 }
 @media (max-width: 360px){
 	.carousel-caption{
