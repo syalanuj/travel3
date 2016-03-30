@@ -78,6 +78,9 @@
             controller: 'ExploreCtrl',
             templateUrl:'app/components/termsOfUse/termsOfUse.html'
         })
+        .when('/explorerProgram/',{
+            templateUrl:'app/components/explorerProgram/explorerProgram.html'
+        })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',
             templateUrl:'app/components/error/errorPage.html'
