@@ -45,8 +45,9 @@
                                         <span class="input-alter input--minoru" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
                                             <div class="input-add-ons">
                                                 <textarea maxlength="144" class="text-area-border-color text-center span12" ng-model="newTrip.introduction" ng-blur="saveFormSession()" rows="3" name="introduction" placeholder=" &nbsp; &nbsp; &nbsp; &nbsp; Add a quick summary of your experience." required></textarea>
-                                                <span ng-if="newTrip.introduction.length == undefined">0</span>{{newTrip.introduction.length}}/144
+                                                
                                                 <span class="input-symbol"><i class="fa fa-book"></i></span>
+                                                <span ng-if="newTrip.introduction.length == undefined">0</span>{{newTrip.introduction.length}}/144
                                             </div>
                                             <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span> </span>
                                     </div>
@@ -87,7 +88,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <span class="input-alter input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
+                            <span class="input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
                                 <div class="input-add-ons">
                                     <input type="text" name="location" placeholder="Where were these photos taken?" class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded" ng-autocomplete ng-model="places[placeindex].location" ng-blur="saveFormSession()" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required />
                                     <span class="input-symbol"><i class="fa fa-map-marker"></i></span>
@@ -96,8 +97,9 @@
                             <div class="input-add-ons">
                                 <textarea maxlength="500" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3" name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" ng-blur="saveFormSession()">
                                 </textarea>
-                                <span ng-if="places[placeindex].note.length == undefined">0</span>{{places[placeindex].note.length}}/500
+                                
                                 <span class="input-symbol"><i class="fa fa-pencil"></i></span>
+                                <span ng-if="places[placeindex].note.length == undefined">0</span>{{places[placeindex].note.length}}/500
                             </div>
                             <div class="input-add-ons">
                                 <input name="date" placeholder=" Remember the dates?" init-date="places[placeindex - 1].date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" ng-blur="saveFormSession()" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline text-area-border-color input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
@@ -151,13 +153,13 @@
     </form>
     <div class="col-md-4 col-sm-12 tips-for-sub hidden-sm hidden-xs">
                 <div>
-                <h3 style="padding-left:40px;">HOW TO</h3>
+                <h3 style="padding-left:40px;">Create a Photologue:</h3>
     <div class="row">
         <div class="col-md-4 col-sm-12 ">
             <img src="img/howTo/how-to-02.jpg" class="img-responsive">
         </div>
         <div class="col-md-6 col-sm-12 ">
-            <h4>Create Your Own Timeline</h4>
+            <h4>Upload Photos</h4>
         </div>
     </div>
     <div class="row">
@@ -165,7 +167,7 @@
             <img src="img/howTo/how-to-03.jpg" class="img-responsive">
         </div>
         <div class="col-md-6 col-sm-12 ">
-            <h4>Map Trips Effortlessly</h4>
+            <h4>Tag Locations</h4>
           </div>
     </div>
     <div class="row">
@@ -173,7 +175,7 @@
             <img src="img/howTo/how-to-04.jpg" class="img-responsive">
         </div>
         <div class="col-md-6 col-sm-12">
-            <h4>Beautiful Photo Narratives</h4>
+            <h4>Add a Caption</h4>
           </div>
     </div>
     <div class="row">
@@ -181,7 +183,7 @@
             <img src="../../../img/howTo/3_Get social Artwork.png" class="img-responsive">
         </div>
         <div class="col-md-6 col-sm-12">
-            <h4>PUBLISH &amp; GET SOCIAL</h4>
+            <h4>Publish &amp; Get Social</h4>
           </div>
     </div>
 </div>
