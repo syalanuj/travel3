@@ -2349,7 +2349,6 @@ transform:rotate(-30deg);
 	{
 	}}
 .get-started-btn{
-  width: 10.5em;
   border:0px;
   font-size: 22px;
   font-family: "Lato";
@@ -2359,14 +2358,16 @@ transform:rotate(-30deg);
   text-transform: uppercase;
   background-color: rgb(245, 95, 13);
   border-radius:80px;
-  height: 65px;
-  padding-top:18px;
   margin-top:5px;
   margin-bottom:5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 	}
 .get-started-btn:hover{
 	box-shadow: 0px 0px 30px 0px rgba(236, 19, 19, 0.6);
-	background-color:rgb(150,55,37);
+	 background-color: rgb(245, 95, 13);
 	color:rgb(255,255,255);
 }
 .landing-carousel-text{
@@ -2422,7 +2423,17 @@ transform:rotate(-30deg);
 .instructions{
 	padding-top:30px;
 	padding-bottom:40px;
-}
+	background:url(../images/Login-Banner_2.jpg);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:cover;
+	color:#FFFFFF;
+	height:700px;
+	}
+	.instructions h2{
+		font-weight:200;
+		padding:20px;
+	}
 .instructions img{
 	padding-left:90px;
 	padding-right:90px;
@@ -2434,6 +2445,7 @@ transform:rotate(-30deg);
 	color: rgb(245, 95, 13);
 	padding-left:10px;
 	padding-right:10px;
+	color:#f56c36;
 }
 /*explorer page*/
 .explorer-prog-wrap h1,
@@ -2490,8 +2502,8 @@ transform:rotate(-30deg);
 	color:#FFFFFF;
 }
 .angellist img{
-padding-left:10px;
-padding-right:10px;
+padding-left:20px;
+padding-right:20px;
 padding-bottom:20px;
 display:inline-block;
 }
@@ -2516,6 +2528,10 @@ display:inline-block;
  margin-top:40px;
  border-radius:0;
 }
+.btn-join-now:hover{
+	color: #f56c36;
+}
+
 .featured-photologues{
 	padding-top:10px;
 	padding-bottom:40px;
@@ -2570,9 +2586,8 @@ font-size: 32px;
 .btn-blue:hover{
 	color:#FFFFFF;
 }
-facebook-login-prompt .modal-title h4{
-    font-size: 32px;
+.facebook-login-prompt h4{
+    font-size: 24px;
     font-family: "Lato";
     color: rgb(245, 108, 54);
-    font-style: italic;
-}
+    }
