@@ -160,6 +160,12 @@ input[type="submit"]:hover {
 .btn-primary {
     background-color: rgb(241, 94, 60)!important;
     color: rgb(255, 255, 255);
+	border:0;
+	border-radius:6px;
+	font-size: 16px;
+  font-family: "Lato";
+  font-weight: 300;
+  text-transform: uppercase;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     background: #A31D1F!important;
@@ -2516,4 +2522,57 @@ display:inline-block;
 }
 .dropdown-menu + .input-symbol{
 	color: #f56c36;
+}
+/*#welcomeModal .modal-content{
+	background:url(../images/header%20artwork.png);
+	background-position:top;
+	background-repeat:no-repeat;
+	background-size:contain;
+}*/
+.modal-publish-trip .welcome-modal-img-2{
+	display:none;
+}
+.modal-publish-trip:hover .welcome-modal-img-1{
+	display:none;
+}
+.modal-publish-trip:hover .welcome-modal-img-2{
+	display:inline;
+}
+#welcomeModal h4{
+	font-size: 20px;
+  font-family: "Lato";
+  font-weight: 700;
+  letter-spacing:0.04em;
+  color: rgb(29, 34, 37);
+  text-transform: uppercase;
+}
+#welcomeModal h3{
+font-size: 32px;
+ font-family: "Lato";
+ color: rgb(245, 108, 54);
+ font-style: italic;
+}
+#welcomeModal p{
+	font-size: 18px;
+  font-family: "Lato";
+  font-weight: 400;
+  color: rgb(29, 34, 37);
+}
+.btn-blue{
+	border-radius: 6px;
+  background-color: rgb(18, 165, 227);
+  font-size: 16px;
+  font-family: "Lato";
+  font-weight: 300;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+}
+.btn-blue:hover{
+	color:#FFFFFF;
+}
+facebook-login-prompt .modal-title h4{
+    font-size: 32px;
+    font-family: "Lato";
+    color: rgb(245, 108, 54);
+    font-style: italic;
 }
