@@ -76,11 +76,11 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <div class="input-group search-box mobile-no-display">
-      <input ng-model="query[queryBy]" type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
-        <button ng-click="searchTrips()" class="btn btn-default" type="button" style="border-left: 0;"><i class="fa fa-search"></i></button>
-      </span>
-    </div><!-- /input-group -->
+                                <input ng-model="query[queryBy]" type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button ng-click="searchTrips()" class="btn btn-default" type="button" style="border-left: 0;"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div><!-- /input-group -->
                             <li><a ng-show="isPageHeaderLoaded && userObj == undefined" href="" class="header-elements loginwithfacebook" ng-click="loginWithFacebook()"><i class="fa fa-facebook-square"></i> <span>Login with Facebook</span></a></li>
                             <li><a ng-if="isPageHeaderLoaded && userObj" href="#/account/postTrip/" class="header-elements add_trip"><i class="fa fa-pencil-square-o" style="color:#FFFFFF;">&nbsp;</i><span>Add Trip</span></a></li>
                             <li><a href="" ng-if="isPageHeaderLoaded && userObj" ng-click="logout()" class="header-elements power_switch navbar-link" style="color: color: rgb(106, 106, 106)!important;"><i class="fa fa-power-off"></i></a></li>
@@ -93,50 +93,51 @@
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content facebook-login-prompt">
-                    <div class="modal-header">
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
-        				<h4 class="modal-title text-center">Log in to explore the world of Campture</h4>
-      					</div>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title text-center">Log in to explore the world of Campture</h4>
+                        </div>
                         <div class="modal-body text-center">
-                        <img src="css/images/fb-login-popup.jpg" class="img-responsive">
-                         </div>
-                         <div class="modal-footer">
-                         <p class="text-center">*Campture does not post on your Facebook without your permission.</p>
-        <button class="no-margin loginwithfacebook-two" ng-click="loginToPost()" data-target="#facebook-login-modal" data-dismiss="modal"><i class="fa fa-facebook-official">&nbsp; </i><span>Login with Facebook</span></button>
-                        
-      </div>
+                            <img src="css/images/fb-login-popup.jpg" class="img-responsive">
+                        </div>
+                        <div class="modal-footer">
+                            <p class="text-center">*Campture does not post on your Facebook without your permission.</p>
+                            <button class="no-margin loginwithfacebook-two" ng-click="loginToPost()" data-dismiss="modal" data-toggle="modal" data-target="#welcomeModal"><i class="fa fa-facebook-official">&nbsp; </i><span>Login with Facebook</span></button>
+
+                        </div>
                     </div>
-                    
+
+                </div>
+            </div>
+            <!-- Modal -->
+        <div id="welcomeModal" class="modal fade" role="dialog">
+            <div class="modal-dialog text-center">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h3>Lets get you started</h3>
+                        <div class="row">
+                            <div class="col-md-6 modal-publish-trip text-center">
+                                <img src="../../../css/images/animat-pencil-color.jpg" class="welcome-modal-img-1">
+                                <img src="../../../css/images/animat-pencil-color.gif" class="welcome-modal-img-2">
+                                <h4 style="padding-top:20px;">Publish Trip</h4>
+                                <p>Create your photologues by adding photos and writing caption. Share with your friends or keep your travel memories in one place.</p>
+                                <button ng-click="redirectToPost()" class="btn btn-primary btn-lg" data-target="#welcomeModal" data-dismiss="modal">Let's Do This</button>
+                            </div>
+                            <div class="col-md-6 modal-publish-trip text-center">
+                                <img src="../../../css/images/animat-image-color.jpg" class="welcome-modal-img-1">
+                                <img src="../../../css/images/animat-image-color.gif" class="welcome-modal-img-2">
+                                <h4>Explore Experiences</h4>
+                                <p>Explore amazing experiences shared by our community members. Find hidden gems, itineraries or informative advice for your next travel.</p>
+                                <a ng-click="redirectToExplore()" class="btn btn-blue btn-lg" data-target="#welcomeModal" data-dismiss="modal">I Want To See More</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Modal -->
-<div id="welcomeModal" class="modal fade" role="dialog">
-  <div class="modal-dialog text-center">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-        <h3>Lets get you started</h3>
-        <div class="row">
-        <div class="col-md-6 modal-publish-trip text-center">
-        <img src="../../../css/images/animat-pencil-color.jpg" class="welcome-modal-img-1">
-        <img src="../../../css/images/animat-pencil-color.gif" class="welcome-modal-img-2">
-        <h4 style="padding-top:20px;">Publish Trip</h4>
-        <p>Create your photologues by adding photos and writing caption. Share with your friends or keep your travel memories in one place.</p>
-        <button type="button" class="btn btn-primary btn-lg">Let's Do This</button>
         </div>
-      <div class="col-md-6 modal-publish-trip text-center">
-        <img src="../../../css/images/animat-image-color.jpg" class="welcome-modal-img-1">
-        <img src="../../../css/images/animat-image-color.gif" class="welcome-modal-img-2">
-        <h4>Explore Experiences</h4>
-        <p>Explore amazing experiences shared by our community members. Find hidden gems, itineraries or informative advice for your next travel.</p>
-        <button type="button" class="btn btn-blue btn-lg">I Want To See More</button>
-        </div>
-      </div>
-      </div>
-  </div>
-</div>
-    </div>
+        
         <main style="min-height: 130vh;" class="top-margin">
             <div ng-view autoscroll="true"></div>
         </main>

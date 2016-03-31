@@ -10,7 +10,7 @@
         //$rootScope.travelStyles;
         //$rootScope.topStates;
         //$rootScope.activities;
-        
+
         $scope.topTags = [
         { tag: 'rafting', image_url: '/img/tags/rafting.png' },
         { tag: 'skiing', image_url: '/img/tags/skiing.png' },
@@ -60,17 +60,17 @@
                     if (!user.existed()) {
                         accountService.getMyProfile().then(function (response) {
                             accountService.updateUserFacebookProfile(response, user.id, function (data) {
-                                    if (data) {
-                                        var x = data;
-                                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
-                                    }
+                                if (data) {
+                                    var x = data;
+                                    $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
+                                }
                             });
                         });
                     }
                     else {
-                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));                        
+                        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
                     }
-                    $location.path("account/postTrip/");
+                    //$location.path("account/postTrip/");
                     $scope.$apply();
                 },
                 error: function (user, error) {
@@ -102,7 +102,14 @@
             $location.path("/feed//" + $scope.query[$scope.queryBy]);
         }
 
-
+        $scope.redirectToPost = function () {
+            $location.path("account/postTrip");
+            $scope.$apply();
+        }
+        $scope.redirectToExplore = function () {
+            $location.path("/explore/");
+            $scope.$apply();
+        }
         //Main app
         //tourService.getTravelStyles(function (data) {
         //    $scope.$apply(function () {
