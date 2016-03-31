@@ -16,7 +16,7 @@
             
             <h4 class="landing-carousel-text "> Campture is all about exploring the unknown and offbeat experiences.
 We are a community of people with amazing stories to tell!</h4>
-                <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-xs">Get Started</a>
+                <a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
                 <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
             </div>
         </div>
@@ -152,14 +152,14 @@ Incredible adventures created by people like you.
             </div>
             </div>
             <div class="row">
-            <button type="button" class="btn btn-lg btn-default">Explore More</button>
+            <a href="#/explore" class="btn btn-lg btn-default">Explore More</a>
             </div>
     </div>
     <div class="jumbotron explorer-jumbotron">
     <div class="container">
     <h2>The Campture Explorer Program</h2>
     <p>Explorers inspire us to get outside, they are local experts who share their favourite adventures with the community. Some are professionals, but most are everyday folks: lawyers, doctors, students and parents. They are good people and incredible human beings.</p> 
-    <button type="button" class="btn btn-join-now btn-lg">Join Now</button>
+    <a href="#/explorerProgram" class="btn btn-join-now btn-lg">Join Now</a>
     </div>
   </div>
   <div class="asfeatured text-center">
@@ -187,8 +187,4 @@ Incredible adventures created by people like you.
 
 </div>
 </div>
-
-
-
-       
 

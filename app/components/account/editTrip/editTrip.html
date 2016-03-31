@@ -91,8 +91,8 @@ Dropzone.autoDiscover = false;
                         <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>                                                               
                 <span class="input-alter input--minoru">
                 <div class="input-add-ons">
-                    <textarea maxlength="250" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" ng-blur="saveFormSession()" required></textarea>
-                    <span ng-if="places[placeindex].note.length == undefined">0</span>{{places[placeindex].note.length}}/250
+                    <textarea maxlength="500" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3"  name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" ng-blur="saveFormSession()" required></textarea>
+                    <span ng-if="places[placeindex].note.length == undefined">0</span>{{places[placeindex].note.length}}/500
                     <span class="input-symbol"><i class="fa fa-pencil"></i></span>
                     </div>
 					</span>
