@@ -1,6 +1,6 @@
     <!--<div class="jumbotron jumbotron-index">
             <div class="container text-center">
-                <h3>Welcome to Campture</h3>
+                <h4>Welcome to Campture</h4>
                 <p>Showcase and Discover experiences</p>
                 <a  ng-href="#/howTo/" class="btn btn-primary btn-lg round"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
                 <!--<a ng-show="userObj == undefined" class="btn btn-primary btn-lg round" data-target="#facebook-login-modal" data-toggle="modal"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
@@ -11,35 +11,29 @@
     <!-- Carousel items -->
     <div class="carousel-inner">
         <div class="active item">
-            <img src="../../../css/images/Slider1.jpg">
+            <img src="../../../css/images/banner1.jpg">
             <div class="carousel-caption">
-                <p class="landing-carousel-text">Campture those moments in the clouds.</p>
-                <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+            <h4 class="landing-carousel-text hidden-xs hidden-xs"> Campture is all about exploring the unknown and offbeat experiences.
+We are a community of people with amazing stories to tell!</h4>
+                <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-xs">Get Started</a>
+                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
             </div>
         </div>
-        <div class="item"><img src="../../../css/images/slider2.jpg">
+        <div class="item"><img src="../../../css/images/banner2.jpg">
             <div class="carousel-caption">
-                <p class="landing-carousel-text">Campture the adrenaline rush.</p>
-                <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+            <h4 class="landing-carousel-text hidden-xs">Create a new story, quickly add title, photos, experiences on our beautifully designed format.</h4>
+                <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-xs">Get Started</a>
+                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
             </div>
         </div>
-        <div class="item"><img src="../../../css/images/slider3.jpg">
+        <div class="item"><img src="../../../css/images/banner3.jpg">
             <div class="carousel-caption">
-                <p class="landing-carousel-text">Campture those unique trails with friends.</p>
-                <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+            <h4 class="landing-carousel-text hidden-xs">Share your stories and enspire fellow travellers or keep all your travel memories in one place.</h4>
+                <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-xs">Get Started</a>
+                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
             </div>
         </div>
-        <div class="item"><img src="../../../css/images/slider4.jpg">
-            <div class="carousel-caption">
-                <p class="landing-carousel-text">Campture your adventure.</p>
-                <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
-            </div>
-        </div>
-
+        
     </div>
     <!-- Carousel nav -->
     <a class="carousel-control left" href="#carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
@@ -47,13 +41,25 @@
 
 </div>
 <div class="trip-background-wrap">
+<div class=" text-center instructions">
+<img src="../../../css/images/Upload_images.png" >
+<i class="fa fa-angle-double-right hidden-xs"></i>
+<img src="../../../css/images/Write_caption.png">
+<i class="fa fa-angle-double-right hidden-xs"></i>
+<img src="../../../css/images/Tag_Locations.png" >
+</div>
 <div class="text-center container trip-background-wrap intro">
 <h2>
 Incredible adventures created by people like you.
         </h2>
-        <h4>Our mission is to discover adventures, whether just down the street or across the globe,<br>by inspiring people to explore and share their experiences.</h4>
+<h4>Our mission is to discover adventures, whether just down the street or across the globe,<br>by inspiring people to explore and share their experiences.</h4>
+<div class="text-center">
+<a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-lg hidden-md hidden-sm">Get Started</a>
+                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg hidden-lg hidden-md hidden-sm" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+ </div>           
+
     </div>
-    <div class="must-visit" style="background-color:rgb(36, 38, 37)">
+<div class="must-visit" style="background-color:rgb(36, 38, 37)">
         <div class="text-center"><span>Categories</span></div>
         <div class="container" style="padding-top:10px;">
 
@@ -111,7 +117,8 @@ Incredible adventures created by people like you.
 
 
     <div class="container text-center">
-        <div ng-show="!isSiteLoaded" class="site-loader site-loader-center" style="margin-top: 50px;">
+        <h2>Featured Photologues</h2>
+         <div ng-show="!isSiteLoaded" class="site-loader site-loader-center" style="margin-top: 50px;">
             <div>
                 <div class="stick"></div>
                 <div class="stick"></div>
@@ -122,7 +129,7 @@ Incredible adventures created by people like you.
             </div>
             <p>I travel, therefore I am</p>
         </div>
-        <h2>Recent Photologues</h2>
+
         <div ng-show="isSiteLoaded" class="row" style="margin-top: 20px">
         
             <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
@@ -146,6 +153,27 @@ Incredible adventures created by people like you.
                     </div>
                 </div>
             </div>
+            <button type="button" class="btn btn-lg more-pl-btn">Explore more Photologues</button>
         </div>
     </div>
+    <div class="jumbotron explorer-jumbotron">
+    <div class="container">
+    <h2>The Campture Explorer Program</h2>
+    <p>Explorers inspire us to get outside, they are local experts who share their favourite adventures with the community. Some are professionals, but most are everyday folks: lawyers, doctors, students and parents. They are good people and incredible human beings.</p> 
+    <button type="button" class="btn btn-success btn-lg">Join the Explorer Program now</button>
+    </div>
+  </div>
+  <div class="asfeatured text-center">
+  <h2>As Featured On</h2>
+  <div class="angellist"> 
+  <a href="https://angel.co/campture"><img src="../../../css/images/AngelList_White_Lockup-62a6d2396ec4758d26016fc9b65d6cb1.png"></a>
+  <a href="https://letsventure.com/campture"><img src="../../../css/images/Lets venture.png"></a> 
+  <a href="http://betalist.com/startups/campture"><img src="../../../css/images/Beta List.png"></a> 
+  <a href="http://www.launchingnext.com/s/campture/15804/"><img src="../../../css/images/Launching Next.png"></a> </div>
 </div>
+<div class="text-center">
+<h2>Unravel your travel with Campture!</h2>
+<a class="btn btn-default get-started-btn btn-lg" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+</div>
+</div>        
+
