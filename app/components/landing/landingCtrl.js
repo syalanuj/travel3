@@ -15,7 +15,7 @@
         $scope.isPostSuccessful = false;
         $scope.query = {};
         $scope.queryBy = '$';
-
+        $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
         //category tags
         $scope.categoryTagsRow1 = [
         { tag: 'adventure', image_url: '/img/categoryTags/category_01_adventure.jpg' },
