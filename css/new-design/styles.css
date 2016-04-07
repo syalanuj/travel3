@@ -1547,7 +1547,7 @@ width:100%;
 .trip-intro {
 	position: absolute;
     width: 100%;
-    top: 60%;
+    top: 56%;
 	font-size: 18px;
 	font-family: "Lato";
 	letter-spacing:0.04em;
@@ -2436,6 +2436,7 @@ transform:rotate(-30deg);
 	padding-right:90px;
 	padding-top:15px;
 	padding-bottom:10px;
+	margin-bottom:20px;
 }
 .instructions i{
 	font-size: 46px;
