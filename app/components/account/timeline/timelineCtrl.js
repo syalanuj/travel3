@@ -9,6 +9,12 @@
     function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout) {
         //====== Scope Variables==========
         //================================
+        //linkify
+        $scope.linkifyText = function () {
+            $('.description').linkify();
+            $('.linkify').linkify();
+        }
+
         $routeParams.tripId;
         $scope.currentUserObj = Parse.User.current();
         $scope.userObj;
@@ -48,6 +54,7 @@
                                 }
 
                             });
+                            $scope.linkifyText();
                         });
                     }
                 });
@@ -190,7 +197,7 @@
                     $scope.likeTrip();
                 }
             }
-            else{
+            else {
                 //$("#facebook-login-modal2").css("display", "block");
                 $scope.isLikeDisabled = false;
             }

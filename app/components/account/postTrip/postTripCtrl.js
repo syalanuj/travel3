@@ -2,8 +2,8 @@
     'use strict';
 
     var app = angular.module('campture');
-    app.controller('PostTripCtrl', ['$scope','$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', 'AccountService', controller]);
-    function controller($scope,$route, $cookies, $rootScope, $location, $sessionStorage, $interval, accountService) {
+    app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', 'AccountService', controller]);
+    function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, accountService) {
         //====== Scope Variables==========
         //================================
         $(document).ready(function () {
@@ -129,14 +129,14 @@
         $scope.dropzoneConfig = {
             'options': { // passed into the Dropzone constructor
                 'acceptedFiles': '.jpg,.png,.jpeg,.gif',
-                'url': 'https://api.cloudinary.com/v1_1/dsykpguat/image/upload',//dzseog4g3
+                'url': 'https://api.cloudinary.com/v1_1/dsykpguat/image/upload', //dzseog4g3
                 'uploadMultiple': false,
                 'parallelUploads': 10,
                 'addRemoveLinks': true
             },
             'eventHandlers': {
                 'sending': function (file, xhr, formData) {
-                    formData.append('api_key', '383751488485679');//374998139757779
+                    formData.append('api_key', '383751488485679'); //374998139757779
                     formData.append('timestamp', Date.now() / 1000 | 0);
                     formData.append('upload_preset', 'campture2');
                     file.placeIndex = $scope.currentPlaceIndex;
@@ -159,7 +159,7 @@
                     }
                     $scope.currentImageIndex++;
                 },
-                'error':function (file, response) {
+                'error': function (file, response) {
                     $scope.places[file.placeIndex].images.push({ image_url: response.url });
                     $scope.saveFormSession();
                     $scope.$apply();
@@ -190,7 +190,7 @@
         $scope.mainImageDropzoneConfig = {
             'options': { // passed into the Dropzone constructor
                 'acceptedFiles': '.jpg,.png,.jpeg,.gif',
-                'url': 'https://api.cloudinary.com/v1_1/dsykpguat/image/upload',//dzseog4g3
+                'url': 'https://api.cloudinary.com/v1_1/dsykpguat/image/upload', //dzseog4g3
                 'uploadMultiple': false,
                 'parallelUploads': 1,
                 'maxFiles': 1
@@ -199,7 +199,7 @@
                 'sending': function (file, xhr, formData) {
                     $scope.mainImageUploading = true;
                     $scope.$apply();
-                    formData.append('api_key', '383751488485679');//374998139757779
+                    formData.append('api_key', '383751488485679'); //374998139757779
                     formData.append('timestamp', Date.now() / 1000 | 0);
                     formData.append('upload_preset', 'campture2');
 
@@ -209,6 +209,7 @@
                     $scope.mainImageUploading = false;
                     $scope.mainImageUploaded = true;
                     $scope.saveFormSession();
+                    $scope.$apply();
                 }
             }
         };
@@ -262,6 +263,16 @@
         $scope.myFunct = function (keyEvent) {
             if (keyEvent.which === 13)
                 $scope.formatTags();
+        }
+
+        $scope.removeCoverImage = function () {
+            $scope.mainImageUploaded = false;
+            $scope.mainImageUploading = false;
+            if ($scope.newTrip.main_image) {
+                $scope.newTrip.main_image = undefined;
+            }
+            $scope.saveFormSession();
+            $route.reload();
         }
         //GeoTagging
         function getGPSDegreeToDecimal(degree, minutes, seconds, direction) {
