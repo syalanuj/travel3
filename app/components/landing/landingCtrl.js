@@ -34,7 +34,7 @@
         { tag: 'pilgrimage', image_url: '/img/categoryTags/category_10_pilgrimage.jpg' }
         ];
 
-        accountService.getAllTrips(function (data) {
+        accountService.getAllFeaturedTrips(function (data) {
             $scope.$apply(function () {
                 $scope.allTrips = data;
                 angular.forEach($scope.allTrips, function (trip) {

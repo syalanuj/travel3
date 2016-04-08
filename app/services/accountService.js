@@ -15,6 +15,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         deleteTrip: deleteTrip,
         getMyTrips: getMyTrips,
         getAllTrips: getAllTrips,
+        getAllFeaturedTrips: getAllFeaturedTrips,
         getMyProfile: getMyProfile,
         updateUserFacebookProfile: updateUserFacebookProfile,
         getUserById: getUserById,
@@ -134,6 +135,24 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         var query = new Parse.Query(trips);
         query.include("user_pointer");
 
+        query.find({
+            success: function (parseObject) {
+                for (var i = 0; i < parseObject.length; i++) {
+                    allTrips[i] = getTripFromParse(parseObject[i]);
+                }
+                callback(allTrips);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    };
+
+    function getAllFeaturedTrips(callback) {
+        var allTrips = new Array();
+        var query = new Parse.Query(trips);
+        query.include("user_pointer");
+        query.equalTo("is_featured", true);
         query.find({
             success: function (parseObject) {
                 for (var i = 0; i < parseObject.length; i++) {
