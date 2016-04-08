@@ -20,7 +20,7 @@
    <span>{{trip.title}}</span>
 </div>  
 <div class="trip-intro text-center"><img src="../css/images/Comma left.png" alt="comma1">
-    <p>{{trip.introduction}}</p>
+    <p class="linkify">{{trip.introduction}}</p>
     <img src="../css/images/Comma right.png" alt="comma2">
     <div class="by-user">
     <a ng-href="#/account/profile/{{userObj.id}}">
@@ -267,5 +267,5 @@
     });
     $('.moadalImage').load(function () {
         console.log('loaded');
-    });
+    });    
 </script>

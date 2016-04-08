@@ -12,6 +12,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         getTripById: getTripById,
         postTrip: postTrip,
         updateTrip: updateTrip,
+        deleteTrip: deleteTrip,
         getMyTrips: getMyTrips,
         getAllTrips: getAllTrips,
         getMyProfile: getMyProfile,
@@ -89,11 +90,24 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
                 callback(parseObject.id);
             },
             error: function (gameScore, error) {
-                alert('Failed to create new object, with error code: ' + error.message);
+                console.log('Failed to create new object, with error code: ' + error.message);
             }
         });
 
     };
+    function deleteTrip(tripId, callback) {
+        var trips = new Trips();
+        trips.id = tripId;
+        trips.destroy({
+            success: function (parseObject) {
+                callback(parseObject.id);
+            },
+            error: function (myObject, error) {
+                console.log('Failed to create new object, with error code: ' + error.message);
+            }
+        });
+    }
+
     function getMyTrips(myId, callback) {
         var myTrips = new Array();
         var query = new Parse.Query(trips);

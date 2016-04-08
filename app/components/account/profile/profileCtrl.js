@@ -5,7 +5,7 @@
     function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout, $location) {
         //====== Scope Variables==========
         //================================
-        $scope.isSiteLoaded = false;  
+        $scope.isSiteLoaded = false;
         $scope.isPageLoading = false;
         $scope.myTrips;
         $scope.newTrip;
@@ -62,7 +62,7 @@
                         });
                         $scope.isSiteLoaded = true;
                     }
-                    else{
+                    else {
                         $scope.isSiteLoaded = true;
                     }
                     $scope.isPageLoading = true;
@@ -72,6 +72,11 @@
                 console.log(e);
             }
         });
+        $scope.deleteTrip = function (tripId) {
+            accountService.deleteTrip(tripId, function (data) {
+                console.log(data);
+            })
+        }
         $scope.$on('mapInitialized', function (event, map) {
             map.setCenter(bounds.getCenter());
             map.fitBounds(bounds);
