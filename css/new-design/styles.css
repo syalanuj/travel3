@@ -776,8 +776,10 @@ table tr td:last-child {
   text-align: left;
   width:90%;
   margin:auto;
+  word-wrap:break-word;
 }
 .tagsinput .tag {
+	display:inline-block;
   border-radius: 4px;
   background-color: #ebedef;
   color: #7b8996;
@@ -789,9 +791,7 @@ table tr td:last-child {
   padding: 6px 13px 8px 19px;
   position: relative;
   vertical-align: middle;
-  display: inline-block;
   zoom: 1;
-  display: inline;
   -webkit-transition: 0.14s linear;
   -moz-transition: 0.14s linear;
   -o-transition: 0.14s linear;
