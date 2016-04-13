@@ -1,0 +1,33 @@
+<div class="container text-center">
+    <div class="gearListWrap">
+ I am travelling to
+        <div class="gearFormInput ">
+            <input name="location" type="text" placeholder="Enter Location" ng-autocomplete ng-model="location" options="options" details="details" required>
+        </div>
+ in the month of
+        <div class="gearFormInput">
+            <input name="date" type="text" placeholder="Enter Month" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open($event)" id="date" required>
+        </div>
+for
+        <div class="gearFormInput">
+            <input type="number" placeholder="No of days" ng-model="duration" required>.
+        </div>
+ Show me what to pack in my backpack.
+    </div>
+    <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=42.3583&lon=-71.0603"> </iframe>
+    <button class="btn btn-success" ng-click="getGearCheckList()">Let's Go!</button>
+    <div  class="gearListResults">
+        <div class="row">
+            <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList">
+                <div class="thumbnail">
+                    <img src="./Gearlist_files/-Men-Male-outdoor-hiking-trekking-shoes-shoe-The-waterproof-hiking-shoes-boots-trekking-men-s.jpg" alt="...">
+                    <div class="caption">
+                        <h3>{{gear.name}}</h3>
+                        <p>{{gear.description}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
