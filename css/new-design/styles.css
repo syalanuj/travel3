@@ -2589,3 +2589,34 @@ font-size: 32px;
     font-family: "Lato";
     color: rgb(245, 108, 54);
     }
+.backpackListWrapper span{
+	font-family:"lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:18px;
+}
+.backpackListWrapper .input-group{
+	width:400px;
+}
+/**/
+.gearListWrap{
+	font-size:24px;
+	padding-top:20px;
+	padding-bottom:20px;
+	text-align:center;
+}
+.gearListWrap input{
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	border-bottom:solid 2px;
+	text-align:center;
+}
+.gearListWrap input:focus{
+	border-bottom-color:#f56c36;
+	outline:none;
+}
+.gearFormInput{
+	display:inline-block;
+}
+.gearListResults{
+	padding-top:40px;
+}

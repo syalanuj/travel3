@@ -1,8 +1,8 @@
 (function () {
     'use strict';
     var app = angular.module('campture');
-    app.controller('ProfileCtrl', ['$scope', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout', '$location', controller]);
-    function controller($scope, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout, $location) {
+    app.controller('ProfileCtrl', ['$scope', '$route', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout', '$location', controller]);
+    function controller($scope, $route, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout, $location) {
         //====== Scope Variables==========
         //================================
         $scope.isSiteLoaded = false;
@@ -35,30 +35,34 @@
                 $location.path('/pageNotFound/');
             }
         });
-        accountService.getMyTrips($routeParams.userId, function (data) {
-            try {
-                $scope.$apply(function () {
-                    if (data.length > 0) {
-                        var markerId = 0;
-                        $scope.myTrips = data;
-                        $scope.isPageLoading = true;
-                        angular.forEach($scope.myTrips, function (trip, key) {
-                            var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
-                            trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
-                            angular.forEach(trip.visited_places, function (place, key) {
-                                try {
-                                    $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
-                                    var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
-                                    bounds.extend(latlng);
-                                }
-                                catch (e) {
-                                    console.log(e);
-                                }
-                                angular.forEach(place.images, function (image, key) {
-                                    $scope.allTripImages.push(image);
+        getMyTrips();
+        function getMyTrips() {
+            accountService.getMyTrips($routeParams.userId, function (data) {
+                try {
+                    $scope.$apply(function () {
+                        if (data.length > 0) {
+                            var markerId = 0;
+                            $scope.myTrips = data;
+                            $scope.isPageLoading = true;
+                            angular.forEach($scope.myTrips, function (trip, key) {
+                                var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
+                                trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
+                                angular.forEach(trip.visited_places, function (place, key) {
+                                    try {
+                                        $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
+                                        var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
+                                        bounds.extend(latlng);
+                                    }
+                                    catch (e) {
+                                        console.log(e);
+                                    }
+                                    angular.forEach(place.images, function (image, key) {
+                                        $scope.allTripImages.push(image);
+                                    });
+                                    markerId++;
                                 });
-                                markerId++;
                             });
+<<<<<<< HEAD
                         });
                         $scope.isSiteLoaded = true;
                     }
@@ -75,6 +79,27 @@
         $scope.deleteTrip = function (tripId) {
             accountService.deleteTrip(tripId, function (data) {
                 console.log(data);
+=======
+                            $scope.isSiteLoaded = true;
+                        }
+                        else {
+                            $scope.isSiteLoaded = true;
+                        }
+                        $scope.isPageLoading = true;
+                    });
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            });
+        }
+        $scope.deleteTrip = function (tripId) {
+            accountService.deleteTrip(tripId, function (data) {
+                if (data) {
+                    console.log(data);
+                    $route.reload();
+                }
+>>>>>>> master
             })
         }
         $scope.$on('mapInitialized', function (event, map) {

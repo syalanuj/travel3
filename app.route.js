@@ -81,6 +81,10 @@
         .when('/explorerProgram/',{
             templateUrl:'app/components/explorerProgram/explorerProgram.html'
         })
+        .when('/gearChecklist/',{
+            controller: 'GearChecklistCtrl',
+            templateUrl:'app/components/gearChecklist/gearChecklist.html'
+        })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',
             templateUrl:'app/components/error/errorPage.html'
