@@ -1,9 +1,18 @@
-<div class="container text-center">
+<div class="text-center">
+	<div class="map">
     <ui-gmap-google-map center="map.center" zoom="map.zoom"  options="options" bounds="map.bounds">
         <ui-gmap-marker coords="marker.coords"  idkey="marker.id">
         </ui-gmap-marker>
     </ui-gmap-google-map>
-    <div class="gearListWrap">
+    <div class="map-mask"></div>
+    </div>
+    <div class="destinationDetails col-md-12 text-center container">
+    <h2>Location Name</h2>
+    <span>Low Temp: </span> <span>High Temp:</span><div class="tempurature"><i class="fa fa-sun-o" style="font-size:22px;"></i></div><br>
+    <button class="btn btn-primary">Modify Trip</button>
+    <button class="btn btn-primary">New Trip</button>
+    </div>
+    <!--<div class="gearListWrap container">
  I am travelling to
         <div class="gearFormInput ">
             <input name="location" type="text" placeholder="Enter Location" ng-autocomplete ng-model="location" options="options" details="details" required>
@@ -18,8 +27,47 @@ for
         </div>
  Show me what to pack in my backpack.
     </div>
-    <button class="btn btn-success" ng-click="getGearCheckList()">Let's Go!</button>
-    <div  class="gearListResults">
+    <button class="btn btn-success" ng-click="getGearCheckList()">Let's Go!</button>-->
+        
+    <div class="container">
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#menu1">List View</a></li>
+    <li><a data-toggle="pill" href="#menu2">Thumbnail View</a></li>
+    <li><a data-toggle="pill" href="#menu3">Download List</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="menu1" class="tab-pane fade in active">            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Item Description</th>
+    	<th>Buy Now</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="itemName">Item Name</td>
+        <td class="itemDesc">item Desc</td>
+        <td><button class="btn btn-primary disabled">Buy Now</button></td>
+      </tr>
+      <tr>
+        <td class="itemName">Item NameItem NameItem NameItem NameItem NameItem NameItem Name</td>
+        <td class="itemDesc">item Desc</td>
+        <td><button class="btn btn-primary disabled">Buy Now</button></td>
+      </tr>
+		<tr>
+        <td class="itemName">Item Name</td>
+        <td class="itemDesc">item Desc</td>
+        <td><button class="btn btn-primary disabled">Buy Now</button></td>
+      </tr>
+
+      </tbody>
+  </table>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Thumbnail View</h3>
+      <div  class="gearListResults">
         <div class="row">
             <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList">
                 <div class="thumbnail">
@@ -33,4 +81,11 @@ for
 
         </div>
     </div>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Download List</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
 </div>

@@ -62,22 +62,6 @@
                                     markerId++;
                                 });
                             });
-                        });
-                        $scope.isSiteLoaded = true;
-                    }
-                    else {
-                        $scope.isSiteLoaded = true;
-                    }
-                    $scope.isPageLoading = true;
-                });
-            }
-            catch (e) {
-                console.log(e);
-            }
-        });
-        $scope.deleteTrip = function (tripId) {
-            accountService.deleteTrip(tripId, function (data) {
-                console.log(data);
                             $scope.isSiteLoaded = true;
                         }
                         else {
