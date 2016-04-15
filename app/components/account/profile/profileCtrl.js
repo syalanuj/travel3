@@ -62,7 +62,6 @@
                                     markerId++;
                                 });
                             });
-<<<<<<< HEAD
                         });
                         $scope.isSiteLoaded = true;
                     }
@@ -79,7 +78,6 @@
         $scope.deleteTrip = function (tripId) {
             accountService.deleteTrip(tripId, function (data) {
                 console.log(data);
-=======
                             $scope.isSiteLoaded = true;
                         }
                         else {
@@ -99,7 +97,6 @@
                     console.log(data);
                     $route.reload();
                 }
->>>>>>> master
             })
         }
         $scope.$on('mapInitialized', function (event, map) {
