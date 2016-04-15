@@ -4,17 +4,19 @@
 <!--<div profile-wrap files="userObj"></div>-->
 <div class="container frame-padding-bottom">
     <form name="postTripForm" ng-submit="" role="form" class="col-md-8">
-        <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig" data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)">
+        <div ng-show="!mainImageUploaded && !mainImageUploading" class="editor-cover-image form-fields element-file" dropzone="mainImageDropzoneConfig"><!--data-image="trip_photo" onchange="angular.element(this).scope().uploadMainImage(this.files)"-->
             <div class="cover-message dz-message">
                 <img src="../../../../css/images/cover-background.jpg"><br>
-                            </div>
+            </div>
         </div>
         <div ng-show="mainImageUploading" class="text-center">
             <img src="css/images/ring-alt.gif">
         </div>
         <div ng-show="mainImageUploaded" class="text-center">
-            <img style="width: 100%" ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_200,w_960/')}}" alt="main image">
+            <img style="width: 100%" ng-show="mainImageUploaded" ng-src="{{getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_265,w_960/')}}" alt="main image">
         </div>
+        <a class="pull-right" style="cursor: pointer" ng-click="removeCoverImage()">Delete</a>
+        <div class="clearfix"></div>
         <!-- Upload Finished -->
         <div class="bottommargin">
             <div class="panel panel-default">
@@ -126,7 +128,7 @@
         <div class="row container col-md-12">
             <button type="button" ng-click="addPlace();" class="btn btn-danger"><span class="fa fa-plus"></span> Add Another Location</button>
             <button type="submit" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
-            <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#resetTripModal"><i class="fa fa-trash fa-lg"></i> Refresh Form</button>
+            <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#resetTripModal"><i class="fa fa-trash fa-lg"></i> Clear Form</button>
             <!-- Modal -->
 <div id="resetTripModal" class="modal fade" role="dialog">
   <div class="modal-dialog">

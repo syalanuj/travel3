@@ -593,7 +593,7 @@ color:rgb(209, 75, 47)!important;
 /**/
 
 /*Map*/
-.angular-google-map-container{height: 40em}
+.angular-google-map-container{height: 420px;}
 
 .select-pointer{
     cursor: pointer;
@@ -776,8 +776,10 @@ table tr td:last-child {
   text-align: left;
   width:90%;
   margin:auto;
+  word-wrap:break-word;
 }
 .tagsinput .tag {
+	display:inline-block;
   border-radius: 4px;
   background-color: #ebedef;
   color: #7b8996;
@@ -789,9 +791,7 @@ table tr td:last-child {
   padding: 6px 13px 8px 19px;
   position: relative;
   vertical-align: middle;
-  display: inline-block;
   zoom: 1;
-  display: inline;
   -webkit-transition: 0.14s linear;
   -moz-transition: 0.14s linear;
   -o-transition: 0.14s linear;
@@ -2596,7 +2596,7 @@ font-size: 32px;
 .backpackListWrapper .input-group{
 	width:400px;
 }
-/**/
+/*GearChecklist*/
 .gearListWrap{
 	font-size:24px;
 	padding-top:20px;
@@ -2619,4 +2619,34 @@ font-size: 32px;
 }
 .gearListResults{
 	padding-top:40px;
+}
+.map-mask{
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+}
+.map{
+	position:relative;
+}
+.destinationDetails{
+	position:absolute;
+	top:150px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.destinationDetails span{
+	font-size:20px;
+}
+.itemName{
+	text-align:left;
+	font-weight:bold;
+	width:300px;
+}
+.itemDesc{
+	text-align:left;
+}
+.tempurature{
 }
