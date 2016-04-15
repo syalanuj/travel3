@@ -19,7 +19,7 @@
         <div class="clearfix"></div>
         <!-- Upload Finished -->
         <div class="bottommargin">
-            <div class="panel panel-default">
+            <div class="panel panel-default ">
                 <div class="panel-heading" style="background-color:#fff">
                     <h4 class="panel-title"> <span ng-show="newTrip.title">{{newTrip.title}}</span> <span ng-show="!newTrip.title"><i class="fa fa-globe">&nbsp; &nbsp; </i>Name Your Adventure</span> </h4>
                 </div>
@@ -31,7 +31,7 @@
                                     <div class="text-center" style="padding-top:10px;">
                                         <span class="input-alter input--isao no-margin" ng-class="{ 'has-error': postTripForm.title.$dirty && postTripForm.title.$error.required }">
                                             <div class="input-add-ons">
-                                                <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline cover-input-field" ng-model="newTrip.title" ng-blur="saveFormSession()" maxlength="100" name="title" type="text" required>
+                                                <input id="location" placeholder="Let's add a title to your Trip" class="placeholder-color text-center no-input-outline cover-input-field tour-step tour-step-two" ng-model="newTrip.title" ng-blur="saveFormSession()" maxlength="100" name="title" type="text" required>
                                                 <span class="input-symbol"><i class="fa fa-pencil"></i></span>
                                             </div>
                                         </span> <span ng-show="postTripForm.title.$dirty && postTripForm.title.$error.required" class="help-block">Title is required.</span>
@@ -46,7 +46,7 @@
                                     <div class="text-center">
                                         <span class="input-alter input--minoru" ng-class="{ 'has-error': postTripForm.introduction.$dirty && postTripForm.introduction.$error.required }">
                                             <div class="input-add-ons">
-                                                <textarea maxlength="144" class="text-area-border-color text-center span12" ng-model="newTrip.introduction" ng-blur="saveFormSession()" rows="3" name="introduction" placeholder=" &nbsp; &nbsp; &nbsp; &nbsp; Add a quick summary of your experience." required></textarea>
+                                                <textarea maxlength="144" class="text-area-border-color text-center span12 tour-step tour-step-three" ng-model="newTrip.introduction" ng-blur="saveFormSession()" rows="3" name="introduction" placeholder=" &nbsp; &nbsp; &nbsp; &nbsp; Add a quick summary of your experience." required></textarea>
                                                 
                                                 <span class="input-symbol"><i class="fa fa-book"></i></span>
                                                 <span ng-if="newTrip.introduction.length == undefined">0</span>{{newTrip.introduction.length}}/144
@@ -54,7 +54,7 @@
                                             <span ng-show="postTripForm.introduction.$dirty && postTripForm.introduction.$error.required" class="help-block">Required.</span> </span>
                                     </div>
                                     <div class="text-center bottommargin">
-                                        <div ng-click="focusTagsInput()" style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
+                                        <div ng-click="focusTagsInput()" style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary tour-step tour-step-four">
                                             <span><strong>Tags :</strong>&nbsp;&nbsp;</span> <span class="tag" class="" ng-repeat="tag in newTrip.tags track by $index"><span>{{tag}}&nbsp;&nbsp;</span><a class="" style="color:#ffffff" ng-click="removeTag($index)">X</a></span> <span ng-cick="{{isAddTag= !isAddTag}}"><i class="fa fa-plus"></i></span>
                                             <input ng-keypress="myFunct($event)" id="tagInput" type="text" ng-model="rawTags" ng-blur="formatTags();saveFormSession();" placeholder="Help others to find your trip">
                                         </div>
@@ -66,7 +66,7 @@
                 </div>
             </div>
             <uib-accordion close-others="collapseStatus">
-                <uib-accordion-group is-open="openStatus" ng-repeat="placeindex in newplaces track by $index">
+                <uib-accordion-group is-open="openStatus" ng-repeat="placeindex in newplaces track by $index" class="tour-step tour-step-five">
                     <uib-accordion-heading>
                         <div>
  {{places[placeindex].location === undefined ? 'Location Name' : places[placeindex].location}}
@@ -75,7 +75,7 @@
                     </uib-accordion-heading>
                     <ng-form name="placeForm">
                         <div ng-mouseover="setUploadPlaceIndexForHover(placeindex)" ng-click="setUploadPlaceIndex(placeindex)" class="col-md-12">
-                            <div class="dropzone needsclick dz-clickable dropzone-external-border" dropzone="dropzoneConfig">
+                            <div class="dropzone needsclick dz-clickable dropzone-external-border " dropzone="dropzoneConfig">
                                 <div ng-show="places[placeindex].images == null || places[placeindex].images.length < 1" class="dz-message needsclick dropzone-internal-border">
                                     <img src="../../../../css/images/2016-02-26.png">
                                     <h4>DRAG AND DROP</h4>
@@ -92,19 +92,19 @@
                         <div class="col-md-12">
                             <span class="input--isao" ng-class="{ 'has-error': placeForm.location.$dirty && placeForm.location.$error.required }">
                                 <div class="input-add-ons">
-                                    <input type="text" name="location" placeholder="Where were these photos taken?" class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded" ng-autocomplete ng-model="places[placeindex].location" ng-blur="saveFormSession()" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required />
+                                    <input type="text" name="location" placeholder="Where were these photos taken?" class="remove-location-placeholder no-input-outline text-area-border-color input__field input__field--isao element-addresspicker element-text ui-autocomplete-input loaded " ng-autocomplete ng-model="places[placeindex].location" ng-blur="saveFormSession()" options="options" details="details" ng-focus="getPlaceIndex(placeindex)" required />
                                     <span class="input-symbol"><i class="fa fa-map-marker"></i></span>
                                 </div>
                             </span> <span ng-show="placeForm.location.$dirty && placeForm.location.$error.required" class="help-block">Required.</span>
                             <div class="input-add-ons">
-                                <textarea maxlength="500" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12" rows="3" name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" ng-blur="saveFormSession()">
+                                <textarea maxlength="500" placeholder="Share memories, important info or describe your experience of this place." class=" text-area-border-color span12 " rows="3" name="form-0-content" placeholder="Add Description..." rows="2" ng-model="places[placeindex].note" ng-blur="saveFormSession()">
                                 </textarea>
                                 
                                 <span class="input-symbol"><i class="fa fa-pencil"></i></span>
                                 <span ng-if="places[placeindex].note.length == undefined">0</span>{{places[placeindex].note.length}}/500
                             </div>
                             <div class="input-add-ons">
-                                <input name="date" placeholder=" Remember the dates?" init-date="places[placeindex - 1].date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" ng-blur="saveFormSession()" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline text-area-border-color input__field--isao element-datepicker hasDatepicker loaded" ng-click="open($event)" id="date" />
+                                <input name="date" placeholder=" Remember the dates?" init-date="places[placeindex - 1].date" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="places[placeindex].date" ng-blur="saveFormSession()" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" type="text" class="no-input-outline text-area-border-color input__field--isao element-datepicker hasDatepicker loaded " ng-click="open($event)" id="date" />
                                 <span class="input-symbol"><i class="fa fa-calendar"></i></span>
                             </div>
 
@@ -125,10 +125,11 @@
                 </uib-accordion-group>
             </uib-accordion>
         </div>
-        <div class="row container col-md-12">
-            <button type="button" ng-click="addPlace();" class="btn btn-danger"><span class="fa fa-plus"></span> Add Another Location</button>
-            <button type="submit" ng-click="postTrip()" class="btn btn-success" ng-disabled="registerForm.$invalid && imageUploadDone"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
-            <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#resetTripModal"><i class="fa fa-trash fa-lg"></i> Refresh Form</button>
+        <div class="row container col-md-12" style="margin:auto">
+            <button type="button" ng-click="addPlace();" class="btn btn-danger tour-step tour-step-six"><span class="fa fa-plus"></span> Add Another Location</button>
+            <button type="button" class="btn btn-warning pull-right tour-step tour-step-seven" data-toggle="modal" data-target="#resetTripModal"><i class="fa fa-trash fa-lg"></i> Refresh Form</button>
+            <button type="submit" ng-click="postTrip()" class="btn btn-success btn-block btn-lg tour-step tour-step-eight" ng-disabled="registerForm.$invalid && imageUploadDone" style="margin-top:20px;"><span class="fa fa-file-text"></span> <span class="mobile-hidden-320">Publish Trip</span><!--<span class="mobile-visible-320">Publish</span>--></button>
+            
             <!-- Modal -->
 <div id="resetTripModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -228,3 +229,4 @@
         display: none;
     }
 </style>
+<script type="text/javascript" src="../../../js/tour.js"></script>

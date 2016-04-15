@@ -167,9 +167,6 @@ input[type="submit"]:hover {
   font-weight: 300;
   text-transform: uppercase;
 }
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-    background: #A31D1F!important;
-}
 .btn-primary:active, .btn-primary.active {
     background: rgb(241, 94, 60)!important;
     box-shadow: none!important;
@@ -1550,7 +1547,7 @@ width:100%;
 .trip-intro {
 	position: absolute;
     width: 100%;
-    top: 60%;
+    top: 56%;
 	font-size: 18px;
 	font-family: "Lato";
 	letter-spacing:0.04em;
@@ -2439,6 +2436,7 @@ transform:rotate(-30deg);
 	padding-right:90px;
 	padding-top:15px;
 	padding-bottom:10px;
+	margin-bottom:20px;
 }
 .instructions i{
 	font-size: 46px;
