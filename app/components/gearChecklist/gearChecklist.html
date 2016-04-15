@@ -1,4 +1,8 @@
 <div class="container text-center">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom"  options="options" bounds="map.bounds">
+        <ui-gmap-marker coords="marker.coords"  idkey="marker.id">
+        </ui-gmap-marker>
+    </ui-gmap-google-map>
     <div class="gearListWrap">
  I am travelling to
         <div class="gearFormInput ">
@@ -14,13 +18,12 @@ for
         </div>
  Show me what to pack in my backpack.
     </div>
-    <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=42.3583&lon=-71.0603"> </iframe>
     <button class="btn btn-success" ng-click="getGearCheckList()">Let's Go!</button>
     <div  class="gearListResults">
         <div class="row">
             <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList">
                 <div class="thumbnail">
-                    <img src="./Gearlist_files/-Men-Male-outdoor-hiking-trekking-shoes-shoe-The-waterproof-hiking-shoes-boots-trekking-men-s.jpg" alt="...">
+                    <img ng-src="{{gear.image_url}}" alt="...">
                     <div class="caption">
                         <h3>{{gear.name}}</h3>
                         <p>{{gear.description}}</p>
