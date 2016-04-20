@@ -1,0 +1,108 @@
+<div class="locationPageWrap container">
+    <div class="container locationHeader">
+        <span class="h1">Location Name</span>
+        <span class="locationRatings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+        <ol class="breadcrumb">
+            <li><a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#">India</a></li>
+            <li><a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#">Himachal</a></li>
+            <li class="active">Chindi Karsog</li>
+        </ol>
+    </div>
+    <div class="locationHeroImage col-md-8">
+        <img src="app/components/location/Location_page_files/12967453_1024051334340416_5450016939290548926_o.jpg" class="img-responsive">
+    </div>
+    <uib-carousel interval="" no-wrap="false">
+        <uib-slide  class="select-pointer"  ng-repeat="image in locationImages track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')  ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.9,w_0.9/'),place.note)"-->
+            <img ng-src="{{getImageUrl(image.farm,image.server,image.id,image.secret,'z')}}" style="margin:auto;">
+        </uib-slide>
+    </uib-carousel>
+    <div class="col-md-4">
+        <h3>Why to visit?</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#writeReview">Write a review</button>
+</div>
+
+<!-- Modal -->
+<div id="writeReview" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">Write a Review for Location</h4>
+            </div>
+            <div class="modal-body">
+                <textarea placeholder="Write your review..."></textarea>
+                <ul>
+                    <li><i class="fa fa-camera"></i></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Add Review</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--comment boxes-->
+<div class="container commentsWrap">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-white post panel-shadow">
+                <div class="post-heading">
+                    <div class="pull-left image">
+                        <img src="app/components/location/Location_page_files/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                            <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#"><b>Bhai</b></a>
+                           wrote a review <span class="cardRating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+                        </div>
+                        <h6 class="text-muted time">1 minute ago</h6>
+                    </div>
+                </div>
+                <div class="post-description">
+                    <p>Bhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayo</p>
+                    <div class="stats">
+                        <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-up icon"></i>2
+                        </a>
+                        <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-down icon"></i>12
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel panel-white post panel-shadow">
+                <div class="post-heading">
+                    <div class="pull-left image">
+                        <img src="app/components/location/Location_page_files/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                            <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#"><b>bruh</b></a>
+                           wrote a review <span class="cardRating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+                        </div>
+                        <h6 class="text-muted time">1 minute ago</h6>
+                    </div>
+                </div>
+                <div class="post-description">
+                    <p>bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.</p>
+                    <div class="stats">
+                        <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-up icon"></i>2
+                        </a>
+                        <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#" class="btn btn-default stat-item">
+                            <i class="fa fa-thumbs-down icon"></i>12
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="map" style="display: none"></div>
