@@ -21,10 +21,9 @@
                 </a>
                 <div class="caption">
                     <a ng-href="#/account/timeline/{{trip.id}}">
-                        <span class="pull-left trip_name title-overflow-hidden">{{trip.title}}</span>
+                        <span class=" trip_name title-overflow-hidden">{{trip.title}}</span>
                     </a>
                     <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
-                    <br>
                     <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
                     <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                     <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
