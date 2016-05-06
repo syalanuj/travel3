@@ -8,19 +8,51 @@
             <li class="active">Chindi Karsog</li>
         </ol>
     </div>
-    <div class="locationHeroImage col-md-8">
-        <img src="app/components/location/Location_page_files/12967453_1024051334340416_5450016939290548926_o.jpg" class="img-responsive">
+    <div class="row">
+        <div class="locationHeroImage col-md-8">
+            <uib-carousel interval="" no-wrap="false">
+                <uib-slide class="select-pointer" ng-repeat="image in locationImages track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')  ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.9,w_0.9/'),place.note)"-->
+                    <img ng-src="{{getImageUrl(image.farm,image.server,image.id,image.secret,'z')}}" style="margin:auto;">
+                </uib-slide>
+            </uib-carousel>
+        </div>
+        <div class="col-md-4">
+            <div class="row well">
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+
+            </div>
+            <div class="row well" style="height:184px;">
+                <i class="fa fa-sun-o col-md-4 col-sm-4 col-xs-4" style="font-size:100px"></i>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    <p style="font-size:36px">22 ℃ </p>
+                    <p style="font-size:36px">Sunny</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <uib-carousel interval="" no-wrap="false">
-        <uib-slide  class="select-pointer"  ng-repeat="image in locationImages track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')  ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.9,w_0.9/'),place.note)"-->
-            <img ng-src="{{getImageUrl(image.farm,image.server,image.id,image.secret,'z')}}" style="margin:auto;">
-        </uib-slide>
-    </uib-carousel>
-    <div class="col-md-4">
-        <h3>Why to visit?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#writeReview">Write a review</button>
 </div>
 
 <!-- Modal -->
@@ -45,64 +77,113 @@
         </div>
     </div>
 </div>
-<!--comment boxes-->
-<div class="container commentsWrap">
+<div class="container">
     <div class="row">
-        <div class="col-sm-8">
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="app/components/location/Location_page_files/user_1.jpg" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="title h5">
-                            <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#"><b>Bhai</b></a>
-                           wrote a review <span class="cardRating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+        <div class="col-md-8">
+            <ul class="nav nav-tabs nav-justified" style="margin-top:10px;">
+                <li class=""><a data-toggle="tab" href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#reviews" aria-expanded="false">Reviews</a></li>
+                <li class="active"><a data-toggle="tab" href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#tips" aria-expanded="true">Tips</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="reviews" class="tab-pane fade">
+                    <h3></h3>
+                    <!--comment boxes-->
+                    <div class="container commentsWrap">
+                        <div class="row">
+                            <div class="col-md-8" ng-repeat="locationReview in locationReviews track by $index">
+                                <div class="panel panel-white post panel-shadow">
+                                    <div class="post-heading">
+                                        <div class="pull-left image">
+                                            <img ng-src="{{locationReview.user_pointer.facebook_profile.picture.data.url}}" class="img-circle avatar" alt="user profile image">
+                                        </div>
+                                        <div class="pull-left meta">
+                                            <div class="title h5">
+                                                <a ng-href="#/account/profile/{{locationReview.user_pointer.objectId}}"><b>{{locationReview.user_pointer.facebook_profile.name}}</b></a>
+                           wrote a review 
+                                                <span class="cardRating"><star-rating ng-model="locationReview.rating" readonly="true"></star-rating></span>
+                                            </div>
+                                            <h6 class="text-muted time">{{locationReview.timeSincePostUpdated}} minute ago</h6>
+                                        </div>
+                                    </div>
+                                    <div class="post-description">
+                                        <p>{{locationReview.review_text}}</p>
+                                        <div class="stats">
+                                            <a ng-click="" href="" class="btn btn-default stat-item">
+                                                <i class="fa fa-thumbs-up icon"></i>{{locationReview.upvote_count}}
+                                            </a>
+                                            <a ng-click="" href="" class="btn btn-default stat-item">
+                                                <i class="fa fa-thumbs-down icon"></i>{{locationReview.downvote_count}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
                     </div>
+
                 </div>
-                <div class="post-description">
-                    <p>Bhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayoBhai ko majo ayo</p>
-                    <div class="stats">
-                        <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-down icon"></i>12
-                        </a>
+                <div id="tips" class="tab-pane fade active in">
+                    <!--comment boxes-->
+                    <div class="container commentsWrap">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="panel panel-white post panel-shadow" ng-repeat="locationTip in locationTips track by $index">
+                                    <div class="post-heading">
+                                        <div class="pull-left image">
+                                            <img ng-src="{{locationTip.user_pointer.facebook_profile.picture.data.url}}" class="img-circle avatar" alt="user profile image">
+                                        </div>
+                                        <div class="pull-left meta">
+                                            <div class="title h5">
+                                                <a ng-href="#/account/profile/{{locationTip.user_pointer.objectId}}"><b>{{locationTip.user_pointer.facebook_profile.name}}</b></a>
+                           wrote a tip
+                                            </div>
+                                            <h6 class="text-muted time">{{locationTip.timeSincePostUpdated}} minute ago</h6>
+                                        </div>
+                                    </div>
+                                    <div class="post-description">
+                                        <p>{{locationTip.tip_text}}</p>
+                                        <div class="stats">
+                                            <a ng-click="" href="" class="btn btn-default stat-item">
+                                                <i class="fa fa-thumbs-up icon"></i>{{locationTip.upvote_count}}
+                                            </a>
+                                            <a ng-click="" href="" class="btn btn-default stat-item">
+                                                <i class="fa fa-thumbs-down icon"></i>{{locationTip.downvote_count}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-8">
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="app/components/location/Location_page_files/user_1.jpg" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="title h5">
-                            <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#"><b>bruh</b></a>
-                           wrote a review <span class="cardRating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
-                        </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
-                    </div>
-                </div>
-                <div class="post-description">
-                    <p>bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.bruh you can do it bruh.</p>
-                    <div class="stats">
-                        <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-down icon"></i>12
-                        </a>
-                    </div>
-                </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <form name="reveiewForm" ng-submit="" role="form">
+                <h3 class="text-center text-capitalize">Rate this place</h3>
+                <h2 class="rateThis text-center"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></h2>
+                <div star-rating ng-model="review.rating" max="5" on-rating-select="rateFunction(rating)" read-only="false"></div>
+                    <input name="rating" ng-model="review.rating" type="hidden" required>                
+                <ul class="ratingQuestions">
+                    <li>
+        Was food available here?<br>
+                        <button ng-click="review.isFoodAvailable = 2" class="btn">Yes</button> <button ng-click="review.isFoodAvailable = 1" class="btn">No</button> <button ng-click="review.isFoodAvailable = 0" class="btn">Don't Know</button>
+                        <input  name="isFoodAvailable" ng-model="review.isFoodAvailable" type="text" ng-value="review.isFoodAvailable" style="display:none" required>                    
+                    </li>
+                    <li> Availability for accomodations?<br>
+                        <button ng-click="review.isAccommodationAvailable = 2" class="btn">Yes</button> <button ng-click="review.isAccommodationAvailable = 1" class="btn">No</button> <button ng-click="review.isAccommodationAvailable = 0" class="btn">Don't Know</button>
+                    </li>
+                    <li> Difficulty in reaching this place?<br>
+                        <button ng-click="review.difficultyGrade = 0" class="btn">Easy</button> <button ng-click="review.difficultyGrade = 1" class="btn">Moderate</button> <button ng-click="review.difficultyGrade = 2" class="btn">Difficult</button> <button ng-click="review.difficultyGrade = 3" class="btn"> Strenuous</button>
+                    </li>
+                </ul>
+                <textarea ng-model="review.reviewText" rows="3" name="review" placeholder=" &nbsp; &nbsp; &nbsp; &nbsp; Add a quick summary of your experience." required></textarea>
+                <button ng-click="postReview()" type="submit">go</button>
+                </form>
             </div>
         </div>
+
     </div>
 </div>
-
 <div id="map" style="display: none"></div>
