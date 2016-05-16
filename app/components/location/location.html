@@ -1,18 +1,30 @@
 <div class="locationPageWrap container">
     <div class="container locationHeader">
-        <span class="h1">Location Name</span>
+        <span class="h1">{{location.name}}</span>
         <span class="locationRatings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
         <ol class="breadcrumb">
-            <li><a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#">India</a></li>
-            <li><a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#">Himachal</a></li>
-            <li class="active">Chindi Karsog</li>
+            <li ng-repeat="addressComponent in location.address_components" ng-if="addressComponent.types[0] == 'country'">
+            <a ng-click="routeToLocation(addressComponent.long_name)" ng-href="">{{addressComponent.long_name}}</a>
+            </li>
+            <li ng-repeat="addressComponent in location.address_components" ng-if="addressComponent.types[0] == 'administrative_area_level_1'">
+            <a ng-click="routeToLocation(addressComponent.long_name)" ng-href="">{{addressComponent.long_name}}</a>
+            </li>
+            <li ng-repeat="addressComponent in location.address_components" ng-if="addressComponent.types[0] == 'administrative_area_level_2'">
+            <a ng-click="routeToLocation(addressComponent.long_name)" ng-href="">{{addressComponent.long_name}}</a>
+            </li>
+            <li ng-repeat="addressComponent in location.address_components" ng-if="addressComponent.types[0] == 'natural_feature'">
+            <a ng-click="routeToLocation(addressComponent.long_name)" ng-href="">{{addressComponent.long_name}}</a>
+            </li>
+            <!--<li ng-repeat="addressComponent in location.address_components" ng-if="addressComponent.types[0] == 'locality'">
+            <a ng-href="">{{addressComponent.long_name}}</a>
+            </li>-->
         </ol>
     </div>
     <div class="row">
         <div class="locationHeroImage col-md-8">
             <uib-carousel interval="" no-wrap="false">
-                <uib-slide class="select-pointer" ng-repeat="image in locationImages track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')  ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.9,w_0.9/'),place.note)"-->
-                    <img ng-src="{{getImageUrl(image.farm,image.server,image.id,image.secret,'z')}}" style="margin:auto;">
+                <uib-slide class="select-pointer" ng-repeat="image in newImages track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')  ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.9,w_0.9/'),place.note)"-->
+                    <img ng-src="{{image.photoPixelsUrls[3].url}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
         </div>
@@ -107,14 +119,14 @@
                                     </div>
                                     <div class="post-description">
                                         <p>{{locationReview.review_text}}</p>
-                                        <div class="stats">
+                                        <!--<div class="stats">
                                             <a ng-click="" href="" class="btn btn-default stat-item">
                                                 <i class="fa fa-thumbs-up icon"></i>{{locationReview.upvote_count}}
                                             </a>
                                             <a ng-click="" href="" class="btn btn-default stat-item">
                                                 <i class="fa fa-thumbs-down icon"></i>{{locationReview.downvote_count}}
                                             </a>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -142,14 +154,14 @@
                                     </div>
                                     <div class="post-description">
                                         <p>{{locationTip.tip_text}}</p>
-                                        <div class="stats">
+                                        <!--<div class="stats">
                                             <a ng-click="" href="" class="btn btn-default stat-item">
                                                 <i class="fa fa-thumbs-up icon"></i>{{locationTip.upvote_count}}
                                             </a>
                                             <a ng-click="" href="" class="btn btn-default stat-item">
                                                 <i class="fa fa-thumbs-down icon"></i>{{locationTip.downvote_count}}
                                             </a>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>

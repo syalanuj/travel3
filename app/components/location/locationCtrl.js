@@ -14,6 +14,7 @@
             document.getElementById("map"), options
         );
             this.places = new google.maps.places.PlacesService(this.map);
+            this.geocoder = new google.maps.Geocoder();
         }
 
         this.search = function (str) {
@@ -40,7 +41,18 @@
             });
             return d.promise;
         }
+        this.geocodePlace = function (address) {
+            var d = $q.defer();
+            this.geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    d.resolve(results[0].place_id);
 
+                } else {
+                    d.reject(status);
+                }
+            });
+            return d.promise;
+        }
         this.addMarker = function (res) {
             if (this.marker) this.marker.setMap(null);
             this.marker = new google.maps.Marker({
@@ -95,18 +107,20 @@
             }
         };
     });
-    app.controller('LocationCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', 'Map', 'FlickrApiService', 'LocationService', controller]);
-    function controller($scope, $cookies, $rootScope, $routeParams, Map, flickrApiService, locationService) {
+    app.controller('LocationCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', 'Map', '$location', 'FlickrApiService', 'LocationService', controller]);
+    function controller($scope, $cookies, $rootScope, $routeParams, Map, $location, flickrApiService, locationService) {
         //====== Scope Variables==========
         //================================
         //$routeParams
         $scope.readonly = true;
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
         $scope.location;
-        $routeParams.placeId = 'ChIJZ25d4-N4BTkRt1Sf__Z_fh8';
+        //if(!$routeParams.placeId)
+        $routeParams.placeId = 'ChIJ6TGqdERcBDkRnZRHK-PSEvE'; // 'ChIJZ25d4-N4BTkRt1Sf__Z_fh8';
         //initialize review object
         $scope.review = new Object();
         $scope.review.rating = 1;
+        if($scope.userObj)
         $scope.review.userId = $scope.userObj.objectId;
         $scope.review.placeId = $routeParams.placeId;
         $scope.locationReviews;
@@ -121,25 +135,36 @@
                 $scope.location.lat = res.geometry.location.lat();
                 $scope.location.lng = res.geometry.location.lng();
                 var coordinates = { latitude: res.geometry.location.lat(), longitude: res.geometry.location.lng() }
-                flickrApiService.findPlacesByLatLon(coordinates).then(
-                function (res) {
-                    if (res && res.data && res.data.places && res.data.places.place) {
-                        flickrApiService.searchPhotosByPlaceId(res.data.places.place[0].place_id, $scope.location.name).then(
-                        function (res) {
-                            if (res) {
-                                $scope.locationImages = res.data.photos.photo;
-                            }
-                        }, function (status) {
-                            $scope.apiError = true;
-                            $scope.apiStatus = status;
-                        });
+                flickrApiService.getPhotosOfLocation(coordinates, $scope.location.name).then(
+                    function (res) {
+                        if (res) {
+                            $scope.newImages = res.data.photos;
+                        }
+                    },
+                    function (status) {
+                        $scope.apiError = true;
+                        $scope.apiStatus = status;
                     }
-                },
-                function (status) {
-                    $scope.apiError = true;
-                    $scope.apiStatus = status;
-                }
                 );
+                //flickrApiService.findPlacesByLatLon(coordinates).then(
+                //function (res) {
+                //    if (res && res.data && res.data.places && res.data.places.place) {
+                //        flickrApiService.searchPhotosByPlaceId(res.data.places.place[0].place_id, $scope.location.name).then(
+                //        function (res) {
+                //            if (res) {
+                //                $scope.locationImages = res.data.photos.photo;
+                //            }
+                //        }, function (status) {
+                //            $scope.apiError = true;
+                //            $scope.apiStatus = status;
+                //        });
+                //    }
+                //},
+                //function (status) {
+                //    $scope.apiError = true;
+                //    $scope.apiStatus = status;
+                //}
+                //);
             },
             function (status) { // error
                 $scope.apiError = true;
@@ -193,7 +218,17 @@
                 });
             });
         }
-
+        $scope.routeToLocation = function (location) {
+            Map.geocodePlace(location)
+        .then(
+            function (placeId) {
+                $location.path("/location/" + placeId + "/");
+            },
+            function (status) {
+                console.log(status);
+            }
+        );
+        }
 
         Map.init();
         var st = new Object();

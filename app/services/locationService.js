@@ -2,17 +2,20 @@ var app = angular.module('campture');
 app.factory('LocationService', ['$http', '$q', function ($http, $q) {
     var LocationReviews = Parse.Object.extend("Location_Reviews");
     var LocationTips = Parse.Object.extend("Location_Tips");
+    var LocationCard = Parse.Object.extend("Location_Card");
 
     var locationReview = new LocationReviews();
     var locationTips = new LocationTips();
-
+    var locationCard = new LocationCard();
     return {
         getReviewsForLocation: getReviewsForLocation,
         getReviewsOfUser: getReviewsOfUser,
         postReview: postReview,
         updateReview: updateReview,
         VoteReview: VoteReview,
-        getTipsForLocation: getTipsForLocation
+        getTipsForLocation: getTipsForLocation,
+        saveLocationCard: saveLocationCard,
+        getLocationCards: getLocationCards
 
     };
     function getReviewsForLocation(placeId, callback) {
@@ -99,7 +102,6 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             }
         });
     }
-
     function getGearList(temperatureGrade, durationGrade, callback) {
         var query = new Parse.Query(gear);
         query.equalTo("temperature_grade", temperatureGrade);
@@ -121,6 +123,41 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             format: 'jsonp',
             callback: 'JSON_CALLBACK'
         }
+        });
+    }
+    function saveLocationCard(locationCardObj, callback) {
+        var locationCard = new LocationCard();
+        locationCard.set("coordinates", locationCardObj.coordinates);
+        locationCard.set("flickr_owner", locationCardObj.flickrOwner);
+        locationCard.set("flickr_place_id", locationCardObj.flickrPlaceId);
+        locationCard.set("flickr_url", locationCardObj.flickrUrl);
+        locationCard.set("image_url", locationCardObj.imageUrl);
+        locationCard.set("name", locationCardObj.name);
+        locationCard.set("place_id", locationCardObj.placeId);
+        locationCard.set("tags", locationCardObj.tags);
+        locationCard.save(null, {
+            success: function (parseObject) {
+                callback(parseObject.id);
+            },
+            error: function (gameScore, error) {
+                console.log('Failed to create new object, with error code: ' + error.message);
+            }
+        });
+    }
+    function getLocationCards(page, callback) {
+        var paginglimit = 50;
+        var locationCard = new LocationCard();
+        var query = new Parse.Query(locationCard);
+        query.limit(paginglimit);
+        query.skip(page * paginglimit);
+        query.find({
+            success: function (parseObject) {
+                locationCards = JSON.parse(JSON.stringify(parseObject));
+                callback(locationCards);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
         });
     }
 } ]);
