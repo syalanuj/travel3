@@ -19,47 +19,67 @@
             $scope.locationCard.coordinates = $scope.coordinates;
             $scope.locationCard.placeId = details.place_id;
             $scope.locationCard.name = details.name;
-            flickrApiService.findPlacesByLatLon($scope.coordinates).then(
-                function (res) {
-                    if (res && res.data && res.data.places && res.data.places.place) {
-                        $scope.locationCard.flickrPlaceId = res.data.places.place[0].place_id;
-                        flickrApiService.searchPhotosByPlaceId(res.data.places.place[0].place_id, $scope.location.locationDetails.name).then(
-                        function (res) {
-                            if (res && res.data.photos.photo[0]) {
-                                var image = res.data.photos.photo[0]
-                                $scope.locationCard.imageUrl = getImageUrl(image.farm, image.server, image.id, image.secret, 'n');
-                                flickrApiService.getPhotoInfoByPhotoId(image.id).then(
-                        function (res) {
-                            if (res) {
-                                $scope.locationCard.flickrOwner = res.data.photo.owner;
-                                $scope.locationCard.flickrUrl = res.data.photo.urls.url[0]._content;
-                                $scope.locationCard.tags = res.data.photo.tags.tag;
-                                locationService.saveLocationCard($scope.locationCard, function (data) {
-                                    if (data) {
-                                        var x = data;
+            flickrApiService.getPhotosOfLocation($scope.locationCard.coordinates, $scope.locationCard.name).then(
+                    function (res) {
+                        if (res) {
+                            $scope.locationCard.panoramioImage = {
+                                imageUrl: res.data.photos[0].photoPixelsUrls[0].url,
+                                ownerName: res.data.photos[0].ownerName,
+                                ownerUrl: res.data.photos[0].ownerUrl,
+                                photoTitle: res.data.photos[0].photoTitle,
+                                panoramioUrl: res.data.photos[0].photoUrl
+                            };
+                            flickrApiService.findPlacesByLatLon($scope.coordinates).then(
+                    function (res) {
+                        if (res && res.data && res.data.places && res.data.places.place) {
+                            $scope.locationCard.flickrPlaceId = res.data.places.place[0].place_id;
+                            flickrApiService.getTagsForPlace(res.data.places.place[0].place_id).then(
+                            function (res) {
+                                if (res) {
+                                    $scope.locationCard.tags = new Array();
+                                    var tagsCount = new Object();
+                                    if (res.data.tags.total > 9) {
+                                        tagsCount = 10
                                     }
-                                })
-                            }
-                        }, function (status) {
-                            $scope.apiError = true;
-                            $scope.apiStatus = status;
-                        });
-                            }
-                            else {
-                                $scope.photoNotFound = true;
-                            }
-                        }, function (status) {
-                            $scope.apiError = true;
-                            $scope.apiStatus = status;
-                        });
+                                    else {
+                                        tagsCount = res.data.tags.total
+                                    }
+                                    for (var count = 0; count < tagsCount; count++) {
+                                        $scope.locationCard.tags[count] = res.data.tags.tag[count];
+                                    }
+                                }
+                                else {
+                                    $scope.photoNotFound = true;
+                                }
+                            }, function (status) {
+                                $scope.apiError = true;
+                                $scope.apiStatus = status;
+                            });
+                        }
+                    },
+                    function (status) {
+                        $scope.apiError = true;
+                        $scope.apiStatus = status;
                     }
-                },
-                function (status) {
-                    $scope.apiError = true;
-                    $scope.apiStatus = status;
-                }
+                    );
+
+                        }
+                    },
+                    function (status) {
+                        $scope.apiError = true;
+                        $scope.apiStatus = status;
+                    }
                 );
         };
+
+        $scope.saveLocation = function () {
+            locationService.saveLocationCard($scope.locationCard, function (data) {
+                if (data) {
+                    $scope.locationCard = undefined;
+                    $scope.$apply();
+                }
+            })
+        }
         function getImageUrl(farmId, serverId, id, secret, sizeSuffix) {
             return 'https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '_' + sizeSuffix + '.jpg';
         }

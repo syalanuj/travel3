@@ -128,13 +128,11 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
     function saveLocationCard(locationCardObj, callback) {
         var locationCard = new LocationCard();
         locationCard.set("coordinates", locationCardObj.coordinates);
-        locationCard.set("flickr_owner", locationCardObj.flickrOwner);
         locationCard.set("flickr_place_id", locationCardObj.flickrPlaceId);
-        locationCard.set("flickr_url", locationCardObj.flickrUrl);
-        locationCard.set("image_url", locationCardObj.imageUrl);
         locationCard.set("name", locationCardObj.name);
         locationCard.set("place_id", locationCardObj.placeId);
         locationCard.set("tags", locationCardObj.tags);
+        locationCard.set("panoramio_image", locationCardObj.panoramioImage);
         locationCard.save(null, {
             success: function (parseObject) {
                 callback(parseObject.id);
