@@ -112,10 +112,9 @@
                     </a>
                     <div class="caption">
                         <a ng-href="#/account/timeline/{{trip.id}}">
-                            <span class="pull-left trip_name title-overflow-hidden">{{trip.title}}</span>
+                            <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
                         </a>
                         <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
-                        <br>
                         <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
                         <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                         <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
@@ -125,8 +124,25 @@
                         <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->
                     </div>
                     <!--<a ng-click="deleteTrip(trip.id)">delete</a>-->
-                    <a ng-click="deleteTrip(trip.id)">delete</a>
-                </div>
+                    <button type="button" class="deleteButton" data-toggle="modal" data-target="#deleteTrip"><i class="fa fa-trash"></i></button>
+                    <div id="deleteTrip" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Are you sure you want to delete Trip Name</h4>
+      </div>
+      <div class="modal-footer">
+      	<a ng-click="deleteTrip(trip.id)" class="btn"><i class="fa fa-trash"></i> Yes, Delete this trip</a>               
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+                    </div>
             </div>
         </div>
         <div id="places" class="" ng-show="profileTabPos == 1">
