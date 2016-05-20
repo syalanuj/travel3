@@ -1,8 +1,15 @@
-<div class="locationPageWrap container">
-    <div class="container locationHeader">
-        <span class="h1">{{location.name}}</span>
-        <span class="locationRatings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
-        <ol class="breadcrumb">
+<div class="locationPageWrap">
+	<div class="location-boss-header">
+    <div class="container" style="padding:0;">
+    <div class="col-md-8 col-sm-12">
+    <div class="locationHeader">
+    	<div class="rating-box vcenter">
+        	<span style="font-weight:900;">4</span><span style="font-weight:200;">/5</span>
+        </div>
+    	<div>
+        <span class="h1 location-name">{{location.name}}</span>
+        <!--<span class="locationRatings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>-->
+        <ol class="breadcrumb location-breadcrumb">
             <li ng-repeat="addressComponent in location.address_components" ng-if="addressComponent.types[0] == 'country'">
             <a ng-click="routeToLocation(addressComponent.long_name)" ng-href="">{{addressComponent.long_name}}</a>
             </li>
@@ -19,106 +26,141 @@
             <a ng-href="">{{addressComponent.long_name}}</a>
             </li>-->
         </ol>
+        </div>
     </div>
+    <div style="padding-left:0px;">
+    <ol class="location-page-tags">
+    <li>Forest</li><li>Forest</li><li>Forest</li><li>Forest</li><li>Forest</li><li>Forest</li><li>Forest</li><li>Forest</li>
+    </ol>
+    </div>
+    </div>
+    <div class="col-md-4 col-sm-12" style="padding:0">
+    	<div class="tips-toast">
+        	<div class="info">
+            <i class="fa fa-info"></i>
+            </div>
+           <span> Tip: Review this place &amp; help build a better community!</span>
+        </div>
+    </div>
+    </div>
+    </div>
+ 	<div class="location-page-body">   
     <div class="row">
-        <div class="locationHeroImage col-md-8">
+    <div class="container">
+    <div class="col-md-8">
+    <div class="row" style="margin-bottom:10px;">
+    <div class="col-md-4" style="padding:0;">
+        <div class="been-here-btn ">
+            <div class="been-here-tick">
+            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+            </div>
+            <div class="been-here-text">
+            Been Here?
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="bucket-btn">
+            <div class="bucket-tick">
+            <i class="fa fa-plus"></i>
+            </div>
+            <div class="bucket-text" style="font-size:18px;">
+            Bucketlist
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="review-btn pull-right">
+            <div class="review-tick">
+            <i class="fa fa-pencil"></i>
+            </div>
+            <div class="review-text">
+            Write Review
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" style="padding-left:0;">
+  <div class="trail-dir">
+    <span>trail</span>
+    <span>|</span>
+    <span>get directions</span>
+    </div>
+    </div>
+    </div>
+      
+  
+    <div class="row" >
+    <div class="locationHeroImage" >
             <uib-carousel interval="" no-wrap="false">
                 <uib-slide class="select-pointer" ng-repeat="image in newImages track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')  ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.9,w_0.9/'),place.note)"-->
                     <img ng-src="{{image.photoPixelsUrls[3].url}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
         </div>
-        <div class="col-md-4">
-            <div class="row well">
-                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
-                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
-                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
-                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
-                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
-                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
-                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
-                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
-                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
-                </div>
-
-            </div>
-            <div class="row well" style="height:184px;">
-                <i class="fa fa-sun-o col-md-4 col-sm-4 col-xs-4" style="font-size:100px"></i>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                    <p style="font-size:36px">22 ℃ </p>
-                    <p style="font-size:36px">Sunny</p>
-                </div>
-            </div>
-        </div>
     </div>
-</div>
-
-<!-- Modal -->
-<div id="writeReview" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">Write a Review for Location</h4>
-            </div>
-            <div class="modal-body">
-                <textarea placeholder="Write your review..."></textarea>
-                <ul>
-                    <li><i class="fa fa-camera"></i></li>
-                </ul>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Add Review</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <ul class="nav nav-tabs nav-justified" style="margin-top:10px;">
+    <div class="rt-content"  style="margin-top:50px;">
+    <div class="tabs-row row">
+            <ul class="nav nav-tabs nav-justified nav-rt">
                 <li class=""><a data-toggle="tab" href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#reviews" aria-expanded="false">Reviews</a></li>
                 <li class="active"><a data-toggle="tab" href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/locationPage.html#tips" aria-expanded="true">Tips</a></li>
             </ul>
-            <div class="tab-content">
+           
+            <div class="tab-content ">
                 <div id="reviews" class="tab-pane fade">
-                    <h3></h3>
+                    <div class="col-md-12 col-sm-12" style="padding:0;">       
+     <div class="write-review container">
+    <div class="col-md-1 col-sm-12"> 
+    <div class="own-pro-pic text-center">
+    <img src="../../../css/images/2016-02-26.png" class="img-circle">
+    </div>
+    </div>
+    <div class="col-md-11 col-sm-12">
+        <textarea placeholder="Share your review" rows="4" class="write-your-review form-control">
+    </textarea>
+    <div class="">
+    <!--<div class="your-rating">
+    Your rating:
+    </div>-->
+    <div>
+        <div class="review-btn pull-right">
+            <div class="review-tick">
+            <i class="fa fa-pencil"></i>
+            </div>
+            <div class="review-text">
+            Publish Review
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+     </div>
                     <!--comment boxes-->
-                    <div class="container commentsWrap">
-                        <div class="row">
-                            <div class="col-md-8" ng-repeat="locationReview in locationReviews track by $index">
+                    <div class="">
+                    <div class="commentsWrap col-md-12">
+                        <div>
+                            <div  ng-repeat="locationReview in locationReviews track by $index">
                                 <div class="panel panel-white post panel-shadow">
                                     <div class="post-heading">
                                         <div class="pull-left image">
                                             <img ng-src="{{locationReview.user_pointer.facebook_profile.picture.data.url}}" class="img-circle avatar" alt="user profile image">
                                         </div>
                                         <div class="pull-left meta">
-                                            <div class="title h5">
-                                                <a ng-href="#/account/profile/{{locationReview.user_pointer.objectId}}"><b>{{locationReview.user_pointer.facebook_profile.name}}</b></a>
-                           wrote a review 
-                                                <span class="cardRating"><star-rating ng-model="locationReview.rating" readonly="true"></star-rating></span>
+                                        <span class="cardRating"><star-rating ng-model="locationReview.rating" readonly="true"></star-rating></span>
+                                        <span class="review-title">Review Title</span>
+                                            <div class="title">
+                                            By
+                                                <a ng-href="#/account/profile/{{locationReview.user_pointer.objectId}}" ><b style="font-size: 14px!important; font-family: lato!important; color: rgb(106, 106, 106);!important;">{{locationReview.user_pointer.facebook_profile.name}}</b></a>
+                      <span class="text-muted time">{{locationReview.timeSincePostUpdated}} minute ago</span>
+                                                
                                             </div>
-                                            <h6 class="text-muted time">{{locationReview.timeSincePostUpdated}} minute ago</h6>
+                                            
                                         </div>
                                     </div>
                                     <div class="post-description">
-                                        <p>{{locationReview.review_text}}</p>
+                                        <p>{{locationReview.review_text}}
+                                        Lorem ipsum dolor sit amet, vis affert convenire persequeris ut. Est quem brute an, vim solet noluisse te, te option laboramus mel. Duis maiestatis intellegebat vel et, dictas pericula vix ea. Voluptua dissentias pro ut, est in legendos periculis appellantur, falli vocent mediocritatem sea in. Ut vis diceret disputando, dolore mollis cu nec. Illud legere libris ius at, cum id putent eleifend mnesarchum.
+                                        </p>
                                         <!--<div class="stats">
                                             <a ng-click="" href="" class="btn btn-default stat-item">
                                                 <i class="fa fa-thumbs-up icon"></i>{{locationReview.upvote_count}}
@@ -132,13 +174,13 @@
                             </div>
                         </div>
                     </div>
-
+					</div>	
                 </div>
                 <div id="tips" class="tab-pane fade active in">
                     <!--comment boxes-->
-                    <div class="container commentsWrap">
-                        <div class="row">
-                            <div class="col-md-8">
+                    <div class="commentsWrap">
+                        <div>
+                            <div >
                                 <div class="panel panel-white post panel-shadow" ng-repeat="locationTip in locationTips track by $index">
                                     <div class="post-heading">
                                         <div class="pull-left image">
@@ -147,7 +189,7 @@
                                         <div class="pull-left meta">
                                             <div class="title h5">
                                                 <a ng-href="#/account/profile/{{locationTip.user_pointer.objectId}}"><b>{{locationTip.user_pointer.facebook_profile.name}}</b></a>
-                           wrote a tip
+                           
                                             </div>
                                             <h6 class="text-muted time">{{locationTip.timeSincePostUpdated}} minute ago</h6>
                                         </div>
@@ -170,32 +212,108 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <form name="reveiewForm" ng-submit="" role="form">
-                <h3 class="text-center text-capitalize">Rate this place</h3>
-                <h2 class="rateThis text-center"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></h2>
-                <div star-rating ng-model="review.rating" max="5" on-rating-select="rateFunction(rating)" read-only="false"></div>
-                    <input name="rating" ng-model="review.rating" type="hidden" required>                
-                <ul class="ratingQuestions">
-                    <li>
-        Was food available here?<br>
-                        <button ng-click="review.isFoodAvailable = 2" class="btn">Yes</button> <button ng-click="review.isFoodAvailable = 1" class="btn">No</button> <button ng-click="review.isFoodAvailable = 0" class="btn">Don't Know</button>
-                        <input  name="isFoodAvailable" ng-model="review.isFoodAvailable" type="text" ng-value="review.isFoodAvailable" style="display:none" required>                    
-                    </li>
-                    <li> Availability for accomodations?<br>
-                        <button ng-click="review.isAccommodationAvailable = 2" class="btn">Yes</button> <button ng-click="review.isAccommodationAvailable = 1" class="btn">No</button> <button ng-click="review.isAccommodationAvailable = 0" class="btn">Don't Know</button>
-                    </li>
-                    <li> Difficulty in reaching this place?<br>
-                        <button ng-click="review.difficultyGrade = 0" class="btn">Easy</button> <button ng-click="review.difficultyGrade = 1" class="btn">Moderate</button> <button ng-click="review.difficultyGrade = 2" class="btn">Difficult</button> <button ng-click="review.difficultyGrade = 3" class="btn"> Strenuous</button>
-                    </li>
-                </ul>
-                <textarea ng-model="review.reviewText" rows="3" name="review" placeholder=" &nbsp; &nbsp; &nbsp; &nbsp; Add a quick summary of your experience." required></textarea>
-                <button ng-click="postReview()" type="submit">go</button>
-                </form>
+     </div>       
+    </div>
+    <div class="col-md-4">
+    	<div class="col-md-12">
+            <div class="row panel widgets-panel">
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 featureIcons">
+                    <img src="./Location_page_files/Vector Smart Object copy 7.png">
+                </div>
+
             </div>
+        </div> 
+        <div class="col-md-12">       
+            <div class="row panel widgets-panel">
+                <i class="fa fa-sun-o col-md-4 col-sm-4 col-xs-4" style="font-size:100px"></i>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    <p style="font-size:36px">22 ℃ </p>
+                    <p style="font-size:36px">Sunny</p>
+                </div>
+            </div>
+        </div> 
+        <div class="col-md-12">
+            <div class="row panel panel-default widgets-panel">
+                        <form name="reveiewForm" ng-submit="" role="form">
+                        <div class="text-center">
+                        <span class="r-place">Rate this place</span>
+                        <div star-rating ng-model="review.rating" max="5" on-rating-select="rateFunction(rating)" read-only="false"></div>
+                        </div>
+                        
+                        
+                            <input name="rating" ng-model="review.rating" type="hidden" required>                
+                        <ul class="ratingQuestions">
+                            <li>
+                Was food available here?<br>
+                                <button ng-click="review.isFoodAvailable = 2" class="btn-q btn">Yes</button> <button ng-click="review.isFoodAvailable = 1" class="btn-q btn">No</button> <button ng-click="review.isFoodAvailable = 0" class="btn-q btn">Don't Know</button>
+                                <input  name="isFoodAvailable" ng-model="review.isFoodAvailable" type="text" ng-value="review.isFoodAvailable" style="display:none" required>                    
+                            </li>
+                            <li> Availability for accomodations?<br>
+                                <button ng-click="review.isAccommodationAvailable = 2" class="btn-q btn">Yes</button> <button ng-click="review.isAccommodationAvailable = 1" class="btn-q btn">No</button> <button ng-click="review.isAccommodationAvailable = 0" class="btn-q btn">Don't Know</button>
+                            </li>
+                            <li> Difficulty in reaching this place?<br>
+                                <button ng-click="review.difficultyGrade = 0" class="btn-q btn">Easy</button> <button ng-click="review.difficultyGrade = 1" class="btn-q btn">Moderate</button> <button ng-click="review.difficultyGrade = 2" class="btn-q btn">Difficult</button> <button ng-click="review.difficultyGrade = 3" class="btn-q btn"> Strenuous</button>
+                            </li>
+                        </ul>
+                        
+                        </form>
+                    </div> 
+     </div>   
+    </div> 
+                         
+        </div>
+    </div>
+    
+    </div>
+    
+        
+        <div>
+            
         </div>
 
     </div>
+    <!-- Modal -->
+<div id="writeReview" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">Write a Review for Location</h4>
+            </div>
+            <div class="modal-body">
+                <textarea placeholder="Write your review..."></textarea>
+                <ul>
+                    <li><i class="fa fa-camera"></i></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Add Review</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
+
 <div id="map" style="display: none"></div>
