@@ -5,8 +5,7 @@
         <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle img-responsive">
         <span class="user_name">{{userObj.facebook_profile.name}}</span>
     </div>
-    <!--Next phase-->
-    <!--<div class="about-me text-center container">
+    <div class="about-me text-center container">
         <h2>in 10 seconds</h2>
         <div class="">
             <div class="row">
@@ -81,11 +80,14 @@
             </div>
         </div>
         <h5>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</h5>
-    </div>-->
+    </div>
     <div class="trips_places_photos">
-        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp" style="margin-left:0px;"><i class="fa fa-map-o"></i><p>trips</p></button></a>
+        <!--<a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp" style="margin-left:0px;"><i class="fa fa-map-o"></i><p>trips</p></button></a>
         <a data-toggle="pill" href="" ng-click="updateprofileTabPos(1)"><button type="button" class="btn tpp"><i class="fa fa-map-marker"></i><p>places</p></button></a>
-        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>
+        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>-->
+        <a data-toggle="pill" href=""><button type="button" class="btn tpp"><i class="fa fa-plus"></i><p>Bucket List</p></button></a>
+        <a data-toggle="pill" href=""><button type="button" class="btn tpp"><i class="fa fa-check"></i><p>Places I've Been</p></button></a>
+        <a data-toggle="pill" href=""><button type="button" class="btn tpp"><i class="fa fa-pencil"></i><p>Reviews/Tips</p></button></a>
     </div>
 </div>
 <div ng-show="!isSiteLoaded" class="container">
@@ -112,10 +114,9 @@
                     </a>
                     <div class="caption">
                         <a ng-href="#/account/timeline/{{trip.id}}">
-                            <span class="pull-left trip_name title-overflow-hidden">{{trip.title}}</span>
+                            <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
                         </a>
                         <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
-                        <br>
                         <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
                         <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                         <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
@@ -125,8 +126,25 @@
                         <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->
                     </div>
                     <!--<a ng-click="deleteTrip(trip.id)">delete</a>-->
-                    <a ng-click="deleteTrip(trip.id)">delete</a>
-                </div>
+                    <button type="button" class="deleteButton" data-toggle="modal" data-target="#deleteTrip"><i class="fa fa-trash"></i></button>
+                    <div id="deleteTrip" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Are you sure you want to delete Trip Name</h4>
+      </div>
+      <div class="modal-footer">
+      	<a ng-click="deleteTrip(trip.id)" class="btn"><i class="fa fa-trash"></i> Yes, Delete this trip</a>               
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+                    </div>
             </div>
         </div>
         <div id="places" class="" ng-show="profileTabPos == 1">

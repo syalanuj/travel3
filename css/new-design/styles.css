@@ -1107,9 +1107,7 @@ border-bottom-color:rgb(234, 137, 113);
 .profile_page_header{
 	background-color: rgb(247, 247, 247);
   	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
-	/*height:410px;*/
-    height: 165px;
-}
+	}
 .profilepicture{
     padding-top:15px;
 	}
@@ -1131,12 +1129,15 @@ border-bottom-color:rgb(234, 137, 113);
 	background-color: rgb(252, 252, 252);
 	border-style: solid;
 	border-size:1px;
-	font-size:18px;
+	font-size:1.7rem;
 	font-family:lato;
-	margin-left:8%;
+	margin-left:4%;
+	margin-right:4%;
 	color: rgb(117, 117, 117);
 	width:150px;
 	margin-top:10px;
+	overflow:hidden;
+	text-overflow:ellipsis;
 	
 }
 .tpp p{
@@ -1167,7 +1168,6 @@ border-bottom-color:rgb(234, 137, 113);
 .about-me span{
 	font-size: 16px;
 	font-family: "Lato";
-	font-weight: 600;
 	color: rgb(66, 67, 68);
 	letter-spacing:.04em;
 }
@@ -2020,7 +2020,9 @@ footer ul li{
     
 .title-overflow-hidden {
     overflow: hidden;
-    height: 20px;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
 }
 .panel-default {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
@@ -3100,3 +3102,38 @@ border-style: solid;
 }
 
 /*location page css*/
+.deleteButton{
+	position:absolute;
+	top:0;
+	right:5px;
+	font-size:24px;
+	color:white;
+	text-shadow: 0px 0px 7px rgba(0, 0, 0, 1);
+}
+.deleteButton:hover{
+	color:#cecece;
+	cursor:pointer;
+}
+/*campture button*/
+.btn-campture{
+	background-color:rgb(226, 88, 51)!important;
+	font:lato-light;
+	font-weight:200;
+	color:#FFFFFF;
+}
+.btn-campture:hover{
+	color:#ffffff;
+	box-shadow: 0px 0px 8px 2px rgba(196,78, 31, 0.5);
+}
+
+.btn-addtrip{
+	position: fixed;
+    bottom: 20px;
+    right: 20px;
+	border-radius:50px;
+}
+
+.explore-icons{
+	padding:20px;
+}
+>>>>>>> origin/master

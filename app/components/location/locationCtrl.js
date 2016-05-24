@@ -116,7 +116,7 @@
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
         $scope.location;
         //if(!$routeParams.placeId)
-        $routeParams.placeId = 'ChIJ6TGqdERcBDkRnZRHK-PSEvE'; // 'ChIJZ25d4-N4BTkRt1Sf__Z_fh8';
+        $routeParams.placeId //= 'ChIJ6TGqdERcBDkRnZRHK-PSEvE'; // 'ChIJZ25d4-N4BTkRt1Sf__Z_fh8';
         //initialize review object
         $scope.review = new Object();
         $scope.review.rating = 1;

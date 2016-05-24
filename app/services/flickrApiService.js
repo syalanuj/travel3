@@ -7,6 +7,7 @@ app.factory('FlickrApiService', ['$http', '$q', function ($http, $q) {
         getSinglePhotoByPlaceId: getSinglePhotoByPlaceId,
         getOwnerProfileByPhotoId: getOwnerProfileByPhotoId,
         getPhotoInfoByPhotoId: getPhotoInfoByPhotoId,
+        getTagsForPlace: getTagsForPlace,
         //panaromio
         getPhotosOfLocation: getPhotosOfLocation
     };
@@ -46,6 +47,14 @@ app.factory('FlickrApiService', ['$http', '$q', function ($http, $q) {
     }
     function getPhotoInfoByPhotoId(photoId) {
         var url = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=3d89687c598045a83210e3feb7335fb8&photo_id=' + photoId + '&nojsoncallback=1';// + '&format=json';
+        return $http({ method: 'GET', url: url, params: {
+            format: 'json',
+            callback: 'JSON_CALLBACK'
+        }
+        });
+    }
+    function getTagsForPlace(placeId){
+        var url = 'https://api.flickr.com/services/rest/?method=flickr.places.tagsForPlace&api_key=3d89687c598045a83210e3feb7335fb8&place_id=' + placeId + '&nojsoncallback=1';// + '&format=json';
         return $http({ method: 'GET', url: url, params: {
             format: 'json',
             callback: 'JSON_CALLBACK'
