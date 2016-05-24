@@ -2176,3 +2176,17 @@ footer ul li{
 .post .post-footer .comments-list .comment > .comments-list {
   margin-left: 50px;
 }
+.featureIcons{
+	margin-bottom:10px;
+}
+.ratingQuestions{
+	list-style:none;
+	font-size:20px;
+}
+.ratingQuestions button{
+	margin:5px;
+}
+.rateThis{
+	font-size:24px;
+	margin:auto;
+}

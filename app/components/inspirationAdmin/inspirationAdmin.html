@@ -1,0 +1,16 @@
+<div class="container">
+Enter Place For Inspiration Page:</br>
+    <input id="q1" style="width: 500px;" class="locationInput" name="q1" type="text"  ng-autocomplete ng-model="locationCard.address" options="options" details="details" autofocus required>
+    <button ng-click="saveLocation()">Save Location</button>
+</br>Name: {{locationCard.name}} </br>
+Coordinates: {{locationCard.coordinates}} </br>
+Address:{{locationCard.address}} </br>
+Image :   <img ng-src="{{locationCard.panoramioImage.imageUrl}}">
+    <div ng-repeat="tag in locationCard.tags track by $index">
+    {{tag._content}},
+    </div></br>
+    Flickr PlaceID : {{locationCard.flickrPlaceId}}</br>
+    photoNotFound: {{photoNotFound}}</br>
+    
+    Location Card Data:{{locationCard}}</br>
+</div>

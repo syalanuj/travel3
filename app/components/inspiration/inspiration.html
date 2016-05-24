@@ -1,0 +1,25 @@
+<script src="js/inspiration/jquery-ui-i18n.min.js"></script>
+    <script src="js/inspiration/masonry.pkgd.min.js"></script>
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+<div class="container">
+  <div class="dynamic" style="position: relative; height: 2979px;">
+  
+      <div class="panel insp-panel col-md-3 col-sm-6 col-xs-6"  style="position: absolute; left: 0px; top: 0px;" ng-repeat="locationCard in locationCards track by $index">
+          <a ng-href="#/location/{{locationCard.place_id}}">
+              <div style="width:100%">
+                <img ng-src="{{locationCard.panoramio_image.imageUrl}}" alt="beo" class="img-responsive" style="width:100%">
+              </div>
+          </a>  
+          <div class="caption text-center">
+            <a ng-href="#/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a> 
+            <span class="insp-tags" ng-repeat="tag in locationCard.tags">#{{tag._content}} </span>
+        </div>
+      </div>
+     
+   </div> 
+      
+</div>
+<!--<div masonary-directive></div>-->
+       <script>
+           
+  </script>

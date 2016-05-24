@@ -85,9 +85,17 @@
             controller: 'GearChecklistCtrl',
             templateUrl:'app/components/gearChecklist/gearChecklist.html'
         })
-        .when('/location/',{
+        .when('/location/:placeId',{
             controller: 'LocationCtrl',
             templateUrl:'app/components/location/location.html'
+        })
+        .when('/inspiration/',{
+            controller: 'InspirationCtrl',
+            templateUrl:'app/components/inspiration/inspiration.html'
+        })
+        .when('/inspirationAdmin/',{
+            controller: 'InspirationAdminCtrl',
+            templateUrl:'app/components/inspirationAdmin/inspirationAdmin.html'
         })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',
