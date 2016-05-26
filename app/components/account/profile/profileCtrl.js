@@ -21,6 +21,9 @@
         $scope.profileTabPos = 0;
         $scope.allTripImages = new Array();
         var bounds = new google.maps.LatLngBounds();
+        $scope.profileInformation = new Object();
+        $scope.isProfileInformationInEdit = false;
+
         accountService.getUserById($routeParams.userId, function (data) {
             if (data) {
                 $scope.userObj = data;
