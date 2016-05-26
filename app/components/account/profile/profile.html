@@ -5,8 +5,9 @@
         <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle img-responsive">
         <span class="user_name">{{userObj.facebook_profile.name}}</span>
     </div>
+    <div ng-show="!isProfileInformationInEdit && isMyProfile" ng-click="isProfileInformationInEdit = true">Edit Form</div>
     <div class="about-me text-center container">
-        <h2>in 10 seconds</h2>
+        <h2>in 10 seconds</h2>        
         <div class="">
             <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-4">
@@ -16,7 +17,9 @@
                         </div>
                         <div class="col-md-7">
                             <span>Last seen in</span>
-                            <p>Venice</p>
+                            <p ng-show="profileInformation.lastSeenIn && !isProfileInformationInEdit">{{profileInformation.lastSeenIn}}</p>
+                            <p ng-show="!profileInformation.lastSeenIn && !isProfileInformationInEdit">Not Updated</p>
+                            <input type="text" ng-model="profileInformation.lastSeenIn" ng-show="isProfileInformationInEdit && isMyProfile">
                         </div>
                     </div>
                 </div>
@@ -27,7 +30,9 @@
                         </div>
                         <div class="col-md-7">
                             <span>Last on-the-go Read</span>
-                            <p>Venice</p>
+                            <p ng-show="profileInformation.lastOnTheGoRead && !isProfileInformationInEdit">{{profileInformation.lastOnTheGoRead}}</p>
+                            <p ng-show="!profileInformation.lastOnTheGoRead && !isProfileInformationInEdit">Not Updated</p>
+                            <input type="text" ng-model="profileInformation.lastOnTheGoRead" ng-show="isProfileInformationInEdit && isMyProfile">
                         </div>
                     </div>
                 </div>
@@ -38,7 +43,9 @@
                         </div>
                         <div class="col-md-7">
                             <span>Traveller Type</span>
-                            <p>Venice</p>
+                            <p ng-show="profileInformation.travellerType && !isProfileInformationInEdit">{{profileInformation.travellerType}}</p>
+                            <p ng-show="!profileInformation.travellerType && !isProfileInformationInEdit">Not Updated</p>
+                            <input type="text" ng-model="profileInformation.travellerType" ng-show="isProfileInformationInEdit && isMyProfile">
                         </div>
                     </div>
                 </div>
@@ -51,7 +58,9 @@
                         </div>
                         <div class="col-md-7">
                             <span>Ideal Trip Companion</span>
-                            <p>Venice</p>
+                            <p ng-show="profileInformation.idealTripCompanion && !isProfileInformationInEdit">{{profileInformation.idealTripCompanion}}</p>
+                            <p ng-show="!profileInformation.idealTripCompanion && !isProfileInformationInEdit">Not Updated</p>
+                            <input type="text" ng-model="profileInformation.idealTripCompanion" ng-show="isProfileInformationInEdit && isMyProfile">
                         </div>
                     </div>
                 </div>
@@ -62,7 +71,9 @@
                         </div>
                         <div class="col-md-7">
                             <span>Last Trip Expense</span>
-                            <p>Venice</p>
+                            <p ng-show="profileInformation.lastTripExpense && !isProfileInformationInEdit">{{profileInformation.lastTripExpense}}</p>
+                            <p ng-show="!profileInformation.lastTripExpense && !isProfileInformationInEdit">Not Updated</p>
+                            <input type="text" ng-model="profileInformation.lastTripExpense" ng-show="isProfileInformationInEdit && isMyProfile">
                         </div>
                     </div>
                 </div>
@@ -73,7 +84,9 @@
                         </div>
                         <div class="col-md-7">
                             <span>Next Destination</span>
-                            <p>Venice</p>
+                            <p ng-show="profileInformation.nextDestination && !isProfileInformationInEdit">{{profileInformation.nextDestination}}</p>
+                            <p ng-show="!profileInformation.nextDestination && !isProfileInformationInEdit">Not Updated</p>
+                            <input type="text" ng-model="profileInformation.nextDestination" ng-show="isProfileInformationInEdit && isMyProfile">
                         </div>
                     </div>
                 </div>
