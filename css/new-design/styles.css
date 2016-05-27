@@ -2771,24 +2771,23 @@ font-size: 32px;
   	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
 }
 .been-here-tick{
-	font-size: 22px;
-	color: rgb(251, 140, 0);
-	border-radius: 2px 0px 0px 2px;
-  	background-color: rgb(255, 253, 231);
-	padding-top:12px;
-	padding-bottom:12px;
-	padding-left:17px;
-	padding-right:18px;
+	    font-size: 16px;
+    color: rgb(251, 140, 0);
+    border-radius: 2px 0px 0px 2px;
+    background-color: rgb(255, 253, 231);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .been-here-text{
-	font-size: 18px;
-  	font-family: Lato;
-  	color: rgb(82, 83, 84);
-  	font-style: italic;
-	padding-left:25px;
-	padding-right:25px;
-	padding-top:14px;
-	padding-bottom:14px;
+	font-size: 16px;
+    font-family: Lato;
+    color: rgb(82, 83, 84);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .bucket-btn{
 	display:inline-block;
@@ -2798,24 +2797,24 @@ font-size: 32px;
   	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
 	}
 .bucket-tick{
-	font-size: 18px;
+	font-size: 16px;
   	color: rgb(82, 83, 84);
-	padding-left:20px;
-	padding-right:21px;
-	padding-bottom:11px;
-	padding-top:11px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:6px;
+	padding-top:6px;
 	margin-top:4px;
 	margin-bottom:4px;
 	border-right:solid 1px;
 	}
 .bucket-text{
-	font-size: 18px;
+	font-size: 16px;
   	font-family: lato;
   	color: rgb(82, 83, 84);
-	padding-top:14px;
-	padding-bottom:14px;
-	padding-left:27px;
-	padding-right:27px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:15px;
+	padding-right:15px;
 	}
 .review-btn{
 	display:inline-block;
@@ -2825,30 +2824,30 @@ font-size: 32px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
 }
 .review-tick{
-	font-size: 18px;
+	font-size: 16px;
   	color: rgb(255, 255, 255);
-	padding-left:19px;
-	padding-right:20px;
-	padding-bottom:11px;
-	padding-top:11px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:6px;
+	padding-top:6px;
 	margin-top:4px;
 	margin-bottom:4px;
 	border-right:solid 1px;
 	}
 .review-text{
-	font-size: 18px;
+	font-size: 16px;
   font-family: lato;
   color: rgb(255, 255, 255);
-	padding-top:14px;
-	padding-bottom:14px;
-	padding-left:27px;
-	padding-right:27px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:15px;
+	padding-right:15px;
 	}
 .trail-dir{
 	font-size:14;
 	font-family:lato;
 	text-transform:uppercase;
-	padding-top:15px;
+	padding-top:5px;
 }
 .nav-rt{
 	font-size: 22px;
@@ -2879,6 +2878,10 @@ font-size: 32px;
 }
 .location-page-body{
 	padding-top:20px;
+}
+.locationHeroImage{
+	height:320px;
+	overflow:hidden;
 }
 .locationHeroImage img{
 	height:350px;
@@ -3063,14 +3066,17 @@ font-size: 32px;
 	background-color:white;
 }
 .widgets-panel{
-padding-top:30px;
-padding-bottom:30px;
+	padding:5px;
 border-style: solid;
   border-width: 1px;
   border-color: rgb(237, 237, 237);
   border-radius: 2px;
   box-shadow: 0px 0px 20px 0px rgba(216, 216, 216, 0.4);
 }
+.widgets-panel img{
+	margin-top:5px;
+	margin-bottom:5px;
+	}
 .r-place{
 	font-family:lato-semibold;
 	font-size: 22px;
