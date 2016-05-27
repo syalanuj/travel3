@@ -3,6 +3,7 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
     var LocationReviews = Parse.Object.extend("Location_Reviews");
     var LocationTips = Parse.Object.extend("Location_Tips");
     var LocationCard = Parse.Object.extend("Location_Card");
+    var UserLocationCard = Parse.Object.extend("User_Location_Card")
 
     var locationReview = new LocationReviews();
     var locationTips = new LocationTips();
@@ -15,8 +16,8 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         VoteReview: VoteReview,
         getTipsForLocation: getTipsForLocation,
         saveLocationCard: saveLocationCard,
-        getLocationCards: getLocationCards
-
+        getLocationCards: getLocationCards,
+        getUserLocationCardList:getUserLocationCardList
     };
     function getReviewsForLocation(placeId, callback) {
         var locationReviews = new Array();
@@ -148,6 +149,32 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         var query = new Parse.Query(locationCard);
         query.limit(paginglimit);
         query.skip(page * paginglimit);
+        query.find({
+            success: function (parseObject) {
+                locationCards = JSON.parse(JSON.stringify(parseObject));
+                callback(locationCards);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    }
+    function getUserLocationCardList(userId,callback){
+        var locationCardObject =  new Object()
+        var userLocationCard = new UserLocationCard();
+        var query = new Parse.Query(userLocationCard);
+        var query2 = new Parse.Query()
+        query.equalTo("user_id", userId);
+        query.find({
+            success: function (parseObject) {
+                locationCardObject = JSON.parse(JSON.stringify(parseObject));
+                callback(locationCards);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+        query.containedIn("place_id", ["ChIJIdjO3-1DBDkRwtUjYjYIesQ", "ChIJl1g-fgmyzIAR16qewajSiqE", "ChIJL1E4f110LocRnv14nqI0w-A"]);
         query.find({
             success: function (parseObject) {
                 locationCards = JSON.parse(JSON.stringify(parseObject));
