@@ -131,16 +131,18 @@ Incredible adventures created by people like you.
         <div ng-show="isSiteLoaded" class="row" style="margin-top: 20px">
 
             <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
-                <div class="thumbnail">
+                <div class="thumbnail location-thumb">
+                	<div class="thumb-img">
                     <a ng-href="#/account/timeline/{{trip.id}}">
-                        <img class="ig-lofi" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
+                        <img class="ig-lofi trip-img" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
                     </a>
+                    </div>
                     <div class="caption">
                         <a ng-href="#/account/timeline/{{trip.id}}">
                             <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
                         </a>
                       
-                        <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+                        <span class=""><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle pro-pic"></a></span>
                         <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                         <!--<span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>-->
                         <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"><sup>&nbsp; {{trip.total_likes}}</sup></em></span>

@@ -4,6 +4,10 @@
     font-family: lato-light;
     src:url(../../fonts/Lato-Light.woff);
 }
+@font-face {
+    font-family: lato;
+	src:url(../../fonts/Lato-Regular.woff);
+	}
 @font-face{
 	font-family:lato-semibold;
 	src:url(../../fonts/Lato-Semibold.woff);
@@ -74,7 +78,7 @@ input[type="submit"]:hover {
 /**/
 .headertwo .row #shareanewexperience {
 	font-size: 16px;
-	font-family: "Lato";
+	font-family: lato;
 	color: rgb(229, 80, 59);
 	font-style: italic;
 	text-decoration: underline;  
@@ -118,7 +122,7 @@ input[type="submit"]:hover {
 
 .my_feed {
           font-size: 16px;
-          font-family: "Lato";
+          font-family: lato;
           color: rgb(226, 50, 22)!important;
           text-transform: uppercase;
           line-height: 2.375;
@@ -175,7 +179,7 @@ input[type="submit"]:hover {
 	border:0;
 	border-radius:6px;
 	font-size: 16px;
-  font-family: "Lato";
+  font-family: lato;
   font-weight: 300;
   text-transform: uppercase;
 }
@@ -204,27 +208,37 @@ input[type="submit"]:hover {
 	width:28px;
 }
 .trip_name{
-font-size: 14px;
-font-family: "Lato";
-color: rgb(74, 76, 78);
-text-transform: uppercase;
-font-weight:700;
+font-size: 16px;
+    font-family: lato-semibold;
+    color: rgb(82, 83, 84);
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    text-align: left;
 }
 .trip_date{
 font-size: 14px;
-font-family: "Lato";
+font-family: lato;
 color: rgb(74, 76, 78);
 }
-.user_name_thumbnail{
-font-size: 12px;
-font-family: "Lato";
-color: rgb(109, 112, 119);
-line-height: 2;
-margin-left:4px;
+.user_name_thumbnail a{
+font-size: 14px;
+    font-family: lato;
+    color: rgb(82, 83, 84);
+    line-height: 2;
+    position: absolute;
+    left: 50px;
+    margin-left: 4px;
+    /* font-weight: bold; */
+}
+@media (max-width: 768px){
+	.location-thumb{
+		margin-bottom:50px!important;
+		margin-top:50px!important;
+	}
 }
 .stats_thumbnail {
 font-size: 14px;
-font-family: "Lato";
+font-family: lato;
 color: rgb(109, 112, 119);
 line-height: 2.3;
 }
@@ -270,7 +284,7 @@ margin-left:10px!important;
 	}
 .thumbnailcontent-landingpage{
 	font-size:28px;
-	font-family:"lato";
+	font-family:lato;
 	background: none;
     opacity: 1;
 	text-align:center;
@@ -292,7 +306,7 @@ border-radius:0px!important;
 }
 .timeline-thumbnail-wrap p{
 font-size: 16px;
-font-family: "Lato";
+font-family: lato;
 color: rgb(247, 247, 247);
 background-color:44, 48, 49!important;
 }
@@ -553,13 +567,13 @@ z-index: 110;
 }
 .timeline-thirdheader btn{
 font-size: 18px;
-font-family: "Lato";
+font-family: lato;
 color: rgb(228, 76, 60);
 padding:10px;
 }
 .Itinerary{
 	font-size: 18px;
-	font-family: "Lato";
+	font-family: lato;
 	color: #000000;
 	text-transform: uppercase;
 }
@@ -615,10 +629,15 @@ color:rgb(209, 75, 47)!important;
 .thumb {
     margin-bottom: 30px;
 }
+.thumbnail .caption{
+	padding-left:0;
+	padding-right:0;
+	padding-top:20px;
+	padding-bottom:15px;
+}
 .thumbnail {
-	padding:0px;
-    display: block;
-    /* padding: 4px; */
+	padding:0;
+	display: block;
     /* margin-bottom: 20px; */
     line-height: 1.42857143;
     background-color: #fff;
@@ -764,7 +783,7 @@ table tr td:last-child {
 	border-bottom: solid 6px rgba(166, 166, 166, 0.1);
 	border-radius: 0;
 	color: black;
-	font-family: "lato", Helvetica, Arial, sans-serif;
+	font-family: lato, Helvetica, Arial, sans-serif;
 	/*box-shadow: inset 1.879px -0.684px 5px 0px rgba(198, 198, 198, 0.1);*/
 	/*-webkit-appearance: none; /* for box shadows to show on iOS */
 	/*border-top:none;
@@ -825,7 +844,7 @@ table tr td:last-child {
   background: transparent;
   border: none;
   color: #34495e;
-  font-family: "Lato", sans-serif;
+  font-family: lato, sans-serif;
   font-size: 14px;
   margin: 0px;
   padding: 0 0 0 5px;
@@ -919,7 +938,7 @@ textarea {
     line-height: 24px;
     text-indent: 0px;
     color: black;
-    font-family: "lato", Helvetica, Arial, sans-serif;
+    font-family: lato, Helvetica, Arial, sans-serif;
 }
 .bottommargin{
 	margin-bottom:40px!important;
@@ -1049,7 +1068,7 @@ textarea {
 }
 .stay-connected{
 font-size: 22px;
-font-family: "Lato";
+font-family: lato;
 font-weight:300;
 margin:10px;   
 color: rgb(17, 23, 28);
@@ -1120,7 +1139,7 @@ border-bottom-color:rgb(234, 137, 113);
 	padding-top:25px;
 	margin:auto!important;
 	font-size: 20px;
-    font-family: "Lato";
+    font-family: lato;
 	font-weight: 500;
 	color: rgb(48, 49, 51);
 }
@@ -1167,13 +1186,13 @@ border-bottom-color:rgb(234, 137, 113);
 }
 .about-me span{
 	font-size: 16px;
-	font-family: "Lato";
+	font-family: lato;
 	color: rgb(66, 67, 68);
 	letter-spacing:.04em;
 }
 .about-me p{
 	font-size: 18px;
-	font-family: "Lato";
+	font-family: lato;
 	font-weight: 500;
 	color: rgb(118, 119, 122);	
 	letter-spacing:.04em;
@@ -1186,7 +1205,7 @@ border-bottom-color:rgb(234, 137, 113);
 }
 .about-me h5{
 	font-size: 18px;
-	font-family: "Lato";
+	font-family: lato;
 	font-weight: 400;
 	color: rgb(101, 101, 101);
 	margin-top:20px;
@@ -1233,7 +1252,7 @@ border-bottom-color:rgb(234, 137, 113);
 
 .stay-connected{
 font-size: 22px;
-font-family: "Lato";
+font-family: lato;
 font-weight:300;
 margin:10px;   
 color: rgb(17, 23, 28);
@@ -1442,7 +1461,7 @@ border-bottom-color:rgb(234, 137, 113);
    height: 40px;
    font-size: 16px;
    display: inline-block;
-   font-family: "Lato";
+   font-family: lato;
    font-weight: 100;
    border: none;
    outline: none;
@@ -1544,7 +1563,7 @@ max-width:100%;
 }
 .timeline-tripname{
 font-size: 3vw;;
-font-family: "Lato";
+font-family: lato;
 font-weight: bold;
 letter-spacing: 0.04em;
 color: white;
@@ -1558,7 +1577,7 @@ width:100%;
     width: 100%;
     top: 56%;
 	font-size: 18px;
-	font-family: "Lato";
+	font-family: lato;
 	letter-spacing:0.04em;
 }
 .trip-intro p{
@@ -1643,7 +1662,7 @@ width:100%;
 @media (min-width: 515px) and (max-width: 768px){
 .timeline-tripname {
    font-size: 45px;
-   font-family: "Lato";
+   font-family: lato;
    color: #FFF;
    text-transform: uppercase;
    position: absolute;
@@ -1660,7 +1679,7 @@ width:100%;
 @media (min-width: 0px) and (max-width: 515px){
 .timeline-tripname {
 font-size: 26px;
-font-family: "Lato";
+font-family: lato;
 color: #FFF;
 text-transform: uppercase;
 position: absolute;
@@ -1829,7 +1848,7 @@ width: 100%;
     border-bottom: solid 2px rgb(177, 175, 175);
     border-radius: 0;
     color: black;
-    font-family: "lato", Helvetica, Arial, sans-serif;
+    font-family: lato, Helvetica, Arial, sans-serif;
     /* box-shadow: inset 1.879px -0.684px 5px 0px rgba(198, 198, 198, 0.1); */
     -webkit-appearance: none;
 	font-weight:600;
@@ -2030,9 +2049,6 @@ footer ul li{
 	}
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
     border-top:none;
-}
-.thumbnail .caption {
-	overflow:auto;
 }
 /*@media (min-width: 1200px){
 .timeline-container {
@@ -2359,7 +2375,7 @@ transform:rotate(-30deg);
 .get-started-btn{
   border:0px;
   font-size: 22px;
-  font-family: "Lato";
+  font-family: lato;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: rgb(255, 255, 255);
@@ -2380,7 +2396,7 @@ transform:rotate(-30deg);
 }
 .landing-carousel-text{
 	font-size: 22px;
-  font-family: "Lato";
+  font-family: lato;
   font-weight: 100;
   letter-spacing: 1px;
   color: rgb(255, 255, 255);
@@ -2524,7 +2540,7 @@ display:inline-block;
 }
 .btn-join-now {
  font-size: 18px;
- font-family: "Lato";
+ font-family: lato;
  color: rgb(255, 255, 255);
  text-transform: uppercase;
  font-weight: 800;
@@ -2564,7 +2580,7 @@ display:inline-block;
 }
 #welcomeModal h4{
 	font-size: 20px;
-  font-family: "Lato";
+  font-family: lato;
   font-weight: 700;
   letter-spacing:0.04em;
   color: rgb(29, 34, 37);
@@ -2572,13 +2588,13 @@ display:inline-block;
 }
 #welcomeModal h3{
 font-size: 32px;
- font-family: "Lato";
+ font-family: lato;
  color: rgb(245, 108, 54);
  font-style: italic;
 }
 #welcomeModal p{
 	font-size: 18px;
-  font-family: "Lato";
+  font-family: lato;
   font-weight: 400;
   color: rgb(29, 34, 37);
 }
@@ -2586,7 +2602,7 @@ font-size: 32px;
 	border-radius: 6px;
   background-color: rgb(18, 165, 227);
   font-size: 16px;
-  font-family: "Lato";
+  font-family: lato;
   font-weight: 300;
   color: rgb(255, 255, 255);
   text-transform: uppercase;
@@ -2596,11 +2612,11 @@ font-size: 32px;
 }
 .facebook-login-prompt h4{
     font-size: 24px;
-    font-family: "Lato";
+    font-family: lato;
     color: rgb(245, 108, 54);
     }
 .backpackListWrapper span{
-	font-family:"lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family:lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size:18px;
 }
 .backpackListWrapper .input-group{
@@ -3136,4 +3152,54 @@ border-style: solid;
 .explore-icons{
 	padding:20px;
 }
->>>>>>> origin/master
+.location-thumb{
+	margin-top:30px;
+	height:285px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-bottom:30px;
+	max-width:262.5px;
+	margin-left:auto;
+	margin-right:auto;
+	border-style: solid;
+  	border-width: 1px;
+  	border-color: rgb(235, 235, 235);
+  	border-radius: 6px;
+  	background-color: rgb(255, 255, 255);
+  	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.16);
+}
+.location-thumb .trip-img{
+	border-radius: 4px;
+ 	 background-color: rgb(171, 171, 171);
+  	box-shadow: 0px 4px 15px 0px rgba(153, 153, 153, 0.6);
+	left:0;
+	right:0;
+	max-width: 242.5px;
+    max-height: 242.5px;
+    position: absolute;
+    top: -40px;
+	width:100%;
+	}
+.location-thumb .caption{
+	left:0;
+	right:0;
+	position:absolute;
+	bottom:0px;
+	padding-left:15px;
+	padding-right:15px;
+}
+.pro-pic{
+	position:absolute;
+	width:28px!important;
+	height:28px!important;
+	bottom:15px!important;
+	left:15px;
+}
+@media only screen and (max-width: 1200px) and (min-width:992px) {
+    .location-thumb .trip-img{
+		width:190.5px;
+	}
+	.location-thumb{
+		height:235px;
+	}
+}
