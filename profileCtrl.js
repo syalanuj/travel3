@@ -1,8 +1,8 @@
 (function () {
     'use strict';
     var app = angular.module('campture');
-    app.controller('ProfileCtrl', ['$scope', '$route', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout', '$location', 'LocationService', controller]);
-    function controller($scope, $route, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout, $location, locationService) {
+    app.controller('ProfileCtrl', ['$scope', '$route', '$cookies', '$rootScope', 'AccountService', 'uiGmapIsReady', '$routeParams', '$timeout', '$location', controller]);
+    function controller($scope, $route, $cookies, $rootScope, accountService, uiGmapIsReady, $routeParams, $timeout, $location) {
         //====== Scope Variables==========
         //================================
         $scope.isSiteLoaded = false;
@@ -98,10 +98,5 @@
             $scope.modalShown = !$scope.modalShown;
             $scope.modalImageUrl = imageUrl;
         };
-        locationService.getUserLocationCardList($routeParams.userId, function (data) {
-            if(data){
-                
-            }
-        });
     };
 })();
