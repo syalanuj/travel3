@@ -17,7 +17,8 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         getTipsForLocation: getTipsForLocation,
         saveLocationCard: saveLocationCard,
         getLocationCards: getLocationCards,
-        getUserLocationCardList:getUserLocationCardList
+        getUserLocationCardList: getUserLocationCardList,
+        addUserLocationCard: addUserLocationCard
     };
     function getReviewsForLocation(placeId, callback) {
         var locationReviews = new Array();
@@ -128,20 +129,36 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
     }
     function saveLocationCard(locationCardObj, callback) {
         var locationCard = new LocationCard();
-        locationCard.set("coordinates", locationCardObj.coordinates);
-        locationCard.set("flickr_place_id", locationCardObj.flickrPlaceId);
-        locationCard.set("name", locationCardObj.name);
-        locationCard.set("place_id", locationCardObj.placeId);
-        locationCard.set("tags", locationCardObj.tags);
-        locationCard.set("panoramio_image", locationCardObj.panoramioImage);
-        locationCard.save(null, {
+        var query = new Parse.Query(locationCard);
+        query.equalTo("place_id", locationCardObj.placeId);
+        query.find({
             success: function (parseObject) {
-                callback(parseObject.id);
+                if (parseObject && parseObject.length < 1) {
+                    locationCard.set("coordinates", locationCardObj.coordinates);
+                    locationCard.set("flickr_place_id", locationCardObj.flickrPlaceId);
+                    locationCard.set("name", locationCardObj.name);
+                    locationCard.set("place_id", locationCardObj.placeId);
+                    locationCard.set("tags", locationCardObj.tags);
+                    locationCard.set("panoramio_image", locationCardObj.panoramioImage);
+                    locationCard.save(null, {
+                        success: function (parseObject) {
+                            callback(parseObject.id);
+                        },
+                        error: function (gameScore, error) {
+                            console.log('Failed to create new object, with error code: ' + error.message);
+                        }
+                    });
+                }
+                else {
+                    callback(false);
+                }
             },
-            error: function (gameScore, error) {
-                console.log('Failed to create new object, with error code: ' + error.message);
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+                console.log(error);
             }
         });
+
     }
     function getLocationCards(page, callback) {
         var paginglimit = 50;
@@ -159,30 +176,102 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             }
         });
     }
-    function getUserLocationCardList(userId,callback){
-        var locationCardObject =  new Object()
+    function getUserLocationCardList(userId, callback) {
+        var userLocationCardList = new Array();
+        var locationCardObject = new Object();
+        var userLocationCard = new UserLocationCard();
+        var locationCard = new LocationCard();
+        var query = new Parse.Query(userLocationCard);
+        var query2 = new Parse.Query(locationCard);
+        var combinedLocationCard = Array();
+
+        userLocationCard.set("user_pointer", {
+            __type: "Pointer",
+            className: "_User",
+            objectId: userId
+        });
+        query.find({
+            success: function (parseObject) {
+                var userCards = JSON.parse(JSON.stringify(parseObject));
+                angular.forEach(userCards, function (userCard, key) {
+                    userLocationCardList.push(userCard.place_id);
+                });
+                query2.containedIn("place_id", userLocationCardList); //["ChIJIdjO3-1DBDkRwtUjYjYIesQ", "ChIJl1g-fgmyzIAR16qewajSiqE", "ChIJL1E4f110LocRnv14nqI0w-A"]
+                query2.find({
+                    success: function (parseObject) {
+                        locationCards = JSON.parse(JSON.stringify(parseObject));
+                        angular.forEach(locationCards, function (locationCard, key) {
+                            angular.forEach(userCards, function (userCard, key) {
+                                if (locationCard.place_id == userCard.place_id) {
+                                    locationCard.is_explored = userCard.is_explored
+                                    combinedLocationCard.push(locationCard);
+                                }
+                            });
+                        });
+                        callback(combinedLocationCard);
+                    },
+                    error: function (object, error) {
+                        console.log(object)
+                    }
+                });
+            },
+            error: function (object, error) {
+                console.log(object)
+            }
+        });
+    }
+    function addUserLocationCard(userId, placeId, isExplored, callback) {
         var userLocationCard = new UserLocationCard();
         var query = new Parse.Query(userLocationCard);
-        var query2 = new Parse.Query()
-        query.equalTo("user_id", userId);
+        query.equalTo("place_id", placeId);
+        userLocationCard.set("user_pointer", {
+            __type: "Pointer",
+            className: "_User",
+            objectId: userId
+        });
         query.find({
             success: function (parseObject) {
-                locationCardObject = JSON.parse(JSON.stringify(parseObject));
-                callback(locationCards);
+                var pObject = JSON.parse(JSON.stringify(parseObject));
+                if (parseObject && parseObject.length < 1) {
+                    userLocationCard.set("place_id", placeId);
+                    userLocationCard.set("is_explored", isExplored);
+                    userLocationCard.set("user_pointer", {
+                        __type: "Pointer",
+                        className: "_User",
+                        objectId: userId
+                    });
+                    userLocationCard.save(null, {
+                        success: function (parseObject) {
+                            callback(parseObject.id);
+                        },
+                        error: function (gameScore, error) {
+                            console.log('Failed to create new object, with error code: ' + error.message);
+                        }
+                    });
+                }
+                else if (pObject[0].is_explored != isExplored) {
+                    userLocationCard = new UserLocationCard();
+                    userLocationCard.id = pObject[0].objectId
+                    userLocationCard.set("is_explored", isExplored);
+                    userLocationCard.save(null, {
+                        success: function (parseObject) {
+                            callback(parseObject.id);
+                        },
+                        error: function (gameScore, error) {
+                            console.log('Failed to create new object, with error code: ' + error.message);
+                        }
+                    });
+                }
+                else {
+                    callback(false);
+                }
+
             },
             error: function (object, error) {
                 // The object was not retrieved successfully.
+                console.log(error);
             }
         });
-        query.containedIn("place_id", ["ChIJIdjO3-1DBDkRwtUjYjYIesQ", "ChIJl1g-fgmyzIAR16qewajSiqE", "ChIJL1E4f110LocRnv14nqI0w-A"]);
-        query.find({
-            success: function (parseObject) {
-                locationCards = JSON.parse(JSON.stringify(parseObject));
-                callback(locationCards);
-            },
-            error: function (object, error) {
-                // The object was not retrieved successfully.
-            }
-        });
+
     }
 } ]);

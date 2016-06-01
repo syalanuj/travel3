@@ -100,8 +100,15 @@
         };
         locationService.getUserLocationCardList($routeParams.userId, function (data) {
             if(data){
-                
+                $scope.locationCards = data;
+                    $scope.$apply();
+                    setTimeout(masonaryCall,2000)
             }
         });
+        function masonaryCall(){
+            $(document).ready(function() {
+                    $('.dynamic').masonry();
+                })
+        }
     };
 })();

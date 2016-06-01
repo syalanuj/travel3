@@ -22,6 +22,7 @@
             flickrApiService.getPhotosOfLocation($scope.locationCard.coordinates, $scope.locationCard.name).then(
                     function (res) {
                         if (res) {
+                            $scope.newImages = res.data.photos;
                             $scope.locationCard.panoramioImage = {
                                 imageUrl: res.data.photos[0].photoPixelsUrls[0].url,
                                 ownerName: res.data.photos[0].ownerName,
@@ -78,7 +79,33 @@
                     $scope.locationCard = undefined;
                     $scope.$apply();
                 }
+                else{
+                    $scope.locationCard = undefined;
+                    $scope.placeExists = true
+                    $scope.$apply();
+                }
             })
+        }
+        $scope.selectImage = function (paranamioImage) {
+            $scope.locationCard.panoramioImage = {
+                imageUrl: paranamioImage.photoPixelsUrls[0].url,
+                ownerName: paranamioImage.ownerName,
+                ownerUrl: paranamioImage.ownerUrl,
+                photoTitle: paranamioImage.photoTitle,
+                panoramioUrl: paranamioImage.photoUrl
+            };
+        }
+        $scope.addNewTag = function(){
+            if($scope.newTag){
+            var tag = {
+                _content: $scope.newTag,
+                count: 0
+            }
+            if($scope.locationCard.tags){
+                $scope.locationCard.tags.push(tag)
+                $scope.newTag = undefined
+            }
+            }
         }
         function getImageUrl(farmId, serverId, id, secret, sizeSuffix) {
             return 'https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '_' + sizeSuffix + '.jpg';

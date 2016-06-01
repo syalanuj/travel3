@@ -120,8 +120,8 @@
         //initialize review object
         $scope.review = new Object();
         $scope.review.rating = 1;
-        if($scope.userObj)
-        $scope.review.userId = $scope.userObj.objectId;
+        if ($scope.userObj)
+            $scope.review.userId = $scope.userObj.objectId;
         $scope.review.placeId = $routeParams.placeId;
         $scope.locationReviews;
 
@@ -229,6 +229,13 @@
             }
         );
         }
+        $scope.addUserLocationCard = function (isExplored) {
+            locationService.addUserLocationCard($scope.userObj.objectId, $routeParams.placeId, isExplored, function (data) {
+                if (data) {
+                    
+                }
+            })
+        }
 
         Map.init();
         var st = new Object();
@@ -236,5 +243,6 @@
         $scope.getReviewsForLocation();
         $scope.getTipsForLocation();
         $scope.searchFlickr();
+
     };
 })();
