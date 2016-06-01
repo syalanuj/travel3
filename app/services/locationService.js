@@ -185,7 +185,7 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         var query2 = new Parse.Query(locationCard);
         var combinedLocationCard = Array();
 
-        userLocationCard.set("user_pointer", {
+        query.equalTo("user_pointer", {
             __type: "Pointer",
             className: "_User",
             objectId: userId
@@ -224,7 +224,7 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         var userLocationCard = new UserLocationCard();
         var query = new Parse.Query(userLocationCard);
         query.equalTo("place_id", placeId);
-        userLocationCard.set("user_pointer", {
+        query.equalTo("user_pointer", {
             __type: "Pointer",
             className: "_User",
             objectId: userId
