@@ -1,14 +1,25 @@
 <div class="container">
 Enter Place For Inspiration Page:</br>
+    <div ng-show="placeExists">Place Exists</div>
     <input id="q1" style="width: 500px;" class="locationInput" name="q1" type="text"  ng-autocomplete ng-model="locationCard.address" options="options" details="details" autofocus required>
     <button ng-click="saveLocation()">Save Location</button>
 </br>Name: {{locationCard.name}} </br>
 Coordinates: {{locationCard.coordinates}} </br>
 Address:{{locationCard.address}} </br>
-Image :   <img ng-src="{{locationCard.panoramioImage.imageUrl}}">
+All Images: <uib-carousel interval="" no-wrap="false">
+                <uib-slide class="select-pointer" ng-click="selectImage(image)" ng-repeat="image in newImages track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')  ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.9,w_0.9/'),place.note)"-->
+                    <img ng-src="{{image.photoPixelsUrls[3].url}}" style="margin:auto;">
+                </uib-slide>
+            </uib-carousel> </br>
+Selected Image :   <img ng-src="{{locationCard.panoramioImage.imageUrl}}"> </br>
+    
     <div ng-repeat="tag in locationCard.tags track by $index">
     {{tag._content}},
+        <input type="text" ng-model="tag._content">
     </div></br>
+    New Tag: <input type="text" ng-model="newTag">
+    <button ng-click="addNewTag()" >Add Tag</button>
+
     Flickr PlaceID : {{locationCard.flickrPlaceId}}</br>
     photoNotFound: {{photoNotFound}}</br>
     
