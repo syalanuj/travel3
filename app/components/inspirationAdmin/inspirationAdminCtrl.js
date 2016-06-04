@@ -46,7 +46,8 @@
                                         tagsCount = res.data.tags.total
                                     }
                                     for (var count = 0; count < tagsCount; count++) {
-                                        $scope.locationCard.tags[count] = res.data.tags.tag[count];
+                                        var tag = res.data.tags.tag[count]._content.toLowerCase().replace(/ /g,'')
+                                        $scope.locationCard.tags[count] = tag;
                                     }
                                 }
                                 else {

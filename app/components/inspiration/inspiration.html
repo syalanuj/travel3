@@ -2,8 +2,8 @@
     <script src="js/inspiration/masonry.pkgd.min.js"></script>
 <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <div class="container">
+    Search: <input type="text" ng-model="searchText">
   <div class="dynamic" style="position: relative; height: 2979px;">
-  
       <div class="panel col-md-3 col-sm-6 col-xs-6"  style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-repeat="locationCard in locationCards track by $index">
       <div class="insp-panel">
           <a ng-href="#/location/{{locationCard.place_id}}">
@@ -13,7 +13,7 @@
           </a>  
           <div class="caption text-center">
             <a ng-href="#/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a> 
-            <span class="insp-tags" ng-repeat="tag in locationCard.tags">#{{tag._content}} </span>
+            <a ng-click="searchLocationByTags(tag)" class="insp-tags" ng-repeat="tag in locationCard.tags">#{{tag}} </a>
         </div>
        </div> 
       </div>

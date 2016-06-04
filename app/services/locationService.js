@@ -1,5 +1,6 @@
 var app = angular.module('campture');
 app.factory('LocationService', ['$http', '$q', function ($http, $q) {
+    var paginglimit = 50;
     var LocationReviews = Parse.Object.extend("Location_Reviews");
     var LocationTips = Parse.Object.extend("Location_Tips");
     var LocationCard = Parse.Object.extend("Location_Card");
@@ -18,7 +19,9 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         saveLocationCard: saveLocationCard,
         getLocationCards: getLocationCards,
         getUserLocationCardList: getUserLocationCardList,
-        addUserLocationCard: addUserLocationCard
+        addUserLocationCard: addUserLocationCard,
+        searchLocationCardByText: searchLocationCardByText,
+        searchLocationByTag: searchLocationByTag 
     };
     function getReviewsForLocation(placeId, callback) {
         var locationReviews = new Array();
@@ -161,7 +164,6 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
 
     }
     function getLocationCards(page, callback) {
-        var paginglimit = 50;
         var locationCard = new LocationCard();
         var query = new Parse.Query(locationCard);
         query.limit(paginglimit);
@@ -273,5 +275,42 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             }
         });
 
+    }
+    function searchLocationCardByText(searchText, page, callback) {
+        var locationCard = new LocationCard();
+        var searchLocationName = new Parse.Query(locationCard);
+        searchLocationName.startsWith("name", searchText);
+        var searchLocationTags = new Parse.Query(locationCard);
+        searchLocationTags.equalTo("tags", searchText);
+
+        var mainQuery = Parse.Query.or(searchLocationName, searchLocationTags);
+        mainQuery.limit(paginglimit);
+        mainQuery.skip(page * paginglimit);
+        mainQuery.find({
+            success: function(parseObject) {
+            if(parseObject){
+                callback(JSON.parse(JSON.stringify(parseObject)))
+            }
+            },
+            error: function(error) {
+            // There was an error.
+            } 
+        });
+    }
+    function searchLocationByTag(tags, page, callback){
+        var locationCard = new LocationCard();
+        var query = new Parse.Query(locationCard);
+        query.limit(paginglimit);
+        query.skip(page * paginglimit);
+        query.containsAll("tags", tags);
+        query.find({
+            success: function (parseObject) {
+                locations = JSON.parse(JSON.stringify(parseObject));
+                callback(locations);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
     }
 } ]);
