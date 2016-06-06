@@ -118,13 +118,27 @@
         //if(!$routeParams.placeId)
         $routeParams.placeId //= 'ChIJ6TGqdERcBDkRnZRHK-PSEvE'; // 'ChIJZ25d4-N4BTkRt1Sf__Z_fh8';
         //initialize review object
+        $scope.locationCard;
         $scope.review = new Object();
+        $scope.tip = new Object()
         $scope.review.rating = 1;
-        if ($scope.userObj)
+        if ($scope.userObj) {
             $scope.review.userId = $scope.userObj.objectId;
+            $scope.tip.userId = $scope.userObj.objectId;
+        }
         $scope.review.placeId = $routeParams.placeId;
+        $scope.tip.placeId = $routeParams.placeId;
         $scope.locationReviews;
+        $scope.isReviewPublishedByUser = false
+        $scope.isTipPublishedByUser = false
 
+        $scope.getLocationCardByPlaceId = function () {
+            locationService.getLocationCardByPlaceId($routeParams.placeId, function (data) {
+                if (data) {
+                    $scope.locationCard = data
+                }
+            })
+        }
         $scope.searchFlickr = function () {
             $scope.apiError = false;
             Map.getPlaceByPlaceId($routeParams.placeId)
@@ -176,12 +190,18 @@
             locationService.getReviewsForLocation($routeParams.placeId, function (data) {
                 if (data) {
                     $scope.locationReviews = data;
+                    for (var i = 0; i < $scope.locationReviews.length; i++) {
+                        if ($scope.locationReviews[i].user_pointer.objectId == $scope.userObj.objectId)
+                            $scope.isReviewPublishedByUser = true
+                    }
                     Parse.Cloud.run('getServerTime').then(function (time) {
                         $scope.serverTime = time;
                         for (var i = 0; i < $scope.locationReviews.length; i++) {
                             $scope.locationReviews[i].timeSincePostUpdated = getTimeSincePostUpdated(new Date($scope.locationReviews[i].updatedAt));
                         }
+                        $scope.$apply();
                     });
+
                 }
             });
         }
@@ -189,11 +209,16 @@
             locationService.getTipsForLocation($routeParams.placeId, function (data) {
                 if (data) {
                     $scope.locationTips = data;
+                    for (var i = 0; i < $scope.locationTips.length; i++) {
+                        if ($scope.locationTips[i].user_pointer.objectId == $scope.userObj.objectId)
+                            $scope.isTipPublishedByUser = true
+                    }
                     Parse.Cloud.run('getServerTime').then(function (time) {
                         $scope.serverTime = time;
                         for (var i = 0; i < $scope.locationTips.length; i++) {
                             $scope.locationTips[i].timeSincePostUpdated = getTimeSincePostUpdated(new Date($scope.locationTips[i].updatedAt));
                         }
+                        $scope.$apply();
                     });
                 }
             });
@@ -211,11 +236,16 @@
         };
         $scope.postReview = function () {
             locationService.postReview($scope.review, function (data) {
-                $scope.$apply(function () {
-                    if (data) {
-                        var x = data;
-                    }
-                });
+                if (data) {
+                    $scope.getReviewsForLocation();
+                }
+            });
+        }
+        $scope.postTip = function () {
+            locationService.postTip($scope.tip, function (data) {
+                if (data) {
+                    $scope.getTipsForLocation();
+                }
             });
         }
         $scope.routeToLocation = function (location) {
@@ -232,9 +262,12 @@
         $scope.addUserLocationCard = function (isExplored) {
             locationService.addUserLocationCard($scope.userObj.objectId, $routeParams.placeId, isExplored, function (data) {
                 if (data) {
-                    
+
                 }
             })
+        }
+        $scope.searchLocationByTags = function (tags) {
+            $location.path("/inspiration/" + tags);
         }
 
         Map.init();
@@ -243,6 +276,6 @@
         $scope.getReviewsForLocation();
         $scope.getTipsForLocation();
         $scope.searchFlickr();
-
+        $scope.getLocationCardByPlaceId();
     };
 })();
