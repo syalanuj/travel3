@@ -1,14 +1,14 @@
 <div class="timeline-wrap">
   	<div class="timeline-top-section">
-  		<div class="timeline-cover-photo-wrap full-height" style="background-image:url(Images/IMG_0100.JPG)">
+  		<div class="timeline-cover-photo-wrap half-height" style="background-image:url(../../../../css/images/IMG_0074.JPG)">
   		</div>
-        <div class="timeline-heading container">
+        <div class="timeline-heading container no-display">
         	<div class="trip-title text-center">
             	<p class="trip-name">My Trip To Ghaziabad: Heaven on Earth</p>
             </div>
             <div class="trip-disc text-center">
             	<img src="./Campture_files/Comma_left.png" class="pull-left"><br>
-            	<p>Lorem ipsum dolor sit amet, ius dolore assueverit vituperatoribus at. Cum nusquam placerat ei, legere euismod corpora te his. Ut his sint epicurei quaerendum, qui an ferri scripta pertinax. Tale choro affert ei vim, habeo repudiare neglegentur nam an, his ex mutat brute.</p>
+            	<p>Lorem ipsum dolor sit amet, ius dolore assueverit vituperatoribus at. Cum nusquam placerat ei, legere euismod corpora te his. Ut his sint .dsdsd</p>
             	<img src="./Campture_files/Comma_right.png" class="pull-right">
             </div>
             <div class="profile-pic text-center">
@@ -17,7 +17,7 @@
             </div>
         </div>
         <!--Itinerary, places, photos-->
-  		<div class="timeline-thirdheader text-center">
+  		<div class="timeline-thirdheader-two text-center no-display">
     <div class="container">
         <div class="row"> 
                              
@@ -100,11 +100,11 @@
         </div>
     </div>
     	<!--Add first card button-->
-    	<div class="intro-add-trip no-display">
+    	<div class="intro-add-trip">
         	<div class="container">
     			<div class="plus-pulse2">
         		</div>
-    			<div class="plus-button-intro">
+    			<div class="plus-button-intro" data-toggle="modal" data-target="#addcoverModal">
         			<i class="fa fa-plus-circle" style="color:#f56c36; font-size:50px;"></i>
             	</div>
             </div>   
@@ -112,7 +112,7 @@
   	</div>
     <div class="container">
     	<!--welcome to timeline-->
-    	<div class="welcome-to-timeline col-md-12 text-center no-display">
+    	<div class="welcome-to-timeline col-md-12 text-center">
         <p class="welcome-name">
         hello, Name!
         </p>
@@ -124,7 +124,7 @@
         </p>
         </div>
         <!--Timeline places photos-->
-        <div class="timeline-places-photos">
+        <div class="timeline-places-photos no-display">
     		<div class="col-md-12">
             <div class="col-md-10">
                     <!--Timeline section within the tab-->
@@ -241,7 +241,7 @@
    	 		<div class="image-bucket">
         <!--Suggested images, will disappear after you upload your own-->
         <div class="row text-center">
-        	<p>Suggested images</p>
+        	<p style="font-family:lato;">Suggested images</p>
     		<div class="image-bucket-row">
     			<div class="img-sug col-md-6 col-sm-6">
                 	<img src="./Campture_files/saved_resource" class="img-responsive">
@@ -321,6 +321,57 @@
   					</div>
   				</form>
 
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-publish"><i class="fa fa-check"></i></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  
+ <!-- Modal:add cover modal -->
+<div id="addcoverModal" class="modal fade timeline-modal" role="dialog">
+  <div class="modal-dialog">
+	<!-- Modal:addcoverModal content-->
+    <div class="modal-content add-card-modal">
+      <div class="modal-header">
+      	<div class="row">
+        	<div class="col-md-12">
+      			<form class="form-inline">
+  					<div class="form-group modal-form-group">
+    					<div class="input-group modal-input-group">
+      						<input type="text" class="form-control enter-title" placeholder="Enter Your Title..." style="position:relative; bottom:-10px;">
+      					<div class="input-group-addon btn upload-photo-btn"><i class="fa fa-camera"></i></div>
+    					</div>
+  					</div>
+  				</form>
+        	</div>
+        </div>
+      </div>
+      <div class="modal-body">
+      	<div class="row">
+        	<div class="col-md-12">
+            	<form class="form-inline">
+  					<div class="form-group modal-form-group">
+    					<div class="input-group modal-input-group">
+      						<textarea class="write-disc" rows="5" placeholder="Describe your epic adventure.."></textarea>
+      					</div>
+  					</div>
+  				</form>
+
+            </div>
+            <div class="col-md-12" style="padding-left:24px;">
+            	<form class="form-horizontal">
+  					<div class="form-group">
+    					<label for="inputEmail3" class="col-sm-2 control-label tags-label">Tags:</label>
+    					<div class="col-sm-10">
+      						<input type="text" class="form-control enter-location" placeholder="Tags" style="padding-top:14px;">
+    					</div>
+  					</div>
+				</form>
             </div>
         </div>
       </div>
