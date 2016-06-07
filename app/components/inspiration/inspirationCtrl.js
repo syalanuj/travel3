@@ -37,7 +37,13 @@
             })
         }
         $scope.searchLocationCard = function () {
-
+            locationService.searchLocationCardByText($scope.searchText,page,function(data){
+                if(data){
+                    $scope.locationCards = data;
+                    $scope.$apply();
+                    setTimeout(masonaryCall, 2000)
+                }
+            })
         }
         $scope.searchLocationByTags = function (tags) {
             locationService.searchLocationByTag([tags], page, function (data) {
