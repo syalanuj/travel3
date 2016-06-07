@@ -89,13 +89,16 @@
             controller: 'LocationCtrl',
             templateUrl:'app/components/location/location.html'
         })
-        .when('/inspiration/',{
+        .when('/inspiration/:tag?/',{
             controller: 'InspirationCtrl',
             templateUrl:'app/components/inspiration/inspiration.html'
         })
         .when('/inspirationAdmin/',{
             controller: 'InspirationAdminCtrl',
             templateUrl:'app/components/inspirationAdmin/inspirationAdmin.html'
+        })
+        .when('/timeline2/',{
+            templateUrl:'app/components/account/timeline/timeline2.html'
         })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',

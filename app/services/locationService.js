@@ -1,5 +1,6 @@
 var app = angular.module('campture');
 app.factory('LocationService', ['$http', '$q', function ($http, $q) {
+    var paginglimit = 50;
     var LocationReviews = Parse.Object.extend("Location_Reviews");
     var LocationTips = Parse.Object.extend("Location_Tips");
     var LocationCard = Parse.Object.extend("Location_Card");
@@ -12,13 +13,17 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         getReviewsForLocation: getReviewsForLocation,
         getReviewsOfUser: getReviewsOfUser,
         postReview: postReview,
+        postTip: postTip,
         updateReview: updateReview,
         VoteReview: VoteReview,
         getTipsForLocation: getTipsForLocation,
         saveLocationCard: saveLocationCard,
         getLocationCards: getLocationCards,
         getUserLocationCardList: getUserLocationCardList,
-        addUserLocationCard: addUserLocationCard
+        getLocationCardByPlaceId: getLocationCardByPlaceId,
+        addUserLocationCard: addUserLocationCard,
+        searchLocationCardByText: searchLocationCardByText,
+        searchLocationByTag: searchLocationByTag 
     };
     function getReviewsForLocation(placeId, callback) {
         var locationReviews = new Array();
@@ -73,6 +78,27 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             objectId: reviewObject.userId
         });
         locationReview.save(null, {
+            success: function (parseObject) {
+                callback(parseObject.id);
+            },
+            error: function (gameScore, error) {
+                console.log('Failed to create new object, with error code: ' + error.message);
+            }
+        });
+    }
+
+        function postTip(tipObject, callback) {
+        var locationTips = new LocationTips();
+        locationTips.set("place_id", tipObject.placeId);
+        locationTips.set("tip_text", tipObject.tipText);
+        locationTips.set("upvote_count", 0);
+        locationTips.set("downvote_count", 0);
+        locationTips.set("user_pointer", {
+            __type: "Pointer",
+            className: "_User",
+            objectId: tipObject.userId
+        });
+        locationTips.save(null, {
             success: function (parseObject) {
                 callback(parseObject.id);
             },
@@ -161,7 +187,6 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
 
     }
     function getLocationCards(page, callback) {
-        var paginglimit = 50;
         var locationCard = new LocationCard();
         var query = new Parse.Query(locationCard);
         query.limit(paginglimit);
@@ -176,6 +201,7 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             }
         });
     }
+
     function getUserLocationCardList(userId, callback) {
         var userLocationCardList = new Array();
         var locationCardObject = new Object();
@@ -217,6 +243,19 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             },
             error: function (object, error) {
                 console.log(object)
+            }
+        });
+    }
+    function getLocationCardByPlaceId(placeId, callback) {
+       var locationCard = new LocationCard();
+        var query = new Parse.Query(locationCard);
+        query.equalTo("place_id", placeId);
+        query.first({
+            success: function (parseObject) {
+                callback(JSON.parse(JSON.stringify(parseObject)));
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
             }
         });
     }
@@ -273,5 +312,42 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             }
         });
 
+    }
+    function searchLocationCardByText(searchText, page, callback) {
+        var locationCard = new LocationCard();
+        var searchLocationName = new Parse.Query(locationCard);
+        searchLocationName.startsWith("name", searchText);
+        var searchLocationTags = new Parse.Query(locationCard);
+        searchLocationTags.equalTo("tags", searchText);
+
+        var mainQuery = Parse.Query.or(searchLocationName, searchLocationTags);
+        mainQuery.limit(paginglimit);
+        mainQuery.skip(page * paginglimit);
+        mainQuery.find({
+            success: function(parseObject) {
+            if(parseObject){
+                callback(JSON.parse(JSON.stringify(parseObject)))
+            }
+            },
+            error: function(error) {
+            // There was an error.
+            } 
+        });
+    }
+    function searchLocationByTag(tags, page, callback){
+        var locationCard = new LocationCard();
+        var query = new Parse.Query(locationCard);
+        query.limit(paginglimit);
+        query.skip(page * paginglimit);
+        query.containsAll("tags", tags);
+        query.find({
+            success: function (parseObject) {
+                locations = JSON.parse(JSON.stringify(parseObject));
+                callback(locations);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
     }
 } ]);
