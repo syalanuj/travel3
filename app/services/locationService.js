@@ -314,24 +314,21 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
 
     }
     function searchLocationCardByText(searchText, page, callback) {
+        try{
+        var keywords = searchText.trim().replace( /\s\s+/g, ' ' ).toLowerCase().split(" ")
+        }
+        catch(ex){
+            console.log(ex)
+        }
         var locationCard = new LocationCard();
-        var searchLocationName = new Parse.Query(locationCard);
-        searchLocationName.startsWith("name", searchText);
-        var searchLocationTags = new Parse.Query(locationCard);
-        searchLocationTags.equalTo("tags", searchText);
-
-        var mainQuery = Parse.Query.or(searchLocationName, searchLocationTags);
-        mainQuery.limit(paginglimit);
-        mainQuery.skip(page * paginglimit);
-        mainQuery.find({
-            success: function(parseObject) {
-            if(parseObject){
-                callback(JSON.parse(JSON.stringify(parseObject)))
-            }
-            },
-            error: function(error) {
-            // There was an error.
-            } 
+        var query = new Parse.Query(locationCard);
+        query.limit(paginglimit);
+        query.skip(page * paginglimit);
+        query.containsAll("keywords", keywords);
+        query.find().then(function(parseObject) {
+            callback(parseObject)
+        }, function(error) {
+            console.log(parseObject)
         });
     }
     function searchLocationByTag(tags, page, callback){
