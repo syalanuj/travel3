@@ -13,7 +13,7 @@
           </a>  
           <div class="caption text-center">
             <a ng-href="#/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a> 
-            <a ng-click="searchLocationByTags(tag)" class="insp-tags" ng-repeat="tag in locationCard.tags">#{{tag}} </a>
+            <a ng-click="searchLocationByTags(tag)" class="insp-tags" ng-repeat="tag in locationCard.tags track by $index">#{{tag}} </a>
         </div>
        </div> 
       </div>

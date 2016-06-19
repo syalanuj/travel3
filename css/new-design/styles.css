@@ -3586,3 +3586,87 @@ clear:both;
 	color: rgb(161, 161, 161);
 	font-size:18px;
 }
+#tours{background: #0d7898;
+    border: 2px solid #0d7898;
+    border-radius: 3px;}
+.viator-header {
+    padding: 10px 10px 5px;
+}   
+.viator-header p {
+    color: #fff;
+    font: italic 14px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 5px 0 0 4px;
+    } 
+.viator-body {
+    background: #fff;
+    padding: 0 0 10px;
+}   
+#tours-list {
+    margin: 0 0 10px;
+} 
+.tour {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    background: #fff;
+    padding: 10px 15px;
+    position: relative;
+}
+.viator-title {
+    -webkit-flex: 0 0 100%;
+    flex: 0 0 100%;
+    color: #1b335d;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 6px 2px;
+}
+.thumb {
+    -webkit-flex: 0 0 90px;
+    flex: 0 0 90px;
+    background-size: cover;
+    background-position: center;
+}
+.viator-thumb, .details {
+    max-height: 75px;
+}
+.duration, .via-location {
+    color: #9b9b9b;
+    font-size: 11px;
+}
+.via-button {
+    -webkit-flex: 1;
+    flex: 1;
+    box-sizing: border-box;
+    font-size: 12px;
+    height: 38px;
+    line-height: 18px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+.orange {
+    background: #f89406!important;
+    border-color: #d57f05!important;
+    color: #fff!important;
+}
+.via-button {
+    background: #f9f9f9;
+    border: 1px solid #c6c6c6;
+    border-radius: 3px;
+    color: #747e8d;
+    cursor: pointer;
+    display: inline-block;
+    font: bold 14px/30px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 30px;
+    outline: none;
+    padding: 0 15px;
+}
+.more-tours {
+    color: #1b335d;
+    float: right;
+    font-weight: bold;
+    line-height: 26px;
+    padding: 0 18px 0 0;
+}

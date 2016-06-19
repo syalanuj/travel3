@@ -146,6 +146,7 @@
             function (res) { // success
                 //Map.addMarker(res);
                 $scope.location = res
+                $scope.getRelatedVapDestination()
                 $scope.location.lat = res.geometry.location.lat();
                 $scope.location.lng = res.geometry.location.lng();
                 var coordinates = { latitude: res.geometry.location.lat(), longitude: res.geometry.location.lng() }
@@ -277,5 +278,31 @@
         $scope.getTipsForLocation();
         $scope.searchFlickr();
         $scope.getLocationCardByPlaceId();
+        $scope.addvapDest = function () {
+            locationService.addViatorDests(mydata, function (data) {
+
+            })
+        }
+
+        $scope.getRelatedVapDestination = function () {
+            locationService.findRelatedTourDestinationViator($scope.location.address_components[1].long_name, function (data) {
+                if (data) {
+
+                }
+            })
+        }
+
+        var prods = {
+            "Products":
+	                {
+	                    "xmlns": "http://www.viator.com/vap",
+	                    "VersionNo": 1.0,
+	                    "CreationDate": "",
+	                    "Product": [
+
+                        ]
+	                }
+        }
+
     };
 })();

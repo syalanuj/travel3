@@ -5,6 +5,7 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
     var LocationTips = Parse.Object.extend("Location_Tips");
     var LocationCard = Parse.Object.extend("Location_Card");
     var UserLocationCard = Parse.Object.extend("User_Location_Card")
+    var ViatorDestination = Parse.Object.extend("ViatorDestination");
 
     var locationReview = new LocationReviews();
     var locationTips = new LocationTips();
@@ -23,7 +24,9 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         getLocationCardByPlaceId: getLocationCardByPlaceId,
         addUserLocationCard: addUserLocationCard,
         searchLocationCardByText: searchLocationCardByText,
-        searchLocationByTag: searchLocationByTag 
+        searchLocationByTag: searchLocationByTag,
+        addViatorDests: addViatorDests,
+        findRelatedTourDestinationViator: findRelatedTourDestinationViator
     };
     function getReviewsForLocation(placeId, callback) {
         var locationReviews = new Array();
@@ -87,7 +90,7 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         });
     }
 
-        function postTip(tipObject, callback) {
+    function postTip(tipObject, callback) {
         var locationTips = new LocationTips();
         locationTips.set("place_id", tipObject.placeId);
         locationTips.set("tip_text", tipObject.tipText);
@@ -189,8 +192,8 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
     function getLocationCards(page, callback) {
         var locationCard = new LocationCard();
         var query = new Parse.Query(locationCard);
-        query.limit(paginglimit);
-        query.skip(page * paginglimit);
+        //query.limit(paginglimit);
+        //query.skip(page * paginglimit);
         query.find({
             success: function (parseObject) {
                 locationCards = JSON.parse(JSON.stringify(parseObject));
@@ -247,12 +250,17 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         });
     }
     function getLocationCardByPlaceId(placeId, callback) {
-       var locationCard = new LocationCard();
+        var locationCard = new LocationCard();
         var query = new Parse.Query(locationCard);
         query.equalTo("place_id", placeId);
         query.first({
             success: function (parseObject) {
-                callback(JSON.parse(JSON.stringify(parseObject)));
+                if (parseObject) {
+                    callback(JSON.parse(JSON.stringify(parseObject)));
+                }
+                else{
+                    callback(undefined)
+                }
             },
             error: function (object, error) {
                 // The object was not retrieved successfully.
@@ -314,10 +322,10 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
 
     }
     function searchLocationCardByText(searchText, page, callback) {
-        try{
-        var keywords = searchText.trim().replace( /\s\s+/g, ' ' ).toLowerCase().split(" ")
+        try {
+            var keywords = searchText.trim().replace(/\s\s+/g, ' ').toLowerCase().split(" ")
         }
-        catch(ex){
+        catch (ex) {
             console.log(ex)
         }
         var locationCard = new LocationCard();
@@ -325,13 +333,13 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         query.limit(paginglimit);
         query.skip(page * paginglimit);
         query.containsAll("keywords", keywords);
-        query.find().then(function(parseObject) {
+        query.find().then(function (parseObject) {
             callback(parseObject)
-        }, function(error) {
+        }, function (error) {
             console.log(parseObject)
         });
     }
-    function searchLocationByTag(tags, page, callback){
+    function searchLocationByTag(tags, page, callback) {
         var locationCard = new LocationCard();
         var query = new Parse.Query(locationCard);
         query.limit(paginglimit);
@@ -344,6 +352,54 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             },
             error: function (object, error) {
                 // The object was not retrieved successfully.
+            }
+        });
+    }
+
+    function addViatorDests(destObj) {
+        var ViatorDestination = Parse.Object.extend("ViatorDestination");
+        var destArray = destObj.Destinations.Destination
+        var count = 0;
+        for (var index = 0; index < destArray.length; index++) {
+            var viatorDestination = new ViatorDestination();
+            viatorDestination.set("DestinationGroups", destArray[index].DestinationGroups);
+            viatorDestination.set("DestinationID", destArray[index].DestinationID);
+            viatorDestination.set("DestinationName", destArray[index].DestinationName);
+            viatorDestination.set("DestinationURLs", destArray[index].DestinationURLs);
+            viatorDestination.set("ParentID", destArray[index].ParentID);
+            viatorDestination.set("ParentName", destArray[index].ParentName);
+            viatorDestination.set("Type", destArray[index].Type);
+
+            viatorDestination.save(null, {
+                success: function (parseObject) {
+                    count++
+                    //callback(parseObject.id);
+                },
+                error: function (gameScore, error) {
+                    console.log('Failed to create new object, with error code: ' + error.message);
+                }
+            });
+        }
+        callback(count)
+    }
+    function findRelatedTourDestinationViator(name, callback) {
+        var relatedTourDestination = new Array();
+        var viatorDestination = new ViatorDestination();
+
+        var query1 = new Parse.Query(viatorDestination);
+        query1.startsWith("DestinationName", name);
+
+        var query2 = new Parse.Query(viatorDestination);
+        query2.startsWith("ParentName", name);
+
+        var mainQuery = Parse.Query.or(query1, query2);
+        mainQuery.find({
+            success: function (parseObject) {
+                relatedTourDestination = JSON.parse(JSON.stringify(parseObject));
+                callback(relatedTourDestination);
+            },
+            error: function (error) {
+                // There was an error.
             }
         });
     }
