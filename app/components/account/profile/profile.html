@@ -8,7 +8,7 @@
         <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle img-responsive">
         <span class="user_name">{{userObj.facebook_profile.name}}</span>
     </div>
-    <div ng-show="!isProfileInformationInEdit && isMyProfile" ng-click="isProfileInformationInEdit = true">Edit Form</div>
+    <div ng-show="!isProfileInformationInEdit && isMyProfile" ng-click="isProfileInformationInEdit = true" class="btn btn-default">Edit Form</div>
     <div class="about-me text-center container">
         <h2>in 10 seconds</h2>
         <div class="">
@@ -160,12 +160,22 @@
             </div>
         </div>
         <div id="photos" class="" ng-show="profileTabPos == 2">
-            <h3>Photos</h3>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="image in allTripImages track by $index">
+            <div class="usr-panel">
+            	<span class="lctn"><i class="fa fa-map-marker"></i> Nanda Devi</span><span class="strs"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+                <button class="btn v-btn pull-right">
+                View Review
+                </button><br>
+                <span class="brdcrms"> &nbsp; India | Assam | Nanda Devi</span>
+                <p class="rvw">
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+"
+                </p>
+            </div>
+            <!--<div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="image in allTripImages track by $index">
                 <a ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
                     <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
                 </a>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
