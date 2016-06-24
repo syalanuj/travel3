@@ -1,8 +1,10 @@
 <div class="timeline-wrap">
   	<div class="timeline-top-section">
-  		<div class="timeline-cover-photo-wrap half-height" style="background-image:url(../../../../css/images/IMG_0074.JPG)">
+    <!--full screen cover image #1, #4(full-height) #2(half-height)-->
+  		<div class="timeline-cover-photo-wrap full-height" style="background-image:url(../../../../css/images/IMG_0074.JPG)">
   		</div>
-        <div class="timeline-heading container no-display">
+        <div class="timeline-heading container">
+        <!--trip heading and disc #2-->
         	<div class="trip-title text-center">
             	<p class="trip-name">My Trip To Ghaziabad: Heaven on Earth</p>
             </div>
@@ -16,8 +18,8 @@
             	<p>Name Surname</p>
             </div>
         </div>
-        <!--Itinerary, places, photos-->
-  		<div class="timeline-thirdheader-two text-center no-display">
+        <!--Itinerary, places, photos header, appears after first card #4(show)-->
+  		<div class="timeline-thirdheader-two text-center">
     <div class="container">
         <div class="row"> 
                              
@@ -99,20 +101,20 @@
         </div>    
         </div>
     </div>
-    	<!--Add first card button-->
-    	<div class="intro-add-trip">
+    	<!--Add first card button #2 #4(hide)-->
+    	<div class="intro-add-trip no-display">
         	<div class="container">
     			<div class="plus-pulse2">
         		</div>
-    			<div class="plus-button-intro" data-toggle="modal" data-target="#addcoverModal">
+    			<div class="plus-button-intro" data-toggle="modal" data-target="#addcardModal">
         			<i class="fa fa-plus-circle" style="color:#f56c36; font-size:50px;"></i>
             	</div>
             </div>   
         </div>    
   	</div>
     <div class="container">
-    	<!--welcome to timeline-->
-    	<div class="welcome-to-timeline col-md-12 text-center">
+    	<!--welcome to timeline, appears after uploading cover photo-->
+    	<div class="welcome-to-timeline col-md-12 text-center no-display">
         <p class="welcome-name">
         hello, Name!
         </p>
@@ -123,8 +125,8 @@
         Hit the + button to start!
         </p>
         </div>
-        <!--Timeline places photos-->
-        <div class="timeline-places-photos no-display">
+        <!--Timeline places photos #4-->
+        <div class="timeline-places-photos">
     		<div class="col-md-12">
             <div class="col-md-10">
                     <!--Timeline section within the tab-->
@@ -214,7 +216,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--Add card button-->
+                            <!--Add card button -->
                              <div class="add-card-button">
                                 <div class="plus-pulse">
                                 </div>
@@ -230,7 +232,7 @@
     </div>  
   </div>
   
-  <!-- Modal:addcardModal -->
+  <!-- Modal:addcardModal place #3-->
 <div id="addcardModal" class="modal fade timeline-modal" role="dialog">
   <div class="modal-dialog">
 	<!-- Modal:addcardModal content-->
@@ -240,7 +242,7 @@
         <div class="row">
    	 		<div class="image-bucket">
         <!--Suggested images, will disappear after you upload your own-->
-        <div class="row text-center">
+        <div class="row text-center no-display">
         	<p style="font-family:lato;">Suggested images</p>
     		<div class="image-bucket-row">
     			<div class="img-sug col-md-6 col-sm-6">
@@ -251,7 +253,7 @@
                 </div>
             </div>
     	</div>
-    	<div class="row no-display">
+    	<div class="row">
     		<div class="image-bucket-row">
     			<div class="img-sug col-md-6 col-sm-6">
                 	<i class="fa fa-times-circle-o remove-image"></i>
@@ -332,7 +334,7 @@
   </div>
 </div>
   
- <!-- Modal:add cover modal -->
+ <!-- Modal:add cover modal #1-->
 <div id="addcoverModal" class="modal fade timeline-modal" role="dialog">
   <div class="modal-dialog">
 	<!-- Modal:addcoverModal content-->
