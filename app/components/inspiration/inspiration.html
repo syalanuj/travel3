@@ -2,6 +2,7 @@
 <script src="js/inspiration/masonry.pkgd.min.js"></script>
 <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <div class="container">
+<<<<<<< HEAD
 	Search: <input type="text" ng-model="searchText"> 
     		<button ng-click="searchLocationCard()">Search</button>
     		<div class="dynamic" style="position: relative; height: 2979px;">
@@ -27,3 +28,27 @@
       			</div>
      		</div>       
 </div>
+=======
+    Search: <input type="text" ng-model="searchText"> <button ng-click="searchLocationCard()">Search</button>
+  <div class="dynamic" style="position: relative; height: 2979px;">
+      <div class="panel col-md-3 col-sm-6 col-xs-6"  style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-repeat="locationCard in locationCards track by $index">
+      <div class="insp-panel">
+          <a ng-href="#/location/{{locationCard.place_id}}">
+              <div style="width:100%">
+                <img ng-src="{{locationCard.panoramio_image.imageUrl}}" alt="beo" class="img-responsive insp-image">
+                </div>
+          </a>  
+          <div class="caption text-center">
+            <a ng-href="#/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a> 
+            <a ng-click="searchLocationByTags(tag)" class="insp-tags" ng-repeat="tag in locationCard.tags track by $index">#{{tag}} </a>
+        </div>
+       </div> 
+      </div>
+     
+   </div> 
+      
+</div>
+       <script>
+           
+  </script>
+>>>>>>> master
