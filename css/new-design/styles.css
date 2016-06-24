@@ -16,6 +16,11 @@
 	font-family:lato-bold;
 	src:url(../../fonts/Lato-Bold.woff);
 }
+@font-face{
+	font-family:lato-medium;
+	src:url(../../fonts/Lato-Medium.woff);
+}
+
 html{
 	overflow-x:hidden; 
 }
@@ -3617,4 +3622,143 @@ clear:both;
 }
 .insp-panel:hover .bh-dt{
 	display:block;
+}
+.usr-panel{
+	padding-top:20px;
+	padding-left:16px;
+	padding-right:16px;
+	padding-bottom:20px;
+	max-width:600px;
+	margin:auto;
+	margin-bottom:40px;
+	border-radius: 4px;
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+}
+.lctn{
+	font-size: 22px;
+  	color: #3a3a3a;
+	font-family:lato-medium;
+}
+.strs{
+	margin-left:23px;
+	font-size: 18px;
+  	color: rgb(246, 89, 19);
+}
+.v-btn{
+	font-size: 14px;
+  	font-family: lato;
+  	color: rgb(245, 108, 54);
+	border-style: solid;
+  	border-width: 1px;
+  	border-color: rgb(245, 108, 54);
+  	border-radius: 4px;
+	background-color:#fff;
+}
+.v-btn:hover{
+	color: rgb(245, 108, 54);
+}
+.brdcrms{
+	font-size: 14px;
+  	font-family: lato-light;
+  	color: #525354;
+	margin-left:12px;
+}
+.rvw{
+	font-size: 16px;
+  	font-family: lato;
+  	color: #525354;
+}
+/*viator widget*/
+#tours{background: #0d7898;
+    border: 2px solid #0d7898;
+    border-radius: 3px;}
+.viator-header {
+    padding: 5px;
+	color:#fff;
+}   
+.viator-header p {
+    color: #fff;
+    font: italic 14px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 5px 0 0 4px;
+    } 
+.viator-body {
+    background: #fff;
+    padding: 0 0 10px;
+}   
+#tours-list {
+    margin: 0 0 10px;
+} 
+.tour {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    background: #fff;
+    padding: 5px 15px;
+    position: relative;
+}
+.viator-title {
+    -webkit-flex: 0 0 100%;
+    flex: 0 0 100%;
+    color: #1b335d;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 6px 2px;
+}
+.thumb {
+    -webkit-flex: 0 0 90px;
+    flex: 0 0 90px;
+    background-size: cover;
+    background-position: center;
+}
+.viator-thumb, .details {
+height: 60px;
+    width: 90px;
+    background: center;
+    background-size: contain;
+    margin-right: 5px;
+	}
+.duration, .via-location {
+    color: #9b9b9b;
+    font-size: 11px;
+}
+.via-button {
+    -webkit-flex: 1!important;
+    flex: 1!important;
+    box-sizing: border-box!important;
+    font-size: 12px!important;
+    height: 38px!important;
+    line-height: 18px!important;
+    margin: 0 0 8px 0!important;
+    padding: 0!important;
+    text-align: center!important;
+    width: 100%!important;
+}
+.orange {
+    background: #f89406!important;
+    border-color: #d57f05!important;
+    color: #fff!important;
+}
+.via-button {
+    background: #f9f9f9;
+    border: 1px solid #c6c6c6;
+    border-radius: 3px;
+    color: #747e8d;
+    cursor: pointer;
+    display: inline-block;
+    font: bold 14px/30px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 30px;
+    outline: none;
+    padding: 0 15px;
+}
+.more-tours {
+    color: #1b335d;
+    float: right;
+    font-weight: bold;
+    line-height: 26px;
+    padding: 0 18px 0 0;
+}
+hr{
+	margin-top:10px;
+	margin-bottom:10px;
 }
