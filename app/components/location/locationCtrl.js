@@ -147,6 +147,7 @@
                 //Map.addMarker(res);
                 $scope.location = res
                 $scope.getRelatedVapDestination()
+                $scope.getRelatedViatorProducts()
                 $scope.location.lat = res.geometry.location.lat();
                 $scope.location.lng = res.geometry.location.lng();
                 var coordinates = { latitude: res.geometry.location.lat(), longitude: res.geometry.location.lng() }
@@ -292,17 +293,12 @@
             })
         }
 
-        var prods = {
-            "Products":
-	                {
-	                    "xmlns": "http://www.viator.com/vap",
-	                    "VersionNo": 1.0,
-	                    "CreationDate": "",
-	                    "Product": [
-
-                        ]
-	                }
+        $scope.getRelatedViatorProducts = function () {
+            locationService.findRelatedVapProducts($scope.location.name, function (data) {
+                console.log(data);
+            })
         }
+        
 
     };
 })();
