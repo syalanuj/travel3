@@ -2,34 +2,8 @@
 <script src="js/inspiration/masonry.pkgd.min.js"></script>
 <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <div class="container">
-<<<<<<< HEAD
-	Search: <input type="text" ng-model="searchText"> 
-    		<button ng-click="searchLocationCard()">Search</button>
-    		<div class="dynamic" style="position: relative; height: 2979px;">
-      			<div class="panel col-md-3 col-sm-6 col-xs-6"  style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-repeat="locationCard in locationCards track by $index">
-      				<div class="insp-panel">
-          				<a ng-href="#/location/{{locationCard.place_id}}">
-              				<div style="width:100%" class="insp-location-img">
-                            	<img ng-src="{{locationCard.panoramio_image.imageUrl}}" alt="beo" class="img-responsive insp-image">
-                                <div class="insp-location-tint"></div>
-                                <div class="bh-dt text-center">
-                                <a href="#" data-toggle="tooltip" title="Add To Bucketlist!" data-placement="top" class="black-tool">
-                                	<i class="fa fa-plus" style="border-right:solid; border-right-width:1px; padding-right:10px;"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Been Here!" data-placement="top" class="black-tool">
-                                	<i class="fa fa-check" style="padding-left:10px;"></i></a>
-                                </div>
-               				</div>
-          				</a>  
-          				<div class="caption text-center">
-            				<a ng-href="#/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a> 
-            				<a ng-click="searchLocationByTags(tag)" class="insp-tags" ng-repeat="tag in locationCard.tags">#{{tag}} </a>
-        				</div>
-       				</div> 
-      			</div>
-     		</div>       
-</div>
-=======
     Search: <input type="text" ng-model="searchText"> <button ng-click="searchLocationCard()">Search</button>
+        <button ng-click="open()">Open Modal</button>
   <div class="dynamic" style="position: relative; height: 2979px;">
       <div class="panel col-md-3 col-sm-6 col-xs-6"  style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-repeat="locationCard in locationCards track by $index">
       <div class="insp-panel">
@@ -46,9 +20,23 @@
       </div>
      
    </div> 
-      
+     
+
 </div>
-       <script>
-           
-  </script>
->>>>>>> master
+<script type="text/ng-template" id="locationContentModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body" style="min-width: 1000px">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>

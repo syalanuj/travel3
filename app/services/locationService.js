@@ -6,6 +6,7 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
     var LocationCard = Parse.Object.extend("Location_Card");
     var UserLocationCard = Parse.Object.extend("User_Location_Card")
     var ViatorDestination = Parse.Object.extend("ViatorDestination");
+    var ViatorProducts = Parse.Object.extend("ViatorProducts");
 
     var locationReview = new LocationReviews();
     var locationTips = new LocationTips();
@@ -26,7 +27,8 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         searchLocationCardByText: searchLocationCardByText,
         searchLocationByTag: searchLocationByTag,
         addViatorDests: addViatorDests,
-        findRelatedTourDestinationViator: findRelatedTourDestinationViator
+        findRelatedTourDestinationViator: findRelatedTourDestinationViator,
+        findRelatedVapProducts: findRelatedVapProducts
     };
     function getReviewsForLocation(placeId, callback) {
         var locationReviews = new Array();
@@ -400,6 +402,26 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
             },
             error: function (error) {
                 // There was an error.
+            }
+        });
+    }
+    function findRelatedVapProducts(locationName, callback){
+        var relatedViatorProducts = new Array();
+        var viatorProducts = new ViatorProducts();
+        var query1 = new Parse.Query(viatorProducts);
+        query1.limit(5);
+        query1.contains("ProductName", locationName);
+        var query2 = new Parse.Query(viatorProducts);
+        query2.contains("Commences", locationName);
+
+        var query = Parse.Query.or(query1, query2);
+        query.find({
+            success: function (parseObject) {
+                locations = JSON.parse(JSON.stringify(parseObject));
+                callback(locations);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
             }
         });
     }
