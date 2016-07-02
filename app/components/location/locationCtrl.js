@@ -286,19 +286,31 @@
         }
 
         $scope.getRelatedVapDestination = function () {
-            locationService.findRelatedTourDestinationViator($scope.location.address_components[1].long_name, function (data) {
-                if (data) {
-
-                }
-            })
+            var searchLocation = undefined
+            for (var addressArea of $scope.location.address_components) {
+                    if(addressArea.types[0] == "administrative_area_level_1"){
+                        searchLocation = addressArea.long_name
+                    }
+            }
+            if(searchLocation){
+                locationService.findRelatedTourDestinationViator(searchLocation, function (data) {
+                    if (data.length > 0) {
+                        $scope.relatedVapDestUrl = data[0].DestinationURLs.ThingsToDoURL;
+                    }
+                })
+            }
         }
 
         $scope.getRelatedViatorProducts = function () {
             locationService.findRelatedVapProducts($scope.location.name, function (data) {
+                if (data) {
+                    $scope.relatedVapProducts = data;
+                    $scope.$apply();
+                }
                 console.log(data);
             })
         }
-        
+
 
     };
 })();

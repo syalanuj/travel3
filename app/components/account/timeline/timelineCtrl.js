@@ -31,6 +31,7 @@
         if ($scope.currentUserObj) {
             $scope.myProfile = $scope.currentUserObj.get("facebook_profile");
         }
+
         accountService.getTripById($routeParams.tripId, function (data) {
             $scope.$apply(function () {
                 $scope.userObj = data.user

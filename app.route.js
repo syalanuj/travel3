@@ -98,7 +98,8 @@
             templateUrl:'app/components/inspirationAdmin/inspirationAdmin.html'
         })
         .when('/timeline2/',{
-            templateUrl:'app/components/account/timeline/timeline2.html'
+            controller: 'PostTripCtrl',
+            templateUrl:'app/components/account/postTrip/timeline2.html'
         })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',
