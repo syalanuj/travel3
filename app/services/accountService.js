@@ -64,7 +64,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
 
         trips.save(null, {
             success: function (parseObject) {
-                callback(parseObject.id);
+                callback(JSON.parse(JSON.stringify(parseObject)));
             },
             error: function (gameScore, error) {
                 alert('Failed to create new object, with error code: ' + error.message);
@@ -74,7 +74,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
 
     function updateTrip(tripDetails, callback) {
         var trips = new Trips();
-        trips.id = tripDetails.id;
+        trips.id = tripDetails.objectId;
         trips.set("title", tripDetails.title);
         trips.set("introduction", tripDetails.introduction);
         trips.set("main_image", tripDetails.main_image);
@@ -83,12 +83,12 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         trips.set("user_pointer", {
             __type: "Pointer",
             className: "_User",
-            objectId: tripDetails.user.id
+            objectId: tripDetails.user_pointer.objectId
         });
 
         trips.save(null, {
             success: function (parseObject) {
-                callback(parseObject.id);
+                callback(JSON.parse(JSON.stringify(parseObject)));
             },
             error: function (gameScore, error) {
                 console.log('Failed to create new object, with error code: ' + error.message);

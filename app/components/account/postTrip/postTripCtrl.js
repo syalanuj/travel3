@@ -86,7 +86,6 @@
         $scope.currentImageIndex = 0;
         $scope.openStatus = true;
         $scope.placeCount = 0;
-        $scope.places[$scope.placeCount] = { images: new Array() };
         //Date functions
         $scope.status = {
             opened: false
@@ -137,7 +136,8 @@
 
         };
         $scope.addPlace = function () {
-            $scope.placeCount++
+            $scope.placeCount++;
+            $scope.places[$scope.placeCount] = { images: new Array() };
         };
         $scope.removePlace = function () {
             $scope.newplaces.pop();
@@ -209,16 +209,16 @@
                     $scope.currentImageIndex++;
                 },
                 'error': function (file, response) {
-                    $scope.places[file.placeIndex].images.push({ image_url: response.url });
-                    $scope.saveFormSession();
-                    $scope.$apply();
+                    //$scope.places[file.placeIndex].images.push({ image_url: response.url });
+                    //$scope.saveFormSession();
+                    //$scope.$apply();
                 },
                 'success': function (file, response) {
                     if (!$scope.places[file.placeIndex].images) {
                         $scope.places[file.placeIndex].images = new Array();
                     }
                     $scope.places[file.placeIndex].images.push({ image_url: response.url });
-                    $scope.saveFormSession();
+                    //$scope.saveFormSession();
                     $scope.$apply();
                 },
                 'removedfile': function (file, response) {
@@ -261,7 +261,7 @@
                     $scope.myTrip.main_image = { image_url: response.url };
                     $scope.mainImageUploading = false;
                     $scope.mainImageUploaded = true;
-                    $scope.saveFormSession();
+                    //$scope.saveFormSession();
                     $scope.$apply();
                 }
             }
@@ -324,18 +324,37 @@
             if ($scope.newTrip.main_image) {
                 $scope.newTrip.main_image = undefined;
             }
-            $scope.saveFormSession();
+            //$scope.saveFormSession();
             $route.reload();
         }
         $scope.saveTripCover = function () {
-            $scope.postStep = 2
-            $('#addcoverModal').modal('toggle')
+            $scope.newTrip.user = {
+                id: $scope.userObj.objectId,
+                name: $scope.userObj.facebook_profile.name
+            }
+            accountService.postTrip($scope.newTrip, function (data) {
+                $scope.$apply(function () {
+                    if (data) {
+                        $scope.newTrip = data
+                        $scope.postStep = 2
+                        $('#addcoverModal').modal('toggle')
+                    }
+                });
+            });
         }
         $scope.saveVisitedPlace = function () {
             //step 3 click of + button
-            $scope.postStep = 4
-            $scope.placeCount++
-            $('#addcardModal').modal('hide')
+            $scope.newTrip.visited_places = $scope.places
+            accountService.updateTrip($scope.newTrip, function (data) {
+                $scope.$apply(function () {
+                    if (data) {
+                        $scope.newTrip = data
+                        $scope.postStep = 4
+                        $scope.placeCount++
+                        $('#addcardModal').modal('hide')
+                    }
+                });
+            });
         }
 
 
