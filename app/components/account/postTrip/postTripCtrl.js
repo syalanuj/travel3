@@ -61,6 +61,7 @@
         }
         $scope.userObj.id = $scope.userObj.objectId;
         $scope.details = function (details) {
+            $scope.suggestedImagesWindowVisible = true
             $scope.places[$scope.placeCount - 1].coordinates = { latitude: details.geometry.location.lat(), longitude: details.geometry.location.lng() };
             $scope.places[$scope.placeCount - 1].locationDetails = details
             getSuggestedImagesFromPanaramio($scope.places[$scope.placeCount - 1].coordinates, $scope.places[$scope.placeCount - 1].locationDetails.name, function (images) {
@@ -94,6 +95,8 @@
         $scope.currentImageIndex = 0;
         $scope.openStatus = true;
         $scope.placeCount = 0;
+        $scope.suggestedImagesWindowVisible = false
+        $scope.uploadedImagesWindow = false
         //Date functions
         $scope.status = {
             opened: false
@@ -352,8 +355,8 @@
         }
         $scope.saveVisitedPlace = function () {
             //step 3 click of + button
-            if (!$scope.places[ $scope.postStep].images) {
-                $scope.places[ $scope.postStep].images = new Array();
+            if (!$scope.places[$scope.postStep].images) {
+                $scope.places[$scope.postStep].images = new Array();
             }
             $scope.places[file.placeIndex].images.push({ image_url: response.url });
             $scope.newTrip.visited_places = $scope.places
@@ -368,6 +371,22 @@
                 });
             });
         }
+        $scope.hideSuggestedImage = function () {
+            if ($scope.suggestedImages) {
+                $scope.suggestedImagesWindowVisible = false
+                $scope.uploadedImagesWindow = true
+                if (!$scope.places[$scope.placeCount - 1].images) {
+                    $scope.places[$scope.placeCount - 1].images = new Array();
+                }
+                angular.forEach($scope.suggestedImages, function (image, key) {
+                    if (image.isSelected == true) {
+                        $scope.places[$scope.placeCount - 1].images.push({ image_url: image.photoPixelsUrls[3].url });
+                    }
+                });
+                $scope.suggestedImages = undefined
+            }
+        }
+
         function getSuggestedImagesFromPanaramio(locationCoordinates, locationName, callback) {
             flickrApiService.getPhotosOfLocation(locationCoordinates, locationName).then(
                     function (res) {

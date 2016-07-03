@@ -187,7 +187,7 @@
                 <div class="row">
                     <div class="image-bucket">
                         <!--Suggested images, will disappear after you upload your own-->
-                        <div class="row text-center">
+                        <div ng-show="suggestedImagesWindowVisible" class="row text-center">
                             <p style="font-family:lato;">Suggested images</p>
                             <div class="image-bucket-row">
                                 <div ng-click="image.isSelected = !image.isSelected" ng-class="{'selected-image-border': image.isSelected == true}" class="img-sug col-md-6 col-sm-6" ng-repeat="image in suggestedImages track by $index">
@@ -198,7 +198,7 @@
                                 </div>-->
                             </div>
                         </div>
-                        <div class="row">
+                        <div ng-show="uploadedImagesWindow" class="row">
                             <div class="image-bucket-row">
                                 <div ng-repeat="image in places[placeCount - 1].images track by $index" class="img-sug col-md-6 col-sm-6">
                                     <i ng-click="deleteImage(placeCount - 1,$index)" class="fa fa-times-circle-o remove-image hand-pointer"></i>
@@ -215,7 +215,7 @@
                                 <div class="input-group modal-input-group">
                                     <div class="input-group-addon location-pin"><i class="fa fa-map-marker"></i></div>
                                     <input ng-autocomplete ng-model="places[placeCount - 1].location" details="details" options="options" type="text" class="form-control enter-location" name="location" placeholder="Enter Location...">
-                                    <div dropzone="dropzoneConfig" class="input-group-addon btn upload-photo-btn hide-dropzone"><i class="fa fa-camera"></i></div>
+                                    <div dropzone="dropzoneConfig" ng-click="hideSuggestedImage()" class="input-group-addon btn upload-photo-btn hide-dropzone"><i class="fa fa-camera"></i></div>
                                 </div>
                             </div>
                         </form>
