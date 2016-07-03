@@ -47,8 +47,8 @@
         };
 
     });
-    app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', 'AccountService', controller]);
-    function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, accountService) {
+    app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', 'AccountService', 'FlickrApiService', controller]);
+    function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, accountService, flickrApiService) {
         //====== Scope Variables==========
         //================================
         $(document).ready(function () {
@@ -63,6 +63,14 @@
         $scope.details = function (details) {
             $scope.places[$scope.placeCount - 1].coordinates = { latitude: details.geometry.location.lat(), longitude: details.geometry.location.lng() };
             $scope.places[$scope.placeCount - 1].locationDetails = details
+            getSuggestedImagesFromPanaramio($scope.places[$scope.placeCount - 1].coordinates, $scope.places[$scope.placeCount - 1].locationDetails.name, function (images) {
+                if (images) {
+                    angular.forEach(images, function (image, key) {
+                        image.isSelected = false;
+                    });
+                    $scope.suggestedImages = images
+                }
+            })
         };
         $scope.getPlaceIndex = function (pindex) {
             $scope.pIndex = pindex;
@@ -337,13 +345,17 @@
                     if (data) {
                         $scope.newTrip = data
                         $scope.postStep = 2
-                        $('#addcoverModal').modal('toggle')
+                        $('#addcoverModal').modal('hide')
                     }
                 });
             });
         }
         $scope.saveVisitedPlace = function () {
             //step 3 click of + button
+            if (!$scope.places[ $scope.postStep].images) {
+                $scope.places[ $scope.postStep].images = new Array();
+            }
+            $scope.places[file.placeIndex].images.push({ image_url: response.url });
             $scope.newTrip.visited_places = $scope.places
             accountService.updateTrip($scope.newTrip, function (data) {
                 $scope.$apply(function () {
@@ -356,7 +368,14 @@
                 });
             });
         }
-
+        function getSuggestedImagesFromPanaramio(locationCoordinates, locationName, callback) {
+            flickrApiService.getPhotosOfLocation(locationCoordinates, locationName).then(
+                    function (res) {
+                        if (res) {
+                            callback(res.data.photos)
+                        }
+                    })
+        }
 
         //GeoTagging
         function getGPSDegreeToDecimal(degree, minutes, seconds, direction) {
