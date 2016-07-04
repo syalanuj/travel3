@@ -6,7 +6,7 @@ app.factory('TripService', ['$http', function ($http) {
     var Likes = Parse.Object.extend("Likes");
     var Tag = Parse.Object.extend("Tag");
     var TripLikes = Parse.Object.extend("Trip_Likes");
-
+    
     var user = new User();
     var trips = new Trips();
     var comments = new Comments();
@@ -142,5 +142,4 @@ app.factory('TripService', ['$http', function ($http) {
             }
         });
     }
-
 } ]);

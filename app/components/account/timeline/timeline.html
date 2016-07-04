@@ -10,11 +10,12 @@
                     </div>
                 </div>
             </div>
+
 <div style="overflow-x: hidden">
     <div class="text-center trip-titlebar" ng-style="{'background-image':'url(' +getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_400,w_960/')+ ')'}">
     </div>
    <div class="timeline-tripname text-center">
-<div class="text-center">
+<div class="text-center"> 
    <a ng-show="isMyProfile"  ng-href="/#/account/editTrip/{{trip.id}}" class="btn btn-primary btn-lg round" style="text-transform:none!important;">Edit your trip</a>                
    </div>
    <span>{{myTrip.title}}</span>

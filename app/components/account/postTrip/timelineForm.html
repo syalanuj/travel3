@@ -1,7 +1,7 @@
 <div class="timeline-wrap">
     <div ng-show="postStep == 1 || postStep == 2 || postStep == 4" class="timeline-top-section">
         <!--full screen cover image #1, #4(full-height) #2(half-height)-->
-        <div class="timeline-cover-photo-wrap full-height" ng-class="{'full-height': postStep == 1, 'half-height': postStep == 2 || postStep == 4}" style="background-image:url(../../../../css/images/IMG_0074.JPG)" ng-style="{'background-image':'url(' +getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_400,w_960/')+ ')'}">
+        <div class="timeline-cover-photo-wrap full-height" ng-class="{'full-height': postStep == 1 || postStep == 4, 'half-height': postStep == 2 }" style="background-image:url(../../../../css/images/IMG_0074.JPG)" ng-style="{'background-image':'url(' +getCroppedTripImageUrl(newTrip.main_image.image_url,'upload/c_fill,h_400,w_960/')+ ')'}">
         </div>
         <div class="timeline-heading container">
             <!--trip heading and disc #2-->
@@ -24,14 +24,14 @@
                 <div class="row">
                     <div class="col-md-6 Itinerary text-center col-xs-12 col-sm-8 col-md-offset-1 col-sm-offset-1">
                         <div class="row">
-                            <div ng-class="{&#39;Itinerary-places-photos-button-active&#39;: tripTabIndex == 0}" class="col-md-4 col-xs-4 col-sm-4 Itinerary-places-photos-button">
-                                <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/newTimeline.html" ng-click="updateTripTabPos(0)"><i class="fa fa-map-o">&nbsp; </i><span style="margin-bottom:0px!important;">Guide</span></a>
+                            <div ng-class="{'Itinerary-places-photos-button-active': tripTabIndex == 0}" class="col-md-4 col-xs-4 col-sm-4 Itinerary-places-photos-button">
+                                <a href="" ng-click="updateTripTabPos(0)"><i class="fa fa-map-o">&nbsp; </i><span style="margin-bottom:0px!important;">Guide</span></a>
                             </div>
-                            <div ng-class="{&#39;Itinerary-places-photos-button-active&#39;: tripTabIndex == 1}" class="col-md-4 col-xs-4 col-sm-4 Itinerary-places-photos-button" ng-click="updateTripTabPos(1)">
-                                <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/newTimeline.html" ng-click="updateTripTabPos(1)"><i class="fa fa-map-marker"> &nbsp;</i><span style="margin-bottom:0px!important;">Places</span></a>
+                            <div ng-class="{'Itinerary-places-photos-button-active': tripTabIndex == 1}" class="col-md-4 col-xs-4 col-sm-4 Itinerary-places-photos-button" ng-click="updateTripTabPos(1)">
+                                <a href="" ng-click="updateTripTabPos(1)"><i class="fa fa-map-marker"> &nbsp;</i><span style="margin-bottom:0px!important;">Places</span></a>
                             </div>
-                            <div ng-class="{&#39;Itinerary-places-photos-button-active&#39;: tripTabIndex == 2}" class="col-md-4 col-xs-4 col-sm-3 Itinerary-places-photos-button">
-                                <a href="file:///Volumes/Macintosh%20HD/Users/seemachowdhary/Desktop/Campture/Campture%20Website/Campture%20Homepage/newTimeline.html" ng-click="updateTripTabPos(2)"><i class="fa fa-picture-o">&nbsp;</i><span style="margin-bottom:0px!important;">Photos</span></a>
+                            <div ng-class="{'Itinerary-places-photos-button-active': tripTabIndex == 2}" class="col-md-4 col-xs-4 col-sm-3 Itinerary-places-photos-button">
+                                <a href="" ng-click="updateTripTabPos(2)"><i class="fa fa-picture-o">&nbsp;</i><span style="margin-bottom:0px!important;">Photos</span></a>
                             </div>
                         </div>
                     </div>
@@ -39,9 +39,9 @@
                                                     <!--<div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href="" ng-click="scrollToCommentSection()"><i class="fa fa-comments"><sup><span class="fb-comments-count" data-href="{{pageUrl}}"></span></sup></i></a></div>
                                                                             <div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href=""><i class="fa fa-share-alt"><sup></sup></i></a></div>-->
                         <!--<div class="fb-share-button" data-href="{{pageUrl}}" data-layout="icon"></div>-->
-                        <div style="cursor: pointer" ng-class="{likeDisabled: isLikeDisabled}" class="timeline-like-button" ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled">
-                            <em ng-class="{&#39;fa fa-heart&#39;: likeId != undefined, &#39;fa fa-heart-o&#39;: likeId == undefined}" class="fa fa-heart">&nbsp; </em><span>like &nbsp; </span><span class="likes-quantity"><!--{{trip.total_likes}}-->450</span>
-                        </div>
+                        <!--<div style="cursor: pointer" ng-class="{likeDisabled: isLikeDisabled}" class="timeline-like-button" ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled">
+                            <em ng-class="{&#39;fa fa-heart&#39;: likeId != undefined, &#39;fa fa-heart-o&#39;: likeId == undefined}" class="fa fa-heart">&nbsp; </em><span>like &nbsp; </span><span class="likes-quantity">{{trip.total_likes}}</span>
+                        </div>-->
                     </div>
                     <div class="col-md-2 hidden-sm hidden-xs">
                         <div class="dropup">
@@ -131,7 +131,7 @@
                 <div class="col-md-10">
                     <!--Timeline section within the tab-->
                     <div class="timeline">
-                        <div class="col-md-12">
+                        <div id="guide" ng-show="tripTabIndex == 0" class="col-md-12">
                             <div ng-repeat="place in places track by $index" class="timeline-card col-md-12">
                                 <div class="col-md-5">
                                     <div class="card-desc">
@@ -163,11 +163,35 @@
                                 </div>
                             </div>
                             <!--Add card button -->
-                            <div class="add-card-button">
+                            <div id="addCardButton" class="add-card-button">
                                 <div class="plus-pulse">
                                 </div>
                                 <div class="plus-button" data-toggle="modal" data-target="#addcardModal">
                                     <i class="fa fa-plus-circle" style="color:#f56c36; font-size:50px;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="placesMap" ng-show="tripTabIndex == 1" class="col-md-12">
+                            <div class="content">
+                                <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
+                                    <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fit="false" editable="p.editable" draggable="p.draggable" icons="p.icons">
+                                    </ui-gmap-polyline>
+                                    <ui-gmap-markers models="allMarkers" coords="'self'" icon="'icon'" options="marker.options" click="onClick()" events="marker.events">
+                                    </ui-gmap-markers>
+                                </ui-gmap-google-map>
+                            </div>
+                        </div>
+                        <div id="photos" ng-show="tripTabIndex == 2" class="col-md-12">
+                            <div class="content">
+                                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                    <a ng-click="toggleModal(getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
+                                        <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="placeImage in timelineImages track by $index">
+                                    <a ng-click="toggleModal(getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
+                                        <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
+                                    </a>
                                 </div>
                             </div>
                         </div>

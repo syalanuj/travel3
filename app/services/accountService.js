@@ -23,7 +23,8 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         getAllUserProfiles: getAllUserProfiles,
         updateUserGallery: updateUserGallery,
         getUserGallery: getUserGallery,
-        getRelatedTrips: getRelatedTrips
+        getRelatedTrips: getRelatedTrips,
+        uploadImageOnCloudinary: uploadImageOnCloudinary
     };
 
     function getTripById(tripId, callback) {
@@ -294,6 +295,11 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     };
+    function uploadImageOnCloudinary(fileUrl,fileName){
+      return  $http.post("https://api.cloudinary.com/v1_1/dsykpguat/image/upload", 'file='+ fileName +'&api_key=383751488485679&file=' + fileUrl +'&timestamp=1315060076&upload_preset=campture2', {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+              })
+    }
 
     //Internal
     function getTripFromParse(parseObject) {

@@ -47,19 +47,141 @@
         };
 
     });
-    app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', 'AccountService', 'FlickrApiService', controller]);
-    function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, accountService, flickrApiService) {
+    app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', '$routeParams', 'AccountService', 'FlickrApiService', controller]);
+    function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, $routeParams, accountService, flickrApiService) {
         //====== Scope Variables==========
         //================================
+
         $(document).ready(function () {
             $('.remove-location-placeholder').removeAttr('placeholder');
         });
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
-        if (!$scope.userObj) {
-            $location.path("/");
-            return;
-        }
         $scope.userObj.id = $scope.userObj.objectId;
+        $scope.details;
+        $scope.newTrip = new Object();
+        $scope.newTrip.tags = new Array();
+        $scope.userId = "IT41eYwjem";
+        $scope.places = new Array();
+        $scope.newplaces = [0];
+
+        $scope.queuecomplete = 0;
+        $scope.imageUploadDone = false;
+        $scope.isPublishedClicked = false;
+        $scope.mainImageUploaded = false;
+        $scope.rawTags;
+        $scope.isAddTag = false;
+        $scope.isTripUploading = false;
+        $scope.currentPlaceIndex = 0;
+        $scope.currentImageIndex = 0;
+        $scope.openStatus = true;
+        $scope.placeCount = 0;
+        $scope.suggestedImagesWindowVisible = false
+        $scope.uploadedImagesWindow = false
+        $scope.postStep = 1;
+        $scope.myTrip = new Object();
+        $scope.isEditForm = false
+        $scope.allMarkers = new Array();
+        $scope.timelineImages = new Array();
+        $scope.map = { center: { latitude: 21.0000, longitude: 78.0000 }, zoom: 4 };
+        $scope.tripTabIndex = 0;
+        if ($routeParams.tripId) {
+            $scope.postStep = 4
+            getExistingTrip()
+        }
+
+        $scope.isMyTripTimeline = function () {
+            if ($scope.newTrip.user.id == userObj.id) {
+                return true;
+            }
+            else {
+                false;
+            }
+        }
+        $scope.updateTripTabPos = function (pos) {
+            $scope.tripTabIndex = pos;
+        }
+        function getExistingTrip() {
+            accountService.getTripById($routeParams.tripId, function (data) {
+                $scope.$apply(function () {
+                    $scope.tripUserObj = data.user
+                    if ($scope.userObj) {
+                        //$scope.isTripLikedByUser();
+                        if ($scope.userObj.id == $scope.tripUserObj.id) {
+                            $scope.isMyProfile = true;
+                        }
+                    }
+                    $scope.newTrip = data;
+                    if ($scope.newTrip.visited_places && $scope.newTrip.visited_places.length > 0) {
+                        $scope.places = $scope.newTrip.visited_places
+                        $scope.postStep = 4
+                        $scope.placeCount = $scope.newTrip.visited_places.length + 1
+                        $('html, body').animate({
+                            scrollTop: $("#addCardButton").offset().top
+                        }, 500);
+                        $('#addcardModal').modal('show')
+                    }
+                    else{
+                        $scope.postStep = 2
+                    }
+                    accountService.getRelatedTrips($scope.newTrip.tags, function (data) {
+                        if (data) {
+                            $scope.$apply(function () {
+                                $scope.relatedTrips = data;
+                                angular.forEach($scope.relatedTrips, function (trip) {
+                                    try {
+                                        var initUrl = trip.main_image ? trip.main_image.image_url : trip.visited_places[0].images[0].image_url;
+                                        trip.cropped_image_url = $rootScope.getCroppedTripImageUrl(initUrl);
+                                    } catch (e) {
+                                        console.log(e);
+                                    }
+
+                                });
+                                $scope.linkifyText();
+                            });
+                        }
+                    });
+                    var markerId = 0;
+                    angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                        try {
+                            $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
+                            var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
+                            bounds.extend(latlng);
+                            markerId++;
+                        }
+                        catch (e) {
+                            console.log(e);
+                        }
+                    });
+                    $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15 };
+                    $scope.polylines = [
+                    {
+                        id: 1,
+                        path: $scope.allMarkers,
+                        stroke: {
+                            color: '#f56c35',
+                            weight: 3
+                        },
+                        editable: false,
+                        draggable: false,
+                        geodesic: false,
+                        visible: true,
+                        icons: [{
+                            icon: {
+                                path: google.maps.SymbolPath.FORWARD_OPEN_ARROW
+                            },
+                            offset: '25px',
+                            repeat: '50px'
+                        }]
+                    }
+                    ];
+                    angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                        angular.forEach(place.images, function (image, key) {
+                            $scope.timelineImages.push(image);
+                        });
+                    });
+                });
+            });
+        }
         $scope.details = function (details) {
             $scope.suggestedImagesWindowVisible = true
             $scope.places[$scope.placeCount - 1].coordinates = { latitude: details.geometry.location.lat(), longitude: details.geometry.location.lng() };
@@ -76,35 +198,13 @@
         $scope.getPlaceIndex = function (pindex) {
             $scope.pIndex = pindex;
         }
-        $scope.details;
-        $scope.newTrip = new Object();
-        $scope.newTrip.tags = new Array();
-        $scope.userId = "IT41eYwjem";
-        $scope.places = new Array();
-        //$scope.place = new Object();
-        $scope.newplaces = [0];
-
-        $scope.queuecomplete = 0;
-        $scope.imageUploadDone = false;
-        $scope.isPublishedClicked = false;
-        $scope.mainImageUploaded = false;
-        $scope.rawTags;
-        $scope.isAddTag = false;
-        $scope.isTripUploading = false;
-        $scope.currentPlaceIndex = 0;
-        $scope.currentImageIndex = 0;
-        $scope.openStatus = true;
-        $scope.placeCount = 0;
-        $scope.suggestedImagesWindowVisible = false
-        $scope.uploadedImagesWindow = false
-        //Date functions
         $scope.status = {
             opened: false
         };
-
-        $scope.postStep = 1;
-        $scope.myTrip = new Object();
-
+        if (!$scope.userObj) {
+            $location.path("/");
+            return;
+        }
         //form session save
         $scope.form = {
             postTripForm: {},
@@ -355,10 +455,6 @@
         }
         $scope.saveVisitedPlace = function () {
             //step 3 click of + button
-            if (!$scope.places[$scope.postStep].images) {
-                $scope.places[$scope.postStep].images = new Array();
-            }
-            $scope.places[file.placeIndex].images.push({ image_url: response.url });
             $scope.newTrip.visited_places = $scope.places
             accountService.updateTrip($scope.newTrip, function (data) {
                 $scope.$apply(function () {
@@ -371,22 +467,31 @@
                 });
             });
         }
-        $scope.hideSuggestedImage = function () {
-            if ($scope.suggestedImages) {
-                $scope.suggestedImagesWindowVisible = false
-                $scope.uploadedImagesWindow = true
-                if (!$scope.places[$scope.placeCount - 1].images) {
-                    $scope.places[$scope.placeCount - 1].images = new Array();
-                }
-                angular.forEach($scope.suggestedImages, function (image, key) {
-                    if (image.isSelected == true) {
-                        $scope.places[$scope.placeCount - 1].images.push({ image_url: image.photoPixelsUrls[3].url });
-                    }
-                });
-                $scope.suggestedImages = undefined
-            }
+        $scope.linkifyText = function () {
+            $('.description').linkify();
+            $('.linkify').linkify();
         }
-
+        $scope.hideSuggestedImage = function () {
+            $scope.uploadedImagesWindow = true
+            //if ($scope.suggestedImages) {
+            //    $scope.suggestedImagesWindowVisible = false
+            //    $scope.uploadedImagesWindow = true
+            //    if (!$scope.places[$scope.placeCount - 1].images) {
+            //        $scope.places[$scope.placeCount - 1].images = new Array();
+            //    }
+            //    angular.forEach($scope.suggestedImages, function (image, key) {
+            //        if (image.isSelected == true) {
+            //            $scope.places[$scope.placeCount - 1].images.push({ image_url: image.photoPixelsUrls[3].url });
+            //        }
+            //    });
+            //    $scope.suggestedImages = undefined
+            //}
+        }
+        $scope.uploadImageOnCloudinary = function () {
+            accountService.uploadImageOnCloudinary().then(function (responseData) {
+                console.log(responseData)
+            })
+        }
         function getSuggestedImagesFromPanaramio(locationCoordinates, locationName, callback) {
             flickrApiService.getPhotosOfLocation(locationCoordinates, locationName).then(
                     function (res) {

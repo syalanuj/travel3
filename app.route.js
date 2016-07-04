@@ -97,9 +97,13 @@
             controller: 'InspirationAdminCtrl',
             templateUrl:'app/components/inspirationAdmin/inspirationAdmin.html'
         })
-        .when('/timeline2/',{
+        .when('/timelineForm/:tripId?/',{
             controller: 'PostTripCtrl',
-            templateUrl:'app/components/account/postTrip/timeline2.html'
+            templateUrl:'app/components/account/postTrip/timelineForm.html'
+        })
+        .when('/account/timelineLatest/:tripId', {
+            controller: 'TimelineCtrl',
+            templateUrl: 'app/components/account/timeline/timelineLatest.html'
         })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',
