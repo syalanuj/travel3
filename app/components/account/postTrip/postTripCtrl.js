@@ -325,6 +325,9 @@
                     //$scope.$apply();
                 },
                 'success': function (file, response) {
+                    $scope.uploadedImagesWindow = true
+                    $scope.suggestedImagesWindowVisible = false
+
                     if (!$scope.places[file.placeIndex].images) {
                         $scope.places[file.placeIndex].images = new Array();
                     }
@@ -344,6 +347,19 @@
                         $scope.imageUploadDone = true;
                         $scope.$apply();
                     }
+
+                    $scope.uploadedImagesWindow = true
+                    $scope.suggestedImagesWindowVisible = false
+
+                    angular.forEach($scope.suggestedImages, function (image, key) {
+                        if (image.isSelected == true) {
+                            accountService.uploadImageOnCloudinary(image.photoPixelsUrls[3].url,"FileName").then(function (responseData) {
+                                $scope.places[$scope.placeCount - 1].images.push({ image_url: responseData.data.url });
+                            })
+                            image.isSelected = false
+                        }
+                    });
+
                 },
                 'drop': function (file, response) {
 
@@ -472,7 +488,6 @@
             $('.linkify').linkify();
         }
         $scope.hideSuggestedImage = function () {
-            $scope.uploadedImagesWindow = true
             //if ($scope.suggestedImages) {
             //    $scope.suggestedImagesWindowVisible = false
             //    $scope.uploadedImagesWindow = true

@@ -5,7 +5,6 @@
         // attach our auth interceptor to the http requests
         //$httpProvider.interceptors.push('AuthInterceptor');
         $routeProvider
-
     .when('/', {
         controller: 'LandingCtrl',
         templateUrl: 'app/components/landing/landing.html'

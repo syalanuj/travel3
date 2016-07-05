@@ -239,7 +239,7 @@
                                 <div class="input-group modal-input-group">
                                     <div class="input-group-addon location-pin"><i class="fa fa-map-marker"></i></div>
                                     <input ng-autocomplete ng-model="places[placeCount - 1].location" details="details" options="options" type="text" class="form-control enter-location" name="location" placeholder="Enter Location...">
-                                    <div dropzone="dropzoneConfig" ng-click="hideSuggestedImage()" class="input-group-addon btn upload-photo-btn hide-dropzone"><i class="fa fa-camera"></i></div>
+                                    <div dropzone="dropzoneConfig" ng-click="hideSuggestedImage()" class="input-group-addon btn upload-photo-btn hide-dropzone"><i dropzone="dropzoneConfig" class="fa fa-camera"></i></div>
                                 </div>
                             </div>
                         </form>
@@ -290,7 +290,7 @@
                             <div class="form-group modal-form-group">
                                 <div class="input-group modal-input-group">
                                     <input ng-model="newTrip.title" type="text" class="form-control enter-title" placeholder="Enter Your Title..." style="position:relative; bottom:-10px;">
-                                    <div dropzone="mainImageDropzoneConfig" class="input-group-addon btn upload-photo-btn hide-dropzone"><i class="fa fa-camera"></i><!--<input type="file" name="pic" accept="image/*">--></div>
+                                    <div dropzone="mainImageDropzoneConfig" class="input-group-addon btn upload-photo-btn hide-dropzone"><i dropzone="mainImageDropzoneConfig" class="fa fa-camera"></i><!--<input type="file" name="pic" accept="image/*">--></div>
                                 </div>
                             </div>
                         </form>

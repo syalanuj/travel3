@@ -81,10 +81,16 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         trips.set("main_image", tripDetails.main_image);
         trips.set("visited_places", tripDetails.visited_places);
         trips.set("tags", tripDetails.tags);
+        if(tripDetails.user && tripDetails.user.id){
+            userId = tripDetails.user.id
+        }
+        if(tripDetails.user_pointer && tripDetails.user_pointer.objectId){
+            userId = tripDetails.user_pointer.objectId
+        }
         trips.set("user_pointer", {
             __type: "Pointer",
             className: "_User",
-            objectId: tripDetails.user_pointer.objectId
+            objectId: userId
         });
 
         trips.save(null, {
