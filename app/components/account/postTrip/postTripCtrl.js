@@ -473,7 +473,14 @@
             }
         }
         $scope.closeAddCardModal = function () {
-            $scope.placeCount--
+            if ($scope.editPlaceCount) {
+                $scope.placeCount = $scope.editPlaceCount
+            }
+            else {
+                $scope.placeCount--
+            }
+            //$scope.places[$scope.placeCount - 1] = undefined
+            $scope.uploadedImagesWindow = false
             $('#addcardModal').modal('hide')
         }
         $scope.saveVisitedPlace = function () {
@@ -481,12 +488,16 @@
             if ($scope.places[$scope.placeCount - 1].location) {
                 var selectedImageCount = 0;
                 var pushedImageCount = 0
+                if (!$scope.places[$scope.placeCount - 1].images) {
+                    $scope.places[$scope.placeCount - 1].images = new Array();
+                    $scope.places[$scope.placeCount - 1].images.push({ image_url: "http://res.cloudinary.com/dsykpguat/image/upload/v1467840251/il_fullxfull.48721925_zcpqtw.jpg" });
+                }
                 if ($scope.suggestedImagesWindowVisible == true) {
                     angular.forEach($scope.suggestedImages, function (image, key) {
                         if (image.isSelected == true) {
                             accountService.uploadImageOnCloudinary(image.photoPixelsUrls[3].url, "FileName").then(function (responseData) {
                                 pushedImageCount++
-                                if (!$scope.places[$scope.placeCount - 1].images) {
+                                if ($scope.places[$scope.placeCount - 1].images.length == 1) {
                                     $scope.places[$scope.placeCount - 1].images = new Array();
                                 }
                                 $scope.places[$scope.placeCount - 1].images.push({ image_url: responseData.data.url });
@@ -496,6 +507,7 @@
                                         $scope.$apply(function () {
                                             if (data) {
                                                 $scope.newTrip = data
+                                                $scope.placeCount = $scope.newTrip.visited_places.length + 1
                                                 $scope.postStep = 4
                                                 $scope.suggestedImages = undefined
                                                 $scope.uploadedImagesWindow = false
@@ -505,7 +517,7 @@
                                         });
                                     });
                                 }
-                                
+
                             })
                             image.isSelected = false
                             selectedImageCount++
@@ -530,7 +542,12 @@
                 }
             }
         }
-
+        $scope.editPlace = function (index) {
+            $scope.uploadedImagesWindow = true
+            $scope.editPlaceCount = $scope.placeCount
+            $scope.placeCount = index + 1
+            $('#addcardModal').modal('show')
+        }
         $scope.linkifyText = function () {
             $('.description').linkify();
             $('.linkify').linkify();
