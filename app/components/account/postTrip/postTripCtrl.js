@@ -481,10 +481,10 @@
                 var selectedImageCount = 0;
                 var pushedImageCount = 0
                 if ($scope.suggestedImagesWindowVisible == true) {
-
                     angular.forEach($scope.suggestedImages, function (image, key) {
                         if (image.isSelected == true) {
                             accountService.uploadImageOnCloudinary(image.photoPixelsUrls[3].url, "FileName").then(function (responseData) {
+                                pushedImageCount++
                                 if (!$scope.places[$scope.placeCount - 1].images) {
                                     $scope.places[$scope.placeCount - 1].images = new Array();
                                 }
@@ -504,7 +504,7 @@
                                         });
                                     });
                                 }
-                                pushedImageCount++
+                                
                             })
                             image.isSelected = false
                             selectedImageCount++
