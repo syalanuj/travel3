@@ -466,6 +466,7 @@
                             $scope.newTrip = data
                             $scope.postStep = 2
                             $('#addcoverModal').modal('hide')
+                            //$location.path('/account/postTrip/' + $scope.newTrip.objectId);
                         }
                     });
                 });
@@ -477,7 +478,7 @@
         }
         $scope.saveVisitedPlace = function () {
             //step 3 click of + button
-            if ($scope.places[$scope.placeCount - 1].location && $scope.places[$scope.placeCount - 1].coordinates) {
+            if ($scope.places[$scope.placeCount - 1].location) {
                 var selectedImageCount = 0;
                 var pushedImageCount = 0
                 if ($scope.suggestedImagesWindowVisible == true) {
