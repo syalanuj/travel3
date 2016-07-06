@@ -29,14 +29,14 @@
             controller: 'AvailableToursCtrl',
             templateUrl: 'app/components/mainCategories/states.html'
         })
-        .when('/account/timeline/:tripId', {
-            controller: 'TimelineCtrl',
-            templateUrl: 'app/components/account/timeline/timeline.html'
-        })
-        .when('/account/postTrip/', {
-            controller: 'PostTripCtrl',
-            templateUrl: 'app/components/account/postTrip/postTrip.html'
-        })
+        //.when('/account/timeline/:tripId', {
+        //    controller: 'TimelineCtrl',
+        //    templateUrl: 'app/components/account/timeline/timeline.html'
+        //})
+        //.when('/account/postTrip/', {
+        //    controller: 'PostTripCtrl',
+        //    templateUrl: 'app/components/account/postTrip/postTrip.html'
+        //})
         .when('/account/newsFeed/', {
             controller: 'AccountCtrl',
             templateUrl: 'app/components/account/newsFeed.html'
@@ -96,11 +96,11 @@
             controller: 'InspirationAdminCtrl',
             templateUrl:'app/components/inspirationAdmin/inspirationAdmin.html'
         })
-        .when('/timelineForm/:tripId?/',{
+        .when('/account/postTrip/:tripId?/',{
             controller: 'PostTripCtrl',
             templateUrl:'app/components/account/postTrip/timelineForm.html'
         })
-        .when('/account/timelineLatest/:tripId', {
+        .when('/account/timeline/:tripId', {
             controller: 'TimelineCtrl',
             templateUrl: 'app/components/account/timeline/timelineLatest.html'
         })
