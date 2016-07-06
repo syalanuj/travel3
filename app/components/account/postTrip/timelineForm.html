@@ -104,7 +104,7 @@
             <div class="container">
                 <div class="plus-pulse2">
                 </div>
-                <div class="plus-button-intro" data-toggle="modal" data-target="#addcardModal">
+                <div class="plus-button-intro" data-toggle="modal" ng-click="placeCount =placeCount + 1" data-target="#addcardModal">
                     <i class="fa fa-plus-circle" style="color:#f56c36; font-size:50px;"></i>
                 </div>
             </div>
@@ -115,7 +115,7 @@
         <!--welcome to timeline, appears after uploading cover photo-->
         <div ng-show="postStep == 2" class="welcome-to-timeline col-md-12 text-center">
             <p class="welcome-name">
-        hello, Name!
+        hello, {{trip.user.facebook_profile.name}}!
             </p>
             <p class="ready-to-map">
         Ready to map your Journey?
@@ -166,7 +166,7 @@
                             <div id="addCardButton" class="add-card-button">
                                 <div class="plus-pulse">
                                 </div>
-                                <div class="plus-button" data-toggle="modal" data-target="#addcardModal">
+                                <div class="plus-button" data-toggle="modal" ng-click="placeCount =placeCount + 1" data-target="#addcardModal">
                                     <i class="fa fa-plus-circle" style="color:#f56c36; font-size:50px;"></i>
                                 </div>
                             </div>
@@ -271,7 +271,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button ng-click="saveVisitedPlace()" type="button" class="btn btn-default btn-publish"><i class="fa fa-check"></i></button>
+                <button ng-click="saveVisitedPlace()" type="button" class="btn btn-default btn-publish"><i ng-click="saveVisitedPlace()" class="fa fa-check"></i></button>
             </div>
         </div>
 

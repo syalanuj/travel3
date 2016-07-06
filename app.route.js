@@ -104,6 +104,9 @@
             controller: 'TimelineCtrl',
             templateUrl: 'app/components/account/timeline/timelineLatest.html'
         })
+        .when('/tours/markhaTrek', {
+            templateUrl: 'app/components/tours/markhaValleyTrek.html'
+        })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',
             templateUrl:'app/components/error/errorPage.html'
