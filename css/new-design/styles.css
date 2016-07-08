@@ -3303,6 +3303,7 @@ border-style: solid;
 }
 .timeline-card{
 clear:both;
+position: relative;
 }
 .timeline-card:before{
 	content: "";
@@ -3367,9 +3368,9 @@ clear:both;
 }
 .timeline-heading{
 	position:absolute;
-	top:18%;
-	left:0;
-	right:0;	
+	top:40%;
+	left:50%;
+    transform: translate(-50%, -50%);	
 }
 .Itinerary-places-photos-button-active{
 	background-color: rgb(245, 108, 54);
@@ -3548,6 +3549,7 @@ clear:both;
 	color: rgb(251, 251, 251);
   	text-transform: uppercase;
 	font-size:3vw;
+    position: relative;
 }
 .trip-disc p{
 	font-family:lato-light;
@@ -3768,4 +3770,23 @@ hr{
 .rv-img {
     width: 100%;
     min-height: 720px;
+}
+.trip-title{
+    position: relative;
+}
+.timeline-top-section{
+    position: relative;
+}
+.neta{
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-family:lato;
+    background: white;
+    color: black;
+    display: none;
+
+}
+.timeline-card:hover .neta{
+    display: block;
 }
