@@ -156,9 +156,10 @@
                             console.log(e);
                         }
                     });
-                    $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15 };
-                    $scope.polylines = [
-                    {
+                    if($scope.allMarkers[0]){
+                        $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15 };
+                        $scope.polylines = [
+                        {
                         id: 1,
                         path: $scope.allMarkers,
                         stroke: {
@@ -177,7 +178,8 @@
                             repeat: '50px'
                         }]
                     }
-                    ];
+                        ];
+                    }
                     angular.forEach($scope.newTrip.visited_places, function (place, key) {
                         angular.forEach(place.images, function (image, key) {
                             $scope.timelineImages.push(image);
