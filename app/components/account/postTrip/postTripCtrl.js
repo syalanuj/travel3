@@ -189,7 +189,9 @@
             });
         }
         $scope.details = function (details) {
-            $scope.suggestedImagesWindowVisible = true
+            if (!$scope.uploadedImagesWindow) {
+                $scope.suggestedImagesWindowVisible = true
+            }
             $scope.places[$scope.placeCount - 1].coordinates = { latitude: details.geometry.location.lat(), longitude: details.geometry.location.lng() };
             $scope.places[$scope.placeCount - 1].locationDetails = details
             getSuggestedImagesFromPanaramio($scope.places[$scope.placeCount - 1].coordinates, $scope.places[$scope.placeCount - 1].locationDetails.name, function (images) {
@@ -500,7 +502,7 @@
                         selectedImageCount++
                     }
                 })
-                
+
                 if (!$scope.places[$scope.placeCount - 1].images) {
                     $scope.places[$scope.placeCount - 1].images = new Array();
                 }
@@ -538,21 +540,21 @@
 
                         });
                     }
-                    else{
+                    else {
                         $scope.newTrip.visited_places = $scope.places
-                            accountService.updateTrip($scope.newTrip, function (data) {
-                                $scope.$apply(function () {
-                                    if (data) {
-                                        $scope.newTrip = data
-                                        $scope.placeCount = $scope.newTrip.visited_places.length
-                                        $scope.postStep = 4
-                                        $scope.suggestedImages = undefined
-                                        $scope.uploadedImagesWindow = false
-                                        $scope.suggestedImagesWindowVisible = false
-                                        $('#addcardModal').modal('hide')
-                                    }
-                                });
+                        accountService.updateTrip($scope.newTrip, function (data) {
+                            $scope.$apply(function () {
+                                if (data) {
+                                    $scope.newTrip = data
+                                    $scope.placeCount = $scope.newTrip.visited_places.length
+                                    $scope.postStep = 4
+                                    $scope.suggestedImages = undefined
+                                    $scope.uploadedImagesWindow = false
+                                    $scope.suggestedImagesWindowVisible = false
+                                    $('#addcardModal').modal('hide')
+                                }
                             });
+                        });
                     }
                 }
                 else {
