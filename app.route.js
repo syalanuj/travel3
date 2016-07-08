@@ -5,7 +5,6 @@
         // attach our auth interceptor to the http requests
         //$httpProvider.interceptors.push('AuthInterceptor');
         $routeProvider
-
     .when('/', {
         controller: 'LandingCtrl',
         templateUrl: 'app/components/landing/landing.html'
@@ -30,21 +29,21 @@
             controller: 'AvailableToursCtrl',
             templateUrl: 'app/components/mainCategories/states.html'
         })
-        .when('/account/timeline/:tripId', {
-            controller: 'TimelineCtrl',
-            templateUrl: 'app/components/account/timeline/timeline.html'
-        })
-        .when('/account/postTrip/', {
-            controller: 'PostTripCtrl',
-            templateUrl: 'app/components/account/postTrip/postTrip.html'
-        })
+        //.when('/account/timeline/:tripId', {
+        //    controller: 'TimelineCtrl',
+        //    templateUrl: 'app/components/account/timeline/timeline.html'
+        //})
+        //.when('/account/postTrip/', {
+        //    controller: 'PostTripCtrl',
+        //    templateUrl: 'app/components/account/postTrip/postTrip.html'
+        //})
         .when('/account/newsFeed/', {
             controller: 'AccountCtrl',
             templateUrl: 'app/components/account/newsFeed.html'
         })
         .when('/account/profile/:userId', {
             controller: 'ProfileCtrl',
-            templateUrl: 'app/components/account/profile/profile.html'
+            templateUrl: 'app/components/account/profile/profileTrips.html'
         })
         .when('/account/signIn/', {
             templateUrl: 'app/components/account/signIn.html'
@@ -97,8 +96,16 @@
             controller: 'InspirationAdminCtrl',
             templateUrl:'app/components/inspirationAdmin/inspirationAdmin.html'
         })
-        .when('/timeline2/',{
-            templateUrl:'app/components/account/timeline/timeline2.html'
+        .when('/account/postTrip/:tripId?/',{
+            controller: 'PostTripCtrl',
+            templateUrl:'app/components/account/postTrip/timelineForm.html'
+        })
+        .when('/account/timeline/:tripId', {
+            controller: 'TimelineCtrl',
+            templateUrl: 'app/components/account/timeline/timelineLatest.html'
+        })
+        .when('/tours/markhaTrek', {
+            templateUrl: 'app/components/tours/markhaValleyTrek.html'
         })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',

@@ -409,12 +409,12 @@ app.factory('LocationService', ['$http', '$q', function ($http, $q) {
         var relatedViatorProducts = new Array();
         var viatorProducts = new ViatorProducts();
         var query1 = new Parse.Query(viatorProducts);
-        query1.limit(5);
         query1.contains("ProductName", locationName);
         var query2 = new Parse.Query(viatorProducts);
         query2.contains("Commences", locationName);
 
         var query = Parse.Query.or(query1, query2);
+        query.limit(5);
         query.find({
             success: function (parseObject) {
                 locations = JSON.parse(JSON.stringify(parseObject));

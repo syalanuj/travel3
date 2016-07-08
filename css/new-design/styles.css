@@ -1271,6 +1271,7 @@ border-bottom-color:rgb(234, 137, 113);
 .timelineend{
 	background-color:#fff;
 	color:black;
+    margin-top:12px;
 }
 .timelineend img{
 	width:90px;

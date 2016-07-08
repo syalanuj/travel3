@@ -23,7 +23,9 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         getAllUserProfiles: getAllUserProfiles,
         updateUserGallery: updateUserGallery,
         getUserGallery: getUserGallery,
-        getRelatedTrips: getRelatedTrips
+        getRelatedTrips: getRelatedTrips,
+        uploadImageOnCloudinary: uploadImageOnCloudinary,
+        updateProfileInformation: updateProfileInformation
     };
 
     function getTripById(tripId, callback) {
@@ -64,7 +66,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
 
         trips.save(null, {
             success: function (parseObject) {
-                callback(parseObject.id);
+                callback(JSON.parse(JSON.stringify(parseObject)));
             },
             error: function (gameScore, error) {
                 alert('Failed to create new object, with error code: ' + error.message);
@@ -74,21 +76,27 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
 
     function updateTrip(tripDetails, callback) {
         var trips = new Trips();
-        trips.id = tripDetails.id;
+        trips.id = tripDetails.objectId;
         trips.set("title", tripDetails.title);
         trips.set("introduction", tripDetails.introduction);
         trips.set("main_image", tripDetails.main_image);
         trips.set("visited_places", tripDetails.visited_places);
         trips.set("tags", tripDetails.tags);
+        if(tripDetails.user && tripDetails.user.id){
+            userId = tripDetails.user.id
+        }
+        if(tripDetails.user_pointer && tripDetails.user_pointer.objectId){
+            userId = tripDetails.user_pointer.objectId
+        }
         trips.set("user_pointer", {
             __type: "Pointer",
             className: "_User",
-            objectId: tripDetails.user.id
+            objectId: userId
         });
 
         trips.save(null, {
             success: function (parseObject) {
-                callback(parseObject.id);
+                callback(JSON.parse(JSON.stringify(parseObject)));
             },
             error: function (gameScore, error) {
                 console.log('Failed to create new object, with error code: ' + error.message);
@@ -294,6 +302,24 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     };
+    function uploadImageOnCloudinary(fileUrl,fileName){
+      return  $http.post("https://api.cloudinary.com/v1_1/dsykpguat/image/upload", 'file='+ fileName +'&api_key=383751488485679&file=' + fileUrl +'&timestamp=1315060076&upload_preset=campture2', {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+              })
+    }
+    function updateProfileInformation(userId,profileInformation, callback){
+        var user = new User();
+        user.id = userId;
+        user.set("profile_information", profileInformation);
+        user.save(null, {
+            success: function (parseObject) {
+                callback(parseObject.id);
+            },
+            error: function (gameScore, error) {
+                //alert('Failed to create new object, with error code: ' + error.message);
+            }
+        });
+    }
 
     //Internal
     function getTripFromParse(parseObject) {
