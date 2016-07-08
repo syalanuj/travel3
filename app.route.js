@@ -43,7 +43,7 @@
         })
         .when('/account/profile/:userId', {
             controller: 'ProfileCtrl',
-            templateUrl: 'app/components/account/profile/profile.html'
+            templateUrl: 'app/components/account/profile/profileTrips.html'
         })
         .when('/account/signIn/', {
             templateUrl: 'app/components/account/signIn.html'

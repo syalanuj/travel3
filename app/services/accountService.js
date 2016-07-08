@@ -307,10 +307,10 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
               })
     }
-    function updateProfileInformation(profileInformation, callback){
+    function updateProfileInformation(userId,profileInformation, callback){
         var user = new User();
         user.id = userId;
-        user.set("profile_information", imageObj);
+        user.set("profile_information", profileInformation);
         user.save(null, {
             success: function (parseObject) {
                 callback(parseObject.id);

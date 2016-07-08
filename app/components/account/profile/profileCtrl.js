@@ -22,6 +22,7 @@
         $scope.allTripImages = new Array();
         var bounds = new google.maps.LatLngBounds();
         $scope.profileInformation = new Object();
+        $scope.profileInformation = JSON.parse(JSON.stringify(Parse.User.current())).profile_information;
         $scope.isProfileInformationInEdit = false;
 
         accountService.getUserById($routeParams.userId, function (data) {
@@ -59,9 +60,11 @@
                                     catch (e) {
                                         console.log(e);
                                     }
-                                    angular.forEach(place.images, function (image, key) {
-                                        $scope.allTripImages.push(image);
-                                    });
+                                    if (place) {
+                                        angular.forEach(place.images, function (image, key) {
+                                            $scope.allTripImages.push(image);
+                                        });
+                                    }
                                     markerId++;
                                 });
                             });
@@ -98,20 +101,28 @@
             $scope.modalShown = !$scope.modalShown;
             $scope.modalImageUrl = imageUrl;
         };
-        $scope.updateProfileInformation = function(){
-            
+        $scope.updateProfileInformation = function () {
+
         }
-        locationService.getUserLocationCardList($routeParams.userId, function (data) {
-            if(data){
-                $scope.locationCards = data;
-                    $scope.$apply();
-                    setTimeout(masonaryCall,2000)
-            }
-        });
-        function masonaryCall(){
-            $(document).ready(function() {
-                    $('.dynamic').masonry();
-                })
+        $scope.editUserInformation = function () {
+            accountService.updateProfileInformation($scope.myUserObj.id, $scope.profileInformation, function (data) {
+                if (data) {
+                    $scope.isProfileInformationInEdit = false
+                    $scope.profileInformation = JSON.parse(JSON.stringify(Parse.User.current())).profile_information;
+                }
+            })
         }
+        //locationService.getUserLocationCardList($routeParams.userId, function (data) {
+        //    if(data){
+        //        $scope.locationCards = data;
+        //            $scope.$apply();
+        //            setTimeout(masonaryCall,2000)
+        //    }
+        //});
+        //function masonaryCall(){
+        //    $(document).ready(function() {
+        //            $('.dynamic').masonry();
+        //        })
+        //}
     };
 })();

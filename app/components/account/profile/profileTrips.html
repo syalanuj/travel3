@@ -1,6 +1,3 @@
-<script src="js/inspiration/jquery-ui-i18n.min.js"></script>
-<script src="js/inspiration/masonry.pkgd.min.js"></script>
-<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <modal-dialog image-url="modalImageUrl" show="modalShown" width="850px" height="60%">
 </modal-dialog>
 <div class="profile_page_header text-center">
@@ -99,12 +96,9 @@
         <h5>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</h5>
     </div>
     <div class="trips_places_photos">
-                    <!--<a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp" style="margin-left:0px;"><i class="fa fa-map-o"></i><p>trips</p></button></a>
+                    <a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp" style="margin-left:0px;"><i class="fa fa-map-o"></i><p>trips</p></button></a>
                     <a data-toggle="pill" href="" ng-click="updateprofileTabPos(1)"><button type="button" class="btn tpp"><i class="fa fa-map-marker"></i><p>places</p></button></a>
-                    <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>-->
-        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp"><i class="fa fa-plus"></i><p>Bucket List</p></button></a>
-        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(1)"><button type="button" class="btn tpp"><i class="fa fa-check"></i><p>Places I've Been</p></button></a>
-        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-pencil"></i><p>Reviews/Tips</p></button></a>
+                    <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>
     </div>
 </div>
 <div ng-show="!isSiteLoaded" class="container">
@@ -121,71 +115,58 @@
     </div>
 </div>
 <div ng-show="isSiteLoaded">
-    <div ng-show="true" class="container profilecontent">
+    <div ng-show="myTrips" class="container profilecontent">
         <div id="trips" class="" ng-show="profileTabPos == 0">
-            <h3>Bucket List</h3>
-            <div class="dynamic" style="position: relative; height: 2979px;">
-                <div class="panel col-md-3 col-sm-6 col-xs-6" style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-if="!locationCard.is_explored" ng-repeat="locationCard in locationCards track by $index">
-                    <div class="insp-panel">
-                        <a ng-href="#/location/{{locationCard.place_id}}">
-                            <div style="width:100%">
-                                <img ng-src="{{locationCard.panoramio_image.imageUrl}}" alt="beo" class="img-responsive insp-image">
-                            </div>
+            <h3>Trips</h3>
+            <div class="col-sm-6 col-md-4" ng-repeat="trip in myTrips | filter:query">
+                <div class="thumbnail">
+                    <a ng-href="#/account/timeline/{{trip.id}}">
+                        <img class="xpro2" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
+                    </a>
+                    <div class="caption">
+                        <a ng-href="#/account/timeline/{{trip.id}}">
+                            <span class="pull-left trip_name title-overflow-hidden">{{trip.title}}</span>
                         </a>
-                        <div class="caption text-center">
-                            <a ng-href="#/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a>
-                            <span class="insp-tags" ng-repeat="tag in locationCard.tags">#{{tag}} </span>
-                        </div>
-                    </div>
-                </div>
+                        <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
+                        <br>
+                        <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+                        <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                        <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
+                        <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
 
+                        <!--<span class="pull-right stats_thumbnail">19</span>-->
+                        <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->
+                    </div>
+                    <a ng-click="deleteTrip(trip.id)">delete</a>
+                </div>
             </div>
         </div>
         <div id="places" class="" ng-show="profileTabPos == 1">
-            <h3>Places I've Been</h3>
-            <div class="dynamic" style="position: relative; height: 2979px;">
-                <div class="panel col-md-3 col-sm-6 col-xs-6" style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-if="locationCard.is_explored" ng-repeat="locationCard in locationCards track by $index">
-                    <div class="insp-panel">
-                        <a ng-href="#/location/{{locationCard.place_id}}">
-                            <div style="width:100%">
-                                <img ng-src="{{locationCard.panoramio_image.imageUrl}}" alt="beo" class="img-responsive insp-image">
-                            </div>
-                        </a>
-                        <div class="caption text-center">
-                            <a ng-href="#/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a>
-                            <span class="insp-tags" ng-repeat="tag in locationCard.tags">#{{tag._content}} </span>
-                        </div>
-                    </div>
-                </div>
-
+            <h3>Places</h3>
+            <div class="">
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
+                    <ui-gmap-markers models="allMarkers" coords="'self'" icon="'icon'" options="marker.options" click="onClick()" events="marker.events">
+                    </ui-gmap-markers>
+                </ui-gmap-google-map>
             </div>
         </div>
         <div id="photos" class="" ng-show="profileTabPos == 2">
-            <div class="usr-panel">
-            	<span class="lctn"><i class="fa fa-map-marker"></i> Nanda Devi</span><span class="strs"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
-                <button class="btn v-btn pull-right">
-                View Review
-                </button><br>
-                <span class="brdcrms"> &nbsp; India | Assam | Nanda Devi</span>
-                <p class="rvw">
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-"
-                </p>
-            </div>
-            <!--<div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="image in allTripImages track by $index">
+            <h3>Photos</h3>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="image in allTripImages track by $index">
                 <a ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
                     <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
                 </a>
-            </div>-->
+            </div>
         </div>
     </div>
 </div>
-    <!--<div class="container profilecontent">
-            <div ng-show="isPageLoading && myTrips == undefined" class="content-wrap text-center">
-                <p>No Trips yet?....Lets <a href="#/account/postTrip/">Get Started</a></p>
-                <div class="site-content container">
-                    <div class="col-sm-1">
-                    </div>                
-                </div>
+    <div class="container profilecontent">
+        <div ng-show="isPageLoading && myTrips == undefined" class="content-wrap text-center">
+            <p>No Trips yet?....Lets <a href="#/account/postTrip/">Get Started</a></p>
+            <div class="site-content container">
+                <div class="col-sm-1">
+                </div>                
             </div>
-        </div>-->
+        </div>
+    </div>
+</div>
