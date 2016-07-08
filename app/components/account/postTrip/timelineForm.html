@@ -100,11 +100,11 @@
             </div>
         </div>
         <!--Add first card button #2 #4(hide)-->
-        <div ng-show="postStep == 2" ng-click="addPlace()" class="intro-add-trip">
+        <div ng-show="postStep == 2" ng-click="addNewPlace()" class="intro-add-trip">
             <div class="container">
                 <div class="plus-pulse2">
                 </div>
-                <div class="plus-button-intro" data-toggle="modal" ng-click="placeCount =placeCount + 1" data-target="#addcardModal">
+                <div class="plus-button-intro" >
                     <i class="fa fa-plus-circle" style="color:#f56c36; font-size:50px;"></i>
                 </div>
             </div>
@@ -164,10 +164,10 @@
                                 <a ng-click="editPlace($index)">Edit</a>
                             </div>
                             <!--Add card button -->
-                            <div id="addCardButton" class="add-card-button">
+                            <div ng-click="addNewPlace()" id="addCardButton" class="add-card-button">
                                 <div class="plus-pulse">
                                 </div>
-                                <div class="plus-button" data-toggle="modal" ng-click="placeCount =placeCount + 1" data-target="#addcardModal">
+                                <div class="plus-button" >
                                     <i class="fa fa-plus-circle" style="color:#f56c36; font-size:50px;"></i>
                                 </div>
                             </div>

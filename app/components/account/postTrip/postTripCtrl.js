@@ -201,6 +201,11 @@
                 }
             })
         };
+        $scope.addNewPlace = function() {
+            $scope.placeCount =$scope.placeCount + 1;
+            $scope.places[$scope.placeCount - 1] = new Object()
+            $('#addcardModal').modal('show')
+        }
         $scope.getPlaceIndex = function (pindex) {
             $scope.pIndex = pindex;
         }
