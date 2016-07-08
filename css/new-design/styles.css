@@ -3671,18 +3671,13 @@ clear:both;
   	color: #525354;
 }
 /*viator widget*/
-=======
->>>>>>> master
+
 #tours{background: #0d7898;
     border: 2px solid #0d7898;
     border-radius: 3px;}
 .viator-header {
-<<<<<<< HEAD
     padding: 5px;
 	color:#fff;
-=======
-    padding: 10px 10px 5px;
->>>>>>> master
 }   
 .viator-header p {
     color: #fff;
@@ -3702,11 +3697,7 @@ clear:both;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     background: #fff;
-<<<<<<< HEAD
     padding: 5px 15px;
-=======
-    padding: 10px 15px;
->>>>>>> master
     position: relative;
 }
 .viator-title {
@@ -3724,23 +3715,17 @@ clear:both;
     background-position: center;
 }
 .viator-thumb, .details {
-<<<<<<< HEAD
-height: 60px;
+    height: 60px;
     width: 90px;
     background: center;
     background-size: contain;
     margin-right: 5px;
 	}
-=======
-    max-height: 75px;
-}
->>>>>>> master
 .duration, .via-location {
     color: #9b9b9b;
     font-size: 11px;
 }
 .via-button {
-<<<<<<< HEAD
     -webkit-flex: 1!important;
     flex: 1!important;
     box-sizing: border-box!important;
@@ -3751,18 +3736,6 @@ height: 60px;
     padding: 0!important;
     text-align: center!important;
     width: 100%!important;
-=======
-    -webkit-flex: 1;
-    flex: 1;
-    box-sizing: border-box;
-    font-size: 12px;
-    height: 38px;
-    line-height: 18px;
-    margin: 0 0 8px 0;
-    padding: 0;
-    text-align: center;
-    width: 100%;
->>>>>>> master
 }
 .orange {
     background: #f89406!important;
@@ -3787,11 +3760,12 @@ height: 60px;
     font-weight: bold;
     line-height: 26px;
     padding: 0 18px 0 0;
-<<<<<<< HEAD
 }
 hr{
 	margin-top:10px;
 	margin-bottom:10px;
-=======
->>>>>>> master
+}
+.rv-img {
+    width: 100%;
+    min-height: 720px;
 }
