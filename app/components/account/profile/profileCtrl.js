@@ -98,6 +98,9 @@
             $scope.modalShown = !$scope.modalShown;
             $scope.modalImageUrl = imageUrl;
         };
+        $scope.updateProfileInformation = function(){
+            
+        }
         locationService.getUserLocationCardList($routeParams.userId, function (data) {
             if(data){
                 $scope.locationCards = data;

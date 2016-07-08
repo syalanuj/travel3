@@ -24,7 +24,8 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         updateUserGallery: updateUserGallery,
         getUserGallery: getUserGallery,
         getRelatedTrips: getRelatedTrips,
-        uploadImageOnCloudinary: uploadImageOnCloudinary
+        uploadImageOnCloudinary: uploadImageOnCloudinary,
+        updateProfileInformation: updateProfileInformation
     };
 
     function getTripById(tripId, callback) {
@@ -305,6 +306,19 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
       return  $http.post("https://api.cloudinary.com/v1_1/dsykpguat/image/upload", 'file='+ fileName +'&api_key=383751488485679&file=' + fileUrl +'&timestamp=1315060076&upload_preset=campture2', {
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
               })
+    }
+    function updateProfileInformation(profileInformation, callback){
+        var user = new User();
+        user.id = userId;
+        user.set("profile_information", imageObj);
+        user.save(null, {
+            success: function (parseObject) {
+                callback(parseObject.id);
+            },
+            error: function (gameScore, error) {
+                //alert('Failed to create new object, with error code: ' + error.message);
+            }
+        });
     }
 
     //Internal
