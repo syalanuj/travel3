@@ -87,6 +87,7 @@
         $scope.timelineImages = new Array();
         $scope.map = { center: { latitude: 21.0000, longitude: 78.0000 }, zoom: 4 };
         $scope.tripTabIndex = 0
+        $scope.imageUploadLoader = false
 
         if ($routeParams.tripId) {
             $scope.postStep = 4
@@ -104,6 +105,9 @@
         $scope.updateTripTabPos = function (pos) {
             $scope.tripTabIndex = pos;
         }
+        $scope.showCoverModal = function(){
+            $('#addcoverModal').modal('show')
+        }
         function getExistingTrip() {
             accountService.getTripById($routeParams.tripId, function (data) {
                 $scope.$apply(function () {
@@ -119,6 +123,7 @@
                         $scope.places = $scope.newTrip.visited_places
                         $scope.postStep = 4
                         $scope.placeCount = $scope.newTrip.visited_places.length + 1
+                        $scope.places[$scope.placeCount - 1] = new Object()
                         $('html, body').animate({
                             scrollTop: $("#addCardButton").offset().top
                         }, 500);
@@ -305,6 +310,7 @@
             },
             'eventHandlers': {
                 'sending': function (file, xhr, formData) {
+                    $scope.imageUploadLoader = true
                     formData.append('api_key', '383751488485679'); //374998139757779
                     formData.append('timestamp', Date.now() / 1000 | 0);
                     formData.append('upload_preset', 'campture2');
@@ -351,6 +357,7 @@
                     }
                 },
                 'queuecomplete': function (file, response) {
+                    $scope.imageUploadLoader = false
                     $scope.queuecomplete++;
                     if ($scope.newplaces.length == $scope.queuecomplete) {
                         $scope.imageUploadDone = true;
