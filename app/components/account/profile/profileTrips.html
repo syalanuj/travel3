@@ -93,7 +93,10 @@
                 </div>
             </div>
         </div>
-        <h5>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</h5>
+        <span>About Me</span></br>
+        <textarea ng-model="profileInformation.abloutMe" ng-show="isProfileInformationInEdit && isMyProfile"></textarea>
+        <h5 ng-show="profileInformation.abloutMe && !isProfileInformationInEdit">{{profileInformation.abloutMe}}</h5>
+        <p ng-show="!profileInformation.abloutMe && !isProfileInformationInEdit">Not Updated</p>
     </div>
     <div class="trips_places_photos">
                     <a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp" style="margin-left:0px;"><i class="fa fa-map-o"></i><p>trips</p></button></a>
