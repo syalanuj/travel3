@@ -109,6 +109,7 @@
                 if (data) {
                     $scope.isProfileInformationInEdit = false
                     $scope.profileInformation = JSON.parse(JSON.stringify(Parse.User.current())).profile_information;
+                    $scope.$apply()
                 }
             })
         }
