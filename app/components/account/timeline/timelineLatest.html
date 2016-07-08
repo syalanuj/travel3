@@ -98,7 +98,7 @@
             </div>
         </div>
         <!--Add first card button #2 #4(hide)-->
-        <div ng-show="postStep == 2" ng-click="addPlace()" class="intro-add-trip">
+        <div ng-show="isMyProfile && postStep == 2" ng-click="addPlace()" class="intro-add-trip">
             <div class="container">
                 <div class="plus-pulse2">
                 </div>
@@ -159,10 +159,10 @@
                                 </div>
                             </div>
                             <!--Add card button if current user's trip-->
-                            <div class="add-card-button">
+                            <div ng-show="isMyProfile" class="add-card-button">
                                 <div class="plus-pulse">
                                 </div>
-                                <a ng-href="#/account/postTrip/{{trip.id}}" class="plus-button">
+                                <a  ng-href="#/account/postTrip/{{trip.id}}" class="plus-button">
                                     <i class="fa fa-plus-circle" style="color:#f56c36; font-size:50px;"></i>
                                 </a>
                             </div>
