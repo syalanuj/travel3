@@ -204,12 +204,6 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         var query = new Parse.Query(user);
         query.get(userId, {
             success: function (parseObject) {
-                var userObj = {
-                    id: parseObject.id,
-                    authData: parseObject.get("authData"),
-                    facebook_profile: parseObject.get("facebook_profile")
-                };
-
                 callback(JSON.parse(JSON.stringify(parseObject)));
             },
             error: function (object, error) {
