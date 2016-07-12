@@ -1,4 +1,3 @@
-
 /* CSS Document */
 @font-face {
     font-family: lato-light;
@@ -68,15 +67,12 @@ margin-top: 10px;
 /*input[type="text"]:focus:hover {
   border-bottom: 1px solid #BBB;
 }
-
 input[type="text"]:focus {
   width: 300px;
   z-index: 1;
   border-bottom: 1px solid #BBB;
   cursor: text;
 }
-
-
 input[type="submit"]:hover {
   opacity: 0.8;
 }*/
@@ -1692,7 +1688,6 @@ position: absolute;
 top: 166px;
 width: 100%;
 }
-
 .trip-intro {
    position: absolute;
    width: 100%;
@@ -3771,6 +3766,7 @@ hr{
 }
 .trip-title{
     position: relative;
+
 }
 .timeline-top-section{
     position: relative;
@@ -3798,35 +3794,18 @@ hr{
   top: 50%;
   animation: loader 2s infinite ease;
 }
-
-.loader-inner {
-  vertical-align: top;
-  display: inline-block;
-  width: 100%;
-  background-color: #fff;
-  animation: loader-inner 2s infinite ease-in;
+.timeline-top-section{
+    position: relative;
 }
+.neta{
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-family:lato;
+    background: white;
+    color: black;
+    display: none;
 
-@keyframes loader {
-  0% {
-    transform: rotate(0deg);
-  }
-  
-  25% {
-    transform: rotate(180deg);
-  }
-  
-  50% {
-    transform: rotate(180deg);
-  }
-  
-  75% {
-    transform: rotate(360deg);
-  }
-  
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 @keyframes loader-inner {
@@ -3926,4 +3905,7 @@ hr{
 .mediaz{
 	height:50px;
 	width:50px;
+}
+.timeline-card:hover .neta{
+    display: block;
 }
