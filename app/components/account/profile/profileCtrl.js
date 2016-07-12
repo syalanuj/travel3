@@ -30,7 +30,7 @@
                 $scope.userObj = data;
                 $scope.profileInformation = $scope.userObj.profile_information
                 if ($scope.myUserObj) {
-                    if ($scope.userObj.id == $scope.myUserObj.objectId) {
+                    if ($scope.userObj.objectId == $scope.myUserObj.id) {
                         $scope.isMyProfile = true;
                     }
                 }
