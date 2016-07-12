@@ -22,14 +22,15 @@
         $scope.allTripImages = new Array();
         var bounds = new google.maps.LatLngBounds();
         $scope.profileInformation = new Object();
-        $scope.profileInformation = JSON.parse(JSON.stringify(Parse.User.current())).profile_information;
+        //$scope.profileInformation = JSON.parse(JSON.stringify(Parse.User.current())).profile_information;
         $scope.isProfileInformationInEdit = false;
 
         accountService.getUserById($routeParams.userId, function (data) {
             if (data) {
                 $scope.userObj = data;
+                $scope.profileInformation = $scope.userObj.profile_information
                 if ($scope.myUserObj) {
-                    if ($scope.userObj.id == $scope.myUserObj.id) {
+                    if ($scope.userObj.id == $scope.myUserObj.objectId) {
                         $scope.isMyProfile = true;
                     }
                 }

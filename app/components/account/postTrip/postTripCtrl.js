@@ -51,7 +51,7 @@
     function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, $routeParams, accountService, flickrApiService) {
         //====== Scope Variables==========
         //================================
-
+        $('#addcoverModal').modal('hide')
         $(document).ready(function () {
             $('.remove-location-placeholder').removeAttr('placeholder');
         });
@@ -93,6 +93,7 @@
         $scope.isSuggestedImageDownloading = false;
         $scope.tripPostInProgress = false;
         if ($routeParams.tripId) {
+            $scope.tripId = $routeParams.tripId
             $scope.postStep = 4
             getExistingTrip()
         }
@@ -480,23 +481,41 @@
             $route.reload();
         }
         $scope.saveTripCover = function () {
-            $scope.tripPostInProgress = true;
             if ($scope.newTrip.title) {
+                $scope.tripPostInProgress = true;
                 $scope.newTrip.user = {
                     id: $scope.userObj.objectId,
                     name: $scope.userObj.facebook_profile.name
                 }
-                accountService.postTrip($scope.newTrip, function (data) {
-                    $scope.$apply(function () {
-                        if (data) {
-                            $scope.newTrip = data
-                            $scope.postStep = 2
-                            $('#addcoverModal').modal('hide')
-                            //$location.path('/account/postTrip/' + $scope.newTrip.objectId);
-                        }
-                        $scope.tripPostInProgress = false;
+                if ($scope.isCoverInEdit) {
+                    accountService.updateTrip($scope.newTrip, function (data) {
+                        $scope.$apply(function () {
+                            if (data) {
+                                $scope.newTrip = data
+                                $scope.postStep = 2
+                                $('#addcoverModal').modal('hide')
+                                //setInterval(function () {
+                                //    $location.path('/account/postTrip/' + $scope.newTrip.objectId);
+                                //}, 3000);
+
+                            }
+                            $scope.tripPostInProgress = false;
+                        });
                     });
-                });
+                }
+                else {
+                    accountService.postTrip($scope.newTrip, function (data) {
+                        $scope.$apply(function () {
+                            if (data) {
+                                $('#addcoverModal').modal('hide')
+                                $scope.newTrip = data
+                                $scope.postStep = 2
+                                //$location.path('/account/postTrip/' + $scope.newTrip.objectId);
+                            }
+                            $scope.tripPostInProgress = false;
+                        });
+                    });
+                }
             }
         }
         $scope.closeAddCardModal = function () {
@@ -515,8 +534,8 @@
         }
         $scope.saveVisitedPlace = function () {
             //step 3 click of + button
-            $scope.tripPostInProgress = true;
             if ($scope.places[$scope.placeCount - 1].location) {
+                $scope.tripPostInProgress = true;
                 var selectedImageCount = 0;
                 var pushedImageCount = 0
                 angular.forEach($scope.suggestedImages, function (image, key) {
@@ -556,7 +575,7 @@
                                             });
                                         });
                                     }
-                                    else{
+                                    else {
                                         $scope.tripPostInProgress = false;
                                     }
 
@@ -601,7 +620,7 @@
                     });
                 }
             }
-            else{
+            else {
                 $scope.tripPostInProgress = false;
             }
         }
@@ -625,6 +644,11 @@
         $scope.openCoverModal = function () {
             //$('#addcoverModal').modal('show');
             $scope.postStep = 1
+        }
+        $scope.openCoverModalForEdit = function () {
+            $('#addcoverModal').modal('show');
+            $scope.postStep = 1
+            $scope.isCoverInEdit = true
         }
 
         function getSuggestedImagesFromPanaramio(locationCoordinates, locationName, callback) {

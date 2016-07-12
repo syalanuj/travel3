@@ -210,7 +210,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
                     facebook_profile: parseObject.get("facebook_profile")
                 };
 
-                callback(userObj);
+                callback(JSON.parse(JSON.stringify(parseObject)));
             },
             error: function (object, error) {
                 // The object was not retrieved successfully.
