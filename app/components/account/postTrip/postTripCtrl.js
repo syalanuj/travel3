@@ -292,6 +292,9 @@
         };
         $scope.deleteImage = function (placindex, imageindex) {
             $scope.places[placindex].images.splice(imageindex, 1);
+            if( $scope.places[placindex].images.length == 0){
+                $scope.places[placindex].images.push({ image_url: "http://res.cloudinary.com/dsykpguat/image/upload/v1467840251/il_fullxfull.48721925_zcpqtw.jpg" });
+            }
         }
         $scope.postTrip = function () {
             $scope.isPublishedClicked = true;
