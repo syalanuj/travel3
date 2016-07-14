@@ -108,6 +108,9 @@
         }
         $scope.updateTripTabPos = function (pos) {
             $scope.tripTabIndex = pos;
+            if (pos == 1) {
+                $scope.showMap();
+            }
         }
         $scope.showCoverModal = function () {
             $('#addcoverModal').modal('show')
@@ -317,7 +320,7 @@
             'eventHandlers': {
                 'sending': function (file, xhr, formData) {
                     $scope.imageUploadLoader = true
-                    $sope.isVisitedPlaceImageLoading = true;
+                    $scope.isVisitedPlaceImageLoading = true;
                     formData.append('api_key', '383751488485679'); //374998139757779
                     formData.append('timestamp', Date.now() / 1000 | 0);
                     formData.append('upload_preset', 'campture2');
@@ -364,7 +367,7 @@
                     }
                 },
                 'queuecomplete': function (file, response) {
-                    $sope.isVisitedPlaceImageLoading = false;
+                    $scope.isVisitedPlaceImageLoading = false;
                     $scope.imageUploadLoader = false
                     $scope.queuecomplete++;
                     if ($scope.newplaces.length == $scope.queuecomplete) {
@@ -383,7 +386,8 @@
                             image.isSelected = false
                         }
                     });
-
+                    $scope.isVisitedPlaceImageLoading = false;
+                    $scope.$apply();
                 },
                 'drop': function (file, response) {
 
@@ -518,6 +522,12 @@
                 }
             }
         }
+        $scope.showMap = function () {
+            $scope.displayed = true;
+            uiGmapIsReady.promise().then(function (maps) {
+                google.maps.event.trigger(maps[0].map, 'resize');
+            });
+        }
         $scope.closeAddCardModal = function () {
             if ($scope.editPlaceCount) {
                 $scope.places[$scope.placeCount - 1] = $scope.editPlace
@@ -569,6 +579,7 @@
                                                     $scope.suggestedImages = undefined
                                                     $scope.uploadedImagesWindow = false
                                                     $scope.suggestedImagesWindowVisible = false
+                                                    populatePlacesAndPhotos();
                                                     $('#addcardModal').modal('hide')
                                                 }
                                                 $scope.tripPostInProgress = false;
@@ -596,6 +607,7 @@
                                     $scope.suggestedImages = undefined
                                     $scope.uploadedImagesWindow = false
                                     $scope.suggestedImagesWindowVisible = false
+                                    populatePlacesAndPhotos()
                                     $('#addcardModal').modal('hide')
                                 }
                                 $scope.tripPostInProgress = false;
@@ -650,7 +662,49 @@
             $scope.postStep = 1
             $scope.isCoverInEdit = true
         }
-
+        function populatePlacesAndPhotos() {
+            var markerId = 0;
+            angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                try {
+                    $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
+                    var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
+                    bounds.extend(latlng);
+                    markerId++;
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            });
+            if ($scope.allMarkers[0]) {
+                $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15 };
+                $scope.polylines = [
+                        {
+                            id: 1,
+                            path: $scope.allMarkers,
+                            stroke: {
+                                color: '#f56c35',
+                                weight: 3
+                            },
+                            editable: false,
+                            draggable: false,
+                            geodesic: false,
+                            visible: true,
+                            icons: [{
+                                icon: {
+                                    path: google.maps.SymbolPath.FORWARD_OPEN_ARROW
+                                },
+                                offset: '25px',
+                                repeat: '50px'
+                            }]
+                        }
+                        ];
+            }
+            angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                angular.forEach(place.images, function (image, key) {
+                    $scope.timelineImages.push(image);
+                });
+            });
+        }
         function getSuggestedImagesFromPanaramio(locationCoordinates, locationName, callback) {
             flickrApiService.getPhotosOfLocation(locationCoordinates, locationName).then(
                     function (res) {
