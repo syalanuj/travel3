@@ -557,8 +557,10 @@
         }
         $scope.closeAddCardModal = function () {
             if ($scope.editPlaceCount) {
-                $scope.places[$scope.placeCount - 1] = $scope.editPlace
+                $scope.places[$scope.placeCount - 1] = $scope.editedPlace
                 $scope.placeCount = $scope.editPlaceCount
+                $scope.editedPlace = undefined
+                $scope.editPlaceCount = undefined
 
             }
             else {
@@ -661,7 +663,7 @@
         }
         $scope.editPlace = function (index) {
             $scope.uploadedImagesWindow = true
-            $scope.editPlace = $scope.places[index]
+            $scope.editedPlace = $scope.places[index]
             $scope.editPlaceCount = $scope.placeCount
             $scope.placeCount = index + 1
             $('#addcardModal').modal('show')
