@@ -61,7 +61,19 @@
         //New trip init
         $scope.newTrip = new Object();
         $scope.newTrip.tags = new Array();
-        $scope.newTrip.main_image = { image_url: "http://res.cloudinary.com/dsykpguat/image/upload/v1467832376/tumblr_ngszunWryH1qfirfao1_1280_copy_bpizu5.jpg" };
+        $scope.coverPlaceHolders=[
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-1.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-2.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-3.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468438/timeline-cover-placeholder/placeholder-4.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-5.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468438/timeline-cover-placeholder/placeholder-6.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-7.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-8.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-9.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-10.jpg"   
+        ]
+        $scope.newTrip.main_image = { image_url: $scope.coverPlaceHolders[Math.floor((Math.random() * 10))] };
 
         $scope.userId = "IT41eYwjem";
         $scope.places = new Array();
@@ -97,6 +109,8 @@
             $scope.postStep = 4
             getExistingTrip()
         }
+        //-------------
+        
 
         $scope.isMyTripTimeline = function () {
             if ($scope.newTrip.user.id == userObj.id) {
