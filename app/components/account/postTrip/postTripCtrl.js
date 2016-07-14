@@ -47,6 +47,16 @@
         };
 
     });
+    app.directive('modalOverlay', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr, ngModel) {
+        $(window).unload(function() {
+        $('#addcoverModal').modal('hide')
+        });
+    }
+  }
+});
     app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', '$routeParams', 'AccountService', 'FlickrApiService','uiGmapIsReady', controller]);
     function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, $routeParams, accountService, flickrApiService, uiGmapIsReady) {
         //====== Scope Variables==========
@@ -590,6 +600,7 @@
                                         accountService.updateTrip($scope.newTrip, function (data) {
                                             $scope.$apply(function () {
                                                 if (data) {
+                                                    $('#addcardModal').modal('hide')
                                                     $scope.newTrip = data
                                                     $scope.placeCount = $scope.newTrip.visited_places.length
                                                     $scope.postStep = 4
@@ -597,16 +608,11 @@
                                                     $scope.uploadedImagesWindow = false
                                                     $scope.suggestedImagesWindowVisible = false
                                                     populatePlacesAndPhotos();
-                                                    $('#addcardModal').modal('hide')
                                                 }
                                                 $scope.tripPostInProgress = false;
                                             });
                                         });
                                     }
-                                    else {
-                                        $scope.tripPostInProgress = false;
-                                    }
-
                                 })
                                 image.isSelected = false
                             }
