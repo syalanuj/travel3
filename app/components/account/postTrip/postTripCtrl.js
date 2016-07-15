@@ -47,8 +47,18 @@
         };
 
     });
-    app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', '$routeParams', 'AccountService', 'FlickrApiService', controller]);
-    function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, $routeParams, accountService, flickrApiService) {
+    app.directive('modalOverlay', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr, ngModel) {
+        $(window).unload(function() {
+        $('#addcoverModal').modal('hide')
+        });
+    }
+  }
+});
+    app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', '$routeParams', 'AccountService', 'FlickrApiService','uiGmapIsReady', controller]);
+    function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, $routeParams, accountService, flickrApiService, uiGmapIsReady) {
         //====== Scope Variables==========
         //================================
         $('#addcoverModal').modal('hide')
@@ -61,7 +71,19 @@
         //New trip init
         $scope.newTrip = new Object();
         $scope.newTrip.tags = new Array();
-        $scope.newTrip.main_image = { image_url: "http://res.cloudinary.com/dsykpguat/image/upload/v1467832376/tumblr_ngszunWryH1qfirfao1_1280_copy_bpizu5.jpg" };
+        $scope.coverPlaceHolders=[
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-1.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-2.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-3.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468438/timeline-cover-placeholder/placeholder-4.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-5.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468438/timeline-cover-placeholder/placeholder-6.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-7.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-8.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-9.jpg",
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-10.jpg"   
+        ]
+        $scope.newTrip.main_image = { image_url: $scope.coverPlaceHolders[Math.floor((Math.random() * 10))] };
 
         $scope.userId = "IT41eYwjem";
         $scope.places = new Array();
@@ -97,6 +119,8 @@
             $scope.postStep = 4
             getExistingTrip()
         }
+        //-------------
+        
 
         $scope.isMyTripTimeline = function () {
             if ($scope.newTrip.user.id == userObj.id) {
@@ -108,6 +132,9 @@
         }
         $scope.updateTripTabPos = function (pos) {
             $scope.tripTabIndex = pos;
+            if (pos == 1) {
+                $scope.showMap();
+            }
         }
         $scope.showCoverModal = function () {
             $('#addcoverModal').modal('show')
@@ -275,6 +302,9 @@
         };
         $scope.deleteImage = function (placindex, imageindex) {
             $scope.places[placindex].images.splice(imageindex, 1);
+            if( $scope.places[placindex].images.length == 0){
+                $scope.places[placindex].images.push({ image_url: "http://res.cloudinary.com/dsykpguat/image/upload/v1467840251/il_fullxfull.48721925_zcpqtw.jpg" });
+            }
         }
         $scope.postTrip = function () {
             $scope.isPublishedClicked = true;
@@ -317,7 +347,7 @@
             'eventHandlers': {
                 'sending': function (file, xhr, formData) {
                     $scope.imageUploadLoader = true
-                    $sope.isVisitedPlaceImageLoading = true;
+                    $scope.isVisitedPlaceImageLoading = true;
                     formData.append('api_key', '383751488485679'); //374998139757779
                     formData.append('timestamp', Date.now() / 1000 | 0);
                     formData.append('upload_preset', 'campture2');
@@ -364,7 +394,7 @@
                     }
                 },
                 'queuecomplete': function (file, response) {
-                    $sope.isVisitedPlaceImageLoading = false;
+                    $scope.isVisitedPlaceImageLoading = false;
                     $scope.imageUploadLoader = false
                     $scope.queuecomplete++;
                     if ($scope.newplaces.length == $scope.queuecomplete) {
@@ -383,7 +413,8 @@
                             image.isSelected = false
                         }
                     });
-
+                    $scope.isVisitedPlaceImageLoading = false;
+                    $scope.$apply();
                 },
                 'drop': function (file, response) {
 
@@ -518,10 +549,18 @@
                 }
             }
         }
+        $scope.showMap = function () {
+            $scope.displayed = true;
+            uiGmapIsReady.promise().then(function (maps) {
+                google.maps.event.trigger(maps[0].map, 'resize');
+            });
+        }
         $scope.closeAddCardModal = function () {
             if ($scope.editPlaceCount) {
-                $scope.places[$scope.placeCount - 1] = $scope.editPlace
+                $scope.places[$scope.placeCount - 1] = $scope.editedPlace
                 $scope.placeCount = $scope.editPlaceCount
+                $scope.editedPlace = undefined
+                $scope.editPlaceCount = undefined
 
             }
             else {
@@ -563,22 +602,19 @@
                                         accountService.updateTrip($scope.newTrip, function (data) {
                                             $scope.$apply(function () {
                                                 if (data) {
+                                                    $('#addcardModal').modal('hide')
                                                     $scope.newTrip = data
                                                     $scope.placeCount = $scope.newTrip.visited_places.length
                                                     $scope.postStep = 4
                                                     $scope.suggestedImages = undefined
                                                     $scope.uploadedImagesWindow = false
                                                     $scope.suggestedImagesWindowVisible = false
-                                                    $('#addcardModal').modal('hide')
+                                                    populatePlacesAndPhotos();
                                                 }
                                                 $scope.tripPostInProgress = false;
                                             });
                                         });
                                     }
-                                    else {
-                                        $scope.tripPostInProgress = false;
-                                    }
-
                                 })
                                 image.isSelected = false
                             }
@@ -596,6 +632,7 @@
                                     $scope.suggestedImages = undefined
                                     $scope.uploadedImagesWindow = false
                                     $scope.suggestedImagesWindowVisible = false
+                                    populatePlacesAndPhotos()
                                     $('#addcardModal').modal('hide')
                                 }
                                 $scope.tripPostInProgress = false;
@@ -626,7 +663,7 @@
         }
         $scope.editPlace = function (index) {
             $scope.uploadedImagesWindow = true
-            $scope.editPlace = $scope.places[index]
+            $scope.editedPlace = $scope.places[index]
             $scope.editPlaceCount = $scope.placeCount
             $scope.placeCount = index + 1
             $('#addcardModal').modal('show')
@@ -650,7 +687,49 @@
             $scope.postStep = 1
             $scope.isCoverInEdit = true
         }
-
+        function populatePlacesAndPhotos() {
+            var markerId = 0;
+            angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                try {
+                    $scope.allMarkers.push({ latitude: place.coordinates.latitude, longitude: place.coordinates.longitude, title: place.location, id: markerId })
+                    var latlng = new google.maps.LatLng(place.coordinates.latitude, place.coordinates.longitude);
+                    bounds.extend(latlng);
+                    markerId++;
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            });
+            if ($scope.allMarkers[0]) {
+                $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15 };
+                $scope.polylines = [
+                        {
+                            id: 1,
+                            path: $scope.allMarkers,
+                            stroke: {
+                                color: '#f56c35',
+                                weight: 3
+                            },
+                            editable: false,
+                            draggable: false,
+                            geodesic: false,
+                            visible: true,
+                            icons: [{
+                                icon: {
+                                    path: google.maps.SymbolPath.FORWARD_OPEN_ARROW
+                                },
+                                offset: '25px',
+                                repeat: '50px'
+                            }]
+                        }
+                        ];
+            }
+            angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                angular.forEach(place.images, function (image, key) {
+                    $scope.timelineImages.push(image);
+                });
+            });
+        }
         function getSuggestedImagesFromPanaramio(locationCoordinates, locationName, callback) {
             flickrApiService.getPhotosOfLocation(locationCoordinates, locationName).then(
                     function (res) {

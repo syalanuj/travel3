@@ -107,6 +107,9 @@
 
         $scope.updateTripTabPos = function (pos) {
             $scope.tripTabIndex = pos;
+            if (pos == 1) {
+                $scope.showMap();
+            }
         }
 
         $scope.isMyTripTimeline = function () {
@@ -216,6 +219,12 @@
             $scope.modalImageUrl = imageUrl;
             $scope.modalCaption = caption;
         };
+        $scope.showMap = function () {
+            $scope.displayed = true;
+            uiGmapIsReady.promise().then(function (maps) {
+                google.maps.event.trigger(maps[0].map, 'resize');
+            });
+        }
 
         $scope.searchFilteredFeed = function (searchText) {
             $location.path('/feed?');
