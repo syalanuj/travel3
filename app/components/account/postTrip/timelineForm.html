@@ -7,8 +7,8 @@
             <!--trip heading and disc #2-->
             <div class="trip-title text-center">
                 <p ng-show="!newTrip.title" ng-click="openCoverModal()" class="trip-name">Enter your title here</p>
-                <p ng-click="openCoverModal()" class="trip-name">{{newTrip.title}}</p>
-                <p class="trip-name"><a ng-click="openCoverModal()" class="btn">Edit</a></p>
+                <p class="trip-name">{{newTrip.title}}</p>
+                <p class="trip-name"><a ng-click="openCoverModalForEdit()" class="btn">Edit</a></p>
             </div>
 
             <div class="trip-disc text-center">
@@ -285,7 +285,7 @@ Hit the + button to start!
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button ng-show="tripPostInProgress == false" ng-disabled="isVisitedPlaceImageLoading == true" ng-click="saveVisitedPlace()" type="submit" class="btn btn-default btn-publish"><i class="fa fa-check"></i></button>
+                    <button ng-show="tripPostInProgress == false" ng-disabled="isVisitedPlaceImageLoading == true" ng-click="saveVisitedPlace()" type="button" class="btn btn-default btn-publish"><i class="fa fa-check"></i></button>
                     <svg ng-show="tripPostInProgress == true" style="" z-index="9" ;left 50%; top 50%; position absolute; transform translate(-50%, -50%) matrix(1, 0, 0, 1, 0, 0);" preserveaspectratio="xMidYMid meet" viewbox="0 0 187.3 93.7" height="50px" width="90px">
                         <path d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 				c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" stroke-width="12" fill="none" id="smart-loader" stroke="#01bac2" />
                         <path d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 				c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" stroke-width="12" stroke="#000000" fill="none" opacity="0.05" id="smart-loader-bg" />
@@ -339,8 +339,8 @@ Hit the + button to start!
                         <div class="col-md-12" style="padding-left:24px;">
                             <form class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="labl" control-label tags-label">Tags:</label>
-                                    <div class="">
+                                    <label for="inputEmail3" class="col-sm-2 control-label tags-label">Tags:</label>
+                                    <div class="col-sm-10">
                                         <div ng-mouseover="formatTags()" ng-mouseleave="formatTags()" ng-click="focusTagsInput()" style="height: 100%;" id="tags1453977243690_tagsinput" class="tagsinput  tagsinput-primary">
                                             <span><strong></strong>&nbsp;&nbsp;</span> <span class="tag" class="" ng-repeat="tag in newTrip.tags track by $index"><span>{{tag}}&nbsp;&nbsp;</span><a class="" style="color:#ffffff" ng-click="removeTag($index)">X</a></span> <span ng-cick="{{isAddTag= !isAddTag}}"><i class="fa fa-plus"></i></span>
                                             <input ng-keypress="myFunct($event)" id="tagInput" type="text" ng-model="rawTags" ng-blur="formatTags()"> <!--;saveFormSession();-->
@@ -352,7 +352,7 @@ Hit the + button to start!
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button ng-show="tripPostInProgress == false" ng-disabled="isCoverPhotoUploading" ng-click="saveTripCover()" type="submit" class="btn btn-default btn-publish"><i class="fa fa-check"></i></button>
+                    <button ng-show="tripPostInProgress == false" ng-disabled="isCoverPhotoUploading" ng-click="saveTripCover()" class="btn btn-default btn-publish"><i class="fa fa-check"></i></button>
                     <svg ng-show="tripPostInProgress == true" style="" z-index="9" ;left 50%; top 50%; position absolute; transform translate(-50%, -50%) matrix(1, 0, 0, 1, 0, 0);" preserveaspectratio="xMidYMid meet" viewbox="0 0 187.3 93.7" height="50px" width="90px">
                         <path d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 				c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" stroke-width="12" fill="none" id="smart-loader" stroke="#01bac2" />
                         <path d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 				c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" stroke-width="12" stroke="#000000" fill="none" opacity="0.05" id="smart-loader-bg" />
