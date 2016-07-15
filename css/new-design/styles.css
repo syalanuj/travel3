@@ -23,6 +23,9 @@
 html{
 	overflow-x:hidden; 
 }
+main{
+	padding-top:50px;
+}
 body
 {
 	background-color:#fff;
@@ -3589,7 +3592,7 @@ position: relative;
 .timeline-wrap{
 	position:relative;
 	top:-55px;
-}
+	}
 .card-location{
 	font-weight:bold;
 	font-family:lato;
