@@ -819,8 +819,10 @@ table tr td:last-child {
   margin-right: 5px;
   margin-bottom: 5px;
   overflow: hidden;
-  line-height: 15px;
-  padding: 6px 13px 8px 19px;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:10px;
+  padding-right:10px;
   position: relative;
   vertical-align: middle;
   zoom: 1;
@@ -3484,6 +3486,14 @@ position: relative;
 	padding-left:12px;
 	font-size:18px;
 }
+.write-disc:focus{
+	outline:none;
+}
+.labl{
+	margin-left:20px;
+	font-family:lato-light;
+	color:rgb(177, 175, 175);
+}
 .write-disc::-webkit-input-placeholder{
 	font-size:18px;
 	font-family:lato-light;
@@ -3555,6 +3565,7 @@ position: relative;
 	font-family:lato-light;
 	font-size: 1.5vw;
   	color: rgb(255, 255, 255);
+	word-wrap:break-word;
 }
 .profile-pic{
 	clear:both;
