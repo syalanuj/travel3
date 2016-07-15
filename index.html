@@ -16,6 +16,7 @@
         <link rel="stylesheet" type="text/css" href="css/colorbox.css" media="screen" />
         <link rel="stylesheet" href="css/dropzone.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
         <!--in house-->
         <link rel="stylesheet" href="css/new-design/styles.css">
         <link rel="stylesheet" href="css/new-design/timeline-style.css">
@@ -141,7 +142,7 @@
         
         <main style="min-height: 100vh;" class="top-margin">
             <div ng-view autoscroll="true"></div>
-            <a class="btn btn-campture btn-addtrip" href="#/account/postTrip/"><i class="fa fa-plus"></i></a>
+            <a class="btn btn-campture btn-addtrip" href="#/account/postTrip/">+</a>
         </main>
 
         <footer class="text-center">
@@ -183,6 +184,7 @@
         <script src="js/exif/exif.js"></script>
         <script src="js/linkify/linkified.js"></script>
         <script src="js/linkify/jquery.linkify.min.js"></script>
+        
 
         <!-- Angular Dependencies -->
         <!-- JS-->
@@ -194,6 +196,7 @@
         <!--New Dependencies-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-touch.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+        <script src ="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
         <!--Timeline Dependencies-->
         <!--Map API Dependencies-->
@@ -239,6 +242,7 @@
         <script src="app/components/location/locationCtrl.js"></script>
         <script src="app/components/inspiration/inspirationCtrl.js"></script>
         <script src="app/components/inspirationAdmin/inspirationAdminCtrl.js"></script>
+        
         <!--Main Route-->
         <script src="app.route.js"></script>
         <script src="configMap.js"></script>
