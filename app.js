@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var app = angular.module('campture', ['ui.bootstrap', 'ngRoute', 'ngCookies', 'uiGmapgoogle-maps', 'ngAutocomplete', 'dropzone','ngAnimate','ngTouch','ngStorage']);
+    var app = angular.module('campture', ['ui.bootstrap', 'ngRoute', 'ngCookies', 'uiGmapgoogle-maps', 'ngAutocomplete', 'dropzone','ngAnimate','ngTouch','ngStorage', 'bootstrapLightbox']);
     app.run(['$cookies', '$rootScope', '$window', '$location',
         function ($cookies, $rootScope, $window, $location) {
             $rootScope.isPageHeaderLoaded = false;

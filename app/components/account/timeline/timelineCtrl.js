@@ -5,8 +5,11 @@
     app.filter('escape', function () {
         return window.encodeURIComponent;
     });
-    app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', controller]);
-    function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout) {
+    app.config(function (LightboxProvider) {
+    LightboxProvider.templateUrl = 'app/components/account/timeline/customLightbox.html';
+    });
+    app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', 'Lightbox', controller]);
+    function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout, Lightbox) {
         //====== Scope Variables==========
         //================================
         //linkify
@@ -27,6 +30,7 @@
         $scope.myInterval = 2000;
         $scope.modalCaption = "";
         $scope.timelineImages = new Array();
+        $scope.lightBoxTimelineImages = new Array();
         var bounds = new google.maps.LatLngBounds();
         if ($scope.currentUserObj) {
             $scope.myProfile = $scope.currentUserObj.get("facebook_profile");
@@ -96,9 +100,19 @@
                     }
                     ];
                 }
+                var placeNote = "";
+                var timelineImageIndex = 0;
                 angular.forEach($scope.trip.visited_places, function (place, key) {
+                    placeNote = place.note;
                     angular.forEach(place.images, function (image, key) {
+                        image.timelineIndex = timelineImageIndex
                         $scope.timelineImages.push(image);
+                        $scope.lightBoxTimelineImages.push({
+                            'url': image.image_url,
+                            'caption': placeNote,
+                            'thumbUrl': ''
+                        });
+                        timelineImageIndex++
                     });
                 });
             });
@@ -244,6 +258,10 @@
                 picture: $scope.trip.main_image.image_url
             });
         }
+
+        $scope.openLightboxModal = function (index) {
+            Lightbox.openModal($scope.lightBoxTimelineImages, index);
+        };
 
     };
 })();

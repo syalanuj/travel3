@@ -150,7 +150,7 @@
                                     <div class="card-photo">
                                         <div class="panel">
                                             <uib-carousel interval="" no-wrap="false">
-                                                <uib-slide ng-init="placeImageIndex = $index" class="select-pointer" ng-click="toggleModal(getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_0.9,w_0.9/'),place.note)" ng-repeat="image in place.images track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')-->
+                                                <uib-slide ng-init="placeImageIndex = $index" class="select-pointer" ng-click="openLightboxModal(image.timelineIndex)" ng-repeat="image in place.images track by $index" active="slide.active" index="$index"><!--getCroppedTripImageUrl(image.image_url,'upload/c_fill,h_562,w_850/')-->
                                                     <img ng-src="{{getCroppedTripImageUrl(image.image_url,'upload/c_pad,h_450,w_600/')}}" style="margin:auto;">
                                                 </uib-slide>
                                             </uib-carousel>
