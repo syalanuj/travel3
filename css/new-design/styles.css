@@ -232,7 +232,10 @@ font-size: 14px;
     position: absolute;
     left: 50px;
     margin-left: 4px;
-    /* font-weight: bold; */
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	display:block;
 }
 @media (max-width: 768px){
 	.location-thumb{
@@ -2362,7 +2365,7 @@ transform:rotate(-30deg);
   font-family: lato;
   font-weight: 400;
   letter-spacing: 0.04em;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255)!important;
   text-transform: uppercase;
   background-color: rgb(245, 95, 13);
   border-radius:80px;
@@ -2376,7 +2379,7 @@ transform:rotate(-30deg);
 .get-started-btn:hover{
 	box-shadow: 0px 0px 30px 0px rgba(236, 19, 19, 0.6);
 	 background-color: rgb(245, 95, 13);
-	color:rgb(255,255,255);
+	color:rgb(255,255,255)!important;
 }
 .landing-carousel-text{
 	font-size: 22px;
@@ -2847,9 +2850,6 @@ font-size: 32px;
 .nav-rt a{
   	color: rgb(82, 83, 84);
 }
-.active a{
-	color: rgb(238, 102, 54)!important;
-}
 .location-breadcrumb{
 	background-color:transparent!important;
 }
@@ -3149,8 +3149,7 @@ border-style: solid;
     right: 20px;
     border-radius: 50%;
     font-family: lato;
-    font-size: 35px;
-    padding: 0px;
+    font-size: 26px;
     height: 50px;
     width: 50px;
 	border:none;
@@ -3323,9 +3322,10 @@ position: relative;
 	
 }
 .plus-button-intro{
-	position:relative;
-	top:-50px;
-	cursor:pointer;
+	position: relative;
+    top: -67px;
+    cursor: pointer;
+    left: 7px;
 	}
 .plus-button{
 	position:relative;
@@ -3603,6 +3603,7 @@ position: relative;
 }
 .location-desc{
 	font-family:lato;
+	word-wrap:break-word;
 }
 .tags-label{
 	font-family:lato-light;
@@ -3928,4 +3929,13 @@ hr{
 }
 .timeline-card:hover .neta{
     display: block;
+}
+.exploreWrap .thumbnail{
+	overflow:auto;
+}
+.exploreWrap .thumbnail .caption{
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:0;
+	padding-bottom:5px;
 }
