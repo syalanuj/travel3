@@ -3941,6 +3941,7 @@ hr{
 	padding-top:0;
 	padding-bottom:5px;
 }
-.lightboxwrap:parent{
+.noshadow{
+	box-shadow:none!important;
 	background-color:transparent!important;
 }
