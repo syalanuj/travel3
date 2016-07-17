@@ -3945,3 +3945,10 @@ hr{
 	box-shadow:none!important;
 	background-color:transparent!important;
 }
+.about-me input{
+	border:0;
+}
+.about-me textarea{
+	border:0;
+	width:100%;
+}
