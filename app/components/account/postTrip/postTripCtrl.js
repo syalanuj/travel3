@@ -47,18 +47,21 @@
         };
 
     });
-    app.directive('modalOverlay', function() {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attr, ngModel) {
-        $(window).unload(function() {
-        $('#addcoverModal').modal('hide')
-        });
-    }
-  }
-});
-    app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', '$routeParams', 'AccountService', 'FlickrApiService','uiGmapIsReady', controller]);
-    function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, $routeParams, accountService, flickrApiService, uiGmapIsReady) {
+    app.directive('modalOverlay', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attr, ngModel) {
+                $(window).unload(function () {
+                    $('#addcoverModal').modal('hide')
+                });
+            }
+        }
+    });
+    app.config(function (LightboxProvider) {
+        LightboxProvider.templateUrl = 'app/components/account/timeline/customLightbox.html';
+    });
+    app.controller('PostTripCtrl', ['$scope', '$route', '$cookies', '$rootScope', '$location', '$sessionStorage', '$interval', '$routeParams', 'AccountService', 'FlickrApiService', 'uiGmapIsReady', 'Lightbox', controller]);
+    function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, $routeParams, accountService, flickrApiService, uiGmapIsReady, Lightbox) {
         //====== Scope Variables==========
         //================================
         $('#addcoverModal').modal('hide')
@@ -71,7 +74,7 @@
         //New trip init
         $scope.newTrip = new Object();
         $scope.newTrip.tags = new Array();
-        $scope.coverPlaceHolders=[
+        $scope.coverPlaceHolders = [
         "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-1.jpg",
         "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-2.jpg",
         "http://res.cloudinary.com/dsykpguat/image/upload/v1468468439/timeline-cover-placeholder/placeholder-3.jpg",
@@ -81,7 +84,7 @@
         "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-7.jpg",
         "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-8.jpg",
         "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-9.jpg",
-        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-10.jpg"   
+        "http://res.cloudinary.com/dsykpguat/image/upload/v1468468440/timeline-cover-placeholder/placeholder-10.jpg"
         ]
         $scope.newTrip.main_image = { image_url: $scope.coverPlaceHolders[Math.floor((Math.random() * 10))] };
 
@@ -107,6 +110,7 @@
         $scope.isEditForm = false
         $scope.allMarkers = new Array();
         $scope.timelineImages = new Array();
+        $scope.lightBoxTimelineImages = new Array();
         $scope.map = { center: { latitude: 21.0000, longitude: 78.0000 }, zoom: 4 };
         $scope.tripTabIndex = 0
         $scope.imageUploadLoader = false
@@ -120,7 +124,7 @@
             getExistingTrip()
         }
         //-------------
-        
+
 
         $scope.isMyTripTimeline = function () {
             if ($scope.newTrip.user.id == userObj.id) {
@@ -216,9 +220,19 @@
                         }
                         ];
                     }
+                    var placeNote = "";
+                    var timelineImageIndex = 0;
                     angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                        placeNote = place.note;
                         angular.forEach(place.images, function (image, key) {
+                            image.timelineIndex = timelineImageIndex
                             $scope.timelineImages.push(image);
+                            $scope.lightBoxTimelineImages.push({
+                                'url': image.image_url,
+                                'caption': placeNote,
+                                'thumbUrl': ''
+                            });
+                            timelineImageIndex++
                         });
                     });
                 });
@@ -302,7 +316,7 @@
         };
         $scope.deleteImage = function (placindex, imageindex) {
             $scope.places[placindex].images.splice(imageindex, 1);
-            if( $scope.places[placindex].images.length == 0){
+            if ($scope.places[placindex].images.length == 0) {
                 $scope.places[placindex].images.push({ image_url: "http://res.cloudinary.com/dsykpguat/image/upload/v1467840251/il_fullxfull.48721925_zcpqtw.jpg" });
             }
         }
@@ -524,7 +538,7 @@
                             if (data) {
                                 $scope.newTrip = data
                                 $scope.postStep = 2
-                                $('#addcoverModal').modal('hide')
+                                $location.path('/account/postTrip/' + $scope.newTrip.objectId);
                                 //setInterval(function () {
                                 //    $location.path('/account/postTrip/' + $scope.newTrip.objectId);
                                 //}, 3000);
@@ -538,10 +552,9 @@
                     accountService.postTrip($scope.newTrip, function (data) {
                         $scope.$apply(function () {
                             if (data) {
-                                $('#addcoverModal').modal('hide')
                                 $scope.newTrip = data
                                 $scope.postStep = 2
-                                //$location.path('/account/postTrip/' + $scope.newTrip.objectId);
+                                $location.path('/account/postTrip/' + $scope.newTrip.objectId);
                             }
                             $scope.tripPostInProgress = false;
                         });
@@ -724,12 +737,38 @@
                         }
                         ];
             }
+            var placeNote = "";
+            var timelineImageIndex = 0;
             angular.forEach($scope.newTrip.visited_places, function (place, key) {
+                placeNote = place.note;
                 angular.forEach(place.images, function (image, key) {
+                    image.timelineIndex = timelineImageIndex
                     $scope.timelineImages.push(image);
+                    $scope.lightBoxTimelineImages.push({
+                        'url': image.image_url,
+                        'caption': placeNote,
+                        'thumbUrl': ''
+                    });
+                    timelineImageIndex++
                 });
             });
         }
+        $scope.openLightboxModal = function (index) {
+            Lightbox.openModal($scope.lightBoxTimelineImages, index);
+        };
+
+        $scope.$on('$routeChangeStart', function (scope, next, current) {
+            if (next.$$route.controller != "LandingCtrl") {
+                // Show here for your model, and do what you need**
+            }
+            $scope.postStep = 0;
+            $("#addcardModal").removeClass("modal fade");
+            $("#addcoverModal").removeClass("modal fade");
+            $('#addcardModal').modal('hide');
+            $('#addcoverModal').modal('hide');
+            $('.modal-backdrop').removeClass("modal-backdrop fade in");
+        });
+
         function getSuggestedImagesFromPanaramio(locationCoordinates, locationName, callback) {
             flickrApiService.getPhotosOfLocation(locationCoordinates, locationName).then(
                     function (res) {
