@@ -123,11 +123,11 @@
         </div>
         <!--Timeline places photos #4-->
         <div ng-show="postStep == 4" class="timeline-places-photos">
-            <div class="col-md-12">
+            <div class="col-md-12" style="padding:0;">
                 <div class="col-md-10">
                     <!--Timeline section within the tab-->
                     <div class="timeline">
-                        <div id="guide" ng-show="tripTabIndex == 0" class="col-md-12">
+                        <div id="guide" ng-show="tripTabIndex == 0" class="col-md-12" style="padding:0;">
                             <div ng-repeat="place in trip.visited_places track by $index" class="timeline-card col-md-12">
                                 <div class="col-md-5">
                                     <div class="card-desc">
@@ -146,7 +146,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-7" style="padding:0;">
                                     <div class="card-photo">
                                         <div class="panel">
                                             <uib-carousel interval="" no-wrap="false">

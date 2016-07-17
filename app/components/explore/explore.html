@@ -60,9 +60,9 @@
     </div>
     <div class="row">
         <div ng-show="isSiteLoaded" class="col-sm-6 col-md-3" ng-repeat="trip in allTrips">
-            <div class="thumbnail">
-                <a ng-href="#/account/timeline/{{trip.id}}">
-                    <img class="xpro2" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
+            <div class="thumbnail location-thumb">
+                <a ng-href="#/account/timeline/{{trip.id}}" class="thumb-img">
+                    <img class="xpro2 trip-img" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
                 </a>
                 <div class="caption">
                     <a ng-href="#/account/timeline/{{trip.id}}">
