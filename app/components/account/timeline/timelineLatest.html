@@ -39,9 +39,13 @@
                                                     <!--<div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href="" ng-click="scrollToCommentSection()"><i class="fa fa-comments"><sup><span class="fb-comments-count" data-href="{{pageUrl}}"></span></sup></i></a></div>
                                                                                                         <div class="col-md-3 col-xs-4 col-sm-4 text-center"><a href=""><i class="fa fa-share-alt"><sup></sup></i></a></div>-->
                         <!--<div class="fb-share-button" data-href="{{pageUrl}}" data-layout="icon"></div>-->
-                        <div style="cursor: pointer" ng-class="{likeDisabled: isLikeDisabled}" class="timeline-like-button" ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled">
-                            <em ng-class="{&#39;fa fa-heart&#39;: likeId != undefined, &#39;fa fa-heart-o&#39;: likeId == undefined}" class="fa fa-heart">&nbsp; </em><span>like &nbsp; </span><span class="likes-quantity"><!--{{trip.total_likes}}-->450</span>
-                        </div>
+                        <a class="like-button">
+      								<span class="like-icon">
+        								<div class="heart-animation-1"></div>
+        								<div class="heart-animation-2"></div>
+      								</span>
+      						Like &nbsp; | 200
+    								</a>
                     </div>
                     <div class="col-md-2 hidden-sm hidden-xs">
                         <div class="dropup">
@@ -207,10 +211,13 @@
                         <div class="row">
                             <div class="col-md-offset-3 col-sm-offset-4">
 
-                                <div style="cursor: pointer" ng-class="{likeDisabled: isLikeDisabled}" class="timeline-like-button margin-auto" ng-click="tripLikeUnlike();isLikeDisabled = !isLikeDisabled">
-                                    <em ng-class="{'fa fa-heart': likeId != undefined, 'fa fa-heart-o': likeId == undefined}" class="fa fa-heart">&nbsp; </em><span>like &nbsp; </span><span class="likes-quantity">{{trip.total_likes}}</span>
-
-                                </div>
+                                <a class="like-button">
+      								<span class="like-icon">
+        								<div class="heart-animation-1"></div>
+        								<div class="heart-animation-2"></div>
+      								</span>
+      						Like &nbsp; | &nbsp; 200
+    								</a>
                             </div>
                         </div>
                         <div class="row">
@@ -280,4 +287,17 @@
     }
     
 </style>
+<script>
+$('a.like-button').on('click', function() {
+  $(this).toggleClass('liked');
+});
+</script>
+<!--<script>
+  $(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+    if (scroll >= $(".timeline-top-section").height() - 46 ) {
+        $(".timeline-thirdheader-two").addClass(".header-stat");
+        $(".timeline-thirdheader-two").removeClass("bottom-zero");
+        }
+</script>-->
 
