@@ -99,10 +99,7 @@
         <h5>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</h5>
     </div>
     <div class="trips_places_photos">
-                    <!--<a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp" style="margin-left:0px;"><i class="fa fa-map-o"></i><p>trips</p></button></a>
-                    <a data-toggle="pill" href="" ng-click="updateprofileTabPos(1)"><button type="button" class="btn tpp"><i class="fa fa-map-marker"></i><p>places</p></button></a>
-                    <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-camera-retro"></i><p>photos</p></button></a>-->
-        <a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp"><i class="fa fa-plus"></i><p>Bucket List</p></button></a>
+                   <a data-toggle="pill" href="" ng-click="updateprofileTabPos(0)"><button type="button" class="btn tpp"><i class="fa fa-plus"></i><p>Bucket List</p></button></a>
         <a data-toggle="pill" href="" ng-click="updateprofileTabPos(1)"><button type="button" class="btn tpp"><i class="fa fa-check"></i><p>Places I've Been</p></button></a>
         <a data-toggle="pill" href="" ng-click="updateprofileTabPos(2)"><button type="button" class="btn tpp"><i class="fa fa-pencil"></i><p>Reviews/Tips</p></button></a>
     </div>
@@ -125,7 +122,7 @@
         <div id="trips" class="" ng-show="profileTabPos == 0">
             <h3>Bucket List</h3>
             <div class="dynamic" style="position: relative; height: 2979px;">
-                <div class="panel col-md-3 col-sm-6 col-xs-6" style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-if="!locationCard.is_explored" ng-repeat="locationCard in locationCards track by $index">
+                <div class="panel col-md-4 col-sm-6 col-xs-6" style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-if="!locationCard.is_explored" ng-repeat="locationCard in locationCards track by $index">
                     <div class="insp-panel">
                         <a ng-href="#/location/{{locationCard.place_id}}">
                             <div style="width:100%">
@@ -144,7 +141,7 @@
         <div id="places" class="" ng-show="profileTabPos == 1">
             <h3>Places I've Been</h3>
             <div class="dynamic" style="position: relative; height: 2979px;">
-                <div class="panel col-md-3 col-sm-6 col-xs-6" style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-if="locationCard.is_explored" ng-repeat="locationCard in locationCards track by $index">
+                <div class="panel col-md-4 col-sm-6 col-xs-6" style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-if="locationCard.is_explored" ng-repeat="locationCard in locationCards track by $index">
                     <div class="insp-panel">
                         <a ng-href="#/location/{{locationCard.place_id}}">
                             <div style="width:100%">
