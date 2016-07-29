@@ -22,7 +22,8 @@
 
 html{
     overflow-x:hidden;
-    font-size: 14px;    
+    font-size: 14px;
+    font-family: lato;
 }
 @media screen and (min-width: 500px){
     html{
@@ -3182,7 +3183,7 @@ background-size:contain;
     padding-left:10px;
     padding-right:10px;
     margin-bottom:30px;
-    max-width:262.5px;
+    max-width:262.5px;  
     margin-left:auto;
     margin-right:auto;
     border-style: solid;
@@ -3341,13 +3342,12 @@ background-size:contain;
 }
 .plus-button-intro{
     border-radius: 50%;
-    position: relative;
-    top: -50px;
+    position: absolute;
     cursor: pointer;
-    left: -2px;
     width: 50px;
     height: 50px;
-    background: white;
+    background: #f56c36;
+    top: 2px;
 }
 .plus-button{
     position:relative;
@@ -3368,15 +3368,17 @@ background-size:contain;
 }
 .plus-pulse2{
     border: 4px solid #f56c36;
-    position:relative;
-    border-radius:50%;
-    -webkit-border-radius:50%;
+    position: relative;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
     -webkit-animation: pulsate 1s ease-out;
-    -webkit-animation-iteration-count: infinite; 
-    height:50px;
-    width:50px;
-    left:-4px;
-}
+    -webkit-animation-iteration-count: infinite;
+    height: 70px;
+    width: 70px;
+    bottom: -60px;
+    left: -11px;
+    top: -8px;
+   }
 
 @-webkit-keyframes pulsate {
     0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
@@ -4286,4 +4288,17 @@ hr{
 }
 .bottom-zero{
     bottom:42px;
+}
+.btn-publish-done{
+    background-color: #f56c36;
+    color: white;
+    border-color: black;
+}
+.lightbox-image-caption{
+    font-size: .5rem!important;
+    top: 85%!important;
+    
+}
+.lightbox-image-caption span{
+    bottom: 0;
 }
