@@ -65,38 +65,15 @@ Incredible adventures created by people like you.
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
-                        <div class="item active">
+                        <div class="item" ng-class="{ 'active': $index == 1 }" ng-repeat="categoryTagRow in categoryTagRowArray track by $index">
                             <div class="row">
-                                <div class="col-md-3 col-xs-6" ng-repeat="categoryTag in categoryTagsRow1">
+                                <div class="col-md-3 col-xs-6" ng-repeat="categoryTag in categoryTagRow">
                                     <a ng-href="#/feed/{{categoryTag.tag}}" class="thumbnail">
                                         <img ng-src="{{categoryTag.image_url}}" alt="image">
                                     </a>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-3 col-xs-6" ng-repeat="categoryTag in categoryTagsRow2">
-                                    <a ng-href="#/feed/{{categoryTag.tag}}" class="thumbnail">
-                                        <img ng-src="{{categoryTag.image_url}}" alt="image">
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-3 col-xs-6" ng-repeat="categoryTag in categoryTagsRow3">
-                                    <a ng-href="#/feed/{{categoryTag.tag}}" class="thumbnail">
-                                        <img ng-src="{{categoryTag.image_url}}" alt="image">
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-
                     </div>
 
                     <!-- Left and right controls -->

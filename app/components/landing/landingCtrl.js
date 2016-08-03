@@ -16,24 +16,15 @@
         $scope.query = {};
         $scope.queryBy = '$';
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
-        //category tags
-        $scope.categoryTagsRow1 = [
-        { tag: 'adventure', image_url: '/img/categoryTags/category_01_adventure.jpg' },
-        { tag: 'trekking', image_url: '/img/categoryTags/category_02_trekking.jpg' },
-        { tag: 'hiking', image_url: '/img/categoryTags/category_03_hiking.jpg' },
-        { tag: 'photography', image_url: '/img/categoryTags/category_04_photography.jpg'}
-        ];
-        $scope.categoryTagsRow2 = [
-        { tag: 'tips', image_url: '/img/categoryTags/category_05_tips.jpg' },
-        { tag: 'how to', image_url: '/img/categoryTags/category_06_how_to.jpg' },
-        { tag: 'nature', image_url: '/img/categoryTags/category_07_nature.jpg' },
-        { tag: 'rafting', image_url: '/img/categoryTags/category_08_rafting.jpg' }
-        ];
-        $scope.categoryTagsRow3 = [
-        { tag: 'roadtrip', image_url: '/img/categoryTags/category_09_roadtrip.jpg' },
-        { tag: 'pilgrimage', image_url: '/img/categoryTags/category_10_pilgrimage.jpg' }
-        ];
-
+        
+        accountService.getTripCategories(function (data) {
+            if (data) {
+                $scope.categoryTagRowArray = new Array()
+                while (data.length > 0) {
+                    $scope.categoryTagRowArray.push(data.splice(0, 4));
+                }
+            }
+        })
         accountService.getAllFeaturedTrips(function (data) {
             $scope.$apply(function () {
                 $scope.allTrips = data;
