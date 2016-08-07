@@ -262,6 +262,16 @@
         $scope.openLightboxModal = function (index) {
             Lightbox.openModal($scope.lightBoxTimelineImages, index);
         };
-
+        $scope.addToBookmark = function(){
+            var tripObj = {
+                trip_pointer: $routeParams.tripId,
+                user_pointer: $scope.currentUserObj.id
+            }
+            tripService.addToBookmark(tripObj, function(data){
+                if(data){
+                    
+                }
+            })
+        }
     };
 })();
