@@ -86,9 +86,9 @@
                                 </span>
                             </div><!-- /input-group -->
                             <li><a ng-show="isPageHeaderLoaded && userObj == undefined" href="" class="header-elements loginwithfacebook" ng-click="loginWithFacebook()"><i class="fa fa-facebook-square"></i> <span>Login with Facebook</span></a></li>
-                            <li><a ng-if="isPageHeaderLoaded && userObj" href="#/account/postTrip//" class="header-elements add_trip"><i class="fa fa-pencil-square-o" style="color:#FFFFFF;">&nbsp;</i><span>Add Trip</span></a></li>
+                            <!--<li><a ng-if="isPageHeaderLoaded && userObj" href="#/account/postTrip//" class="header-elements add_trip"><i class="fa fa-pencil-square-o" style="color:#FFFFFF;">&nbsp;</i><span>Add Trip</span></a></li>-->
                             <li><a href="" ng-if="isPageHeaderLoaded && userObj" ng-click="logout()" class="header-elements power_switch navbar-link" style="color: color: rgb(106, 106, 106)!important;"><i class="fa fa-power-off"></i></a></li>
-                            <li><a ng-if="isPageHeaderLoaded && userObj" href="" ng-href="#/account/profile/{{userObj.objectId}}" class="header-elements paddingnone"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle profile_topleft"></a></li>
+                            <li><div ng-if="isPageHeaderLoaded && userObj" href=""  class="header-elements paddingnone"><img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle profile_topleft"></div></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -144,7 +144,7 @@
         
         <main style="min-height: 100vh;" class="top-margin">
             <div ng-view autoscroll="true"></div>
-            <a class="btn btn-campture btn-addtrip" href="#/account/postTrip/"><i class="fa fa-pencil"></i></a>
+            <!--<a class="btn btn-campture btn-addtrip" href="#/account/postTrip/"><i class="fa fa-pencil"></i></a>-->
         </main>
 
         <footer class="text-center">
