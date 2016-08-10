@@ -2143,13 +2143,15 @@ width: 1410px;
 @media (min-width: 768px){
     .media-buttons-margin{
         margin-top:20px;	
-        margin-left: 24.333333%;
+/*        margin-left: 24.333333%;*/
     }
 }
 @media (max-width: 767px){
     .media-buttons-margin{
+/*
         margin-left:auto;
         margin-right:auto;
+*/
         padding-top:15px;
     }
 }
