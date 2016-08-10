@@ -25,7 +25,9 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         getUserGallery: getUserGallery,
         getRelatedTrips: getRelatedTrips,
         uploadImageOnCloudinary: uploadImageOnCloudinary,
-        updateProfileInformation: updateProfileInformation
+        updateProfileInformation: updateProfileInformation,
+        getTripCategories: getTripCategories,
+        getHeaderTopTags: getHeaderTopTags
     };
 
     function getTripById(tripId, callback) {
@@ -76,22 +78,24 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
 
     function updateTrip(tripDetails, callback) {
         var trips = new Trips();
-        if(tripDetails.id){
+        if (tripDetails.id) {
             trips.id = tripDetails.id;
         }
-        else if(tripDetails.objectId){
+        else if (tripDetails.objectId) {
             trips.id = tripDetails.objectId;
         }
-        
+        var locationKeywords = new Array();
+        angular.forEach(tripDetails.visited_places, function (place, key) { angular.forEach(place.locationDetails.address_components, function (address, key) { angular.forEach(address.long_name.split(" "), function (name, key) { locationKeywords.push(name) }) }) })
         trips.set("title", tripDetails.title);
         trips.set("introduction", tripDetails.introduction);
         trips.set("main_image", tripDetails.main_image);
         trips.set("visited_places", tripDetails.visited_places);
         trips.set("tags", tripDetails.tags);
-        if(tripDetails.user && tripDetails.user.id){
+        trips.set("location_keywords", locationKeywords);
+        if (tripDetails.user && tripDetails.user.id) {
             userId = tripDetails.user.id
         }
-        if(tripDetails.user_pointer && tripDetails.user_pointer.objectId){
+        if (tripDetails.user_pointer && tripDetails.user_pointer.objectId) {
             userId = tripDetails.user_pointer.objectId
         }
         trips.set("user_pointer", {
@@ -302,12 +306,12 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     };
-    function uploadImageOnCloudinary(fileUrl,fileName){
-      return  $http.post("https://api.cloudinary.com/v1_1/dsykpguat/image/upload", 'file='+ fileName +'&api_key=383751488485679&file=' + fileUrl +'&timestamp=1315060076&upload_preset=campture2', {
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-              })
+    function uploadImageOnCloudinary(fileUrl, fileName) {
+        return $http.post("https://api.cloudinary.com/v1_1/dsykpguat/image/upload", 'file=' + fileName + '&api_key=383751488485679&file=' + fileUrl + '&timestamp=1315060076&upload_preset=campture2', {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+        })
     }
-    function updateProfileInformation(userId,profileInformation, callback){
+    function updateProfileInformation(userId, profileInformation, callback) {
         var user = new User();
         user.id = userId;
         user.set("profile_information", profileInformation);
@@ -317,6 +321,35 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             },
             error: function (gameScore, error) {
                 //alert('Failed to create new object, with error code: ' + error.message);
+            }
+        });
+    }
+    function getTripCategories(callback) {
+        var TripCategories = Parse.Object.extend("Trip_Categories");
+        var tripCategories = new TripCategories();
+        var allTrips = new Array();
+        var query = new Parse.Query(tripCategories);
+
+        query.find({
+            success: function (parseObject) {
+                callback(JSON.parse(JSON.stringify(parseObject)));
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    }
+    function getHeaderTopTags(callback) {
+        var HeaderTags = Parse.Object.extend("Header_Tags");
+        var headerTags = new HeaderTags();
+        var query = new Parse.Query(headerTags);
+
+        query.find({
+            success: function (parseObject) {
+                callback(JSON.parse(JSON.stringify(parseObject)));
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
             }
         });
     }

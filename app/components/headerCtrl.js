@@ -11,17 +11,22 @@
         //$rootScope.topStates;
         //$rootScope.activities;
 
-        $scope.topTags = [
-        { tag: 'rafting', image_url: '/img/tags/rafting.png' },
-        { tag: 'skiing', image_url: '/img/tags/skiing.png' },
-        { tag: 'trekking', image_url: '/img/tags/trekking2.png' },
-        { tag: 'hiking', image_url: '/img/tags/hiking.png'}];
+        //$scope.topTags = [
+        //{ tag: 'rafting', image_url: '/img/tags/rafting.png' },
+        //{ tag: 'skiing', image_url: '/img/tags/skiing.png' },
+        //{ tag: 'trekking', image_url: '/img/tags/trekking2.png' },
+        //{ tag: 'hiking', image_url: '/img/tags/hiking.png'}];
         $scope.userObj = JSON.parse(JSON.stringify(Parse.User.current()));
         $scope.showTags = false;
         $rootScope.query = {};
         $rootScope.queryBy = '$';
         $rootScope.isPageHeaderLoaded = true;
         $(".header-elements").css("display", "k");
+        accountService.getHeaderTopTags(function (data) {
+            if (data) {
+                $scope.topTags = data
+            }
+        });
         $rootScope.loginWithFacebook = function () {
             if (!$rootScope.fbInit) return;
             if (!$rootScope.fbInit) return;

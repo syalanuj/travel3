@@ -6,7 +6,7 @@ app.factory('TripService', ['$http', function ($http) {
     var Likes = Parse.Object.extend("Likes");
     var Tag = Parse.Object.extend("Tag");
     var TripLikes = Parse.Object.extend("Trip_Likes");
-    
+
     var user = new User();
     var trips = new Trips();
     var comments = new Comments();
@@ -18,7 +18,8 @@ app.factory('TripService', ['$http', function ($http) {
         getTripComments: getTripComments,
         tripLike: tripLike,
         tripUnlike: tripUnlike,
-        isTripLikedByUser: isTripLikedByUser
+        isTripLikedByUser: isTripLikedByUser,
+        addToBookmark: addToBookmark
     };
 
     function postComment(myComment, callback) {
@@ -139,6 +140,30 @@ app.factory('TripService', ['$http', function ($http) {
             },
             error: function (object, error) {
                 // The object was not retrieved successfully.
+            }
+        });
+    }
+
+    function addToBookmark(tripObj, callback) {
+        var TripBookmark = Parse.Object.extend("Trip_Bookmark");
+        var tripBookmark = new TripBookmark();
+        
+        tripBookmark.set("trip_pointer", {
+            __type: "Pointer",
+            className: "Trips",
+            objectId: tripObj.trip_pointer
+        });
+        tripBookmark.set("user_pointer", {
+            __type: "Pointer",
+            className: "_User",
+            objectId: tripObj.user_pointer
+        });
+        tripBookmark.save(null, {
+            success: function (parseObject) {
+                callback(JSON.parse(JSON.stringify(parseObject)))
+            },
+            error: function (gameScore, error) {
+                
             }
         });
     }
