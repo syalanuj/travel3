@@ -2,9 +2,9 @@
                 <div class="container text-center">
                     <h4>Welcome to Campture</h4>
                     <p>Showcase and Discover experiences</p>
-                    <a  ng-href="#/howTo/" class="btn btn-primary btn-lg round"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
+                    <a  ng-href="/howTo/" class="btn btn-primary btn-lg round"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
                     <!--<a ng-show="userObj == undefined" class="btn btn-primary btn-lg round" data-target="#facebook-login-modal" data-toggle="modal"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
-                    <a ng-show="userObj" ng-href="#/account/postTrip" class="btn btn-primary btn-lg round"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
+                    <a ng-show="userObj" ng-href="/account/postTrip" class="btn btn-primary btn-lg round"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
                 </div>
             </div>!-->
 <div id="carousel" class="carousel slide carousel-fade jumbotron-index" data-ride="carousel">
@@ -50,7 +50,7 @@ Incredible adventures created by people like you.
         </h2>
         <h4>Our mission is to discover adventures, whether just down the street or across the globe,<br>by inspiring people to explore and share their experiences.</h4>
         <div class="text-center">
-            <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-lg hidden-md hidden-sm">Get Started</a>
+            <a ng-show="userObj" ng-href="/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-lg hidden-md hidden-sm">Get Started</a>
             <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg hidden-lg hidden-md hidden-sm" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
         </div>
 
@@ -68,7 +68,7 @@ Incredible adventures created by people like you.
                         <div class="item" ng-class="{ 'active': $index == 1 }" ng-repeat="categoryTagRow in categoryTagRowArray track by $index">
                             <div class="row">
                                 <div class="col-md-3 col-xs-6" ng-repeat="categoryTag in categoryTagRow">
-                                    <a ng-href="#/feed/{{categoryTag.tag}}" class="thumbnail">
+                                    <a ng-href="/feed/{{categoryTag.tag}}" class="thumbnail">
                                         <img ng-src="{{categoryTag.image_url}}" alt="image">
                                     </a>
                                 </div>
@@ -110,17 +110,17 @@ Incredible adventures created by people like you.
             <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
                 <div class="thumbnail location-thumb">
                 	<div class="thumb-img">
-                    <a ng-href="#/account/timeline/{{trip.id}}">
+                    <a ng-href="/account/timeline/{{trip.id}}">
                         <img class="ig-lofi trip-img" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
                     </a>
                     </div>
                     <div class="caption">
-                        <a ng-href="#/account/timeline/{{trip.id}}">
+                        <a ng-href="/account/timeline/{{trip.id}}">
                             <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
                         </a>
                       
-                        <span class=""><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle pro-pic"></a></span>
-                        <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                        <span class=""><a ng-href="/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle pro-pic"></a></span>
+                        <span class="user_name_thumbnail"><a ng-href="/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                         <!--<span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>-->
                         <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"><sup>&nbsp; {{trip.total_likes}}</sup></em></span>
 
@@ -131,14 +131,14 @@ Incredible adventures created by people like you.
             </div>
         </div>
         <div class="row">
-            <a href="#/explore" class="btn btn-lg btn-default">Explore More</a>
+            <a href="/explore" class="btn btn-lg btn-default">Explore More</a>
         </div>
     </div>
     <div class="jumbotron explorer-jumbotron">
         <div class="container">
             <h2>The Campture Explorer Program</h2>
             <p>Explorers inspire us to get outside, they are local experts who share their favourite adventures with the community. Some are professionals, but most are everyday folks: lawyers, doctors, students and parents. They are good people and incredible human beings.</p>
-            <a href="#/explorerProgram" class="btn btn-join-now btn-lg">Join Now</a>
+            <a href="/explorerProgram" class="btn btn-join-now btn-lg">Join Now</a>
         </div>
     </div>
     <div class="asfeatured text-center">

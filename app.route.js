@@ -1,11 +1,18 @@
 (function () {
     'use strict';
     var app = angular.module('campture');
+    app.run(['$rootScope', '$route', function($rootScope, $route) {
+        $rootScope.$on('$routeChangeSuccess', function() {
+            document.title = $route.current.title;
+        });
+    }]);
+    
     app.config(function ($httpProvider, $routeProvider, $locationProvider) {
         // attach our auth interceptor to the http requests
         //$httpProvider.interceptors.push('AuthInterceptor');
         $routeProvider
     .when('/', {
+        title: 'Landing',
         controller: 'LandingCtrl',
         templateUrl: 'app/components/landing/landing.html'
     })
@@ -41,16 +48,8 @@
             controller: 'AccountCtrl',
             templateUrl: 'app/components/account/newsFeed.html'
         })
-        .when('/account/profile/:userId', {
-            controller: 'ProfileCtrl',
-            templateUrl: 'app/components/account/profile/profileTrips.html'
-        })
         .when('/account/signIn/', {
             templateUrl: 'app/components/account/signIn.html'
-        })
-        .when('/account/editTrip/:tripId', {
-             controller: 'EditTripCtrl',
-            templateUrl: 'app/components/account/editTrip/editTrip.html'
         })
         .when('/feed/:tag?/:searchText?',{
             controller: 'FilteredFeedCtrl',
@@ -96,10 +95,6 @@
             controller: 'InspirationAdminCtrl',
             templateUrl:'app/components/inspirationAdmin/inspirationAdmin.html'
         })
-        .when('/account/postTrip/:tripId?/',{
-            controller: 'PostTripCtrl',
-            templateUrl:'app/components/account/postTrip/timelineForm.html'
-        })
         .when('/account/timeline/:tripId', {
             controller: 'TimelineCtrl',
             templateUrl: 'app/components/account/timeline/timelineLatest.html'
@@ -112,7 +107,8 @@
             templateUrl:'app/components/error/errorPage.html'
         })
         .otherwise({redirectTo : '/pageNotFound/'});
-
+        $locationProvider.html5Mode(true);
     });
+    
 
 })();

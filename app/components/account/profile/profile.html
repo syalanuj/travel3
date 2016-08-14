@@ -124,13 +124,13 @@
             <div class="dynamic" style="position: relative; height: 2979px;">
                 <div class="panel col-md-4 col-sm-6 col-xs-6" style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-if="!locationCard.is_explored" ng-repeat="locationCard in locationCards track by $index">
                     <div class="insp-panel">
-                        <a ng-href="#/location/{{locationCard.place_id}}">
+                        <a ng-href="/location/{{locationCard.place_id}}">
                             <div style="width:100%">
                                 <img ng-src="{{locationCard.panoramio_image.imageUrl}}" alt="beo" class="img-responsive insp-image">
                             </div>
                         </a>
                         <div class="caption text-center">
-                            <a ng-href="#/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a>
+                            <a ng-href="/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a>
                             <span class="insp-tags" ng-repeat="tag in locationCard.tags">#{{tag}} </span>
                         </div>
                     </div>
@@ -143,13 +143,13 @@
             <div class="dynamic" style="position: relative; height: 2979px;">
                 <div class="panel col-md-4 col-sm-6 col-xs-6" style="position: absolute; left: 0px; top: 0px; padding-left:10px; padding-right:10px;" ng-if="locationCard.is_explored" ng-repeat="locationCard in locationCards track by $index">
                     <div class="insp-panel">
-                        <a ng-href="#/location/{{locationCard.place_id}}">
+                        <a ng-href="/location/{{locationCard.place_id}}">
                             <div style="width:100%">
                                 <img ng-src="{{locationCard.panoramio_image.imageUrl}}" alt="beo" class="img-responsive insp-image">
                             </div>
                         </a>
                         <div class="caption text-center">
-                            <a ng-href="#/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a>
+                            <a ng-href="/location/{{locationCard.place_id}}"><p>{{locationCard.name}}</p></a>
                             <span class="insp-tags" ng-repeat="tag in locationCard.tags">#{{tag._content}} </span>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
 </div>
     <!--<div class="container profilecontent">
             <div ng-show="isPageLoading && myTrips == undefined" class="content-wrap text-center">
-                <p>No Trips yet?....Lets <a href="#/account/postTrip/">Get Started</a></p>
+                <p>No Trips yet?....Lets <a href="/account/postTrip/">Get Started</a></p>
                 <div class="site-content container">
                     <div class="col-sm-1">
                     </div>                

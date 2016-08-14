@@ -187,7 +187,7 @@
                                                                 <span class="cardRating"><star-rating ng-model="locationReview.rating" readonly="true"></star-rating></span>
                                                                 <div class="title">
                                             By
-                                                                    <a ng-href="#/account/profile/{{locationReview.user_pointer.objectId}}"><b style="font-size: 14px!important; font-family: lato!important; color: rgb(106, 106, 106);!important;">{{locationReview.user_pointer.facebook_profile.name}}</b></a>
+                                                                    <a ng-href="/account/profile/{{locationReview.user_pointer.objectId}}"><b style="font-size: 14px!important; font-family: lato!important; color: rgb(106, 106, 106);!important;">{{locationReview.user_pointer.facebook_profile.name}}</b></a>
                                                                     <span class="text-muted time">{{locationReview.timeSincePostUpdated}} minute ago</span>
 
                                                                 </div>
@@ -248,7 +248,7 @@
                                                         </div>
                                                         <div class="pull-left meta">
                                                             <div class="title h5">
-                                                                <a ng-href="#/account/profile/{{locationTip.user_pointer.objectId}}"><b>{{locationTip.user_pointer.facebook_profile.name}}</b></a>
+                                                                <a ng-href="/account/profile/{{locationTip.user_pointer.objectId}}"><b>{{locationTip.user_pointer.facebook_profile.name}}</b></a>
 
                                                             </div>
                                                             <h6 class="text-muted time">{{locationTip.timeSincePostUpdated}} minute ago</h6>
