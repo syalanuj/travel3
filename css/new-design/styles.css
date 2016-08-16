@@ -2515,7 +2515,13 @@ width: 1410px;
 .explorer-jumbotron{
     background-image:url(../images/explorer-hero-2.jpg);
     height:600px;
+    position: relative;
+    background: center center;
+    width: 100%;
     margin-bottom:0;
+    background-size: cover;
+    overflow: hidden;
+    padding: 15px;
 }
 .explorer-jumbotron h2{
     font-size: 36px;
@@ -2525,7 +2531,8 @@ width: 1410px;
 }
 .explorer-jumbotron p{
     font-size: 22px;
-
+    color: #FFFFFF;
+    margin-bottom: 15px;
     letter-spacing: 1px;
 }
 .more-pl-btn{
@@ -4303,4 +4310,9 @@ hr{
 }
 .Itinerary a{
     color: #6a6a6a;
+}
+.marketing-banner{
+    width: 100%;
+    background: aqua;
+    height: 400px;
 }
