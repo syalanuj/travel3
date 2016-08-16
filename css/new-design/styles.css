@@ -1190,12 +1190,12 @@ textarea {
 }
 .tpp{
     /*border-color: rgb(222, 222, 222);*/
-/*
+    /*
     background-color: rgb(252, 252, 252);
     border-style: solid;
     border-width:1px;
     font-size:.7rem;
-*/
+    */
     font-family:lato;
     color: rgb(117, 117, 117);
     overflow:hidden;
@@ -2143,13 +2143,15 @@ width: 1410px;
 @media (min-width: 768px){
     .media-buttons-margin{
         margin-top:20px;	
-        margin-left: 24.333333%;
+        /*        margin-left: 24.333333%;*/
     }
 }
 @media (max-width: 767px){
     .media-buttons-margin{
+        /*
         margin-left:auto;
         margin-right:auto;
+        */
         padding-top:15px;
     }
 }
@@ -3374,7 +3376,7 @@ background-size:contain;
     bottom: -60px;
     left: -11px;
     top: -8px;
-   }
+}
 
 @-webkit-keyframes pulsate {
     0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
@@ -4294,7 +4296,7 @@ hr{
 .lightbox-image-caption{
     font-size: .5rem!important;
     top: 85%!important;
-    
+
 }
 .lightbox-image-caption span{
     bottom: 0;
