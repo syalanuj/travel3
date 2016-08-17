@@ -134,9 +134,26 @@ Incredible adventures created by people like you.
     </div>
     <div class="explorer-jumbotron">
         <div class="container">
-            <h2>The Campture Explorer Program</h2>
-            <p>Explorers inspire us to get outside, they are local experts who share their favourite adventures with the community. Some are professionals, but most are everyday folks: lawyers, doctors, students and parents. They are good people and incredible human beings.</p>
-            <a href="/explorerProgram" class="btn btn-join-now btn-lg">Join Now</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>The Campture Explorer Program</h2>
+                    <p>Explorers are the most active and dedicated members of travel community - they add their favourite adventures, leave detailed reviews, share updated trail reports, and include great photography.</p>
+                    <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>
+                </div>
+                <div class="col-md-6">
+                    <form ng-submit="sendUserEmail()">
+                        <div class="input-group">
+                            <input ng-model="emailField1" type="text" class="form-control form-control-camptureme" placeholder="Your email address" required>
+                            <span class="input-group-btn">
+                                <button class="btn btn-orange" ng-click="sendUserEmail()" type="submit">Campture Me!</button>
+                            </span>
+                        </div>
+                        <p ng-show="isemailField1Sent" style="font-family:lato-light; color:white;">
+                            Thank You!
+                        </p> 
+                    </form>
+                </div>
+            </div>    
         </div>
     </div>
     <div class="asfeatured text-center">
@@ -149,6 +166,7 @@ Incredible adventures created by people like you.
             <a href="http://betalist.com/startups/campture"><img src="../../../css/images/Beta List.png" class="img-responsive"></a>
         </div>
     </div>
+<!--
     <div class="text-center">
         <div class=" text-center instructions">
             <h2>Unravel your travel with Campture!</h2>
@@ -165,4 +183,5 @@ Incredible adventures created by people like you.
         </div>
 
     </div>
+-->
 </div>
