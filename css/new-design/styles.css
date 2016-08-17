@@ -1183,10 +1183,11 @@ textarea {
 .user_name{
     padding-top:25px;
     margin:auto!important;
-    font-size: 20px;
+
     font-family: lato;
-    font-weight: 500;
     color: rgb(48, 49, 51);
+    font-size: 36px;
+    font-weight: 300;
 }
 .tpp{
     /*border-color: rgb(222, 222, 222);*/
