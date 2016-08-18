@@ -1,0 +1,115 @@
+<div class="cover" style="background-image:url(css/images/hero_img_trip_selling/leh_ladakh_hero_img.jpg);">
+<div class="hi" style="margin-top: 20vh">
+    <img src="css/images/hero_img_trip_selling/leh_ladakh_badge.png" style="z-index: 5" class="img-responsive">
+    <div class="view-det text-center" style="margin-top: 30vh">
+        <a onClick="$('.atitle').animatescroll({scrollSpeed:500,easing:'linear'});">
+            <p>View Trips</p>
+            <p><i class="fa fa-angle-down"></i></p>
+        </a>
+    </div>
+</div>
+    
+</div>
+
+
+<div style="margin-top: 100vh;padding-top: 10px;" class="text-center tripsWrap">
+    <!--<h1 class="lato">Trips</h1>-->
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="row text-center atitle">
+                    <h2>Our Handpicked Itineraries For Experiencing</h2>
+                    <h2>Leh Ladakh At Unbeatable Prices</h2>
+                </div>
+                <br>
+                <div class="col-md-6" ng-repeat="tour in tourList track by $index" style="padding-left: 40px; padding-right: 40px;">
+                    <div class="thumbnail" style="margin-bottom: 50px">
+                        <a ng-href="/tours/leh/{{tour.tour_url}}"><img ng-src="{{tour.image_url}}"></a>
+                        <div class="row text-center">
+                            <div class="" style="margin-top: 10px;"><b>{{tour.trek_name}}</b></div>
+                        </div>
+                        <div class="caption">
+                            <div class="no-days"><img src="css/images/trip_thumb/trip_time_thumb.png"><span>&nbsp; {{tour.duration}} Days</span></div>
+                            <div class="diff-level"><img src="css/images/trip_thumb/difficulty_meter_thumb.png">
+                                <span> &nbsp;{{tour.difficulty_level}}</span></div>
+                        </div>
+                        <div class="caption2">
+                            <a class="view-iti text-center" ng-href="/tours/leh/{{tour.tour_url}}"><span> Itinerary</span></a>
+                            <div class="price-range">
+                                <span> INR {{tour.min_price}} - {{tour.max_price}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div ng-show="!isSiteLoaded" class="site-loader site-loader-center" style="margin-top: 50px;">
+            <div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+            </div>
+            <p>I travel, therefore I am</p>
+        </div>
+    </div>
+</div>
+<style>
+    
+    .cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    
+      width: 100%;
+      height: 100vh;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+      }
+    
+    .tv {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    
+      width: 100%;
+      height: 100vh;
+    
+      overflow: hidden;
+    
+      .screen {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+    
+        margin: auto;
+    
+        opacity: 0;
+        transition: opacity .5s;
+    
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+    .hi {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        color: #fff;
+        line-height: 26px;
+        text-align: center;
+    }
+</style>
+<script src="app/components/tours/animatescroll.min.js"></script>

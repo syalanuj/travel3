@@ -1,0 +1,30 @@
+<div class="text-center tripsWrap">
+    <!--<h1 class="lato">Trips</h1>-->
+    <div style="margin-bottom: 20px">
+        <img src="Images/trips_banner_top.jpg">
+    </div>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="col-md-6" ng-repeat="tour in tourList track by $index" style="padding-left: 40px; padding-right: 40px;">                
+                    <div class="thumbnail" style="margin-bottom: 50px">
+                        <a ng-href="/tours/leh/{{tour.tour_url}}"><img ng-src="{{tour.image_url}}"></a>
+                        <div class="row text-center">
+                            <div class="" style="margin-top: 10px;">{{tour.trek_name}}</div>
+                        </div>
+                        <div class="caption">
+                            <div class="no-days"><img src="css/images/trip_thumb/trip_time_thumb.png"><span>&nbsp; {{tour.duration}} Days</span></div>
+                            <div class="diff-level"><img src="css/images/trip_thumb/difficulty_meter_thumb.png"><span> &nbsp;{{tour.difficulty_level}}</span></div>
+                        </div>
+                        <div class="caption2">
+                            <a class="view-iti text-center" ng-href="/tours/leh/{{tour.tour_url}}"><span> Itinerary</span></a>
+                            <div class="price-range"><span> INR {{tour.min_price}} - INR {{tour.max_price}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

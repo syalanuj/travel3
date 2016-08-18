@@ -79,7 +79,11 @@
         .when('/explorerProgram/',{
             templateUrl:'app/components/explorerProgram/explorerProgram.html'
         })
-        .when('/gearChecklist/',{
+        .when('/gearChecklistForm/',{
+            controller: 'GearChecklistFormCtrl',
+            templateUrl:'app/components/gearChecklist/gearChecklistForm/gearChecklistForm.html'
+        })
+        .when('/gearChecklistResults/:lat/:lon/:formattedAddress/:numberOfDays/:dateString',{
             controller: 'GearChecklistCtrl',
             templateUrl:'app/components/gearChecklist/gearChecklist.html'
         })
@@ -101,6 +105,30 @@
         })
         .when('/tours/markhaTrek', {
             templateUrl: 'app/components/tours/markhaValleyTrek.html'
+        })
+        .when('/tours/',{
+            controller: 'ToursCtrl',	
+            templateUrl:'app/components/tours/tours.html'
+        })
+         .when('/tours/leh', {
+             controller: 'LehCtrl',
+            templateUrl: 'app/components/tours/leh/leh.html'
+        })
+         .when('/tours/leh/markhavalleytrek', {
+             controller: 'MarkhaValleyTrekCtrl',
+            templateUrl: 'app/components/tours/markhaTrek/markhaValleyTrek.html'
+        })
+        .when('/tours/leh/lehtourwithrafting', {
+             controller: 'LehTourAlternateCtrl',
+            templateUrl: 'app/components/tours/lehTour/lehTour.html'
+        })
+        .when('/tours/leh/stoklatrek', {
+             controller: 'StokTrekCtrl',
+            templateUrl: 'app/components/tours/stokTrek/stokTrek.html'
+        })
+        .when('/tours/leh/lehtour', {
+             controller: 'LehTourCtrl',
+            templateUrl: 'app/components/tours/lehTourAlternate/lehTourAlternate.html'
         })
         .when('/pageNotFound/',{
             controller: 'ErrorPageCtrl',

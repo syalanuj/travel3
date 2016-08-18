@@ -1,91 +1,327 @@
 <div class="text-center">
-	<div class="map">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom"  options="options" bounds="map.bounds">
-        <ui-gmap-marker coords="marker.coords"  idkey="marker.id">
-        </ui-gmap-marker>
-    </ui-gmap-google-map>
-    <div class="map-mask"></div>
+    <section class="map">
+        <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options" bounds="map.bounds">
+            <ui-gmap-marker coords="marker.coords" idkey="marker.id">
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
+        <div class="map-mask"></div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <div ng-show="isResultsShown" class="destinationDetails col-md-12 text-center container">
+        <h2>{{location}}</h2>
+        <!--<span>Low Temp: {{minTemp | number:2}}  </span>   <span>High Temp: {{maxTemp | number:2}}</span><div class="tempurature"><i class="fa fa-sun-o" style="font-size:22px;"></i></div>--><br>
+        <!--<a href="/gearChecklistForm/" class="btn btn-campture" ><i class="fa fa-pencil-square-o" aria-hidden="true"> </i> Modify Trip</a>-->
+        <a href="/gearChecklistForm/" class="btn btn-campture"><i class="fa fa-plus-circle" aria-hidden="true"></i> New Trip</a>
+        <p style="font-size:10px;" class="pull-left;"><strong>*</strong>Temperature might vary and might be different from our data base, please check the local temperature before you get packing.</p>
     </div>
-    <div class="destinationDetails col-md-12 text-center container">
-    <h2>Location Name</h2>
-    <span>Low Temp: </span> <span>High Temp:</span><div class="tempurature"><i class="fa fa-sun-o" style="font-size:22px;"></i></div><br>
-    <button class="btn btn-primary">Modify Trip</button>
-    <button class="btn btn-primary">New Trip</button>
+    <div ng-show="!isResultsShown" class="site-loader site-loader-center" style="margin-top: 50px;">
+        <div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+        </div>
+        <p>I travel, therefore I am</p>
     </div>
-    <!--<div class="gearListWrap container">
- I am travelling to
-        <div class="gearFormInput ">
-            <input name="location" type="text" placeholder="Enter Location" ng-autocomplete ng-model="location" options="options" details="details" required>
-        </div>
- in the month of
-        <div class="gearFormInput">
-            <input name="date" type="text" placeholder="Enter Month" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open($event)" id="date" required>
-        </div>
-for
-        <div class="gearFormInput">
-            <input type="number" placeholder="No of days" ng-model="duration" required>.
-        </div>
- Show me what to pack in my backpack.
-    </div>
-    <button class="btn btn-success" ng-click="getGearCheckList()">Let's Go!</button>-->
-        
-    <div class="container">
-  <ul class="nav nav-pills">
-    <li class="active"><a data-toggle="pill" ng-click="updateprofileTabPos(0)">List View</a></li>
-    <li><a data-toggle="pill" ng-click="updateprofileTabPos(0)">Thumbnail View</a></li>
-    <li><a data-toggle="pill" href="#menu3">Download List</a></li>
-  </ul>
-  <div class="tab-content">
-    <div id="menu1"  class="tab-pane fade in active">            
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Item Name</th>
-        <th>Item Description</th>
-    	<th>Buy Now</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="itemName">Item Name</td>
-        <td class="itemDesc">item Desc</td>
-        <td><button class="btn btn-primary disabled">Buy Now</button></td>
-      </tr>
-      <tr>
-        <td class="itemName">Item NameItem NameItem NameItem NameItem NameItem NameItem Name</td>
-        <td class="itemDesc">item Desc</td>
-        <td><button class="btn btn-primary disabled">Buy Now</button></td>
-      </tr>
-		<tr>
-        <td class="itemName">Item Name</td>
-        <td class="itemDesc">item Desc</td>
-        <td><button class="btn btn-primary disabled">Buy Now</button></td>
-      </tr>
+    <div ng-show="isResultsShown" class="container text-center gearResults">
+        <ul class="nav nav-pills nav-justified">
+            <li class="active"><a data-toggle="pill" ng-click="updateTabPos(0)"><i class="fa fa-list" aria-hidden="true"></i> List View</a></li>
+            <li><a data-toggle="pill" ng-click="updateTabPos(1)"><i class="fa fa-th-large" aria-hidden="true"></i> Thumbnail View</a></li>
+            <!--<li><a data-toggle="pill">Download List</a></li>-->
+        </ul>
+        <div class="">
+            <div id="menu1" ng-show="profileTabPos == 0" class="">
+                <span class="gearCategory pull-left">Carrying Gear</span>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="col-sm-4 col-xs-4"><strong>Item Name</strong></th>
+                        <th class="col-sm-8 col-xs-8"><strong>Item Description</strong></th>
+                        <!--<th>Buy Now</th>-->
+                    </tr>
+   </thead>
+                    <tbody>
+                    <tr ng-repeat="gear in gearList" ng-if="gear.category_id == 0">
+                        <td class="itemName">{{gear.name}}</td>
+                        <td class="itemDesc">{{gear.description}}</td>
+                        <td><a target="_blank" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></td>
+                    </tr>
+     </tbody>
+                </table>
+                <span class="gearCategory pull-left">Camping Gear</span>
+                <table class="table">
 
-      </tbody>
-  </table>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Thumbnail View</h3>
-      <div  class="gearListResults">
-        <div class="row">
-            <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList">
-                <div class="thumbnail">
-                    <img ng-src="{{gear.image_url}}" alt="...">
-                    <div class="caption">
-                        <h3>{{gear.name}}</h3>
-                        <p>{{gear.description}}</p>
+                    <tbody>
+                    <tr ng-repeat="gear in gearList" ng-if="gear.category_id == 1">
+                        <td class="itemName col-sm-4 col-xs-4">{{gear.name}}</td>
+                        <td class="itemDesc col-sm-8 col-xs-8">{{gear.description}}</td>
+                        <td><a target="_blank" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></td>
+                    </tr>
+       </tbody>
+                </table>
+                <span class="gearCategory pull-left">Walking & Hiking</span>
+                <table class="table">
+
+                    <tbody>
+                    <tr ng-repeat="gear in gearList" ng-if="gear.category_id == 2">
+                        <td class="itemName col-sm-4 col-xs-4">{{gear.name}}</td>
+                        <td class="itemDesc col-sm-8 col-xs-8">{{gear.description}}</td>
+                        <td><a target="_blank" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></td>
+                    </tr>
+     </tbody>
+                </table>
+                <span class="gearCategory pull-left">Clothing Items</span>
+                <table class="table">
+                    <tbody>
+                    <tr ng-repeat="gear in gearList" ng-if="gear.category_id == 3">
+                        <td class="itemName col-sm-4 col-xs-4">{{gear.name}}</td>
+                        <td class="itemDesc col-sm-8 col-xs-8">{{gear.description}}</td>
+                        <td><a target="_blank" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></td>
+                    </tr>
+     </tbody>
+                </table>
+                <div ng-show="!pollDone" style="padding-bottom:20px" class="well">
+                    <p>Do you find the Campture Gearchecklist helpful?</p>
+                    <button class="btn btn-success" ng-click="buyGearPoll(1)">Yes</button> <button class="btn btn-danger" ng-click="buyGearPoll(0)">No</button>
+                </div>
+                <p ng-show="pollDone" style="font-family:lato-light;">
+                   Thank You!
+                </p>
+                <span class="gearCategory pull-left">Personal Items</span>
+                <table class="table">
+                    <tbody>
+                    <tr ng-repeat="gear in gearList" ng-if="gear.category_id == 7">
+                        <td class="itemName col-sm-4 col-xs-4">{{gear.name}}</td>
+                        <td class="itemDesc col-sm-8 col-xs-8">{{gear.description}}</td>
+                        <td><a target="_blank" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></td>
+                    </tr>
+     </tbody>
+                </table>
+                <span class="gearCategory pull-left">Personal Health</span>
+                <table class="table">
+                    <tbody>
+                    <tr ng-repeat="gear in gearList" ng-if="gear.category_id == 4">
+                        <td class="itemName col-sm-4 col-xs-4">{{gear.name}}</td>
+                        <td class="itemDesc col-sm-8 col-xs-8">{{gear.description}}</td>
+                        <td><a target="_blank" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></td>
+                    </tr>
+     </tbody>
+                </table>
+                <span class="gearCategory pull-left">Utility</span>
+                <table class="table">
+                    <tbody>
+                    <tr ng-repeat="gear in gearList" ng-if="gear.category_id == 6">
+                        <td class="itemName col-sm-4 col-xs-4">{{gear.name}}</td>
+                        <td class="itemDesc col-sm-8 col-xs-8">{{gear.description}}</td>
+                        <td><a target="_blank" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></td>
+                    </tr>
+     </tbody>
+                </table>
+                <span class="gearCategory pull-left"> Cooking Essential</span>
+                <table class="table">
+                    <tbody>
+                    <tr ng-repeat="gear in gearList" ng-if="gear.category_id == 5">
+                        <td class="itemName col-sm-4 col-xs-4">{{gear.name}}</td>
+                        <td class="itemDesc col-sm-8 col-xs-8">{{gear.description}}</td>
+                        <td><a target="_blank" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></td>
+                    </tr>
+     </tbody>
+                </table>
+
+            </div>
+            <div id="menu2" ng-show="profileTabPos == 1" class="ng-hide">
+                <div class="gearListResults">
+                    <span class="gearCategory">Carrying Gear</span>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList" ng-if="gear.category_id == 0">
+                            <div class="thumbnail productThumbnail">
+                                <img ng-src="{{gear.product_image_link}}" alt="...">
+                                <div class="caption text-center">
+                                    <h4>{{gear.name}}</h4>
+                                </div>
+                                <div class="productCaption">
+                    {{gear.description}}
+                                </div>
+                                <div class="text-center" style="margin-bottom: 10px"><a target="_blank" ng-show="gear.product_link" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="gearCategory">Camping Gear</span>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList" ng-if="gear.category_id == 1">
+                            <div class="thumbnail productThumbnail">
+                                <img ng-src="{{gear.product_image_link}}" alt="...">
+                                <div class="caption text-center">
+                                    <h4>{{gear.name}}</h4>
+                                </div>
+                                <div class="productCaption">
+                    {{gear.description}}
+                                </div>
+                                <div class="text-center" style="margin-bottom: 10px"><a target="_blank" ng-show="gear.product_link" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="gearCategory">Walking & Hiking</span>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList" ng-if="gear.category_id == 2">
+                            <div class="thumbnail productThumbnail">
+                                <img ng-src="{{gear.product_image_link}}" alt="...">
+                                <div class="caption text-center">
+                                    <h4>{{gear.name}}</h4>
+                                </div>
+                                <div class="productCaption">
+                    {{gear.description}}
+                                </div>
+                                <div class="text-center" style="margin-bottom: 10px"><a target="_blank" ng-show="gear.product_link" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="gearCategory">Clothing Items</span>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList" ng-if="gear.category_id == 3">
+                            <div class="thumbnail productThumbnail">
+                                <img ng-src="{{gear.product_image_link}}" alt="...">
+                                <div class="caption text-center">
+                                    <h4>{{gear.name}}</h4>
+                                </div>
+                                <div class="productCaption">
+                    {{gear.description}}
+                                </div>
+                                <div class="text-center" style="margin-bottom: 10px"><a target="_blank" ng-show="gear.product_link" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="gearCategory">Personal Items</span>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList" ng-if="gear.category_id == 7">
+                            <div class="thumbnail productThumbnail">
+                                <img ng-src="{{gear.product_image_link}}" alt="...">
+                                <div class="caption text-center">
+                                    <h4>{{gear.name}}</h4>
+                                </div>
+                                <div class="productCaption">
+                    {{gear.description}}
+                                </div>
+                                <div class="text-center" style="margin-bottom: 10px"><a target="_blank" ng-show="gear.product_link" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="gearCategory">Personal Health</span>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList" ng-if="gear.category_id == 4">
+                            <div class="thumbnail productThumbnail">
+                                <img ng-src="{{gear.product_image_link}}" alt="...">
+                                <div class="caption text-center">
+                                    <h4>{{gear.name}}</h4>
+                                </div>
+                                <div class="productCaption">
+                    {{gear.description}}
+                                </div>
+                                <div class="text-center" style="margin-bottom: 10px"><a target="_blank" ng-show="gear.product_link" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="gearCategory">Utility</span>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList" ng-if="gear.category_id == 6">
+                            <div class="thumbnail productThumbnail">
+                                <img ng-src="{{gear.product_image_link}}" alt="...">
+                                <div class="caption text-center">
+                                    <h4>{{gear.name}}</h4>
+                                </div>
+                                <div class="productCaption">
+                    {{gear.description}}
+                                </div>
+                                <div class="text-center" style="margin-bottom: 10px"><a target="_blank" ng-show="gear.product_link" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="gearCategory">Cooking Essential</span>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3" ng-repeat="gear in gearList" ng-if="gear.category_id == 5">
+                            <div class="thumbnail productThumbnail">
+                                <img ng-src="{{gear.product_image_link}}" alt="...">
+                                <div class="caption text-center">
+                                    <h4>{{gear.name}}</h4>
+                                </div>
+                                <div class="productCaption">
+                    {{gear.description}}
+                                </div>
+                                <div class="text-center" style="margin-bottom: 10px"><a target="_blank" ng-show="gear.product_link" ng-href={{gear.product_link}} class="btn btn-campture">Buy Now</a></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div id="menu3" class="tab-pane fade">
+                <h3>Download List</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <p><strong>Note:</strong> Not every camping party will bring every item on this list, this is only for reference purposes. Always use your common sense and be prepared.
+            </p>
 
+
+            <div style="font-size: 18px; color: #525354; font-family:lato-light;" class="well"><i><p> We are constantly updating and innovating our platform to provide correct information and improving your experience. We would love some feedback/corrections.
+                    </p>
+                    <p>Please help us to improve the platform and send us your ideas and suggestions.</p> </i>
+                <button class="btn btn-warning" data-toggle="modal" data-target="#checklistFeedback">Gear Checklist Feedback</button>
+                <p ng-show="feedbackSubmitted">Thank You!</p>
+                <!-- Gear Feedback Modal -->
+                <div id="checklistFeedback" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: rgb(51, 59, 61);">
+                                <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
+                                <h4 class="modal-title" style="font-family:lato; color:white;">What did you pack on your last trip?</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="gearChecklistFeedbackForm" ng-submit="postGearChecklistFeedback(gearChecklistFeedbackForm.$valid)" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-custom">
+                                            <span class="input-group-addon input-label-left" id="basic-addon1"><i class="fa fa-user"></i></span>
+                                            <input name="name" ng-model="gearChecklistFeedback.name" placeholder="Name" type="text" class="feedbackInput2 form-control" required>                                            
+                                        </div>
+                                        <span ng-show="(gearChecklistFeedbackForm.name.$dirty || submitted) && gearChecklistFeedbackForm.name.$error.required">*required</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-custom">
+                                            <span class="input-group-addon input-label-left"><i class="fa fa-envelope"></i></span>
+                                            <input name="email" ng-model="gearChecklistFeedback.email" type="email" class="form-control feedbackInput2" placeholder="Email" required>                                            
+                                        </div>
+                                        <span ng-show="(gearChecklistFeedbackForm.email.$dirty || submitted) && gearChecklistFeedbackForm.email.$error.required">*required</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-custom">
+                                            <span class="input-group-addon input-label-left"><i class="fa fa-map-marker"></i></span>
+                                            <input name="location" ng-model="gearChecklistFeedback.location" placeholder="Location" type="text" class="feedbackInput2 form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-custom">
+                                            <span class="input-group-addon input-label-left" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                                            <input name="date" ng-model="gearChecklistFeedback.date" placeholder="Date" type="date" class="feedbackInput2 form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="input-group input-group-custom">
+                                            <span class="input-group-addon input-label-left"><i class="fa fa-comment"></i></span>
+                                            <textarea name="comments" ng-model="gearChecklistFeedback.comments" placeholder="Did we miss anything?" class="feedbackInput2 form-control" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-campture">SUBMIT</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Download List</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-  </div>
-</div>
 </div>
