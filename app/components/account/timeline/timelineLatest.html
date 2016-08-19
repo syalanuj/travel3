@@ -8,11 +8,13 @@
             <div class="trip-title text-center">
                 <p class="trip-name">{{trip.title}}</p>
             </div>
+<!--
             <div class="trip-disc text-center">
                 <img src="./css/images/Comma_left.png" class="pull-left"><br>
                 <p>{{trip.introduction}}</p>
                 <img src="./css/images/Comma_right.png" class="pull-right">
             </div>
+-->
             <div class="profile-pic text-center">
                 <img ng-src="{{trip.user.facebook_profile.picture.data.url}}" class="img-circle">
                 <p>{{trip.user.facebook_profile.name}}</p>
@@ -129,6 +131,11 @@
         <!--Timeline places photos #4-->
         <div ng-show="postStep == 4" class="timeline-places-photos">
             <div class="col-md-12" style="padding:0;">
+                <div class="trip-disc text-center">
+                    <img src="./css/images/Comma_left.png" class="pull-left"><br>
+                    <p>{{trip.introduction}}</p>
+                    <img src="./css/images/Comma_right.png" class="pull-right">
+                </div>
                 <div class="col-md-10">
                     <!--Timeline section within the tab-->
                     <div class="timeline">

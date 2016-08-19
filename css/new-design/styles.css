@@ -3608,11 +3608,15 @@ background-size:contain;
     font-size:2.4rem;
     position: relative;
 }
+.trip-disc{
+    margin-bottom: 10px;
+}
 .trip-disc p{
     font-family:lato;
     font-size: 1rem;
-    color: rgb(255, 255, 255);
+    color: #333;
     word-wrap:break-word;
+
 }
 .profile-pic{
     clear:both;
