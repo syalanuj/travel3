@@ -2,17 +2,16 @@
 <div id="carousel" class="carousel slide carousel-fade jumbotron-index" data-ride="carousel">
     <!-- Carousel items -->
     <div class="carousel-inner">
-        <div class="active item" style="background-image:url(../../../css/images/banner1.jpg); ">
+        <div class="item" style="background-image:url(../../../css/images/banner1.jpg); " ng-style="{'background-image':'url(' +content.image_url+ ')'}" ng-class="{ 'active': $index == 0 }" ng-repeat="content in jumboContent.list track by $index">
             <div class="carousel-caption">
-                <h1>Your Guide to Everything Outdoors</h1>
+                <h1>{{content.heading}}</h1>
 
-                <h4 class="landing-carousel-text "> Campture is all about exploring the unknown and offbeat experiences.
-We are a community of people with amazing stories to tell!</h4>
-                <a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+                <h4 class="landing-carousel-text "> {{content.text}}</h4>
+                <a class="btn btn-default get-started-btn btn-lg  hidden-xs" ng-href="{{content.cta_url}}">{{content.cta_text}}</a>
+                
             </div>
         </div>
-        <div class="item" style="background-image:url(../../../css/images/banner2.jpg); ">
+        <!--<div class="item" style="background-image:url(../../../css/images/banner2.jpg); ">
             <div class="carousel-caption">
                 <h1>Create Narrative Photologues</h1>
                 <h4 class="landing-carousel-text ">Create a new story, quickly add title, photos, experiences on our beautifully designed format.</h4>
@@ -27,7 +26,7 @@ We are a community of people with amazing stories to tell!</h4>
                 <a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
                 <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
             </div>
-        </div>
+        </div>-->
 
     </div>
     <!-- Carousel nav -->
@@ -85,10 +84,8 @@ Incredible adventures created by people like you.
     </div>
 -->
     <div class="container">
-        <div class="marketing-banner">
-            <h1>Marketing Banner</h1>
-        </div>
-    </div>
+        <img class="marketing-banner" ng-src="{{marketingContent.list[0].image_url}}">        
+    </div> 
     <div class="container text-center featured-photologues">
         <h2>Featured Photologues</h2>
         <div ng-show="!isSiteLoaded" class="site-loader site-loader-center" style="margin-top: 50px;">
