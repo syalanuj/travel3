@@ -203,14 +203,19 @@
                     </div>
                     <div class="text-center col-xs-12 timelineend">
                         <!--<p class="thatsall col-md-offset-6 col-sm-offset-6 col-xs-offset-3"> That's all Folks!</p><br>-->
+<<<<<<< HEAD
                         <div class="credits col-md-offset-3 col-sm-offset-4">
                             <a ng-href="/account/profile/{{userObj.id}}">
+=======
+                        <div class="credits">
+                            <a ng-href="#/account/profile/{{userObj.id}}">
+>>>>>>> master
                                 <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle">
                                 <p class="dancing-script">{{userObj.facebook_profile.name}}</p>
                             </a>
                         </div>
                         <div class="row">
-                            <div class="col-md-offset-3 col-sm-offset-4">
+                            <div class="">
 
                                 <a class="like-button">
       								<span class="like-icon">
@@ -262,8 +267,13 @@
                                 </ul>
                             </div>
                         </div>
+<<<<<<< HEAD
                         <div class="timeline-tags col-md-offset-3">
                             <span id="tags">Tags:</span><span ng-repeat="tag in trip.tags track by $index"><a ng-href="/feed/{{tag}}">{{tag}}</a></span>
+=======
+                        <div class="timeline-tags">
+                            <span id="tags">Tags:</span><span ng-repeat="tag in trip.tags track by $index"><a ng-href="#/feed/{{tag}}">{{tag}}</a></span>
+>>>>>>> master
                         </div>
                     </div>
                 </div>

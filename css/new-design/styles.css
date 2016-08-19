@@ -2144,15 +2144,26 @@ width: 1410px;
 @media (min-width: 768px){
     .media-buttons-margin{
         margin-top:20px;	
+<<<<<<< HEAD
         /*        margin-left: 24.333333%;*/
+=======
+/*        margin-left: 24.333333%;*/
+>>>>>>> master
     }
 }
 @media (max-width: 767px){
     .media-buttons-margin{
+<<<<<<< HEAD
         /*
         margin-left:auto;
         margin-right:auto;
         */
+=======
+/*
+        margin-left:auto;
+        margin-right:auto;
+*/
+>>>>>>> master
         padding-top:15px;
     }
 }
