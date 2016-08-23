@@ -83,8 +83,8 @@ Incredible adventures created by people like you.
         </div>
     </div>
 -->
-    <div class="container">
-        <img class="marketing-banner" ng-src="{{marketingContent.list[0].image_url}}">        
+    <div class="container text-center">
+        <a href="#"><img class="marketing-banner img-responsive" ng-src="{{marketingContent.list[0].image_url}}"></a>
     </div> 
     <div class="container text-center featured-photologues">
         <h2>Featured Photologues</h2>
@@ -133,8 +133,9 @@ Incredible adventures created by people like you.
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h2>The Campture Explorer Program</h2>
+                    <h2>Join the Campture Explorer Program</h2>
                     <p>Explorers are the most active and dedicated members of travel community - they add their favourite adventures, leave detailed reviews, share updated trail reports, and include great photography.</p>
+<!--                    <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>-->
                     <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>
                 </div>
                 <div class="col-md-6">
@@ -142,7 +143,7 @@ Incredible adventures created by people like you.
                         <div class="input-group">
                             <input ng-model="emailField1" type="text" class="form-control form-control-camptureme" placeholder="Your email address" required>
                             <span class="input-group-btn">
-                                <button class="btn btn-orange" ng-click="sendUserEmail()" type="submit">Campture Me!</button>
+                                <button class="btn btn-orange" ng-click="sendUserEmail()" type="submit">I'm Interested</button>
                             </span>
                         </div>
                         <p ng-show="isemailField1Sent" style="font-family:lato-light; color:white;">
