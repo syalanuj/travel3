@@ -6,9 +6,9 @@
         return window.encodeURIComponent;
     });
     app.config(function (LightboxProvider) {
-    LightboxProvider.templateUrl = 'app/components/account/timeline/customLightbox.html';
+        LightboxProvider.templateUrl = 'app/components/account/timeline/customLightbox.html';
     });
-    app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', 'Lightbox','ngMeta', controller]);
+    app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', 'Lightbox', 'ngMeta', controller]);
     function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout, Lightbox, ngMeta) {
         //====== Scope Variables==========
         //================================
@@ -19,6 +19,7 @@
         }
 
         $routeParams.tripId;
+        $scope.allTripId = $routeParams.tripId;
         $scope.currentUserObj = Parse.User.current();
         $scope.userObj;
         $scope.tripTabIndex = 0;
@@ -263,14 +264,14 @@
         $scope.openLightboxModal = function (index) {
             Lightbox.openModal($scope.lightBoxTimelineImages, index);
         };
-        $scope.addToBookmark = function(){
+        $scope.addToBookmark = function () {
             var tripObj = {
                 trip_pointer: $routeParams.tripId,
                 user_pointer: $scope.currentUserObj.id
             }
-            tripService.addToBookmark(tripObj, function(data){
-                if(data){
-                    
+            tripService.addToBookmark(tripObj, function (data) {
+                if (data) {
+
                 }
             })
         }
