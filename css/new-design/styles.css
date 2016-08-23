@@ -80,9 +80,6 @@ body
     background-color:#fff;
     overflow-x:hidden;
 }
-body a{
-    color:none;
-}
 /*SearchbarCSS*/
 .timeline-search-box {
     height: 24px;
@@ -2133,7 +2130,6 @@ width: 1410px;
 }
 .rrssb-buttons-dropup{
     width:278px!important;
-    left:-57px!important;
     border:none!important;
     background:transparent!important;
 }
@@ -2144,26 +2140,10 @@ width: 1410px;
 @media (min-width: 768px){
     .media-buttons-margin{
         margin-top:20px;	
-<<<<<<< HEAD
-        /*        margin-left: 24.333333%;*/
-=======
-/*        margin-left: 24.333333%;*/
->>>>>>> master
     }
 }
 @media (max-width: 767px){
     .media-buttons-margin{
-<<<<<<< HEAD
-        /*
-        margin-left:auto;
-        margin-right:auto;
-        */
-=======
-/*
-        margin-left:auto;
-        margin-right:auto;
-*/
->>>>>>> master
         padding-top:15px;
     }
 }
@@ -2534,6 +2514,9 @@ width: 1410px;
     padding: 15px;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8)!important;
 }
+.explorer-jumbotron a{
+    color: #ffff!important;   
+}
 .explorer-jumbotron h2{
     font-size: 36px;
     color: #FFFFFF;
@@ -2569,6 +2552,7 @@ width: 1410px;
     color:white;
     font-size: 20px;
 }
+
 .btn-join-now {
     font-size: 18px;
     font-family: lato;
@@ -2576,10 +2560,14 @@ width: 1410px;
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 0.2em;
+    text-decoration: underline;
+    padding: 0;
+/*
     border-style: solid;
     border-width: 2px;
     border-color: rgb(255, 249, 249);
     background-color: rgba(45, 45, 45, 0.302);
+*/
     margin-top:40px;
     border-radius:0;
 }
@@ -3221,8 +3209,10 @@ background-size:contain;
 .location-thumb .trip-img{
     border-radius: 4px;
     background-color: rgb(171, 171, 171);
+
     box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.6);
     left: 0;
+
     right: 0;
     max-width: 90%;
     max-height: auto;
@@ -3609,7 +3599,8 @@ background-size:contain;
     position: relative;
 }
 .trip-disc{
-    margin-bottom: 10px;
+    padding-bottom: 58px;
+    padding-top: 40px;
 }
 .trip-disc p{
     font-family:lato;
@@ -3639,7 +3630,7 @@ background-size:contain;
 }
 .timeline-wrap{
     position:relative;
-    top:-55px;
+    top:-72px;
 }
 .card-location{
     font-weight:bold;
@@ -4333,9 +4324,6 @@ hr{
     color: #6a6a6a;
 }
 .marketing-banner{
-    max-width: 970px;
-    background: aqua;
-    height: 250px;
     margin: auto;
 }
 .btn-orange {
@@ -4343,4 +4331,9 @@ hr{
     font-family: "lato"!important;
     text-transform: capitalize;
     color: rgb(251, 251, 251);
+}
+.rrssb-buttons li a{
+    width: 36px!important;
+    font-size: 18px;
+    color: white;
 }
