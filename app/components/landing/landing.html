@@ -83,8 +83,10 @@ Incredible adventures created by people like you.
         </div>
     </div>
 -->
-    <div class="container">
-        <img class="marketing-banner" ng-src="{{marketingContent.list[0].image_url}}">        
+    <div  class="container">
+        <a ng-href="{{marketingContent.list[0].cta_url}}">
+            <img class="marketing-banner" ng-src="{{marketingContent.list[0].image_url}}">
+        </a>        
     </div> 
     <div class="container text-center featured-photologues">
         <h2>Featured Photologues</h2>

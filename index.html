@@ -1,6 +1,7 @@
-lac<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" ng-app="campture">
     <head>
+
         <base href="/">
         <!--CSS-->
         <!--FONT Dependencies-->
@@ -30,7 +31,8 @@ lac<!DOCTYPE html>
         <meta name="keywords" content="Campture, adventure, camping" />
         <meta property="og:title" content="Campture" />
         <meta property="og:description" content="This is campture description" />
-        <meta property="og:image" content="http://res.cloudinary.com/dzseog4g3/image/upload/c_fill,h_400,w_960/v1449320744/dumeromf14sv5p3wj9o1.jpg" />
+        <meta property="og:image" content="{{ngMeta['og:image']}}" />
+        <!--<meta property="og:image" content="http://res.cloudinary.com/dzseog4g3/image/upload/c_fill,h_400,w_960/v1449320744/dumeromf14sv5p3wj9o1.jpg" />-->
         <meta name="author" content="anujs">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
@@ -208,6 +210,7 @@ lac<!DOCTYPE html>
 
         <!--Timeline Dependencies-->
         <!--Map API Dependencies-->
+        <script src="js/ngmeta.min.js"></script>
         <script src="js/angular-simple-logger.js"></script>
         <script src="js/angular-google-maps.min.js"></script>
         <script src="js/ngAutocomplete/ngAutocomplete.js"></script>

@@ -8,8 +8,8 @@
     app.config(function (LightboxProvider) {
     LightboxProvider.templateUrl = 'app/components/account/timeline/customLightbox.html';
     });
-    app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', 'Lightbox', controller]);
-    function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout, Lightbox) {
+    app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', 'Lightbox','ngMeta', controller]);
+    function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout, Lightbox, ngMeta) {
         //====== Scope Variables==========
         //================================
         //linkify
@@ -47,6 +47,7 @@
                     }
                 }
                 $scope.trip = data;
+                ngMeta.setTag('image', 'http://placeholder.com/abc.jpg');
                 accountService.getRelatedTrips($scope.trip.tags, function (data) {
                     if (data) {
                         $scope.$apply(function () {
