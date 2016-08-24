@@ -2,24 +2,31 @@
     'use strict';
 
     var app = angular.module('campture');
-    app.controller('GearChecklistCtrl', ['$scope', '$cookies', '$rootScope', 'uiGmapIsReady', 'GearService', controller]);
-    function controller($scope, $cookies, $rootScope, uiGmapIsReady, gearService) {
+    app.controller('GearChecklistCtrl', ['$scope', '$cookies', '$rootScope', 'uiGmapIsReady', '$routeParams', 'GearService', controller]);
+    function controller($scope, $cookies, $rootScope, uiGmapIsReady, $routeParams, gearService) {
         //====== Scope Variables==========
         //================================
-        $scope.coordinates = new Object();
-        $scope.map = { center: { latitude: 28.6139, longitude: 77.2090 }, zoom: 4 };
-        $scope.marker = { id: 0 ,bounds: {}};
+        $scope.coordinates = { latitude: $routeParams.lat, longitude: $routeParams.lon };
+        $scope.map = { center: $scope.coordinates, zoom: 12 };
+        $scope.marker = { id: 0, bounds: {}, coords: $scope.coordinates };
         $scope.frameSrc = 'http://forecast.io/embed/#lat=28.6139&lon=77.2090';
-        $scope.location;
+        $scope.location = $routeParams.formattedAddress;
+        $scope.dateValue = $routeParams.dateString;
+        $scope.duration = $routeParams.numberOfDays;
         $scope.options;
         $scope.date;
-        $scope.duration;
         $scope.status = {
             opened: false
         };
         $scope.gearList;
         var temperatureGrade;
         var durationGrade;
+        $scope.isResultsShown = false;
+        $scope.profileTabPos = 0;
+        $scope.pollDone = false;
+        $scope.gearChecklistFeedback = new Object();
+        $scope.submitted = false;
+        $scope.feedbackSubmitted = false;
 
         $scope.details = function (details) {
             $scope.location = new Object();
@@ -30,11 +37,11 @@
                 id: 1,
                 coords: $scope.coordinates
             }
-            $scope.map={center :{latitude: $scope.coordinates.latitude, longitude: $scope.coordinates.longitude},zoom:12}
-            
+            $scope.map = { center: { latitude: $scope.coordinates.latitude, longitude: $scope.coordinates.longitude }, zoom: 12 }
+
         };
-        
-        
+
+
         $scope.open = function ($event) {
             $scope.status.opened = true;
         };
@@ -42,57 +49,62 @@
             formatYear: 'yy',
             startingDay: 1
         };
-
         $scope.getGearCheckList = function () {
-            var dateString = $scope.date.toISOString();
-            var dateString = dateString.substr(0, dateString.indexOf('T')) + 'T12:00:00-0400';
-            gearService.getWeatherData($scope.coordinates, dateString).then(function (weatherData) {
-                if (weatherData && weatherData.status == 200) {
-                    if (weatherData.data.daily && weatherData.data.daily.data[0]) {
-                        var maxTemp = (weatherData.data.daily.data[0].temperatureMax - 32) * (5 / 9);
-                        var minTemp = (weatherData.data.daily.data[0].temperatureMin - 32) * (5 / 9);
-                        temperatureGrade = getTemperatureGrade(minTemp);
-                        durationGrade = getDurationGrade($scope.duration);
-                        gearService.getGearList(temperatureGrade, durationGrade, function (data) {
-                            if (data) {
-                                $scope.gearList = data;
-                            }
-                        });
+            if ($scope.coordinates && $scope.coordinates.latitude && $scope.coordinates.longitude) {
+                gearService.getWeatherDataFromCloud($scope.coordinates, $scope.dateValue, $scope.duration, function (data) {
+                    if (data) {
+                        $scope.gearList = data.gearList;
+                        $scope.minTemp = data.minTemp;
+                        $scope.maxTemp = data.maxTemp;
+                        $scope.isResultsShown = true;
+                        $scope.$apply();
                     }
+                });
+            }
+
+        }
+        $scope.getGearCheckList();
+        $scope.updateTabPos = function (pos) {
+            $scope.profileTabPos = pos;
+        }
+        $scope.buyGearPoll = function (decision) {
+            gearService.gearBuyPoll(decision, function (data) {
+                if (data) {
+                    $scope.pollDone = true;
+                    $scope.$apply();
                 }
             });
         }
-        function getTemperatureGrade(temp) {
-            var grade
-            if (temp < 10) {
-                grade = 0;
+
+        $scope.postGearChecklistFeedback = function (isValid) {
+            $scope.submitted = true;
+            if (isValid) {
+                var data = {
+                    name: $scope.gearChecklistFeedback.name,
+                    email: $scope.gearChecklistFeedback.email,
+                    location: $scope.gearChecklistFeedback.location,
+                    date: $scope.gearChecklistFeedback.date.toDateString(),
+                    comments: $scope.gearChecklistFeedback.comments
+                }
+                Parse.Cloud.run("sendGearChecklistFeedback", data, {
+                    success: function (object) {
+                        $scope.submitted = false;
+                        $('#checklistFeedback').modal('hide');
+                        $scope.gearChecklistFeedback = undefined;
+                        $('#response').html('Email sent!').addClass('success').fadeIn('fast');
+                        $scope.feedbackSubmitted = true;
+                        $scope.$apply();
+                    },
+
+                    error: function (object, error) {
+                        $scope.submitted = false;
+                        $('#checklistFeedback').modal('hide');
+                        $scope.gearChecklistFeedback = undefined;
+                        console.log(error);
+                        $('#response').html('Error! Email not sent!').addClass('error').fadeIn('fast');
+                    }
+                });
             }
-            else if (temp < 0) {
-                grade = 1;
-            }
-            else if (temp < 15) {
-                grade = 2;
-            }
-            else {
-                grade = 3;
-            }
-            return grade;
-        }
-        function getDurationGrade(duration) {
-            var grade
-            if (duration <= 1) {
-                grade = 0;
-            }
-            else if (duration <= 3) {
-                grade = 1;
-            }
-            else if (duration <= 6) {
-                grade = 2;
-            }
-            else {
-                grade = 3;
-            }
-            return grade;
         }
 
     };

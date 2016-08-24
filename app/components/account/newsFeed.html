@@ -21,7 +21,7 @@
         <div class="column span-4" ng-repeat="trip in allTrips">
             <div class="trip-preview">	
 	            <div class="trip-image image element-image loaded">
-		            <a ng-href="#/account/timeline/{{trip.id}}">
+		            <a ng-href="/account/timeline/{{trip.id}}">
                         <img ng-show="trip.main_image" ng-src="{{trip.cropped_image_ur}}" class="fullwidth" style="display: block;">		                
                     </a>
 		
@@ -33,10 +33,10 @@
 		            </div>
 	            </div>
 	        <div class="trip-footer">
-		        <h3 class="trip-title title"><a ng-href="#/account/timeline/{{trip.id}}">{{trip.title}}</a></h3>
+		        <h3 class="trip-title title"><a ng-href="/account/timeline/{{trip.id}}">{{trip.title}}</a></h3>
 		        <div class="trip-details clearfix">
 			        <div class="trip-detail left">
-				        <a ng-href="#/account/profile/{{trip.user.id}}"><span class="fa fa-user"></span> {{trip.username}}</a>
+				        <a ng-href="/account/profile/{{trip.user.id}}"><span class="fa fa-user"></span> {{trip.username}}</a>
 			        </div>
 		        </div>
 	        </div>	

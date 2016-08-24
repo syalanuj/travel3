@@ -3,21 +3,19 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
     var User = Parse.Object.extend("User");
     var Trips = Parse.Object.extend("Trips");
     var TripLikes = Parse.Object.extend("Trip_Likes");
+    var PublicCMS = Parse.Object.extend("Public_CMS");
 
     var user = new User();
     var trips = new Trips();
     var tripLikes = new TripLikes();
+    var publicCMS = new PublicCMS();
 
     return {
         getTripById: getTripById,
-        postTrip: postTrip,
-        updateTrip: updateTrip,
-        deleteTrip: deleteTrip,
         getMyTrips: getMyTrips,
         getAllTrips: getAllTrips,
         getAllFeaturedTrips: getAllFeaturedTrips,
         getMyProfile: getMyProfile,
-        updateUserFacebookProfile: updateUserFacebookProfile,
         getUserById: getUserById,
         getTripByTags: getTripByTags,
         getAllUserProfiles: getAllUserProfiles,
@@ -25,9 +23,9 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         getUserGallery: getUserGallery,
         getRelatedTrips: getRelatedTrips,
         uploadImageOnCloudinary: uploadImageOnCloudinary,
-        updateProfileInformation: updateProfileInformation,
         getTripCategories: getTripCategories,
-        getHeaderTopTags: getHeaderTopTags
+        getHeaderTopTags: getHeaderTopTags,
+        getLandingContent: getLandingContent
     };
 
     function getTripById(tripId, callback) {
@@ -43,89 +41,6 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     };
-
-    function postTrip(tripDetails, callback) {
-        var trips = new Trips();
-        trips.set("title", tripDetails.title);
-        trips.set("introduction", tripDetails.introduction);
-        trips.set("main_image", tripDetails.main_image);
-        trips.set("posted_on", tripDetails.posted_on);
-        trips.set("visited_places", tripDetails.visited_places);
-        trips.set("total_likes", 0);
-        trips.set("username", tripDetails.user.name);
-        trips.set("tags", tripDetails.tags)
-        trips.set("user_pointer", {
-            __type: "Pointer",
-            className: "_User",
-            objectId: tripDetails.user.id
-        });
-
-        //var customACL = new Parse.ACL();
-        //customACL.setWriteAccess(Parse.User.current(), true);
-        //customACL.setPublicReadAccess(true);
-        //trips.setACL(customACL);
-
-
-        trips.save(null, {
-            success: function (parseObject) {
-                callback(JSON.parse(JSON.stringify(parseObject)));
-            },
-            error: function (gameScore, error) {
-                alert('Failed to create new object, with error code: ' + error.message);
-            }
-        });
-    };
-
-    function updateTrip(tripDetails, callback) {
-        var trips = new Trips();
-        if (tripDetails.id) {
-            trips.id = tripDetails.id;
-        }
-        else if (tripDetails.objectId) {
-            trips.id = tripDetails.objectId;
-        }
-        var locationKeywords = new Array();
-        angular.forEach(tripDetails.visited_places, function (place, key) { angular.forEach(place.locationDetails.address_components, function (address, key) { angular.forEach(address.long_name.split(" "), function (name, key) { locationKeywords.push(name) }) }) })
-        trips.set("title", tripDetails.title);
-        trips.set("introduction", tripDetails.introduction);
-        trips.set("main_image", tripDetails.main_image);
-        trips.set("visited_places", tripDetails.visited_places);
-        trips.set("tags", tripDetails.tags);
-        trips.set("location_keywords", locationKeywords);
-        if (tripDetails.user && tripDetails.user.id) {
-            userId = tripDetails.user.id
-        }
-        if (tripDetails.user_pointer && tripDetails.user_pointer.objectId) {
-            userId = tripDetails.user_pointer.objectId
-        }
-        trips.set("user_pointer", {
-            __type: "Pointer",
-            className: "_User",
-            objectId: userId
-        });
-
-        trips.save(null, {
-            success: function (parseObject) {
-                callback(JSON.parse(JSON.stringify(parseObject)));
-            },
-            error: function (gameScore, error) {
-                console.log('Failed to create new object, with error code: ' + error.message);
-            }
-        });
-
-    };
-    function deleteTrip(tripId, callback) {
-        var trips = new Trips();
-        trips.id = tripId;
-        trips.destroy({
-            success: function (parseObject) {
-                callback(parseObject.id);
-            },
-            error: function (myObject, error) {
-                console.log('Failed to create new object, with error code: ' + error.message);
-            }
-        });
-    }
 
     function getMyTrips(myId, callback) {
         var myTrips = new Array();
@@ -197,19 +112,6 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         return deferred.promise;
 
     };
-    function updateUserFacebookProfile(profile, userId, callback) {
-        user.id = userId;
-        user.set("facebook_profile", profile);
-        user.save(null, {
-            success: function (parseObject) {
-                callback(parseObject.id);
-            },
-            error: function (gameScore, error) {
-                alert('Failed to create new object, with error code: ' + error.message);
-            }
-        });
-
-    }
     function getUserById(userId, callback) {
         var query = new Parse.Query(user);
         query.get(userId, {
@@ -311,19 +213,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
         })
     }
-    function updateProfileInformation(userId, profileInformation, callback) {
-        var user = new User();
-        user.id = userId;
-        user.set("profile_information", profileInformation);
-        user.save(null, {
-            success: function (parseObject) {
-                callback(parseObject.id);
-            },
-            error: function (gameScore, error) {
-                //alert('Failed to create new object, with error code: ' + error.message);
-            }
-        });
-    }
+    
     function getTripCategories(callback) {
         var TripCategories = Parse.Object.extend("Trip_Categories");
         var tripCategories = new TripCategories();
@@ -344,6 +234,18 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         var headerTags = new HeaderTags();
         var query = new Parse.Query(headerTags);
 
+        query.find({
+            success: function (parseObject) {
+                callback(JSON.parse(JSON.stringify(parseObject)));
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    }
+    function getLandingContent(callback){
+        var query = new Parse.Query(publicCMS);
+        
         query.find({
             success: function (parseObject) {
                 callback(JSON.parse(JSON.stringify(parseObject)));

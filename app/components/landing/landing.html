@@ -1,26 +1,17 @@
-    <!--<div class="jumbotron jumbotron-index">
-                <div class="container text-center">
-                    <h4>Welcome to Campture</h4>
-                    <p>Showcase and Discover experiences</p>
-                    <a  ng-href="#/howTo/" class="btn btn-primary btn-lg round"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
-                    <!--<a ng-show="userObj == undefined" class="btn btn-primary btn-lg round" data-target="#facebook-login-modal" data-toggle="modal"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
-                    <a ng-show="userObj" ng-href="#/account/postTrip" class="btn btn-primary btn-lg round"><img src="/img/icons/map.svg" alt=""> Campture Me!</a>
-                </div>
-            </div>!-->
+
 <div id="carousel" class="carousel slide carousel-fade jumbotron-index" data-ride="carousel">
     <!-- Carousel items -->
     <div class="carousel-inner">
-        <div class="active item" style="background-image:url(../../../css/images/banner1.jpg); ">
+        <div class="item" style="background-image:url(../../../css/images/banner1.jpg); " ng-style="{'background-image':'url(' +content.image_url+ ')'}" ng-class="{ 'active': $index == 0 }" ng-repeat="content in jumboContent.list track by $index">
             <div class="carousel-caption">
-                <h1>Your Guide to Everything Outdoors</h1>
+                <h1>{{content.heading}}</h1>
 
-                <h4 class="landing-carousel-text "> Campture is all about exploring the unknown and offbeat experiences.
-We are a community of people with amazing stories to tell!</h4>
-                <a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+                <h4 class="landing-carousel-text "> {{content.text}}</h4>
+                <a class="btn btn-default get-started-btn btn-lg  hidden-xs" ng-href="{{content.cta_url}}">{{content.cta_text}}</a>
+                
             </div>
         </div>
-        <div class="item" style="background-image:url(../../../css/images/banner2.jpg); ">
+        <!--<div class="item" style="background-image:url(../../../css/images/banner2.jpg); ">
             <div class="carousel-caption">
                 <h1>Create Narrative Photologues</h1>
                 <h4 class="landing-carousel-text ">Create a new story, quickly add title, photos, experiences on our beautifully designed format.</h4>
@@ -35,7 +26,7 @@ We are a community of people with amazing stories to tell!</h4>
                 <a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
                 <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
             </div>
-        </div>
+        </div>-->
 
     </div>
     <!-- Carousel nav -->
@@ -50,25 +41,26 @@ Incredible adventures created by people like you.
         </h2>
         <h4>Our mission is to discover adventures, whether just down the street or across the globe,<br>by inspiring people to explore and share their experiences.</h4>
         <div class="text-center">
-            <a ng-show="userObj" ng-href="#/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-lg hidden-md hidden-sm">Get Started</a>
+            <a ng-show="userObj" ng-href="/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-lg hidden-md hidden-sm">Get Started</a>
             <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg hidden-lg hidden-md hidden-sm" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
         </div>
 
     </div>
 </div>
 <div class="trip-background-wrap">
+<!--
     <div class="must-visit" style="background-color:rgb(36, 38, 37)">
         <div class="text-center"><h2>Categories</h2>
             <div class="container">
 
                 <div id="tagsCarousel" class="carousel slide" data-ride="carousel">
 
-                    <!-- Wrapper for slides -->
+                 
                     <div class="carousel-inner" role="listbox">
                         <div class="item" ng-class="{ 'active': $index == 1 }" ng-repeat="categoryTagRow in categoryTagRowArray track by $index">
                             <div class="row">
                                 <div class="col-md-3 col-xs-6" ng-repeat="categoryTag in categoryTagRow">
-                                    <a ng-href="#/feed/{{categoryTag.tag}}" class="thumbnail">
+                                    <a ng-href="/feed/{{categoryTag.tag}}" class="thumbnail">
                                         <img ng-src="{{categoryTag.image_url}}" alt="image">
                                     </a>
                                 </div>
@@ -76,7 +68,7 @@ Incredible adventures created by people like you.
                         </div>
                     </div>
 
-                    <!-- Left and right controls -->
+                    
                     <a class="left carousel-control" href="#tagsCarousel" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -90,7 +82,10 @@ Incredible adventures created by people like you.
             </div>
         </div>
     </div>
-
+-->
+    <div class="container text-center">
+        <a ng-href="{{marketingContent.list[0].cta_url}}"><img class="marketing-banner img-responsive" ng-src="{{marketingContent.list[0].image_url}}"></a>
+    </div> 
     <div class="container text-center featured-photologues">
         <h2>Featured Photologues</h2>
         <div ng-show="!isSiteLoaded" class="site-loader site-loader-center" style="margin-top: 50px;">
@@ -110,17 +105,17 @@ Incredible adventures created by people like you.
             <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
                 <div class="thumbnail location-thumb">
                 	<div class="thumb-img">
-                    <a ng-href="#/account/timeline/{{trip.id}}">
+                    <a ng-href="/account/timeline/{{trip.id}}">
                         <img class="ig-lofi trip-img" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
                     </a>
                     </div>
                     <div class="caption">
-                        <a ng-href="#/account/timeline/{{trip.id}}">
+                        <a ng-href="/account/timeline/{{trip.id}}">
                             <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
                         </a>
                       
-                        <span class=""><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle pro-pic"></a></span>
-                        <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                        <span class=""><a ng-href="/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle pro-pic"></a></span>
+                        <span class="user_name_thumbnail"><a ng-href="/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                         <!--<span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>-->
                         <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"><sup>&nbsp; {{trip.total_likes}}</sup></em></span>
 
@@ -131,14 +126,32 @@ Incredible adventures created by people like you.
             </div>
         </div>
         <div class="row">
-            <a href="#/explore" class="btn btn-lg btn-default">Explore More</a>
+            <a href="/explore" class="btn btn-lg btn-default">Explore More</a>
         </div>
     </div>
-    <div class="jumbotron explorer-jumbotron">
+    <div class="explorer-jumbotron">
         <div class="container">
-            <h2>The Campture Explorer Program</h2>
-            <p>Explorers inspire us to get outside, they are local experts who share their favourite adventures with the community. Some are professionals, but most are everyday folks: lawyers, doctors, students and parents. They are good people and incredible human beings.</p>
-            <a href="#/explorerProgram" class="btn btn-join-now btn-lg">Join Now</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Join the Campture Explorer Program</h2>
+                    <p>Explorers are the most active and dedicated members of travel community - they add their favourite adventures, leave detailed reviews, share updated trail reports, and include great photography.</p>
+<!--                    <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>-->
+                    <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>
+                </div>
+                <div class="col-md-6">
+                    <form ng-submit="sendUserEmail()">
+                        <div class="input-group">
+                            <input ng-model="emailField1" type="text" class="form-control form-control-camptureme" placeholder="Your email address" required>
+                            <span class="input-group-btn">
+                                <button class="btn btn-orange" ng-click="sendUserEmail()" type="submit">I'm Interested</button>
+                            </span>
+                        </div>
+                        <p ng-show="isemailField1Sent" style="font-family:lato-light; color:white;">
+                            Thank You!
+                        </p> 
+                    </form>
+                </div>
+            </div>    
         </div>
     </div>
     <div class="asfeatured text-center">
@@ -151,6 +164,7 @@ Incredible adventures created by people like you.
             <a href="http://betalist.com/startups/campture"><img src="../../../css/images/Beta List.png" class="img-responsive"></a>
         </div>
     </div>
+<!--
     <div class="text-center">
         <div class=" text-center instructions">
             <h2>Unravel your travel with Campture!</h2>
@@ -167,4 +181,5 @@ Incredible adventures created by people like you.
         </div>
 
     </div>
+-->
 </div>

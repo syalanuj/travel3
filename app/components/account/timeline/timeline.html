@@ -16,7 +16,7 @@
     </div>
    <div class="timeline-tripname text-center">
 <div class="text-center"> 
-   <a ng-show="isMyProfile"  ng-href="/#/account/editTrip/{{trip.id}}" class="btn btn-primary btn-lg round" style="text-transform:none!important;">Edit your trip</a>                
+   <a ng-show="isMyProfile"  ng-href="/account/editTrip/{{trip.id}}" class="btn btn-primary btn-lg round" style="text-transform:none!important;">Edit your trip</a>                
    </div>
    <span>{{myTrip.title}}</span>
 </div>  
@@ -24,7 +24,7 @@
     <p class="linkify">{{trip.introduction}}</p>
     <img src="../css/images/Comma right.png" alt="comma2">
     <div class="by-user">
-    <a ng-href="#/account/profile/{{userObj.id}}">
+    <a ng-href="/account/profile/{{userObj.id}}">
     <img class="img-circle" ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="">
     <p>{{trip.user.facebook_profile.name}}</p>
     </a>
@@ -71,7 +71,7 @@
       </li>-->
         <li style="cursor: pointer" class="rrssb-facebook small">
        <a ng-click="shareOnFacebook()" class="popup">
-          <span class="rrssb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"/></svg></span>
+          <span class="rrssb-icon"></span>
           <span class="rrssb-text">facebook</span>
         </a>
       </li>
@@ -136,7 +136,7 @@
                 <div class="text-center col-xs-12 timelineend">
                     <!--<p class="thatsall col-md-offset-6 col-sm-offset-6 col-xs-offset-3"> That's all Folks!</p><br>-->
                     <div class="credits col-md-offset-3 col-sm-offset-4">
-                        <a ng-href="#/account/profile/{{userObj.id}}">
+                        <a ng-href="/account/profile/{{userObj.id}}">
                             <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle">
                             <p class="dancing-script">{{userObj.facebook_profile.name}}</p>
                         </a>
@@ -192,7 +192,7 @@
                         </div>
                     </div>
                     <div class="timeline-tags col-md-offset-3">
-                        <span id="tags">Tags:</span><span ng-repeat="tag in trip.tags track by $index"><a ng-href="#/feed/{{tag}}">{{tag}}</a></span>
+                        <span id="tags">Tags:</span><span ng-repeat="tag in trip.tags track by $index"><a ng-href="/feed/{{tag}}">{{tag}}</a></span>
                     </div>
                 </div>
             </div>
@@ -231,16 +231,16 @@
             </div>
             <div class="col-md-12 col-sm-3 col-xs-6" ng-repeat="trip in relatedTrips | filter:query">
                 <div class="thumbnail">
-                    <a ng-href="#/account/timeline/{{trip.id}}">
+                    <a ng-href="/account/timeline/{{trip.id}}">
                         <img ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
                     </a>
                     <div class="caption">
-                        <a ng-href="#/account/timeline/{{trip.id}}">
+                        <a ng-href="/account/timeline/{{trip.id}}">
                             <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
                         </a>
                         <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>!-->
-                        <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
-                        <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                        <span class="pull-left"><a ng-href="/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+                        <span class="user_name_thumbnail"><a ng-href="/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                         <!--<span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>!-->
                         <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"><sup>{{trip.total_likes}}</sup></em></span>
 

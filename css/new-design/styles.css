@@ -80,9 +80,6 @@ body
     background-color:#fff;
     overflow-x:hidden;
 }
-body a{
-    color:none;
-}
 /*SearchbarCSS*/
 .timeline-search-box {
     height: 24px;
@@ -1169,7 +1166,7 @@ textarea {
 /**/
 /*profilepage*/
 .profile_page_header{
-    background-color: rgb(247, 247, 247);
+    background-color: #fcfcfc; 
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
 }
 .profilepicture{
@@ -1183,19 +1180,20 @@ textarea {
 .user_name{
     padding-top:25px;
     margin:auto!important;
-    font-size: 20px;
+
     font-family: lato;
-    font-weight: 500;
     color: rgb(48, 49, 51);
+    font-size: 36px;
+    font-weight: 300;
 }
 .tpp{
     /*border-color: rgb(222, 222, 222);*/
-/*
+    /*
     background-color: rgb(252, 252, 252);
     border-style: solid;
     border-width:1px;
     font-size:.7rem;
-*/
+    */
     font-family:lato;
     color: rgb(117, 117, 117);
     overflow:hidden;
@@ -1237,10 +1235,10 @@ textarea {
     margin-bottom:20px;
 }
 .about-me span{
+    font-weight: 600;
     font-size: .7rem;
     font-family: lato;
     color: rgb(66, 67, 68);
-    letter-spacing:.04em;
 }
 .about-me p{
     font-size: .7rem;
@@ -2132,7 +2130,6 @@ width: 1410px;
 }
 .rrssb-buttons-dropup{
     width:278px!important;
-    left:-57px!important;
     border:none!important;
     background:transparent!important;
 }
@@ -2143,15 +2140,10 @@ width: 1410px;
 @media (min-width: 768px){
     .media-buttons-margin{
         margin-top:20px;	
-/*        margin-left: 24.333333%;*/
     }
 }
 @media (max-width: 767px){
     .media-buttons-margin{
-/*
-        margin-left:auto;
-        margin-right:auto;
-*/
         padding-top:15px;
     }
 }
@@ -2514,8 +2506,16 @@ width: 1410px;
 }
 .explorer-jumbotron{
     background-image:url(../images/explorer-hero-2.jpg);
-    height:600px;
+    background-size: cover;
+    position: relative;
+    width: 100%;
     margin-bottom:0;
+    overflow: hidden;
+    padding: 15px;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8)!important;
+}
+.explorer-jumbotron a{
+    color: #ffff!important;   
 }
 .explorer-jumbotron h2{
     font-size: 36px;
@@ -2525,14 +2525,20 @@ width: 1410px;
 }
 .explorer-jumbotron p{
     font-size: 22px;
-
+    color: #FFFFFF;
+    margin-bottom: 15px;
     letter-spacing: 1px;
+}
+.explorer-jumbotron form{
+    margin-top: 100px;
+    margin-bottom: 20px;
 }
 .more-pl-btn{
     background-color:rgb(245, 95, 13);
     color:#FFFFFF;
 }
 .angellist img{
+    height: 50px;
     padding-left:20px;
     padding-right:20px;
     padding-bottom:20px;
@@ -2540,11 +2546,13 @@ width: 1410px;
 }
 .asfeatured{
     background:rgb(36, 38, 37);
-    padding:40px;
+    padding:10px;
 }
 .asfeatured h2{
     color:white;
+    font-size: 20px;
 }
+
 .btn-join-now {
     font-size: 18px;
     font-family: lato;
@@ -2552,10 +2560,14 @@ width: 1410px;
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 0.2em;
+    text-decoration: underline;
+    padding: 0;
+/*
     border-style: solid;
     border-width: 2px;
     border-color: rgb(255, 249, 249);
     background-color: rgba(45, 45, 45, 0.302);
+*/
     margin-top:40px;
     border-radius:0;
 }
@@ -3197,8 +3209,10 @@ background-size:contain;
 .location-thumb .trip-img{
     border-radius: 4px;
     background-color: rgb(171, 171, 171);
+
     box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.6);
     left: 0;
+
     right: 0;
     max-width: 90%;
     max-height: auto;
@@ -3376,7 +3390,7 @@ background-size:contain;
     bottom: -60px;
     left: -11px;
     top: -8px;
-   }
+}
 
 @-webkit-keyframes pulsate {
     0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
@@ -3584,11 +3598,16 @@ background-size:contain;
     font-size:2.4rem;
     position: relative;
 }
+.trip-disc{
+    padding-bottom: 58px;
+    padding-top: 40px;
+}
 .trip-disc p{
     font-family:lato;
     font-size: 1rem;
-    color: rgb(255, 255, 255);
+    color: #333;
     word-wrap:break-word;
+
 }
 .profile-pic{
     clear:both;
@@ -3611,7 +3630,7 @@ background-size:contain;
 }
 .timeline-wrap{
     position:relative;
-    top:-55px;
+    top:-72px;
 }
 .card-location{
     font-weight:bold;
@@ -4296,11 +4315,25 @@ hr{
 .lightbox-image-caption{
     font-size: .5rem!important;
     top: 85%!important;
-    
+
 }
 .lightbox-image-caption span{
     bottom: 0;
 }
 .Itinerary a{
     color: #6a6a6a;
+}
+.marketing-banner{
+    margin: auto;
+}
+.btn-orange {
+    background-color: rgb(226, 88, 51)!important;
+    font-family: "lato"!important;
+    text-transform: capitalize;
+    color: rgb(251, 251, 251);
+}
+.rrssb-buttons li a{
+    width: 36px!important;
+    font-size: 18px;
+    color: white;
 }

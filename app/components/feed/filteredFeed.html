@@ -33,17 +33,17 @@
     <div class="row" style="margin-top: 50px">
         <div ng-show="isSiteLoaded" class="col-sm-6 col-md-3" ng-repeat="trip in filteredTrips = ( allTrips | filter:query)">
             <div class="thumbnail">
-                <a ng-href="#/account/timeline/{{trip.id}}">
+                <a ng-href="/account/timeline/{{trip.id}}">
                     <img class="xpro2" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
                 </a>
                 <div class="caption">
-                    <a ng-href="#/account/timeline/{{trip.id}}">
+                    <a ng-href="/account/timeline/{{trip.id}}">
                         <span class="pull-left trip_name title-overflow-hidden">{{trip.title}}</span>
                     </a>
                     <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
                     <br>
-                    <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
-                    <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                    <span class="pull-left"><a ng-href="/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+                    <span class="user_name_thumbnail"><a ng-href="/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                     <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
                     <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
 

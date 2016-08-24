@@ -1,6 +1,6 @@
 <div class="exploreWrap">
 <div class="explore-banner text-center">
-    <img src="../css/images/explore.png" class="img-responsive">
+    <img src="../css/images/explore.jpg" class="img-responsive">
 </div>
 <!--<div class="explore-icons container">
 	<div class="row">
@@ -61,16 +61,16 @@
     <div class="row">
         <div ng-show="isSiteLoaded" class="col-sm-6 col-md-3" ng-repeat="trip in allTrips">
             <div class="thumbnail location-thumb">
-                <a ng-href="#/account/timeline/{{trip.id}}" class="thumb-img">
+                <a ng-href="/account/timeline/{{trip.id}}" class="thumb-img">
                     <img class="xpro2 trip-img" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
                 </a>
                 <div class="caption">
-                    <a ng-href="#/account/timeline/{{trip.id}}">
+                    <a ng-href="/account/timeline/{{trip.id}}">
                         <span class=" trip_name title-overflow-hidden">{{trip.title}}</span>
                     </a>
                     <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
-                    <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
-                    <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                    <span class="pull-left"><a ng-href="/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+                    <span class="user_name_thumbnail"><a ng-href="/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                     <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
                     <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
 

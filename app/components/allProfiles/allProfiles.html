@@ -5,14 +5,14 @@
                 <div class="profile-preview ">
                     <div class="profile-image">
                         <div class="photo-preview image element-image loaded">
-                            <a ng-href="#/account/profile/{{userProfile.id}}">
+                            <a ng-href="/account/profile/{{userProfile.id}}">
 	                            <img ng-src="{{userProfile.facebook_profile.picture.data.url}}" class="fullwidth" alt="profile_pic" style="display: block;">
                             </a>
                         </div>
                     </div>
                     <div class="profile-content">
                         <h3 class="profile-name title">
-                            <a ng-href="#/account/profile/{{userProfile.id}}">{{userProfile.facebook_profile.name}}</a>
+                            <a ng-href="/account/profile/{{userProfile.id}}">{{userProfile.facebook_profile.name}}</a>
                         </h3>
                         <div class="profile-badges clearfix">			
                             <div class="badge badge-trips color-10" title="Published more than 10 trips"></div>			
