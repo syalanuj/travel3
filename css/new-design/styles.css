@@ -1572,7 +1572,7 @@ textarea {
     padding-right:15px;
 
 }
-.timeline-tags span{
+.tage{
     font:lato;
     font-size:14px;
     color: rgb(17, 23, 28);
@@ -1588,17 +1588,14 @@ textarea {
     border:1px solid #ededed;
     border-radius:4px;
 } 
-.timeline-tags span a{
+.tage a{
     color:black;
 }
-.timeline-tags span a:hover{
+.tage a:hover{
     text-decoration:none;
     color:white;
 }
-.timeline-tags span:hover a{
-    color:white;
-}
-.timeline-tags span:hover{
+.tage:hover{
     background-color:#f56c36;
     text-decoration:none;
 }
@@ -4336,4 +4333,23 @@ hr{
     width: 36px!important;
     font-size: 18px;
     color: white;
+}
+.image-bg{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.image-bg img{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+#modalfifty .col-md-6{
+    padding: 0px;
+}
+#modalfifty .modal-body{
+    padding: 0px;
+}
+#modalfifty ol{
+    list-style: none;
+    padding: 0px;
+    margin: 0;
 }
