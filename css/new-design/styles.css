@@ -4334,3 +4334,22 @@ hr{
     font-size: 18px;
     color: white;
 }
+.image-bg{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.image-bg img{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+#modalfifty .col-md-6{
+    padding: 0px;
+}
+#modalfifty .modal-body{
+    padding: 0px;
+}
+#modalfifty ol{
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+}

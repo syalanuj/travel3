@@ -1,4 +1,79 @@
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalfifty">Open Modal</button>
 
+<!-- Modal -->
+<div id="modalfifty" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <ol id ="models">
+                    <li>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="image-bg">
+                                    <img src="../../../css/images/welcome_modal/welcome_to_campture.jpg" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="image-bg">
+                                    <img src="../../../css/images/welcome_modal/what_is_campture_tiimeline.jpg" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <p>slide 2</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="image-bg" style="background-image:url(../../../css/images/welcome_modal/timeline_cover_form.jpg)">
+                                    <img src="../../../css/images/welcome_modal/timeline_cover_form_animation.gif" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <p>slide 3</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="image-bg" style="background-image:url(../../../css/images/welcome_modal/timeline_location_card.jpg)">
+                                    <img src="../../../css/images/welcome_modal/timeline-location-card.gif" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <p>slide 4</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="image-bg">
+                                    <img src="../../../css/images/welcome_modal/published_timeline.jpg" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <p>slide 5</p>
+                            </div>
+                        </div>
+                    </li>
+                </ol>    
+            </div>
+        </div>
+
+    </div>
+</div>
 <div id="carousel" class="carousel slide carousel-fade jumbotron-index" data-ride="carousel">
     <!-- Carousel items -->
     <div class="carousel-inner">
@@ -8,25 +83,25 @@
 
                 <h4 class="landing-carousel-text "> {{content.text}}</h4>
                 <a class="btn btn-default get-started-btn btn-lg  hidden-xs" ng-href="{{content.cta_url}}">{{content.cta_text}}</a>
-                
+
             </div>
         </div>
         <!--<div class="item" style="background-image:url(../../../css/images/banner2.jpg); ">
-            <div class="carousel-caption">
-                <h1>Create Narrative Photologues</h1>
-                <h4 class="landing-carousel-text ">Create a new story, quickly add title, photos, experiences on our beautifully designed format.</h4>
-                <a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
-            </div>
-        </div>
-        <div class="item" style="background-image:url(../../../css/images/banner3.jpg);  ">
-            <div class="carousel-caption">
-                <h1>Publish &amp; Get Social</h1>
-                <h4 class="landing-carousel-text ">Share your stories and inspire fellow travellers or keep all your travel memories in one place.</h4>
-                <a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
-            </div>
-        </div>-->
+<div class="carousel-caption">
+<h1>Create Narrative Photologues</h1>
+<h4 class="landing-carousel-text ">Create a new story, quickly add title, photos, experiences on our beautifully designed format.</h4>
+<a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
+<a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+</div>
+</div>
+<div class="item" style="background-image:url(../../../css/images/banner3.jpg);  ">
+<div class="carousel-caption">
+<h1>Publish &amp; Get Social</h1>
+<h4 class="landing-carousel-text ">Share your stories and inspire fellow travellers or keep all your travel memories in one place.</h4>
+<a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
+<a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+</div>
+</div>-->
 
     </div>
     <!-- Carousel nav -->
@@ -37,53 +112,53 @@
 <div class="trip-background-wrap">
     <div class="text-center container trip-background-wrap intro">
         <h2>
-Incredible adventures created by people like you.
+            Incredible adventures created by people like you.
         </h2>
         <h4>Our mission is to discover adventures, whether just down the street or across the globe,<br>by inspiring people to explore and share their experiences.</h4>
-<!--
-        <div class="text-center">
-            <a ng-show="userObj" ng-href="/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-lg hidden-md hidden-sm">Get Started</a>
-            <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg hidden-lg hidden-md hidden-sm" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
-        </div>
+        <!--
+<div class="text-center">
+<a ng-show="userObj" ng-href="/account/postTrip/" class="btn btn-default get-started-btn btn-lg  hidden-lg hidden-md hidden-sm">Get Started</a>
+<a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg hidden-lg hidden-md hidden-sm" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+</div>
 -->
 
     </div>
 </div>
 <div class="trip-background-wrap">
-<!--
-    <div class="must-visit" style="background-color:rgb(36, 38, 37)">
-        <div class="text-center"><h2>Categories</h2>
-            <div class="container">
+    <!--
+<div class="must-visit" style="background-color:rgb(36, 38, 37)">
+<div class="text-center"><h2>Categories</h2>
+<div class="container">
 
-                <div id="tagsCarousel" class="carousel slide" data-ride="carousel">
+<div id="tagsCarousel" class="carousel slide" data-ride="carousel">
 
-                 
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item" ng-class="{ 'active': $index == 1 }" ng-repeat="categoryTagRow in categoryTagRowArray track by $index">
-                            <div class="row">
-                                <div class="col-md-3 col-xs-6" ng-repeat="categoryTag in categoryTagRow">
-                                    <a ng-href="/feed/{{categoryTag.tag}}" class="thumbnail">
-                                        <img ng-src="{{categoryTag.image_url}}" alt="image">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    
-                    <a class="left carousel-control" href="#tagsCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#tagsCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
+<div class="carousel-inner" role="listbox">
+<div class="item" ng-class="{ 'active': $index == 1 }" ng-repeat="categoryTagRow in categoryTagRowArray track by $index">
+<div class="row">
+<div class="col-md-3 col-xs-6" ng-repeat="categoryTag in categoryTagRow">
+<a ng-href="/feed/{{categoryTag.tag}}" class="thumbnail">
+<img ng-src="{{categoryTag.image_url}}" alt="image">
+</a>
+</div>
+</div>
+</div>
+</div>
 
-            </div>
-        </div>
-    </div>
+
+<a class="left carousel-control" href="#tagsCarousel" role="button" data-slide="prev">
+<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+</a>
+<a class="right carousel-control" href="#tagsCarousel" role="button" data-slide="next">
+<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+<span class="sr-only">Next</span>
+</a>
+</div>
+
+</div>
+</div>
+</div>
 -->
     <div class="container text-center">
         <a ng-href="{{marketingContent.list[0].cta_url}}"><img class="marketing-banner img-responsive" ng-src="{{marketingContent.list[0].image_url}}"></a>
@@ -106,16 +181,16 @@ Incredible adventures created by people like you.
 
             <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
                 <div class="thumbnail location-thumb">
-                	<div class="thumb-img">
-                    <a ng-href="/account/timeline/{{trip.id}}">
-                        <img class="ig-lofi trip-img" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
-                    </a>
+                    <div class="thumb-img">
+                        <a ng-href="/account/timeline/{{trip.id}}">
+                            <img class="ig-lofi trip-img" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
+                        </a>
                     </div>
                     <div class="caption">
                         <a ng-href="/account/timeline/{{trip.id}}">
                             <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
                         </a>
-                      
+
                         <span class=""><a ng-href="/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle pro-pic"></a></span>
                         <span class="user_name_thumbnail"><a ng-href="/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                         <!--<span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>-->
@@ -137,7 +212,7 @@ Incredible adventures created by people like you.
                 <div class="col-md-6">
                     <h2>Join the Campture Explorer Program</h2>
                     <p>Explorers are the most active and dedicated members of travel community - they add their favourite adventures, leave detailed reviews, share updated trail reports, and include great photography.</p>
-<!--                    <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>-->
+                    <!--                    <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>-->
                     <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>
                 </div>
                 <div class="col-md-6">
@@ -166,22 +241,22 @@ Incredible adventures created by people like you.
             <a href="http://betalist.com/startups/campture"><img src="../../../css/images/Beta List.png" class="img-responsive"></a>
         </div>
     </div>
-<!--
-    <div class="text-center">
-        <div class=" text-center instructions">
-            <h2>Unravel your travel with Campture!</h2>
-            <img src="../../../css/images/Upload_images.png">
-            <i class="fa fa-angle-double-right hidden-xs"></i>
-            <img src="../../../css/images/Write_caption.png" style="
-    margin-right: 22px">
-            <i class="fa fa-angle-double-right hidden-xs"></i>
-            <img src="../../../css/images/Tag_Locations.png">
-            <div class="row text-center">
-                <a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
-                <a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
-            </div>
-        </div>
+    <!--
+<div class="text-center">
+<div class=" text-center instructions">
+<h2>Unravel your travel with Campture!</h2>
+<img src="../../../css/images/Upload_images.png">
+<i class="fa fa-angle-double-right hidden-xs"></i>
+<img src="../../../css/images/Write_caption.png" style="
+margin-right: 22px">
+<i class="fa fa-angle-double-right hidden-xs"></i>
+<img src="../../../css/images/Tag_Locations.png">
+<div class="row text-center">
+<a ng-show="userObj" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-toggle="modal" data-target="#welcomeModal">Get Started</a>
+<a ng-show="userObj == undefined" class="btn btn-default get-started-btn btn-lg  hidden-xs" data-target="#facebook-login-modal" data-toggle="modal">Get Started</a>
+</div>
+</div>
 
-    </div>
+</div>
 -->
 </div>
