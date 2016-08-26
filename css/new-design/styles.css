@@ -659,7 +659,9 @@ opacity: 0.8;
 /**/
 
 /*Map*/
-.angular-google-map-container{height: 420px;}
+.angular-google-map-container{
+    height: calc(100vh - 55px);
+}
 
 .select-pointer{
     cursor: pointer;
@@ -3627,12 +3629,12 @@ background-size:contain;
 }
 .timeline-wrap{
     position:relative;
-    top:-72px;
+    top:-55px;
 }
 .card-location{
     font-weight:bold;
     font-family:lato;
-    font-size: 1rem;
+    font-size: .8rem;
 }
 .card-date{
     font-weight:bold;
@@ -3641,7 +3643,7 @@ background-size:contain;
 .location-desc{
     font-family:lato;
     word-wrap:break-word;
-    font-size: .9rem;
+    font-size: .7rem;
     padding-top: 10px;
     padding-bottom: 10px;
 }
