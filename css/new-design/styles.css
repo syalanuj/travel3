@@ -4355,3 +4355,10 @@ hr{
     padding: 0px;
     margin: 0;
 }
+.display-flex{
+    display: flex;
+}
+.aligner{
+    display: flex;
+    align-items: center;
+}
