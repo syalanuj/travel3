@@ -79,7 +79,7 @@
                     }
                 });
                 if ($scope.allMarkers[0]) {
-                    $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15 };
+                    $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15, options: {scrollwheel: false} };
                     $scope.polylines = [
                     {
                         id: 1,
@@ -138,8 +138,8 @@
         }
 
         //Map
-        $scope.map = { center: { latitude: 21.0000, longitude: 78.0000 }, zoom: 4 };
-
+        $scope.map = { center: { latitude: 21.0000, longitude: 78.0000 }, zoom: 4, options: {scrollwheel: false} };
+        $scope.options = {scrollwheel: false}
 
         //Comments and Likes
         $scope.getTripComments = function () {
