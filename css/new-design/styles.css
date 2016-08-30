@@ -4362,3 +4362,15 @@ hr{
     display: flex;
     align-items: center;
 }
+.pitch h1{
+    font-size: 1.636rem;
+        font-family: "Lato";
+        font-weight: 300;
+        color: rgb(245, 108, 54);
+  }
+.pitch p{
+    font-size: 1rem;
+    font-family: "Lato";
+    font-weight: 400;
+    color: rgb(82, 83, 84);
+}
