@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var app = angular.module('campture', ['ui.bootstrap', 'ngRoute', 'ngCookies', 'uiGmapgoogle-maps', 'ngAutocomplete', 'dropzone','ngAnimate','ngTouch','ngStorage', 'bootstrapLightbox','ngMeta']);
+    var app = angular.module('campture', ['ui.bootstrap', 'ngRoute', 'ngCookies', 'uiGmapgoogle-maps', 'ngAutocomplete', 'dropzone','ngAnimate','ngTouch','ngStorage', 'bootstrapLightbox','ngMeta','mgcrea.bootstrap.affix']);
     app.run(['$cookies', '$rootScope', '$window', '$location','ngMeta',
         function ($cookies, $rootScope, $window, $location, ngMeta) {
             ngMeta.init();

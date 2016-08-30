@@ -170,7 +170,7 @@ Like &nbsp; | 200
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="content">
+                    <div class="content" bs-affix data-offset-top="1160" data-offset-bottom="300">
                         <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
                             <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fit="false" editable="p.editable" draggable="p.draggable" icons="p.icons">
                             </ui-gmap-polyline>
@@ -300,7 +300,13 @@ Like &nbsp; | 200
         .selected-image-border{
             border:2px solid red;
         }
+        .affix-top {
+    top: 30px; // css to define
+}
 
+.affix-bottom {
+    bottom: 0; // css to define
+}
     </style>
     <script>
         $('a.like-button').on('click', function() {
