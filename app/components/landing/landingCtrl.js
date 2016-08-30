@@ -25,7 +25,7 @@
                 }
             }
         })
-        accountService.getAllFeaturedTrips(function (data) {
+        accountService.getAllLandingFeaturedTrips(function (data) {
             $scope.$apply(function () {
                 $scope.allTrips = data;
                 angular.forEach($scope.allTrips, function (trip) {

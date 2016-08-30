@@ -15,7 +15,7 @@
         $scope.isPostSuccessful = false;
         $scope.isPageLoaded = false;
 
-        accountService.getAllTrips(function (data) {
+        accountService.getAllFeaturedTrips(function (data) {
             $scope.$apply(function () {
                 if (data) {                    
                     $scope.allTrips = data;

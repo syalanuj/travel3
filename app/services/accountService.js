@@ -15,6 +15,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         getMyTrips: getMyTrips,
         getAllTrips: getAllTrips,
         getAllFeaturedTrips: getAllFeaturedTrips,
+        getAllLandingFeaturedTrips: getAllLandingFeaturedTrips,
         getMyProfile: getMyProfile,
         getUserById: getUserById,
         getTripByTags: getTripByTags,
@@ -86,6 +87,24 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         var query = new Parse.Query(trips);
         query.include("user_pointer");
         query.equalTo("is_featured", true);
+        query.find({
+            success: function (parseObject) {
+                for (var i = 0; i < parseObject.length; i++) {
+                    allTrips[i] = getTripFromParse(parseObject[i]);
+                }
+                callback(allTrips);
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    };
+    function getAllLandingFeaturedTrips(callback) {
+        var allTrips = new Array();
+        var query = new Parse.Query(trips);
+        query.include("user_pointer");
+        query.equalTo("is_featured", true);
+        query.limit(8);
         query.find({
             success: function (parseObject) {
                 for (var i = 0; i < parseObject.length; i++) {
@@ -213,7 +232,7 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
         })
     }
-    
+
     function getTripCategories(callback) {
         var TripCategories = Parse.Object.extend("Trip_Categories");
         var tripCategories = new TripCategories();
@@ -243,9 +262,9 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     }
-    function getLandingContent(callback){
+    function getLandingContent(callback) {
         var query = new Parse.Query(publicCMS);
-        
+
         query.find({
             success: function (parseObject) {
                 callback(JSON.parse(JSON.stringify(parseObject)));
