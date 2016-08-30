@@ -270,7 +270,7 @@ Hit the + button to start!
 <div class="form-group modal-form-group">
 <div class="input-group modal-input-group">
 <div class="input-group-addon input-pencil" style="vertical-align:top;"><i class="fa fa-pencil"></i></div>
-<textarea maxlength="500" ng-model="places[placeCount -1].note" class="write-disc" rows="5" placeholder="Describe your epic adventure.."></textarea>
+<textarea ng-model="places[placeCount -1].note" class="write-disc" rows="5" placeholder="Describe your epic adventure.."></textarea>
 </div>
 <div class="pull-right"><span ng-if="places[placeCount -1].note.length == undefined">0</span>{{places[placeCount -1].note.length}}/500</div>
 </div>
