@@ -64,6 +64,8 @@
     function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, $routeParams, accountService, flickrApiService, uiGmapIsReady, Lightbox) {
         //====== Scope Variables==========
         //================================
+        $scope.model = {}
+        $scope.model.text = "Hello"
         $('#addcoverModal').modal('hide')
         $(document).ready(function () {
             $('.remove-location-placeholder').removeAttr('placeholder');
