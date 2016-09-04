@@ -64,6 +64,10 @@
             controller: 'ExploreCtrl',
             templateUrl:'app/components/explore/explore.html'
         })
+        .when('/exploreAll/',{
+            controller: 'ExploreAllCtrl',
+            templateUrl:'app/components/exploreAll/explore.html'
+        })
         .when('/guidelines/',{
             templateUrl:'app/components/guidelines/guidelines.html'
         })

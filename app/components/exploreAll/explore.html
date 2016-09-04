@@ -1,0 +1,85 @@
+<div class="exploreWrap">
+<div class="explore-banner text-center">
+    <img src="../css/images/explore.png" class="img-responsive">
+</div>
+<!--<div class="explore-icons container">
+	<div class="row">
+    	<div class="col-md-1 col-sm-3 col-xs-4 col-md-offset-1 col-sm-offset-0 col-xs-offset-0 text-center">
+        <img  src="../../../css/images/explore-assets/trekking.png" style="margin-top:11px;">
+        <p>Trekking</p>
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-4 text-center">
+        <img src="../../../css/images/explore-assets/hiking.png" style="margin-top:1px;">
+        <p>Hiking</p>
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-4 text-center">
+        <img src="../../../css/images/explore-assets/nature.png">
+        <p>Nature</p>
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-4 text-center">
+        <img src="../../../css/images/explore-assets/rafting.png" style="margin-top:4px;">
+        <p>Rafting</p>
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-4 text-center">
+        <img src="../../../css/images/explore-assets/adventure.png" style="margin-top:8px;">
+        <p>Adventure</p>
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-4 text-center">
+        <img src="../../../css/images/explore-assets/road_trip.png" style="margin-top:25px;">
+        <p>Road Trip</p>
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-4 text-center">
+        <img src="../../../css/images/explore-assets/pilgrimage.png" style="margin-top:5px;">
+        <p>Pilgrimage</p>
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-4 text-center">
+        <img src="../../../css/images/explore-assets/photography.png" style="margin-top:30px;">
+        <p>Photography</p>
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-4 text-center">
+        <img src="../../../css/images/explore-assets/tips.png" style="margin-top:6px;">
+        <p>Tips</p>
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-4 text-center">
+        <img src="../../../css/images/explore-assets/how_to.png" style="margin-top:21px;">
+        <p>How To</p>
+        </div>
+    </div>
+</div>-->
+<div class="container">
+    <div ng-show="!isSiteLoaded" class="site-loader site-loader-center" style="margin-top: 50px;">
+        <div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+        </div>
+        <p>I travel, therefore I am</p>
+    </div>
+    <div class="row">
+        <div ng-show="isSiteLoaded" class="col-sm-6 col-md-3" ng-repeat="trip in allTrips">
+            <div class="thumbnail location-thumb">
+                <a ng-href="#/account/timeline/{{trip.id}}" class="thumb-img">
+                    <img class="xpro2 trip-img" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1">
+                </a>
+                <div class="caption">
+                    <a ng-href="#/account/timeline/{{trip.id}}">
+                        <span class=" trip_name title-overflow-hidden">{{trip.title}}</span>
+                    </a>
+                    <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>-->
+                    <span class="pull-left"><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+                    <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                    <span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>
+                    <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"></em></span>
+
+                    <!--<span class="pull-right stats_thumbnail">19</span>-->
+                    <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
