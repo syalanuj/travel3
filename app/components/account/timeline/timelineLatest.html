@@ -125,7 +125,7 @@ Like &nbsp; | 200
                     <!--Timeline section within the tab-->
                     <div class="timeline">
                         <div id="guide" ng-show="tripTabIndex == 0" class="col-md-12" style="padding:0;">
-                            <div ng-repeat="place in trip.visited_places track by $index" class="timeline-card col-md-12">
+                            <div ng-mouseover="changeCenter(place)" ng-repeat="place in trip.visited_places track by $index" class="timeline-card col-md-12">
                                 <div class="col-md-4">
                                     <div class="card-desc">
                                         <div class="card-date-loca">

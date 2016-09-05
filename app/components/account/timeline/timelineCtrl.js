@@ -37,7 +37,11 @@
             $scope.myProfile = $scope.currentUserObj.get("facebook_profile");
         }
         $scope.postStep = 4
-
+        $scope.changeCenter = function (placeInstance) {
+            if ($scope.map) {
+                $scope.map.center = placeInstance.coordinates;
+            }
+        }
         accountService.getTripById($routeParams.tripId, function (data) {
             $scope.$apply(function () {
                 $scope.userObj = data.user
@@ -79,7 +83,7 @@
                     }
                 });
                 if ($scope.allMarkers[0]) {
-                    $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15, options: {scrollwheel: false} };
+                    $scope.map = { center: { latitude: $scope.allMarkers[0].latitude, longitude: $scope.allMarkers[0].longitude }, zoom: 15, options: { scrollwheel: false} };
                     $scope.polylines = [
                     {
                         id: 1,
@@ -138,8 +142,8 @@
         }
 
         //Map
-        $scope.map = { center: { latitude: 21.0000, longitude: 78.0000 }, zoom: 4, options: {scrollwheel: false} };
-        $scope.options = {scrollwheel: false}
+        $scope.map = { center: { latitude: 21.0000, longitude: 78.0000 }, zoom: 4, options: { scrollwheel: false} };
+        $scope.options = { scrollwheel: false }
 
         //Comments and Likes
         $scope.getTripComments = function () {
