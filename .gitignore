@@ -11,3 +11,5 @@ app.js
 app.js
 
 /css/images/Cover-image.png
+
+app/components/landing/landing.html
