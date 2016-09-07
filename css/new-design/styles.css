@@ -4374,3 +4374,6 @@ hr{
     font-weight: 400;
     color: rgb(82, 83, 84);
 }
+.content{
+    z-index: 2;
+}
