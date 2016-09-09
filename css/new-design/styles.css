@@ -7,6 +7,10 @@
     font-family: lato;
     src:url(../../fonts/Lato-Regular.woff);
 }
+@font-face {
+    font-family: lato-light;
+    src:url(../../fonts/Lato-Light.woff);
+}
 @font-face{
     font-family:lato-semibold;
     src:url(../../fonts/Lato-Semibold.woff);
@@ -4362,6 +4366,7 @@ hr{
     display: flex;
     align-items: center;
 }
+<<<<<<< HEAD
 .pitch h1{
     font-size: 1.636rem;
         font-family: "Lato";
@@ -4376,4 +4381,65 @@ hr{
 }
 .content{
     z-index: 2;
+=======
+.pitch-wrap .section-1{
+    height: 80vh;
+    background-image:url(../images/pitch/hero/hero_image.jpg);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	}
+.p-text{
+    font-family: "Lato";
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0px 30px 70px rgba(0, 0, 0, 0.4);
+    font-size: 2.5rem;
+    vertical-align: middle;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.p-text span{
+    font-weight: 900;
+}
+.p-text p{
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.pitch-wrap .section-2{
+    font-family: "lato-light";
+    font-weight: 100;
+    color: #525354;
+    font-style: italic;
+    font-size: 1.6rem;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.pitch-wrap .section-3{
+	background-image:url(../images/pitch/section-2/img_grid.jpg);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+    height: 251px;
+}
+.pitch-wrap .section-4{
+    font-size: 1.6rem;
+    font-family: "lato-light";
+    color: #171819;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.pitch-wrap .section-4 p span{
+    color: #f56c36;
+}
+.there-there{
+    font-family: "Lato-Light";
+    color: #525354;
+    font-size: 2rem;
+}
+.there-there span{
+    font-family: lato;
+>>>>>>> master
 }
