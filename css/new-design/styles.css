@@ -83,6 +83,7 @@ body
     -moz-osx-font-smoothing: grayscale;
     background-color:#fff;
     overflow-x:hidden;
+    position: relative;
 }
 /*SearchbarCSS*/
 .timeline-search-box {
@@ -4366,7 +4367,6 @@ hr{
     display: flex;
     align-items: center;
 }
-<<<<<<< HEAD
 .pitch h1{
     font-size: 1.636rem;
         font-family: "Lato";
@@ -4381,7 +4381,7 @@ hr{
 }
 .content{
     z-index: 2;
-=======
+}
 .pitch-wrap .section-1{
     height: 80vh;
     background-image:url(../images/pitch/hero/hero_image.jpg);
@@ -4408,38 +4408,10 @@ hr{
     font-weight: bold;
     font-size: 1.3rem;
 }
-.pitch-wrap .section-2{
-    font-family: "lato-light";
-    font-weight: 100;
-    color: #525354;
-    font-style: italic;
-    font-size: 1.6rem;
-    padding-top: 40px;
-    padding-bottom: 40px;
+.timeline-wrap .affix-top {
+    top: 55px;
 }
-.pitch-wrap .section-3{
-	background-image:url(../images/pitch/section-2/img_grid.jpg);
-	background-position:center;
-	background-repeat:no-repeat;
-	background-size:cover;
-    height: 251px;
-}
-.pitch-wrap .section-4{
-    font-size: 1.6rem;
-    font-family: "lato-light";
-    color: #171819;
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-.pitch-wrap .section-4 p span{
-    color: #f56c36;
-}
-.there-there{
-    font-family: "Lato-Light";
-    color: #525354;
-    font-size: 2rem;
-}
-.there-there span{
-    font-family: lato;
->>>>>>> master
+
+.timeline-wrap .affix-bottom {
+    bottom: 700px;
 }

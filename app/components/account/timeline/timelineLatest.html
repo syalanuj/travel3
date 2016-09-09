@@ -170,7 +170,7 @@ Like &nbsp; | 200
                     </div>
                 </div>
                 <div class="col-md-5 hidden-xs hidden-sm">
-                    <div class="content" bs-affix data-offset-top="1160" data-offset-bottom="600" data-spy="affix">
+                    <div class="content" bs-affix data-offset-top="1160" data-offset-bottom="700" data-spy="affix">
                         <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
                             <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fit="false" editable="p.editable" draggable="p.draggable" icons="p.icons">
                             </ui-gmap-polyline>
@@ -179,68 +179,68 @@ Like &nbsp; | 200
                         </ui-gmap-google-map>
                     </div>
                 </div>
-                              <div id="placesMap" ng-show="tripTabIndex == 1" class="col-md-12">
-                <div class="content">
-                    <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
-                        <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fit="false" editable="p.editable" draggable="p.draggable" icons="p.icons">
-                        </ui-gmap-polyline>
-                        <ui-gmap-markers models="allMarkers" coords="'self'" icon="'icon'" options="marker.options" click="onClick()" events="marker.events">
-                        </ui-gmap-markers>
-                    </ui-gmap-google-map>
+                <div id="placesMap" ng-show="tripTabIndex == 1" class="col-md-12">
+                    <div class="content">
+                        <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
+                            <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fit="false" editable="p.editable" draggable="p.draggable" icons="p.icons">
+                            </ui-gmap-polyline>
+                            <ui-gmap-markers models="allMarkers" coords="'self'" icon="'icon'" options="marker.options" click="onClick()" events="marker.events">
+                            </ui-gmap-markers>
+                        </ui-gmap-google-map>
+                    </div>
+                </div>
+                <div id="photos" ng-show="tripTabIndex == 2" class="col-md-12">
+                    <div class="content">
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a ng-click="toggleModal(getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
+                                <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="placeImage in timelineImages track by $index">
+                            <a ng-click="toggleModal(getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
+                                <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="photos" ng-show="tripTabIndex == 2" class="col-md-12">
-                <div class="content">
-                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a ng-click="toggleModal(getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
-                            <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(trip.main_image.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="placeImage in timelineImages track by $index">
-                        <a ng-click="toggleModal(getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_562,w_850/'))" class="thumbnail">
-                            <img class="img-responsive" ng-src="{{getCroppedTripImageUrl(placeImage.image_url,'upload/c_fill,h_400,w_500/')}}" alt="">
-                        </a>
-                    </div>
+            <div class="text-center col-xs-12 timelineend">
+                <!--<p class="thatsall col-md-offset-6 col-sm-offset-6 col-xs-offset-3"> That's all Folks!</p><br>-->
+                <div class="credits">
+                    <a ng-href="/account/profile/{{userObj.id}}">
+                        <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle">
+                        <p class="dancing-script">{{userObj.facebook_profile.name}}</p>
+                    </a>
                 </div>
             </div>
-        </div>
-        <div class="text-center col-xs-12 timelineend">
-            <!--<p class="thatsall col-md-offset-6 col-sm-offset-6 col-xs-offset-3"> That's all Folks!</p><br>-->
-            <div class="credits">
-                <a ng-href="/account/profile/{{userObj.id}}">
-                    <img ng-src="{{userObj.facebook_profile.picture.data.url}}" class="img-circle">
-                    <p class="dancing-script">{{userObj.facebook_profile.name}}</p>
-                                            </a>
-                    </div>
-                </div>
-        
+
             <div class="row ">
                 <div class="container">
-                <div class="stay-connected">
-                    <span>Recommended</span>
-                </div>
-            <div class="col-md-3 col-sm-6 col-xs-6" ng-repeat="trip in relatedTrips | filter:query">
-                <div ng-hide="trip.id == allTripId" class="thumbnail location-thumb">
-                <div class="thumb-img">
-                    <a ng-href="/account/timeline/{{trip.id}}">
-                        <img ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" class="ig-lofi trip-img">
-                    </a>
-                </div>    
-                    <div class="caption">
-                        <a ng-href="/account/timeline/{{trip.id}}">
-                            <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
-                        </a>
-                        <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>!-->
-                        <span class="pull-left"><a ng-href="/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
-                        <span class="user_name_thumbnail"><a ng-href="/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
-                        <!--<span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>!-->
-                        <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"><sup>{{trip.total_likes}}</sup></em></span>
-
-                        <!--<span class="pull-right stats_thumbnail">19</span>-->
-                        <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->
+                    <div class="stay-connected">
+                        <span>Recommended</span>
                     </div>
-                </div>
-            </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6" ng-repeat="trip in relatedTrips | filter:query">
+                        <div ng-hide="trip.id == allTripId" class="thumbnail location-thumb">
+                            <div class="thumb-img">
+                                <a ng-href="/account/timeline/{{trip.id}}">
+                                    <img ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" class="ig-lofi trip-img">
+                                </a>
+                            </div>    
+                            <div class="caption">
+                                <a ng-href="/account/timeline/{{trip.id}}">
+                                    <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
+                                </a>
+                                <!--<span class="pull-right trip_date">{{trip.visited_places[0].date | date:"dd/MM/yyyy"}}</span>!-->
+                                <span class="pull-left"><a ng-href="/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle"></a></span>
+                                <span class="user_name_thumbnail"><a ng-href="/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                                <!--<span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>!-->
+                                <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"><sup>{{trip.total_likes}}</sup></em></span>
+
+                                <!--<span class="pull-right stats_thumbnail">19</span>-->
+                                <!--<span class="pull-right"><em class="fa fa-comments Like_icon_thumbnail"></em></span>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="container text-center">
@@ -270,47 +270,49 @@ Like &nbsp; | 200
                     </ul>
                 </div>
             </div>
-        <div class="container text-center">
-            <div class="comments-wrap" id="comments">
-                <div class="comments container">
-                    <div id="fb-comment-box" dynamic-fb-comment-box page-href="{{pageUrl}}" numposts="5" colorscheme="light">
+            <div class="container text-center">
+                <div class="comments-wrap" id="comments">
+                    <div class="comments container">
+                        <div id="fb-comment-box" dynamic-fb-comment-box page-href="{{pageUrl}}" numposts="5" colorscheme="light">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-            </div>
-        </div>
-
     </div>
 
+</div>
 
 
 
 
-    <style type="text/css">
-        .hide-dropzone .dz-preview {
-            display: none
-        }
 
-        .pac-container{
-            z-index: 9999999999999999999999
-        }
-        .hand-pointer {
-            cursor: pointer;
-        }
-        .selected-image-border{
-            border:2px solid red;
-        }
-        .affix-top {
-    top: 55px;
-}
+<style type="text/css">
+    .hide-dropzone .dz-preview {
+        display: none
+    }
 
-.affix-bottom {
-    bottom: 500px;
-}
-    </style>
-    <script>
-        $('a.like-button').on('click', function() {
-            $(this).toggleClass('liked');
-        });
-    </script>
+    .pac-container{
+        z-index: 9999999999999999999999
+    }
+    .hand-pointer {
+        cursor: pointer;
+    }
+    .selected-image-border{
+        border:2px solid red;
+    }
+    .affix-top {
+        top: 55px;
+    }
+
+    .affix-bottom {
+        bottom: 700px;
+        top: auto;
+        position: absolute;
+    }
+</style>
+<script>
+    $('a.like-button').on('click', function() {
+        $(this).toggleClass('liked');
+    });
+</script>
