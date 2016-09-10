@@ -4,55 +4,6 @@
     var app = angular.module('campture');
     app.service('Map', function ($q) {
 
-        this.init = function () {
-            var options = {
-                center: new google.maps.LatLng(28.6139, 77.2090),
-                zoom: 13,
-                disableDefaultUI: true
-            }
-            this.map = new google.maps.Map(
-            document.getElementById("map"), options
-        );
-            this.places = new google.maps.places.PlacesService(this.map);
-            this.geocoder = new google.maps.Geocoder();
-        }
-
-        this.search = function (str) {
-            var d = $q.defer();
-            this.places.textSearch({ query: str }, function (results, status) {
-                if (status == 'OK') {
-                    d.resolve(results[0]);
-                }
-                else d.reject(status);
-            });
-            return d.promise;
-        }
-        this.getPlaceByPlaceId = function (str) {
-            var d = $q.defer();
-            this.places.getDetails({
-                placeId: str
-            }, function (place, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    d.resolve(place);
-                }
-                else {
-                    d.reject(status);
-                }
-            });
-            return d.promise;
-        }
-        this.geocodePlace = function (address) {
-            var d = $q.defer();
-            this.geocoder.geocode({ 'address': address }, function (results, status) {
-                if (status === google.maps.GeocoderStatus.OK) {
-                    d.resolve(results[0].place_id);
-
-                } else {
-                    d.reject(status);
-                }
-            });
-            return d.promise;
-        }
         this.addMarker = function (res) {
             if (this.marker) this.marker.setMap(null);
             this.marker = new google.maps.Marker({
