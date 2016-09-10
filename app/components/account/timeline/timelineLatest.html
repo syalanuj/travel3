@@ -145,8 +145,7 @@
 
                                         </div>
                                         <div class="location-desc">
-                                            <span>
-                                                {{place.note}}
+                                            <span ng-bind-html="place.note | trust">
                                             </span>
                                         </div>
                                     </div>
