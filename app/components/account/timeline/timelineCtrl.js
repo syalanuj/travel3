@@ -8,6 +8,11 @@
     app.config(function (LightboxProvider) {
     LightboxProvider.templateUrl = 'app/components/account/timeline/customLightbox.html';
     });
+     app.filter("trust", ['$sce', function($sce) {
+        return function(htmlCode){
+        return $sce.trustAsHtml(htmlCode);
+    }
+    }]);
     app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', 'Lightbox', controller]);
     function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout, Lightbox) {
         //====== Scope Variables==========
