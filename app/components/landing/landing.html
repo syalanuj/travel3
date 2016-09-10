@@ -241,17 +241,17 @@
             <div class="col-sm-6 col-md-3" ng-repeat="trip in allTrips | filter:query">
                 <div class="thumbnail location-thumb">
                     <div class="thumb-img">
-                        <a ng-href="/account/timeline/{{trip.id}}">
+                        <a ng-href="#/account/timeline/{{trip.id}}">
                             <img class="ig-lofi trip-img" ng-src="{{trip.cropped_image_url}}" alt="thumbnail1" >
                         </a>
                     </div>
                     <div class="caption">
-                        <a ng-href="/account/timeline/{{trip.id}}">
+                        <a ng-href="#/account/timeline/{{trip.id}}">
                             <span class="trip_name title-overflow-hidden">{{trip.title}}</span>
                         </a>
 
-                        <span class=""><a ng-href="/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle pro-pic"></a></span>
-                        <span class="user_name_thumbnail"><a ng-href="/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
+                        <span class=""><a ng-href="#/account/profile/{{trip.user.id}}"><img ng-src="{{trip.user.facebook_profile.picture.data.url}}" alt="profile_pic" class="avatar img-circle pro-pic"></a></span>
+                        <span class="user_name_thumbnail"><a ng-href="#/account/profile/{{trip.user.id}}">{{trip.username}}</a></span>
                         <!--<span class="pull-right stats_thumbnail">{{trip.total_likes}}</span>-->
                         <span class="pull-right"><em class="fa fa-heart Like_icon_thumbnail"><sup>&nbsp; {{trip.total_likes}}</sup></em></span>
 
@@ -262,7 +262,7 @@
             </div>
         </div>
         <div class="row">
-            <a href="/explore" class="btn btn-lg btn-default">Explore More</a>
+            <a href="#/explore" class="btn btn-lg btn-default">Explore More</a>
         </div>
     </div>
     <div class="explorer-jumbotron">
@@ -272,7 +272,7 @@
                     <h2>Join the Campture Explorer Program</h2>
                     <p>Explorers are the most active and dedicated members of travel community - they add their favourite adventures, leave detailed reviews, share updated trail reports, and include great photography.</p>
                     <!--                    <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>-->
-                    <a href="/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>
+                    <a href="#/explorerProgram" class="btn btn-join-now btn-lg">Read More</a>
                 </div>
                 <div class="col-md-6">
                     <form ng-submit="sendUserEmail()">

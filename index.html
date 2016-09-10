@@ -31,7 +31,8 @@
         <meta name="keywords" content="Campture, adventure, camping" />
         <meta property="og:title" content="Campture" />
         <meta property="og:description" content="This is campture description" />
-        <meta property="og:image" content="http://res.cloudinary.com/dzseog4g3/image/upload/c_fill,h_400,w_960/v1449320744/dumeromf14sv5p3wj9o1.jpg" />
+        <!--<meta property="og:image" content="http://res.cloudinary.com/dzseog4g3/image/upload/c_fill,h_400,w_960/v1449320744/dumeromf14sv5p3wj9o1.jpg" />-->
+        <meta property="og:image" content="{{ngMeta['og:image']}}" />
         <meta name="author" content="anujs">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8" />
@@ -205,9 +206,12 @@
 
         <!--Timeline Dependencies-->
         <!--Map API Dependencies-->
+        <script src="js/ngmeta.min.js"></script>
         <script src="js/angular-simple-logger.js"></script>
         <script src="js/angular-google-maps.min.js"></script>
         <script src="js/ngAutocomplete/ngAutocomplete.js"></script>
+        <script src="js/affix/angular-jquery.min.js"></script>
+        <script src="js/affix/affix.min.js"></script>
         <!--Drop zone directive-->
         <script src="js/dropzone/dropzone-directive.js"></script>
         <!--Angular Routing-->
@@ -248,6 +252,14 @@
         <script src="app/components/location/locationCtrl.js"></script>
         <script src="app/components/inspiration/inspirationCtrl.js"></script>
         <script src="app/components/inspirationAdmin/inspirationAdminCtrl.js"></script>
+        <script src="app/components/gearChecklist/gearChecklistCtrl.js"></script>
+        <script src="app/components/gearChecklist/gearChecklistForm/gearChecklistFormCtrl.js"></script>
+        <script src="app/components/tours/leh/lehCtrl.js"></script>
+        <script src="app/components/tours/toursCtrl.js"></script>
+        <script src="app/components/tours/lehTour/lehTourCtrl.js"></script>
+        <script src="app/components/tours/stokTrek/stokTrekCtrl.js"></script>
+        <script src="app/components/tours/markhaTrek/markhaValleyTrekCtrl.js"></script>
+        <script src="app/components/tours/lehTourAlternate/lehTourAlternateCtrl.js"></script>
         
         <!--Main Route-->
         <script src="app.route.js"></script>

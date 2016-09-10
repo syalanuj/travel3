@@ -1,8 +1,9 @@
 (function () {
     'use strict';
-    var app = angular.module('campture', ['ui.bootstrap', 'ngRoute', 'ngCookies', 'uiGmapgoogle-maps', 'ngAutocomplete', 'dropzone','ngAnimate','ngTouch','ngStorage', 'bootstrapLightbox','angular-meditor' ]);
-    app.run(['$cookies', '$rootScope', '$window', '$location',
-        function ($cookies, $rootScope, $window, $location) {
+    var app = angular.module('campture', ['ui.bootstrap', 'ngRoute', 'ngCookies', 'uiGmapgoogle-maps', 'ngAutocomplete', 'dropzone','ngAnimate','ngTouch','ngStorage', 'bootstrapLightbox','angular-meditor','ngMeta', 'mgcrea.bootstrap.affix' ]);
+    app.run(['$cookies', '$rootScope', '$window', '$location','ngMeta',
+        function ($cookies, $rootScope, $window, $location, ngMeta) {
+            ngMeta.init();
             $rootScope.isPageHeaderLoaded = false;
             Parse.initialize("hqRCJWWJJhduQBOceJYMnKUh8rt5prJ2WyUfDkmp", "M7ZPrFMJoEopzBvOGCmynUbN5qwedkTeY32hFmpy");
             $rootScope.fbInit = false;

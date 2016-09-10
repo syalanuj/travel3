@@ -13,8 +13,8 @@
         return $sce.trustAsHtml(htmlCode);
     }
     }]);
-    app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', 'Lightbox', controller]);
-    function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout, Lightbox) {
+    app.controller('TimelineCtrl', ['$scope', '$cookies', '$rootScope', '$routeParams', '$location', 'uiGmapIsReady', 'AccountService', 'TripService', '$timeout', 'Lightbox','ngMeta', controller]);
+    function controller($scope, $cookies, $rootScope, $routeParams, $location, uiGmapIsReady, accountService, tripService, $timeout, Lightbox, ngMeta) {
         //====== Scope Variables==========
         //================================
         //linkify
@@ -52,6 +52,7 @@
                     }
                 }
                 $scope.trip = data;
+                ngMeta.setTag('image', 'http://res.cloudinary.com/dzseog4g3/image/upload/c_fill,h_400,w_960/v1449320744/dumeromf14sv5p3wj9o1.jpg');
                 accountService.getRelatedTrips($scope.trip.tags, function (data) {
                     if (data) {
                         $scope.$apply(function () {
