@@ -2,19 +2,7 @@
     'use strict';
 
     var app = angular.module('campture');
-    app.service('Map', function ($q) {
 
-        this.addMarker = function (res) {
-            if (this.marker) this.marker.setMap(null);
-            this.marker = new google.maps.Marker({
-                map: this.map,
-                position: res.geometry.location,
-                animation: google.maps.Animation.DROP
-            });
-            this.map.setCenter(res.geometry.location);
-        }
-
-    });
     app.directive('starRating', function () {
         return {
             restrict: 'EA',

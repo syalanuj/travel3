@@ -40,7 +40,18 @@
                 $scope.isSiteLoaded = true;
             });
         });
-
+        accountService.getLandingContent(function (data) {
+            if (data) {
+                angular.forEach(data, function (content) {
+                    if (content.place == 0) {
+                        $scope.jumboContent = content;
+                    }
+                    if (content.place == 1) {
+                        $scope.marketingContent = content;
+                    }
+                });
+            }
+        })
         $scope.postTrip = function () {
             accountService.postTrip($scope.newTrip, function (data) {
                 $scope.$apply(function () {

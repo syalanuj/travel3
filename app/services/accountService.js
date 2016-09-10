@@ -3,10 +3,12 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
     var User = Parse.Object.extend("User");
     var Trips = Parse.Object.extend("Trips");
     var TripLikes = Parse.Object.extend("Trip_Likes");
+    var PublicCMS = Parse.Object.extend("Public_CMS");
 
     var user = new User();
     var trips = new Trips();
     var tripLikes = new TripLikes();
+    var publicCMS = new PublicCMS();
 
     return {
         getTripById: getTripById,
@@ -27,7 +29,8 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
         uploadImageOnCloudinary: uploadImageOnCloudinary,
         updateProfileInformation: updateProfileInformation,
         getTripCategories: getTripCategories,
-        getHeaderTopTags: getHeaderTopTags
+        getHeaderTopTags: getHeaderTopTags,
+        getLandingContent: getLandingContent
     };
 
     function getTripById(tripId, callback) {
@@ -353,7 +356,18 @@ app.factory('AccountService', ['$http', '$q', function ($http, $q) {
             }
         });
     }
+    function getLandingContent(callback) {
+        var query = new Parse.Query(publicCMS);
 
+        query.find({
+            success: function (parseObject) {
+                callback(JSON.parse(JSON.stringify(parseObject)));
+            },
+            error: function (object, error) {
+                // The object was not retrieved successfully.
+            }
+        });
+    }
     //Internal
     function getTripFromParse(parseObject) {
         var trip = {
