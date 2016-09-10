@@ -13,10 +13,7 @@ All Images: <uib-carousel interval="" no-wrap="false">
             </uib-carousel> </br>
 Selected Image :   <img ng-src="{{locationCard.panoramioImage.imageUrl}}"> </br>
     
-    <div ng-repeat="tag in locationCard.tags track by $index">
-    {{tag}},
-        <input type="text" ng-model="locationCard.tags[$index]">
-    </div></br>
+    </br>
     New Tag: <input type="text" ng-model="newTag">
     <button ng-click="addNewTag()" >Add Tag</button>
 
