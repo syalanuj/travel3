@@ -22,7 +22,11 @@
             $('.description').linkify();
             $('.linkify').linkify();
         }
-
+        $scope.changeCenter = function (placeInstance) {
+            if ($scope.map) {
+                $scope.map.center = placeInstance.coordinates;
+            }
+        }
         $routeParams.tripId;
         $scope.currentUserObj = Parse.User.current();
         $scope.userObj;
