@@ -57,6 +57,11 @@
             }
         }
     });
+    app.filter("trust", ['$sce', function($sce) {
+        return function(htmlCode){
+        return $sce.trustAsHtml(htmlCode);
+    }
+    }]);
     app.config(function (LightboxProvider) {
         LightboxProvider.templateUrl = 'app/components/account/timeline/customLightbox.html';
     });
@@ -64,8 +69,8 @@
     function controller($scope, $route, $cookies, $rootScope, $location, $sessionStorage, $interval, $routeParams, accountService, flickrApiService, uiGmapIsReady, Lightbox) {
         //====== Scope Variables==========
         //================================
-        $scope.model = {}
-        $scope.model.text = "Hello"
+        var model = $scope.model = {};
+        model.text = '';
         $('#addcoverModal').modal('hide')
         $(document).ready(function () {
             $('.remove-location-placeholder').removeAttr('placeholder');
@@ -529,6 +534,8 @@
         }
         $scope.saveTripCover = function () {
             if ($scope.newTrip.title) {
+                $scope.newTrip.introduction = $scope.model.text;
+                model.text = '';
                 $scope.tripPostInProgress = true;
                 $scope.newTrip.user = {
                     id: $scope.userObj.objectId,
@@ -538,6 +545,7 @@
                     accountService.updateTrip($scope.newTrip, function (data) {
                         $scope.$apply(function () {
                             if (data) {
+                                $scope.model.text = undefined;
                                 $scope.newTrip = data
                                 $scope.postStep = 2
                                 $location.path('/account/postTrip/' + $scope.newTrip.objectId);
@@ -589,6 +597,8 @@
         $scope.saveVisitedPlace = function () {
             //step 3 click of + button
             if ($scope.places[$scope.placeCount - 1].location) {
+                $scope.places[$scope.placeCount - 1].note = $scope.model.text;
+                
                 $scope.tripPostInProgress = true;
                 var selectedImageCount = 0;
                 var pushedImageCount = 0
@@ -617,6 +627,7 @@
                                         accountService.updateTrip($scope.newTrip, function (data) {
                                             $scope.$apply(function () {
                                                 if (data) {
+                                                    model.text = '';
                                                     $('#addcardModal').modal('hide')
                                                     $scope.newTrip = data
                                                     $scope.placeCount = $scope.newTrip.visited_places.length
@@ -641,6 +652,7 @@
                         accountService.updateTrip($scope.newTrip, function (data) {
                             $scope.$apply(function () {
                                 if (data) {
+                                    model.text = '';
                                     $scope.newTrip = data
                                     $scope.placeCount = $scope.newTrip.visited_places.length
                                     $scope.postStep = 4
@@ -660,6 +672,8 @@
                     accountService.updateTrip($scope.newTrip, function (data) {
                         $scope.$apply(function () {
                             if (data) {
+                                model.text = '';
+                                $scope.model.text = undefined
                                 $scope.newTrip = data
                                 $scope.postStep = 4
                                 $scope.suggestedImages = undefined

@@ -13,7 +13,7 @@
 
             <div class="trip-disc text-center">
                 <img src="./Campture_files/Comma_left.png" class="pull-left"><br>
-                <p>{{newTrip.introduction}}</p>
+                <p ng-bind-html="newTrip.introduction | trust"></p>
                 <img src="./Campture_files/Comma_right.png" class="pull-right">
             </div>
             <div class="profile-pic text-center">
@@ -151,8 +151,8 @@ Hit the + button to start!
                                             </span>
                                         </div>
                                         <div class="location-desc">
-                                            <span>
-{{place.note}}
+                                            <span ng-bind-html="place.note | trust">
+<!--{{place.note}}-->
                                             </span>
                                         </div>
                                     </div>
@@ -270,7 +270,7 @@ Hit the + button to start!
                                 <div class="form-group modal-form-group">
                                     <div class="input-group modal-input-group">
                                         <div class="input-group-addon input-pencil" style="vertical-align:top;"><i class="fa fa-pencil"></i></div>
-                                        <div meditor class="write-disc large-12 columns" ng-model="places[placeCount -1].note"></div>
+                                        <div meditor class="write-disc large-12 columns" ng-model="model.text"></div>  
                                         <!--<textarea ng-model="places[placeCount -1].note" class="write-disc" rows="5" placeholder="Describe your epic adventure.."></textarea>-->
                                     </div>
                                     <div class="pull-right"><span ng-if="places[placeCount -1].note.length == undefined">0</span>{{places[placeCount -1].note.length}}/500</div>
@@ -322,7 +322,6 @@ Hit the + button to start!
                                             </svg>
                                         </div>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
@@ -334,7 +333,7 @@ Hit the + button to start!
                             <form class="form-inline">
                                 <div class="form-group modal-form-group">
                                     <div class="input-group modal-input-group">
-                                        <p meditor class="large-12 columns" ng-model="newTrip.introduction"></p>
+                                        <p meditor class="large-12 columns" ng-model="model.text"></p>
                                         <!--<textarea maxlength="144" ng-model="newTrip.introduction" class="write-disc" rows="5" placeholder="Describe your epic adventure.."></textarea>-->
                                     </div>
                                     <div class="pull-right"><span class="" ng-if="newTrip.introduction.length == undefined">0</span>{{newTrip.introduction.length}}/144</div>

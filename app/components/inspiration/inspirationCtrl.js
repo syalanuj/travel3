@@ -12,7 +12,7 @@
             }
         };
     });
-    app.controller('InspirationCtrl', ['$scope', '$routeParams', '$uibModal', 'LocationService', controller]);
+    app.controller('InspirationCtrl', ['$routeParams', '$uibModal', 'LocationService', controller]);
     function controller($scope, $routeParams, $uibModal, locationService) {
         $scope.locationCards;
         $scope.searchText;
