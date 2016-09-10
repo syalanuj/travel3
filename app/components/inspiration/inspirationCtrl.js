@@ -18,13 +18,6 @@
         $scope.searchText;
         var page = 0;
 
-        function getLocationCards(page) {
-            locationService.getLocationCards(page, function (data) {
-                $scope.locationCards = data;
-                $scope.$apply();
-                setTimeout(masonaryCall, 2000)
-            });
-        }
         if ($routeParams.tag) {
             $scope.searchLocationByTags($routeParams.tag)
         }
@@ -76,19 +69,5 @@
         }
     };
 
-    app.controller('LocationlInstanceModalCtrl', function ($scope, $uibModalInstance, items) {
-
-        $scope.items = items;
-        $scope.selected = {
-            item: $scope.items[0]
-        };
-
-        $scope.ok = function () {
-            $uibModalInstance.close($scope.selected.item);
-        };
-
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-    });
+    
 })();

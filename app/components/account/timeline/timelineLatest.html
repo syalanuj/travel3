@@ -10,7 +10,7 @@
             </div>
             <div class="trip-disc text-center">
                 <img src="./Campture_files/Comma_left.png" class="pull-left"><br>
-                <p>{{trip.introduction}}</p>
+                <p ng-bind-html="newTrip.introduction | trust"></p>
                 <img src="./Campture_files/Comma_right.png" class="pull-right">
             </div>
             <div class="profile-pic text-center">
