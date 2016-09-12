@@ -4304,3 +4304,25 @@ hr{
 .Itinerary a{
     color: #6a6a6a;
 }
+.large-12 .angular-meditor .angular-meditor-content{
+    width:100%;
+    box-shadow:none;
+    padding-left:12px;
+    font-size:18px;
+    border: 2px solid #ebedef;
+    border-radius: 6px;
+    min-height: 100px;
+}
+.large-12 .angular-meditor .angular-meditor-content:focus{
+    outline:none;
+}
+
+.large-12 .angular-meditor .angular-meditor-content::-webkit-input-placeholder{
+    font-size:18px;
+    font-family:lato;
+    content: "Write Description"
+}
+.large-12 .angular-meditor .angular-meditor-content:empty:before {
+    content:attr("Write Description");
+    color:gray;
+}
