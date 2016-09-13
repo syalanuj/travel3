@@ -4359,3 +4359,6 @@ hr{
 .location-thumb:hover .delete-trip{
     display: block;
 }
+.marketing-banner{
+    margin: auto;
+}
