@@ -2533,6 +2533,7 @@ width: 1410px;
     color:#FFFFFF;
 }
 .angellist img{
+    height: 50px;
     padding-left:20px;
     padding-right:20px;
     padding-bottom:20px;
@@ -2584,6 +2585,28 @@ background-size:contain;
 }
 .modal-publish-trip:hover .welcome-modal-img-2{
     display:inline;
+}
+.aligner{
+    display: flex;
+    align-items: center;
+}
+.pitch h1{
+    font-size: 1.636rem;
+    font-family: "Lato";
+    font-weight: 300;
+    color: rgb(245, 108, 54);
+}
+.pitch p{
+    font-size: 1rem;
+    font-family: "Lato";
+    font-weight: 400;
+    color: rgb(82, 83, 84);
+}
+.btn-orange {
+    background-color: rgb(226, 88, 51)!important;
+    font-family: "lato"!important;
+    text-transform: capitalize;
+    color: rgb(251, 251, 251);
 }
 #welcomeModal h4{
     font-size: 20px;
@@ -4325,4 +4348,14 @@ hr{
 .large-12 .angular-meditor .angular-meditor-content:empty:before {
     content:attr("Write Description");
     color:gray;
+}
+.delete-trip{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: -29px;
+    right: 20px;
+}
+.location-thumb:hover .delete-trip{
+    display: block;
 }
