@@ -4415,3 +4415,83 @@ hr{
 .timeline-wrap .affix-bottom {
     bottom: 700px;
 }
+.pitch-wrap .section-1{
+    height: 80vh;
+    background-image:url(../images/pitch/hero/hero_image.jpg);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.p-text{
+    font-family: "Lato";
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0px 30px 70px rgba(0, 0, 0, 0.4);
+    font-size: 2.5rem;
+    vertical-align: middle;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.p-text span{
+    font-weight: 900;
+}
+.p-text p{
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.pitch-wrap .section-2{
+    font-family: "lato-light";
+    font-weight: 100;
+    color: #525354;
+    font-style: italic;
+    font-size: 1.6rem;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.pitch-wrap .section-3{
+    background-image:url(../images/pitch/section-2/img_grid.jpg);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: 251px;
+}
+.pitch-wrap .section-4{
+    font-size: 1.6rem;
+    font-family: "lato-light";
+    color: #171819;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.pitch-wrap .section-4 p span{
+    color: #f56c36;
+}
+.there-there{
+    font-family: "Lato-Light";
+    color: #525354;
+    font-size: 2rem;
+}
+.there-there span{
+    font-family: lato;
+}
+.btn-orz{
+    color: white;
+    font-family: lato;
+    border-radius: 4px;
+    background-image: -moz-linear-gradient( 90deg, rgb(255,85,102) 0%, rgb(245,108,54) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(255,85,102) 0%, rgb(245,108,54) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(255,85,102) 0%, rgb(245,108,54) 100%);
+    box-shadow: 0px 30px 30px 0px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    border: 0;
+}
+.when-you{
+    padding-top: 20px;
+}
+.when-you p{
+    font-style: italic;
+    font-size: 1.6rem;
+    font-family: Lato;
+    color: #525354;
+}
