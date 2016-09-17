@@ -690,10 +690,12 @@ opacity: 0.8;
     background-color: #fff;
     border: none;
     border-radius: 4px;
+/*
     -webkit-transition: border .2s ease-in-out;
     -o-transition: border .2s ease-in-out;
     transition: border .2s ease-in-out;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+*/
+/*    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);*/
 }
 
 /*CSS for the upload form*/
@@ -4494,4 +4496,19 @@ hr{
     font-size: 1.6rem;
     font-family: Lato;
     color: #525354;
+    margin-bottom: 20px;
+}
+.its-easy{
+    padding: 20px;
+}
+.its-easy span{
+    font-family: "Lato-Light";
+    color: #171819;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+.its-easy p{
+    font-family: "Lato";
+    color: #525354;
+    font-size: .9rem;
 }
