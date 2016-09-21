@@ -3,6 +3,7 @@
 body
 {
     background-color:#edeef0!important;
+    position: relative;
 }
 .verticalLine {
     border-left: thick solid #ff0000;
@@ -453,4 +454,11 @@ body
 .rv-img{
     width: 100%;
     height: 100%;
+}
+.sahi{
+    position: relative;
+}
+.sahi2{
+    position: absolute;
+    bottom: 0px;
 }

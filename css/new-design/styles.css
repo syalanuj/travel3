@@ -4362,3 +4362,11 @@ hr{
 .marketing-banner{
     margin: auto;
 }
+.sahi{
+    position: relative;
+}
+.sahi2{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+}
